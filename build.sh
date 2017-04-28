@@ -1,3 +1,5 @@
+set path=( /cad2/ece344s/cs161/bin $path)
+
 cd os161/
 
 #Root configuration
