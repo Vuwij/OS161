@@ -10,11 +10,15 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>.</sourceRootElem>
+                <sourceRootElem>os161</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
                     <name>Default</name>
+                    <type>0</type>
+                </confElem>
+                <confElem>
+                    <name>AutoTester</name>
                     <type>0</type>
                 </confElem>
             </confList>
