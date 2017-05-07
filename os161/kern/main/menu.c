@@ -129,21 +129,39 @@ cmd_prog(int nargs, char **args) {
 }
 
 /*
- * Command for running an arbitrary userlevel program.
+ * Command for setting the debug flags.
  */
 static
 int
 cmd_df(int nargs, char **args) {
-    if (nargs < 2) {
-        kprintf("Usage: p program [arguments]\n");
+    if (nargs != 3) {
+        kprintf("Usage: df nr on/off\n");
         return EINVAL;
     }
-
-    /* drop the leading "p" */
-    args++;
-    nargs--;
-
-    return common_prog(nargs, args);
+    
+    /* check if the arguments are a number */
+    u_int32_t flag = atoi(args[1]);
+    if(!(flag > 0 && flag <= 12)) {
+        return EINVAL;
+    }
+    flag = 1 << flag;
+    
+    /* check if second argument is on or off */
+    if(strcmp(args[2], "on") && strcmp(args[2], "off")) {
+        return EINVAL;
+    }
+    u_int32_t on = !strcmp(args[2], "on");
+    u_int32_t is_on = ((dbflags & flag) != 0);
+    
+    if(on == is_on) {
+        if(on) kprintf("%u already on\n", flag);
+        else kprintf("%u already off\n", flag);
+        return 0;
+    }
+    
+    dbflags = on ? dbflags + flag : dbflags - flag;
+    
+    return 0;
 }
 
 /*
@@ -467,8 +485,7 @@ cmd_dbflagsmenu(int n, char **a) {
     (void) a;
 
     showmenu("OS/161 debug flags", dbflagsmenu);
-    kprintf("Current value of dbflags is 0x0");
-    kprintf("Operation took 0.058040000 seconds");
+    kprintf("Current value of dbflags is %#04x\n", dbflags);
     
     return 0;
 }

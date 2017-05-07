@@ -1,2 +1,10 @@
 ?o
 dbflags
+df 3 on
+df 3 on
+df 4 on
+df 1000000 on
+df 4 off
+df 4 off
+df 13 on
+dbflags
