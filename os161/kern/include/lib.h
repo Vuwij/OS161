@@ -111,7 +111,7 @@ void *memmove(void *, const void *, size_t);
 void bzero(void *, size_t);
 int atoi(const char *);
 
-int snprintf(char *buf, size_t maxlen, const char *fmt, ...) __PF(3, 4);
+int snprintf(char *buf, size_t maxlen, const char *fmt, ...) __PF(3,4);
 
 const char *strerror(int errcode);
 
@@ -140,8 +140,8 @@ void beep(void);
  * kprintf_init sets up a lock for kprintf and should be called during boot
  * once malloc is available and before any additional threads are created.
  */
-int kprintf(const char *fmt, ...) __PF(1, 2);
-void panic(const char *fmt, ...) __PF(1, 2);
+int kprintf(const char *fmt, ...) __PF(1,2);
+void panic(const char *fmt, ...) __PF(1,2);
 
 void kgets(char *buf, size_t maxbuflen);
 
@@ -185,7 +185,7 @@ u_int64_t htonll(u_int64_t);
  *
  * These functions are machine-dependent.
  */
-
+ 
 int copyin(const_userptr_t usersrc, void *dest, size_t len);
 int copyout(const void *src, userptr_t userdest, size_t len);
 int copyinstr(const_userptr_t usersrc, char *dest, size_t len, size_t *got);

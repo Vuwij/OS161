@@ -15,3 +15,6 @@
 # SVN Stuff
 /os161/.svn/wc.db
 os161/.svn/wc.db
+
+/root/testbin/*
+/root/hostbin/*
