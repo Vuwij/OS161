@@ -5,3 +5,10 @@
 /os161/kern/compile/ASST3/*
 /os161/kern/compile/ASST4/*
 
+/os161/bin/*
+/os161/lib/hostcompat
+/os161/lib/libc
+/os161/sbin/*
+!/os161/sbin/Makefile
+/os161/testbin/*
+
