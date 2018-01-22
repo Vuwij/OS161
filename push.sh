@@ -5,6 +5,7 @@ cd $HOME/Documents/ECE344/
 # SVN
 cd os161
 svn commit -m "Commit"
+cd ..
 
 # GIT
 git add .
