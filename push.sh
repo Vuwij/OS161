@@ -9,4 +9,5 @@ svn commit -m "Commit"
 # GIT
 git add .
 git commit -m "Commit"
+git config --global credential.helper 'cache --timeout=10000000'
 git push origin master
