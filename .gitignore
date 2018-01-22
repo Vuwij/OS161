@@ -13,4 +13,4 @@
 /os161/testbin/*
 
 # SVN Stuff
-/os161/.svn
+/os161/.svn/wc.db
