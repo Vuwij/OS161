@@ -584,7 +584,7 @@
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
           <buildCommand>/bin/csh build.sh</buildCommand>
           <cleanCommand>/bin/csh build.sh</cleanCommand>
-          <executablePath></executablePath>
+          <executablePath>root/kernel</executablePath>
         </makeTool>
         <preBuild>
           <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
