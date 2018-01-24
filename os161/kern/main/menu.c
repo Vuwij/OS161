@@ -381,9 +381,52 @@ showmenu(const char *name, const char *x[])
 	kprintf("\n");
 }
 
+static const char *dbflagmenu[] = {
+	"[df 1 on/off]     DB_LOCORE         ",
+        "[df 2 on/off]     DB_SYSCALL        ",
+        "[df 3 on/off]     DB_INTERRUPT      ",
+        "[df 4 on/off]     DB_DEVICE         ",
+        "[df 5 on/off]     DB_THREADS        ",
+        "[df 6 on/off]     DB_VM             ",
+        "[df 7 on/off]     DB_EXEC           ",
+        "[df 8 on/off]     DB_VFS            ",
+        "[df 9 on/off]     DB_SFS            ",
+        "[df 10 on/off]    DB_NET            ",
+        "[df 11 on/off]    DB_NETFS          ",
+        "[df 12 on/off]    DB_KMALLOC        ",
+	NULL
+};
+
+static
+int
+cmd_dbflags(int n, char **a)
+{
+	(void)n;
+	(void)a;
+
+	showmenu("OS/161 debug flags", dbflagmenu);
+	return 0;
+}
+
+static
+int
+cmd_df(int nargs, char **args)
+{
+    	if (nargs != 3) {
+		kprintf("Usage: df flagnum on\n");
+		return EINVAL;
+	}
+        
+        int* flagnum = &args[1];
+        char* state = &args[2];
+        
+	return 0;
+}
+
 static const char *opsmenu[] = {
 	"[s]       Shell                     ",
 	"[p]       Other program             ",
+        "[dbflags] Debug flags               ",
 	"[mount]   Mount a filesystem        ",
 	"[unmount] Unmount a filesystem      ",
 	"[bootfs]  Set \"boot\" filesystem     ",
@@ -489,6 +532,8 @@ static struct {
 	/* operations */
 	{ "s",		cmd_shell },
 	{ "p",		cmd_prog },
+        { "dbflags",	cmd_dbflags },
+        { "df",	        cmd_df },
 	{ "mount",	cmd_mount },
 	{ "unmount",	cmd_unmount },
 	{ "bootfs",	cmd_bootfs },
