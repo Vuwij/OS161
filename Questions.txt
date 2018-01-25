@@ -1,0 +1,70 @@
+## Assignment 1
+
+Question 0. What is the default compile option that we use for OS161's virtual memory system?
+
+
+kern/arch/mips/include: This folder and its subdirectories include files for the machine-specific constants and functions.
+
+Question 1. In what file would you look to figure out how the various machine registers are labeled in OS161?
+
+Question 2. What are some of the details which would make a function "machine dependent"? Why might it be important to maintain this separation, instead of just putting all of the code in one function?
+
+kern/arch/mips/*: The other directories contain source files for the machine-dependent code that the kernel needs to run. Most of this code is quite low-level.
+
+Question 3. What will happen if you try to run on a machine with more than 512 MB of memory?
+
+Question 4. What bus/busses does OS161 support?
+
+kern/compile: This is where you build kernels. In the compile directory, you will eventually find one subdirectory for each kernel you want to build. In a real installation, these will often correspond to things like a debug build, a profiling build, etc. In our world, each build directory will correspond to a programming assignment, e.g., ASST1, ASST2, etc. These directories are created when you configure a kernel (described in the next section). This directory and build organization is typical of UNIX installations and is not universal across all operating systems. kern/conf: config is the script that takes a config file, like ASST1, and creates the corresponding build directory (shown later).
+
+kern/include: These are the include files that the kernel needs. The kern subdirectory contains include files that are visible not only to the operating system itself, but also to user-level programs. (Think about why it's named "kern" and where the files end up when installed.)
+
+Question 5. What would splx(splhigh()) do?
+
+Question 6. Why do you think types.h defines explicitly-sized types such as int32_t instead of using the shorter int?
+
+Question 7. What about type names such as __time_t? What other purpose might these type definitions serve?
+
+Question 8. What is the interface to a device driver (i.e., what functions must you implement to add a new device)?
+
+Question 9. What is the easiest way to add debug messages to your operating system?
+
+Question 10. What synchronization primitives are defined for OS161?
+
+Question 11. What is the difference between a thread_yield and a thread_sleep?
+
+Question 12. What version of OS161 are you running? Why might this be important to know?
+
+kern/lib: These are library routines used throughout the kernel, e.g., arrays, kernel printf, etc.
+
+kern/main: This is where the kernel is initialized and where the kernel main function is implemented.
+
+kern/thread: Threads are the fundamental abstraction on which the kernel is built (do not forget to look back at header files!)
+
+Question 13. What data structure do we use to keep track of the runnable threads in the system?
+
+Question 14. Which synchronization primitives are completely provided for you? (Guess when the others will exist.)
+
+Question 15. What is a zombie?
+
+kern/asst1: This is the directory that contains the framework code that you will need to complete assignment 1. You can safely ignore it for now.
+
+kern/userprog: This is where you will add code to create and manage user level processes. As it stands now, OS161 runs only kernel threads; there is no support for user level code. In Assignment 2, you'll implement this support.
+
+kern/vm: This directory is also fairly vacant. In Assignment 3, you'll implement virtual memory and most of your code will go in here.
+
+Question 16. What is the purpose of functions like copyin and copyout in copyinout.c? What do they protect against? Where might you want to use these functions?
+
+kern/dev: This is where all the low level device management code is stored.
+
+Question 17. Look at how getch is implemented. It is the function for reading a character from the terminal. Which function in the kernel will the hardware call when a character is received from the terminal?
+
+kern/fs: The file system implementation has two directories. We'll talk about each in turn. kern/fs/vfs is the file-system independent layer (vfs stands for "Virtual File System"). It establishes a framework into which you can add new file systems easily. You will want to go look at vfs.h and vnode.h before looking at this directory.
+
+Question 18. What happens when you do a read on /dev/null?
+
+Question 19. What lock protects the current working directory?
+
+kern/fs: This is where the actual file systems go. The subdirectory sfs contains a simple default file system. You will augment this file system as part of Assignment 4, so we'll ask you more questions about it then.
+
+Question 20. The vnode layer is file system independent; why is there a file sfs_vnode.c in the sfs directory? What is the purpose of the routines in that file?

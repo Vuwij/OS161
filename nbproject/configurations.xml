@@ -552,6 +552,7 @@
       <itemPath>nbproject/private/launcher.properties</itemPath>
     </logicalFolder>
     <itemPath>Makefile</itemPath>
+    <itemPath>Questions.txt</itemPath>
     <itemPath>autotester.sh</itemPath>
     <itemPath>build.sh</itemPath>
     <itemPath>debug.sh</itemPath>
@@ -593,6 +594,8 @@
         </preBuild>
       </makefileType>
       <item path="./marker.sh" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Questions.txt" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="0/bin">
         <cTool>
@@ -1326,6 +1329,8 @@
           <preBuildCommand></preBuildCommand>
         </preBuild>
       </makefileType>
+      <item path="Questions.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="0/bin">
         <cTool>
           <incDir>
@@ -2062,6 +2067,8 @@
           <preBuildCommand></preBuildCommand>
         </preBuild>
       </makefileType>
+      <item path="Questions.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="0/bin">
         <cTool>
           <incDir>
@@ -2797,6 +2804,8 @@
       <item path="./marker.sh" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Questions.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="autotester.sh" ex="false" tool="3" flavor2="0">
       </item>
