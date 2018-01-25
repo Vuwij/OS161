@@ -399,30 +399,30 @@ static
 int
 cmd_df(int nargs, char **args) {
     if (nargs != 3) {
-        kprintf("Usage: df flagnum on/off\n");
+        kprintf("Usage: df nr on/off\n");
         return EINVAL;
     }
     
     int flagnum = atoi(args[1]);
     char* state = args[2];
     
-    if(flagnum <= -1 || flagnum > 12) {
-        kprintf("Usage: df flagnum on/off\n");
+    if(flagnum <= 0 || flagnum > 12) {
+        kprintf("Usage: df nr on/off\n");
         return EINVAL;
     }
 
     if (!strcmp(state, "on")) {
-        if ((df_flag >> flagnum) % 2 == 0) {
-            df_flag += (1 << flagnum);
+        if ((df_flag >> (flagnum - 1)) % 2 == 0) {
+            df_flag += (1 << (flagnum - 1));
         }
     }
     else if (!strcmp(state, "off")) {
-        if ((df_flag >> flagnum) % 2 == 1) {
-            df_flag -= (1 << flagnum);
+        if ((df_flag >> (flagnum - 1)) % 2 == 1) {
+            df_flag -= (1 << (flagnum - 1));
         }
     }
     else {
-        kprintf("Usage: df flagnum on/off\n");
+        kprintf("Usage: df nr on/off\n");
         return EINVAL;
     }
 

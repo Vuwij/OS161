@@ -154,7 +154,8 @@ sys_reboot(int code) {
 int
 kmain(char *arguments) {
     boot();
-
+    
+    kprintf("Hello World\n");
     menu(arguments);
 
     /* Should not get here */
