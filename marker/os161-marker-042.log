@@ -1,5 +1,5 @@
 Checking out repo for os-042
-~/Documents/ECE344/marker ~/Documents/ECE344/marker
+/nfs/ug/homes-4/w/wangj261/Documents/ECE344/marker /nfs/ug/homes-4/w/wangj261/Documents/ECE344/marker
 A    kern/compile
 A    kern/compile/ASST0
 A    kern/compile/ASST0/depend.mk
@@ -213,7 +213,7 @@ A    kern/userprog/runprogram.c
 A    kern/userprog/uio.c
 A    kern/vm
 A    kern/vm/addrspace.c
-Checked out revision 6.
+Checked out revision 10.
 Checking for ranlib... yes
 Checking for <err.h>... yes
 Generating defs.mk.
@@ -289,12 +289,12 @@ a - time.ho
 a - hostcompat.ho
 bigprog.c:22: warning: missing braces around initializer
 bigprog.c:22: warning: (near initialization for `big.bigarray1.bigarray')
-~/Documents/ECE344/marker/os-042/os161-1.11/kern/conf ~/Documents/ECE344/marker/os-042/os161-1.11 ~/Documents/ECE344/marker
+/nfs/ug/homes-4/w/wangj261/Documents/ECE344/marker/os-042/os161-1.11/kern/conf /nfs/ug/homes-4/w/wangj261/Documents/ECE344/marker/os-042/os161-1.11 /nfs/ug/homes-4/w/wangj261/Documents/ECE344/marker
 Configuration ASST0
 Generating files... opt-*.h files.mk defs.mk Makefile autoconf.h autoconf.c
 Configuration in ../compile/ASST0 done
 Remember to make depend
-~/Documents/ECE344/marker/os-042/os161-1.11 ~/Documents/ECE344/marker
+/nfs/ug/homes-4/w/wangj261/Documents/ECE344/marker/os-042/os161-1.11 /nfs/ug/homes-4/w/wangj261/Documents/ECE344/marker
 cs161-gcc: ../../main/hello.c: No such file or directory
 ../../main/main.c:20:19: hello.h: No such file or directory
 Makefile:132: recipe for target 'depend' failed
@@ -302,4 +302,4 @@ make: *** [depend] Error 1
 os161-tester: The os161 kernel executable does not exist in this directory. Run this script from the OS161 root directory.
 os161.log not found
 os161-mark.txt not found
-~/Documents/ECE344/marker
+/nfs/ug/homes-4/w/wangj261/Documents/ECE344/marker
