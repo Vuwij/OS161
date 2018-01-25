@@ -559,6 +559,7 @@
     <itemPath>pull.sh</itemPath>
     <itemPath>push.sh</itemPath>
     <itemPath>root</itemPath>
+    <itemPath>submit.sh</itemPath>
     <itemPath>test</itemPath>
   </logicalFolder>
   <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
@@ -1298,6 +1299,8 @@
         <cTool flags="0">
         </cTool>
       </item>
+      <item path="submit.sh" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="AutoTester" type="0">
       <toolsSet>
@@ -2032,6 +2035,8 @@
         <cTool flags="0">
         </cTool>
       </item>
+      <item path="submit.sh" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Marker" type="0">
       <toolsSet>
@@ -2765,6 +2770,8 @@
       <item path="os161/testbin/hash/hash.c" ex="false" tool="0" flavor2="9">
         <cTool flags="0">
         </cTool>
+      </item>
+      <item path="submit.sh" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Test" type="0">
@@ -3733,6 +3740,8 @@
       <item path="root/hostinclude/kern/sfs.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="root/hostinclude/kern/unistd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="submit.sh" ex="false" tool="3" flavor2="0">
       </item>
       <item path="test" ex="false" tool="3" flavor2="0">
       </item>
