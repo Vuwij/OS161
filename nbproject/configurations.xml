@@ -593,8 +593,6 @@
       </makefileType>
       <item path="./marker.sh" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="debug.sh" ex="false" tool="3" flavor2="0">
-      </item>
       <folder path="0/bin">
         <cTool>
           <incDir>
@@ -1299,14 +1297,6 @@
       <item path="os161/sbin/mksfs/support.c" ex="false" tool="0" flavor2="2">
         <cTool flags="0">
         </cTool>
-      </item>
-      <item path="os161/testbin/hash/hash.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="pull.sh" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="push.sh" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="AutoTester" type="0">
