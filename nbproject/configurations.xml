@@ -267,6 +267,7 @@
           <in>queue.c</in>
         </df>
         <df name="main">
+          <in>hello.c</in>
           <in>main.c</in>
           <in>menu.c</in>
         </df>
@@ -1146,6 +1147,8 @@
         <cTool flags="1">
         </cTool>
       </item>
+      <item path="os161/kern/main/hello.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="os161/kern/main/main.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
         </cTool>
@@ -1879,6 +1882,8 @@
       <item path="os161/kern/lib/queue.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
         </cTool>
+      </item>
+      <item path="os161/kern/main/hello.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="os161/kern/main/main.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
@@ -2617,6 +2622,8 @@
       <item path="os161/kern/lib/queue.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
         </cTool>
+      </item>
+      <item path="os161/kern/main/hello.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="os161/kern/main/main.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
@@ -3375,6 +3382,8 @@
       <item path="os161/kern/lib/ntoh.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="os161/kern/lib/queue.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="os161/kern/main/hello.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="os161/kern/main/main.c" ex="false" tool="0" flavor2="0">
       </item>

@@ -4,8 +4,8 @@ cd $HOME/Documents/ECE344/
 
 # SVN
 cd os161
-sh svn-ignore.sh
 svn add . --force
+sh svn-ignore.sh
 svn status
 svn commit -m "Commit"
 cd ..
