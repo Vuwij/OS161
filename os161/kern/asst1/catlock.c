@@ -18,6 +18,7 @@
 #include <lib.h>
 #include <test.h>
 #include <thread.h>
+#include <synch.h>
 
 
 /*
@@ -44,12 +45,42 @@
 
 #define NMICE 2
 
+/*
+ * Number of times cats and mice eat
+ */
+
+#define NITERATIONS 4
+
+/*
+ * Locks
+ */
+
+static struct lock *bowl1;
+static struct lock *bowl2;
 
 /*
  * 
  * Function Definitions
  * 
  */
+
+void
+init_locks(void)
+{
+    if (bowl1==NULL) {
+            bowl1 = lock_create("bowl1");
+            if (bowl1 == NULL) {
+                    panic("bowl1: lock_create failed\n");
+            }
+    }
+    
+    if (bowl2==NULL) {
+            bowl2 = lock_create("bowl2");
+            if (bowl2 == NULL) {
+                    panic("bowl2: lock_create failed\n");
+            }
+    }
+}
 
 /* who should be "cat" or "mouse" */
 static void
@@ -88,7 +119,15 @@ catlock(void * unusedpointer,
          */
 
         (void) unusedpointer;
-        (void) catnumber;
+        //(void) catnumber;
+        
+        int i;
+        
+        for (i=0; i<NITERATIONS; i++) {
+            lock_acquire(bowl1);
+            lock_eat("cat", catnumber, 1, i);
+            lock_release(bowl1);
+        }
 }
 	
 
@@ -118,7 +157,15 @@ mouselock(void * unusedpointer,
          */
         
         (void) unusedpointer;
-        (void) mousenumber;
+        //(void) mousenumber;
+        
+        int i;
+        
+        for (i=0; i<NITERATIONS; i++) {
+            lock_acquire(bowl1);
+            lock_eat("mouse", mousenumber, 1, i);
+            lock_release(bowl1);
+        }
 }
 
 
@@ -149,7 +196,9 @@ catmouselock(int nargs,
 
         (void) nargs;
         (void) args;
-   
+        
+        init_locks();
+        
         /*
          * Start NCATS catlock() threads.
          */

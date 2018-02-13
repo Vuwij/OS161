@@ -52,15 +52,16 @@ struct lock {
 	char *name;
 	// add what you need here
 	// (don't forget to mark things volatile as needed)
+        volatile int held;
 };
 
 struct lock *lock_create(const char *name);
-void         lock_acquire(struct lock *);
-void         lock_release(struct lock *);
-int          lock_do_i_hold(struct lock *);
-void         lock_destroy(struct lock *);
+void         lock_acquire(struct lock *lock);
+void         lock_release(struct lock *lock);
+int          lock_do_i_hold(struct lock *lock);
+void         lock_destroy(struct lock *lock);
 
-
+int test_and_set(volatile int *flag);
 /*
  * Condition variable.
  *
