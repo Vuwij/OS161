@@ -373,7 +373,7 @@ static const char *dbflagmenu[] = {
     "[df 4 on/off]     DB_DEVICE         ",
     "[df 5 on/off]     DB_THREADS        ",
     "[df 6 on/off]     DB_VM             ",
-    "[df 7 on/off]     DB_EXEC           ",
+    "[df 78 on/off]     DB_EXEC           ",
     "[df 8 on/off]     DB_VFS            ",
     "[df 9 on/off]     DB_SFS            ",
     "[df 10 on/off]    DB_NET            ",

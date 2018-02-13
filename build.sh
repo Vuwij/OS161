@@ -1,17 +1,17 @@
-set path=( /cad2/ece344s/cs161/bin $path)
-
-cd os161/
+#cd os161/
 
 #Root configuration
-./configure --ostree=$HOME/Documents/ECE344/root
-make
+#./configure --ostree=$HOME/Documents/ECE344/root
+#make
 
 #Kernel configuration
-cd kern/conf
-./config ASST0
-cd ..
-cd compile/ASST0
-make depend
+#cd kern/conf
+#./config ASST1
+#cd ..
+#cd compile/ASST1
+#make depend
+
+cd os161/kern/compile/ASST1
 make
 make install
 

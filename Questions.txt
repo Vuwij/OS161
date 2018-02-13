@@ -1,4 +1,4 @@
-## Assignment 1
+## Assignment 0
 
 Question 0. What is the default compile option that we use for OS161's virtual memory system?
 
@@ -20,6 +20,7 @@ kern/compile: This is where you build kernels. In the compile directory, you wil
 kern/include: These are the include files that the kernel needs. The kern subdirectory contains include files that are visible not only to the operating system itself, but also to user-level programs. (Think about why it's named "kern" and where the files end up when installed.)
 
 Question 5. What would splx(splhigh()) do?
+It sets spl to the highest level and then to its previous value. Effectively it doesn't change the spl value.
 
 Question 6. Why do you think types.h defines explicitly-sized types such as int32_t instead of using the shorter int?
 
@@ -68,3 +69,41 @@ Question 19. What lock protects the current working directory?
 kern/fs: This is where the actual file systems go. The subdirectory sfs contains a simple default file system. You will augment this file system as part of Assignment 4, so we'll ask you more questions about it then.
 
 Question 20. The vnode layer is file system independent; why is there a file sfs_vnode.c in the sfs directory? What is the purpose of the routines in that file?
+
+
+
+## ASSIGNMENT 1
+
+Thread questions
+
+What happens to a thread when it exits (i.e., calls thread_exit())? What about when it sleeps?
+Exit: 
+Sleep: thread goes to sleep on "sleep address" until wakeup() is called on the same address.
+
+What function(s) handle(s) a context switch?
+mi_switch
+
+What does it mean for a thread to be in each of the possible thread states?
+S_RUN: using CPU
+S_READY: inactive, ready to be scheduled
+S_SLEEP: inactive
+S_ZOMB: inactive, waiting to be destroyed
+
+What does it mean to turn interrupts off? How is this accomplished? Why is it important to turn off interrupts in the thread subsystem code?
+It means that the current execution cannot be interrupted. This is done through spl functions.
+
+What happens when a thread wakes up another thread? How does a sleeping thread get to run again?
+
+Scheduler questions
+
+What function(s) choose(s) the next thread to run?
+
+How does it (do they) pick the next thread?
+
+What role does the hardware timer play in scheduling? What hardware independent function is called on a timer interrupt?
+
+Synchronization questions
+
+Describe how thread_sleep() and thread_wakeup() are used to implement semaphores. What is the purpose of the argument passed to thread_sleep()?
+
+Why does the lock API in OS161 provide lock_do_i_hold(), but not lock_get_holder()?
