@@ -4,16 +4,16 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST0 #29)
+Jason's system version 0 (ASST1 #123)
 
 Cpu is MIPS r2000/r3000
-348k physical memory available
+1876k physical memory available
 Device probe...
 lamebus0 (system main bus)
 emu0 at lamebus0
 ltrace0 at lamebus0
 ltimer0 at lamebus0
-hardclock on ltimer0 (100 hz)
+hardclock on ltimer0 (10000 hz)
 beep0 at ltimer0
 rtclock0 at ltimer0
 lrandom0 at lamebus0
@@ -25,22 +25,26 @@ con0 at lser0
 pseudorand0 (virtual)
 
 Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST0 #29)
+Jason's system version 0 (ASST1 #123)
 
 Cpu is MIPS r2000/r3000
-348k physical memory available
+1876k physical memory available
 Device probe...
 lamebus0 (system main bus)
 emu0 at lamebus0
 ltrace0 at lamebus0
 ltimer0 at lamebus0
-hardclock on ltimer0 (100 hz)
+hardclock on ltimer0 (10000 hz)
 beep0 at ltimer0
 rtclock0 at ltimer0
 lrandom0 at lamebus0
@@ -52,79 +56,617 @@ con0 at lser0
 pseudorand0 (virtual)
 
 Hello World
-OS/161 kernel [? for menu]: ?o
-?o
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
-OS/161 operations menu
-    [s]       Shell                     [pf]      Print a file              
-    [p]       Other program             [cd]      Change directory          
-    [dbflags] Debug flags               [pwd]     Print current directory   
-    [mount]   Mount a filesystem        [sync]    Sync filesystems          
-    [unmount] Unmount a filesystem      [panic]   Intentional panic         
-    [bootfs]  Set "boot" filesystem     [q]       Quit and shut down        
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
 
-Operation took 0.059620720 seconds
-OS/161 kernel [? for menu]: dbflags
-dbflags
+Jason's system version 0 (ASST1 #123)
 
-OS/161 debug flags
-    [df 1 on/off]     DB_LOCORE         [df 7 on/off]     DB_EXEC           
-    [df 2 on/off]     DB_SYSCALL        [df 8 on/off]     DB_VFS            
-    [df 3 on/off]     DB_INTERRUPT      [df 9 on/off]     DB_SFS            
-    [df 4 on/off]     DB_DEVICE         [df 10 on/off]    DB_NET            
-    [df 5 on/off]     DB_THREADS        [df 11 on/off]    DB_NETFS          
-    [df 6 on/off]     DB_VM             [df 12 on/off]    DB_KMALLOC        
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
 
-Current value of dbflags is 0x0
-Operation took 0.063017680 seconds
-OS/161 kernel [? for menu]: df 1 on
-df 1 on
-Operation took 0.000022560 seconds
-OS/161 kernel [? for menu]: dbflags
-dbflags
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
-OS/161 debug flags
-    [df 1 on/off]     DB_LOCORE         [df 7 on/off]     DB_EXEC           
-    [df 2 on/off]     DB_SYSCALL        [df 8 on/off]     DB_VFS            
-    [df 3 on/off]     DB_INTERRUPT      [df 9 on/off]     DB_SFS            
-    [df 4 on/off]     DB_DEVICE         [df 10 on/off]    DB_NET            
-    [df 5 on/off]     DB_THREADS        [df 11 on/off]    DB_NETFS          
-    [df 6 on/off]     DB_VM             [df 12 on/off]    DB_KMALLOC        
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
 
-Current value of dbflags is 0x1
-Operation took 0.062969640 seconds
-OS/161 kernel [? for menu]: df 1 off
-df 1 off
-Operation took 0.000027640 seconds
-OS/161 kernel [? for menu]: dbflags
-dbflags
+Jason's system version 0 (ASST1 #123)
 
-OS/161 debug flags
-    [df 1 on/off]     DB_LOCORE         [df 7 on/off]     DB_EXEC           
-    [df 2 on/off]     DB_SYSCALL        [df 8 on/off]     DB_VFS            
-    [df 3 on/off]     DB_INTERRUPT      [df 9 on/off]     DB_SFS            
-    [df 4 on/off]     DB_DEVICE         [df 10 on/off]    DB_NET            
-    [df 5 on/off]     DB_THREADS        [df 11 on/off]    DB_NETFS          
-    [df 6 on/off]     DB_VM             [df 12 on/off]    DB_KMALLOC        
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
 
-Current value of dbflags is 0x0
-Operation took 0.062991800 seconds
-OS/161 kernel [? for menu]: df 5 on
-df 5 on
-Operation took 0.000025440 seconds
-OS/161 kernel [? for menu]: dbflags
-dbflags
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
-OS/161 debug flags
-    [df 1 on/off]     DB_LOCORE         [df 7 on/off]     DB_EXEC           
-    [df 2 on/off]     DB_SYSCALL        [df 8 on/off]     DB_VFS            
-    [df 3 on/off]     DB_INTERRUPT      [df 9 on/off]     DB_SFS            
-    [df 4 on/off]     DB_DEVICE         [df 10 on/off]    DB_NET            
-    [df 5 on/off]     DB_THREADS        [df 11 on/off]    DB_NETFS          
-    [df 6 on/off]     DB_VM             [df 12 on/off]    DB_KMALLOC        
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
 
-Current value of dbflags is 0x10
-Operation took 0.063178520 seconds
-OS/161 kernel [? for menu]: df 13 on
-df 13 on
-Usage: df nr on/off
+Jason's system version 0 (ASST1 #123)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #123)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #123)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #123)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #123)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #123)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #123)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: sy3
+sy3
+Starting CV test...
+Threads should print out in reverse order.
+Thread 31
+Thread 30
+Thread 29
+Thread 28
+Thread 27
+Thread 26
+Thread 25
+Thread 24
+Thread 23
+Thread 22
+Thread 21
+Thread 20
+Thread 19
+Thread 18
+Thread 17
+Thread 16
+Thread 15
+Thread 14
+Thread 13
+Thread 12
+Thread 11
+Thread 10
+Thread 9
+Thread 8
+Thread 7
+Thread 6
+Thread 5
+Thread 4
+Thread 3
+Thread 2
+Thread 1
+Thread 0
+Thread 31
+Thread 30
+Thread 29
+Thread 28
+Thread 27
+Thread 26
+Thread 25
+Thread 24
+Thread 23
+Thread 22
+Thread 21
+Thread 20
+Thread 19
+Thread 18
+Thread 17
+Thread 16
+Thread 15
+Thread 14
+Thread 13
+Thread 12
+Thread 11
+Thread 10
+Thread 9
+Thread 8
+Thread 7
+Thread 6
+Thread 5
+Thread 4
+Thread 3
+Thread 2
+Thread 1
+Thread 0
+Thread 31
+Thread 30
+Thread 29
+Thread 28
+Thread 27
+Thread 26
+Thread 25
+Thread 24
+Thread 23
+Thread 22
+Thread 21
+Thread 20
+Thread 19
+Thread 18
+Thread 17
+Thread 16
+Thread 15
+Thread 14
+Thread 13
+Thread 12
+Thread 11
+Thread 10
+Thread 9
+Thread 8
+Thread 7
+Thread 6
+Thread 5
+Thread 4
+Thread 3
+Thread 2
+Thread 1
+Thread 0
+Thread 31
+Thread 30
+Thread 29
+Thread 28
+Thread 27
+Thread 26
+Thread 25
+Thread 24
+Thread 23
+Thread 22
+Thread 21
+Thread 20
+Thread 19
+Thread 18
+Thread 17
+Thread 16
+Thread 15
+Thread 14
+Thread 13
+Thread 12
+Thread 11
+Thread 10
+Thread 9
+Thread 8
+Thread 7
+Thread 6
+Thread 5
+Thread 4
+Thread 3
+Thread 2
+Thread 1
+Thread 0
+Thread 31
+Thread 30
+Thread 29
+Thread 28
+Thread 27
+Thread 26
+Thread 25
+Thread 24
+Thread 23
+Thread 22
+Thread 21
+Thread 20
+Thread 19
+Thread 18
+Thread 17
+Thread 16
+Thread 15
+Thread 14
+Thread 13
+Thread 12
+Thread 11
+Thread 10
+Thread 9
+Thread 8
+Thread 7
+Thread 6
+Thread 5
+Thread 4
+Thread 3
+Thread 2
+Thread 1
+Thread 0
+CV test done
+Operation took 3.41sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #123)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: 1a
+1a
+Operation took 0.058081760 seconds
+OS/161 kernel [? for menu]: sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #123)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: 1b
+1b
+Operation took 0.073743200 seconds
+OS/161 kernel [? for menu]: sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #123)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: 1c
+1c
+approaching: car =  0, direction = N, destination = E
+region1:     car =  0, direction = N, destination = E
+region2:     car =  0, direction = N, destination = E
+region3:     car =  0, direction = N, destination = E
+leaving:     car =  0, direction = N, destination = E
+approaching: car =  1, direction = W, destination = E
+approaching: car =  5, direction = N, destination = W
+Operation took 0.315913840 seconds
+region1:     car =  1, direction = W, destination = E
+region1:     car =  5, direction = N, destination = W
+approaching: car = 18, direction = E, destination = N
+OS/161 kernel [? for menu]: region2:     car =  1, direction = W, destination = E
+leaving:     car =  5, direction = N, destination = W
+region1:     car = 18, direction = E, destination = N
+leaving:     car =  1, direction = W, destination = E
+approaching: car =  7, direction = N, destination = W
+leaving:     car = 18, direction = E, destination = N
+approaching: car = 12, direction = W, destination = E
+region1:     car =  7, direction = N, destination = W
+region1:     car = 12, direction = W, destination = E
+leaving:     car =  7, direction = N, destination = W
+region2:     car = 12, direction = W, destination = E
+approaching: car = 13, direction = E, destination = W
+leaving:     car = 12, direction = W, destination = E
+region1:     car = 13, direction = E, destination = W
+approaching: car =  9, direction = W, destination = S
+region2:     car = 13, direction = E, destination = W
+region1:     car =  9, direction = W, destination = S
+leaving:     car = 13, direction = E, destination = W
+leaving:     car =  9, direction = W, destination = S
+approaching: car =  2, direction = E, destination = W
+approaching: car = 10, direction = W, destination = S
+region1:     car =  2, direction = E, destination = W
+region1:     car = 10, direction = W, destination = S
+region2:     car =  2, direction = E, destination = W
+leaving:     car = 10, direction = W, destination = S
+leaving:     car =  2, direction = E, destination = W
+approaching: car = 19, direction = N, destination = S
+region1:     car = 19, direction = N, destination = S
+region2:     car = 19, direction = N, destination = S
+leaving:     car = 19, direction = N, destination = S
+approaching: car = 14, direction = N, destination = E
+region1:     car = 14, direction = N, destination = E
+region2:     car = 14, direction = N, destination = E
+region3:     car = 14, direction = N, destination = E
+leaving:     car = 14, direction = N, destination = E
+approaching: car = 16, direction = N, destination = S
+region1:     car = 16, direction = N, destination = S
+region2:     car = 16, direction = N, destination = S
+leaving:     car = 16, direction = N, destination = S
+approaching: car =  4, direction = N, destination = S
+region1:     car =  4, direction = N, destination = S
+region2:     car =  4, direction = N, destination = S
+leaving:     car =  4, direction = N, destination = S
+approaching: car =  3, direction = N, destination = E
+region1:     car =  3, direction = N, destination = E
+region2:     car =  3, direction = N, destination = E
+region3:     car =  3, direction = N, destination = E
+leaving:     car =  3, direction = N, destination = E
+approaching: car = 15, direction = S, destination = W
+region1:     car = 15, direction = S, destination = W
+region2:     car = 15, direction = S, destination = W
+region3:     car = 15, direction = S, destination = W
+leaving:     car = 15, direction = S, destination = W
+approaching: car =  6, direction = N, destination = E
+region1:     car =  6, direction = N, destination = E
+region2:     car =  6, direction = N, destination = E
+region3:     car =  6, direction = N, destination = E
+leaving:     car =  6, direction = N, destination = E
+approaching: car =  8, direction = E, destination = S
+region1:     car =  8, direction = E, destination = S
+region2:     car =  8, direction = E, destination = S
+region3:     car =  8, direction = E, destination = S
+leaving:     car =  8, direction = E, destination = S
+approaching: car = 11, direction = W, destination = N
+region1:     car = 11, direction = W, destination = N
+region2:     car = 11, direction = W, destination = N
+region3:     car = 11, direction = W, destination = N
+leaving:     car = 11, direction = W, destination = N
+approaching: car = 17, direction = W, destination = N
+region1:     car = 17, direction = W, destination = N
+region2:     car = 17, direction = W, destination = N
+region3:     car = 17, direction = W, destination = N
+leaving:     car = 17, direction = W, destination = N
