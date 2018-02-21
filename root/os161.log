@@ -4,69 +4,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
-
-Cpu is MIPS r2000/r3000
-1876k physical memory available
-Device probe...
-lamebus0 (system main bus)
-emu0 at lamebus0
-ltrace0 at lamebus0
-ltimer0 at lamebus0
-hardclock on ltimer0 (10000 hz)
-beep0 at ltimer0
-rtclock0 at ltimer0
-lrandom0 at lamebus0
-random0 at lrandom0
-lhd0 at lamebus0
-lhd1 at lamebus0
-lser0 at lamebus0
-con0 at lser0
-pseudorand0 (virtual)
-
-Hello World
-OS/161 kernel [? for menu]: sy2
-sy2
-Starting lock test...
-Lock test done.
-sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
-
-OS/161 base system version 1.11
-Copyright (c) 2000, 2001, 2002, 2003
-   President and Fellows of Harvard College.  All rights reserved.
-
-Jason's system version 0 (ASST1 #123)
-
-Cpu is MIPS r2000/r3000
-1876k physical memory available
-Device probe...
-lamebus0 (system main bus)
-emu0 at lamebus0
-ltrace0 at lamebus0
-ltimer0 at lamebus0
-hardclock on ltimer0 (10000 hz)
-beep0 at ltimer0
-rtclock0 at ltimer0
-lrandom0 at lamebus0
-random0 at lrandom0
-lhd0 at lamebus0
-lhd1 at lamebus0
-lser0 at lamebus0
-con0 at lser0
-pseudorand0 (virtual)
-
-Hello World
-OS/161 kernel [? for menu]: sy2
-sy2
-Starting lock test...
-Lock test done.
-sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
-
-OS/161 base system version 1.11
-Copyright (c) 2000, 2001, 2002, 2003
-   President and Fellows of Harvard College.  All rights reserved.
-
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -96,7 +34,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -127,7 +65,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -158,7 +96,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -188,7 +126,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -218,7 +156,97 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #128)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #128)
+
+Cpu is MIPS r2000/r3000
+1876k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (10000 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+Hello World
+OS/161 kernel [? for menu]: sy2
+sy2
+Starting lock test...
+Lock test done.sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -249,7 +277,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -274,44 +302,13 @@ OS/161 kernel [? for menu]: sy2
 sy2
 Starting lock test...
 Lock test done.
-sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+Opersys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
-
-Cpu is MIPS r2000/r3000
-1876k physical memory available
-Device probe...
-lamebus0 (system main bus)
-emu0 at lamebus0
-ltrace0 at lamebus0
-ltimer0 at lamebus0
-hardclock on ltimer0 (10000 hz)
-beep0 at ltimer0
-rtclock0 at ltimer0
-lrandom0 at lamebus0
-random0 at lrandom0
-lhd0 at lamebus0
-lhd1 at lamebus0
-lser0 at lamebus0
-con0 at lser0
-pseudorand0 (virtual)
-
-Hello World
-OS/161 kernel [? for menu]: sy2
-sy2
-Starting lock test...
-Lock test done.
-sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
-
-OS/161 base system version 1.11
-Copyright (c) 2000, 2001, 2002, 2003
-   President and Fellows of Harvard College.  All rights reserved.
-
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -497,13 +494,13 @@ Thread 2
 Thread 1
 Thread 0
 CV test done
-Operation took 3.41sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -526,14 +523,14 @@ pseudorand0 (virtual)
 Hello World
 OS/161 kernel [? for menu]: 1a
 1a
-Operation took 0.058081760 seconds
+Operation took 0.054854920 seconds
 OS/161 kernel [? for menu]: sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -556,14 +553,14 @@ pseudorand0 (virtual)
 Hello World
 OS/161 kernel [? for menu]: 1b
 1b
-Operation took 0.073743200 seconds
+Operation took 0.059288720 seconds
 OS/161 kernel [? for menu]: sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST1 #123)
+Jason's system version 0 (ASST1 #128)
 
 Cpu is MIPS r2000/r3000
 1876k physical memory available
@@ -586,87 +583,84 @@ pseudorand0 (virtual)
 Hello World
 OS/161 kernel [? for menu]: 1c
 1c
-approaching: car =  0, direction = N, destination = E
-region1:     car =  0, direction = N, destination = E
-region2:     car =  0, direction = N, destination = E
-region3:     car =  0, direction = N, destination = E
-leaving:     car =  0, direction = N, destination = E
+approaching: car =  0, direction = S, destination = W
+region1:     car =  0, direction = S, destination = W
+region2:     car =  0, direction = S, destination = W
+region3:     car =  0, direction = S, destination = W
+leaving:     car =  0, direction = S, destination = W
+approaching: car = 10, direction = S, destination = W
+Operation took 0.360915160 seconds
+region1:     car = 10, direction = S, destination = W
+OS/161 kernel [? for menu]: region2:     car = 10, direction = S, destination = W
+region3:     car = 10, direction = S, destination = W
+leaving:     car = 10, direction = S, destination = W
+approaching: car = 14, direction = W, destination = S
+approaching: car =  3, direction = E, destination = W
+approaching: car =  5, direction = S, destination = E
+region1:     car = 14, direction = W, destination = S
+region1:     car =  3, direction = E, destination = W
+region1:     car =  5, direction = S, destination = E
+leaving:     car = 14, direction = W, destination = S
+region2:     car =  3, direction = E, destination = W
+leaving:     car =  5, direction = S, destination = E
+leaving:     car =  3, direction = E, destination = W
+approaching: car = 13, direction = W, destination = E
+approaching: car = 15, direction = E, destination = N
+approaching: car = 12, direction = N, destination = W
+region1:     car = 13, direction = W, destination = E
+region1:     car = 15, direction = E, destination = N
+region1:     car = 12, direction = N, destination = W
+region2:     car = 13, direction = W, destination = E
+leaving:     car = 15, direction = E, destination = N
+leaving:     car = 12, direction = N, destination = W
+leaving:     car = 13, direction = W, destination = E
+approaching: car = 19, direction = E, destination = N
+approaching: car = 18, direction = N, destination = W
 approaching: car =  1, direction = W, destination = E
-approaching: car =  5, direction = N, destination = W
-Operation took 0.315913840 seconds
+region1:     car = 19, direction = E, destination = N
+region1:     car = 18, direction = N, destination = W
 region1:     car =  1, direction = W, destination = E
-region1:     car =  5, direction = N, destination = W
-approaching: car = 18, direction = E, destination = N
-OS/161 kernel [? for menu]: region2:     car =  1, direction = W, destination = E
-leaving:     car =  5, direction = N, destination = W
-region1:     car = 18, direction = E, destination = N
+leaving:     car = 19, direction = E, destination = N
+leaving:     car = 18, direction = N, destination = W
+region2:     car =  1, direction = W, destination = E
+approaching: car = 17, direction = E, destination = N
 leaving:     car =  1, direction = W, destination = E
-approaching: car =  7, direction = N, destination = W
-leaving:     car = 18, direction = E, destination = N
-approaching: car = 12, direction = W, destination = E
-region1:     car =  7, direction = N, destination = W
-region1:     car = 12, direction = W, destination = E
-leaving:     car =  7, direction = N, destination = W
-region2:     car = 12, direction = W, destination = E
-approaching: car = 13, direction = E, destination = W
-leaving:     car = 12, direction = W, destination = E
-region1:     car = 13, direction = E, destination = W
-approaching: car =  9, direction = W, destination = S
-region2:     car = 13, direction = E, destination = W
-region1:     car =  9, direction = W, destination = S
-leaving:     car = 13, direction = E, destination = W
-leaving:     car =  9, direction = W, destination = S
-approaching: car =  2, direction = E, destination = W
-approaching: car = 10, direction = W, destination = S
-region1:     car =  2, direction = E, destination = W
-region1:     car = 10, direction = W, destination = S
-region2:     car =  2, direction = E, destination = W
-leaving:     car = 10, direction = W, destination = S
-leaving:     car =  2, direction = E, destination = W
-approaching: car = 19, direction = N, destination = S
-region1:     car = 19, direction = N, destination = S
-region2:     car = 19, direction = N, destination = S
-leaving:     car = 19, direction = N, destination = S
-approaching: car = 14, direction = N, destination = E
-region1:     car = 14, direction = N, destination = E
-region2:     car = 14, direction = N, destination = E
-region3:     car = 14, direction = N, destination = E
-leaving:     car = 14, direction = N, destination = E
-approaching: car = 16, direction = N, destination = S
-region1:     car = 16, direction = N, destination = S
-region2:     car = 16, direction = N, destination = S
-leaving:     car = 16, direction = N, destination = S
-approaching: car =  4, direction = N, destination = S
-region1:     car =  4, direction = N, destination = S
-region2:     car =  4, direction = N, destination = S
-leaving:     car =  4, direction = N, destination = S
-approaching: car =  3, direction = N, destination = E
-region1:     car =  3, direction = N, destination = E
-region2:     car =  3, direction = N, destination = E
-region3:     car =  3, direction = N, destination = E
-leaving:     car =  3, direction = N, destination = E
-approaching: car = 15, direction = S, destination = W
-region1:     car = 15, direction = S, destination = W
-region2:     car = 15, direction = S, destination = W
-region3:     car = 15, direction = S, destination = W
-leaving:     car = 15, direction = S, destination = W
-approaching: car =  6, direction = N, destination = E
-region1:     car =  6, direction = N, destination = E
-region2:     car =  6, direction = N, destination = E
-region3:     car =  6, direction = N, destination = E
-leaving:     car =  6, direction = N, destination = E
-approaching: car =  8, direction = E, destination = S
-region1:     car =  8, direction = E, destination = S
-region2:     car =  8, direction = E, destination = S
-region3:     car =  8, direction = E, destination = S
-leaving:     car =  8, direction = E, destination = S
-approaching: car = 11, direction = W, destination = N
-region1:     car = 11, direction = W, destination = N
-region2:     car = 11, direction = W, destination = N
-region3:     car = 11, direction = W, destination = N
-leaving:     car = 11, direction = W, destination = N
-approaching: car = 17, direction = W, destination = N
-region1:     car = 17, direction = W, destination = N
-region2:     car = 17, direction = W, destination = N
-region3:     car = 17, direction = W, destination = N
-leaving:     car = 17, direction = W, destination = N
+region1:     car = 17, direction = E, destination = N
+approaching: car = 11, direction = W, destination = E
+leaving:     car = 17, direction = E, destination = N
+region1:     car = 11, direction = W, destination = E
+region2:     car = 11, direction = W, destination = E
+leaving:     car = 11, direction = W, destination = E
+approaching: car =  7, direction = S, destination = N
+region1:     car =  7, direction = S, destination = N
+region2:     car =  7, direction = S, destination = N
+leaving:     car =  7, direction = S, destination = N
+approaching: car =  8, direction = S, destination = N
+region1:     car =  8, direction = S, destination = N
+region2:     car =  8, direction = S, destination = N
+leaving:     car =  8, direction = S, destination = N
+approaching: car = 16, direction = S, destination = W
+region1:     car = 16, direction = S, destination = W
+region2:     car = 16, direction = S, destination = W
+region3:     car = 16, direction = S, destination = W
+leaving:     car = 16, direction = S, destination = W
+approaching: car =  9, direction = W, destination = N
+region1:     car =  9, direction = W, destination = N
+region2:     car =  9, direction = W, destination = N
+region3:     car =  9, direction = W, destination = N
+leaving:     car =  9, direction = W, destination = N
+approaching: car =  4, direction = W, destination = N
+region1:     car =  4, direction = W, destination = N
+region2:     car =  4, direction = W, destination = N
+region3:     car =  4, direction = W, destination = N
+leaving:     car =  4, direction = W, destination = N
+approaching: car =  6, direction = W, destination = N
+region1:     car =  6, direction = W, destination = N
+region2:     car =  6, direction = W, destination = N
+region3:     car =  6, direction = W, destination = N
+leaving:     car =  6, direction = W, destination = N
+approaching: car =  2, direction = S, destination = W
+region1:     car =  2, direction = S, destination = W
+region2:     car =  2, direction = S, destination = W
+region3:     car =  2, direction = S, destination = W
+leaving:     car =  2, direction = S, destination = W

@@ -126,51 +126,25 @@ lock_destroy(struct lock *lock) {
 }
 
 void
-lock_acquire(struct lock *lock) {    
-    // spinlock
-    /*int flag;
-    do {
-        int s = splhigh();
-        flag = test_and_set(&lock->held);
-        splx(s);
-    }
-    while (flag);*/
-    
-    //while (test_and_set(&lock->held));    
-    //lock->held = 1;
-    
-    //splhigh();
-    //lock->held = splhigh();
+lock_acquire(struct lock *lock) {
     
     int s = splhigh();
     while (lock->held) {
         thread_sleep(lock);
     }
     lock->held = 1;
-    splx(s);
+    splx(s); 
     
-}
-
-int 
-test_and_set(volatile int *flag) {
-    int s = splhigh();
-    int old = *flag;
-    *flag = 1;
-    splx(s);
-    return old;
 }
 
 void
 lock_release(struct lock *lock) {
-    // release lock
-    //lock->held = 0;
-    //spl0();
-    //splx(lock->held);
     
     int s = splhigh();
     lock->held = 0;
     thread_wakeup(lock);
     splx(s);
+    
 }
 
 int

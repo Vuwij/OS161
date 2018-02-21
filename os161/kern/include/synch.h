@@ -61,7 +61,6 @@ void         lock_release(struct lock *lock);
 int          lock_do_i_hold(struct lock *lock);
 void         lock_destroy(struct lock *lock);
 
-int test_and_set(volatile int *flag);
 /*
  * Condition variable.
  *
