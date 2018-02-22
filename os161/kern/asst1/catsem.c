@@ -53,13 +53,12 @@
 
 /* who should be "cat" or "mouse" */
 static void
-sem_eat(const char *who, int num, int bowl, int iteration)
-{
-        kprintf("%s: %d starts eating: bowl %d, iteration %d\n", who, num, 
-                bowl, iteration);
-        clocksleep(1);
-        kprintf("%s: %d ends eating: bowl %d, iteration %d\n", who, num, 
-                bowl, iteration);
+sem_eat(const char *who, int num, int bowl, int iteration) {
+    kprintf("%s: %d starts eating: bowl %d, iteration %d\n", who, num,
+            bowl, iteration);
+    clocksleep(1);
+    kprintf("%s: %d ends eating: bowl %d, iteration %d\n", who, num,
+            bowl, iteration);
 }
 
 /*
@@ -79,17 +78,15 @@ sem_eat(const char *who, int num, int bowl, int iteration)
 
 static
 void
-catsem(void * unusedpointer, 
-       unsigned long catnumber)
-{
-        /*
-         * Avoid unused variable warnings.
-         */
+catsem(void * unusedpointer,
+        unsigned long catnumber) {
+    /*
+     * Avoid unused variable warnings.
+     */
 
-        (void) unusedpointer;
-        (void) catnumber;
+    (void) unusedpointer;
+    (void) catnumber;
 }
-        
 
 /*
  * mousesem()
@@ -109,17 +106,15 @@ catsem(void * unusedpointer,
 
 static
 void
-mousesem(void * unusedpointer, 
-         unsigned long mousenumber)
-{
-        /*
-         * Avoid unused variable warnings.
-         */
+mousesem(void * unusedpointer,
+        unsigned long mousenumber) {
+    /*
+     * Avoid unused variable warnings.
+     */
 
-        (void) unusedpointer;
-        (void) mousenumber;
+    (void) unusedpointer;
+    (void) mousenumber;
 }
-
 
 /*
  * catmousesem()
@@ -138,68 +133,67 @@ mousesem(void * unusedpointer,
 
 int
 catmousesem(int nargs,
-            char ** args)
-{
-        int index, error;
-   
+        char ** args) {
+    int index, error;
+
+    /*
+     * Avoid unused variable warnings.
+     */
+
+    (void) nargs;
+    (void) args;
+
+    /*
+     * Start NCATS catsem() threads.
+     */
+
+    for (index = 0; index < NCATS; index++) {
+
+        error = thread_fork("catsem Thread",
+                NULL,
+                index,
+                catsem,
+                NULL
+                );
+
         /*
-         * Avoid unused variable warnings.
+         * panic() on error.
          */
 
-        (void) nargs;
-        (void) args;
-   
-        /*
-         * Start NCATS catsem() threads.
-         */
+        if (error) {
 
-        for (index = 0; index < NCATS; index++) {
-           
-                error = thread_fork("catsem Thread", 
-                                    NULL, 
-                                    index, 
-                                    catsem, 
-                                    NULL
-                                    );
-                
-                /*
-                 * panic() on error.
-                 */
-
-                if (error) {
-                 
-                        panic("catsem: thread_fork failed: %s\n", 
-                              strerror(error)
-                              );
-                }
+            panic("catsem: thread_fork failed: %s\n",
+                    strerror(error)
+                    );
         }
-        
+    }
+
+    /*
+     * Start NMICE mousesem() threads.
+     */
+
+    for (index = 0; index < NMICE; index++) {
+
+        error = thread_fork("mousesem Thread",
+                NULL,
+                index,
+                mousesem,
+                NULL
+                );
+
         /*
-         * Start NMICE mousesem() threads.
+         * panic() on error.
          */
 
-        for (index = 0; index < NMICE; index++) {
-   
-                error = thread_fork("mousesem Thread", 
-                                    NULL, 
-                                    index, 
-                                    mousesem, 
-                                    NULL
-                                    );
-                
-                /*
-                 * panic() on error.
-                 */
+        if (error) {
 
-                if (error) {
-         
-                        panic("mousesem: thread_fork failed: %s\n", 
-                              strerror(error)
-                              );
-                }
+            panic("mousesem: thread_fork failed: %s\n",
+                    strerror(error)
+                    );
         }
+    }
 
-        return 0;
+    return 0;
 }
 
 

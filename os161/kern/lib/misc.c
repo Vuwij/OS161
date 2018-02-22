@@ -6,14 +6,13 @@
  * Like strdup, but calls kmalloc.
  */
 char *
-kstrdup(const char *s)
-{
-	char *z = kmalloc(strlen(s)+1);
-	if (z==NULL) {
-		return NULL;
-	}
-	strcpy(z, s);
-	return z;
+kstrdup(const char *s) {
+    char *z = kmalloc(strlen(s) + 1);
+    if (z == NULL) {
+        return NULL;
+    }
+    strcpy(z, s);
+    return z;
 }
 
 /*
@@ -21,11 +20,10 @@ kstrdup(const char *s)
  * Kernel version; panics if it hits an unknown error.
  */
 const char *
-strerror(int errcode)
-{
-	if (errcode>=0 && errcode < sys_nerr) {
-		return sys_errlist[errcode];
-	}
-	panic("Invalid error code %d\n", errcode);
-	return NULL;
+strerror(int errcode) {
+    if (errcode >= 0 && errcode < sys_nerr) {
+        return sys_errlist[errcode];
+    }
+    panic("Invalid error code %d\n", errcode);
+    return NULL;
 }

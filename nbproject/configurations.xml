@@ -211,7 +211,7 @@
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>/bin/csh build.sh</buildCommand>
+          <buildCommand>/bin/csh build_fast.sh</buildCommand>
           <cleanCommand>/bin/csh build.sh</cleanCommand>
           <executablePath></executablePath>
         </makeTool>
