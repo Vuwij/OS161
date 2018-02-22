@@ -18,7 +18,7 @@
 #include <lib.h>
 #include <test.h>
 #include <thread.h>
-
+#include <synch.h>
 
 /*
  *
@@ -52,6 +52,14 @@ static const char *msgs[] = {
 /* use these constants for the first parameter of message */
 enum { APPROACHING, REGION1, REGION2, REGION3, LEAVING };
 
+static struct semaphore *mutex;
+
+static volatile int NW_cars = 0;
+static volatile int NE_cars = 0;
+static volatile int SW_cars = 0;
+static volatile int SE_cars = 0;
+
+
 static void
 message(int msg_nr, int carnumber, int cardirection, int destdirection)
 {
@@ -59,6 +67,7 @@ message(int msg_nr, int carnumber, int cardirection, int destdirection)
                 msgs[msg_nr], carnumber,
                 directions[cardirection], directions[destdirection]);
 }
+
  
 /*
  * gostraight()
@@ -152,6 +161,33 @@ turnright(unsigned long cardirection,
         (void) carnumber;
 }
 
+void
+print_one_region(unsigned long carnumber, int source, int destination) 
+{
+    message(APPROACHING, carnumber, source, destination);
+    message(REGION1, carnumber, source, destination); 
+    message(LEAVING, carnumber, source, destination); 
+}
+
+void
+print_two_regions(unsigned long carnumber, int source, int destination) 
+{
+    message(APPROACHING, carnumber, source, destination);
+    message(REGION1, carnumber, source, destination); 
+    message(REGION2, carnumber, source, destination); 
+    message(LEAVING, carnumber, source, destination); 
+}
+
+void
+print_three_regions(unsigned long carnumber, int source, int destination) 
+{
+    message(APPROACHING, carnumber, source, destination);
+    message(REGION1, carnumber, source, destination); 
+    message(REGION2, carnumber, source, destination); 
+    message(REGION3, carnumber, source, destination); 
+    message(LEAVING, carnumber, source, destination); 
+}
+
 
 /*
  * approachintersection()
@@ -178,23 +214,295 @@ void
 approachintersection(void * unusedpointer,
                      unsigned long carnumber)
 {
-        int cardirection;
+    int source, destination;
 
-        /*
-         * Avoid unused variable and function warnings.
-         */
+    /*
+     * Avoid unused variable and function warnings.
+     */
 
-        (void) unusedpointer;
-        (void) carnumber;
-	(void) gostraight;
-	(void) turnleft;
-	(void) turnright;
+    (void) unusedpointer;
+    (void) gostraight;
+    (void) turnleft;
+    (void) turnright;
 
-        /*
-         * cardirection is set randomly.
-         */
+    /*
+     * cardirection is set randomly.
+     */
 
-        cardirection = random() % 4;
+    source = random() % 4;        
+
+    // can't have same value for starting and ending points
+    do {
+        destination = random() % 4;
+    }
+    while (destination == source);
+
+    const char* src = directions[source];
+    const char* dest = directions[destination];           
+
+    if (strcmp(src,"N") == 0) {
+
+        if (strcmp(dest,"W") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (NW_cars == 0){
+                    NW_cars = 1;
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex);              
+
+            print_one_region(carnumber, source, destination);
+
+            P(mutex);
+            NW_cars = 0;
+            V(mutex);
+        }                       
+
+        if (strcmp(dest,"S") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (NW_cars == 0 && SW_cars == 0){
+                    NW_cars = 1;
+                    SW_cars = 1;
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex); 
+
+            print_two_regions(carnumber, source, destination);               
+
+            P(mutex);
+            NW_cars = 0;
+            SW_cars = 0;
+            V(mutex); 
+        }
+
+        if (strcmp(dest,"E") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (NW_cars == 0 && SW_cars == 0 && SE_cars == 0){
+                    NW_cars = 1;
+                    SW_cars = 1;
+                    SE_cars = 1;
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex); 
+
+            print_three_regions(carnumber, source, destination);  
+
+            P(mutex);
+            NW_cars = 0;
+            SW_cars = 0;
+            SE_cars = 0;
+            V(mutex); 
+        }            
+    }
+
+    if (strcmp(src,"S") == 0) {
+
+        if (strcmp(dest,"E") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (SE_cars == 0){
+                    SE_cars = 1;
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex);   
+
+            print_one_region(carnumber, source, destination);              
+
+            P(mutex);
+            SE_cars = 0;
+            V(mutex);
+        }                       
+
+        if (strcmp(dest,"N") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (SE_cars == 0 && NE_cars == 0){
+                    SE_cars = 1;
+                    NE_cars = 1;
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex); 
+
+            print_two_regions(carnumber, source, destination);  
+
+            P(mutex);
+            SE_cars = 0;
+            NE_cars = 0;
+            V(mutex); 
+        }
+
+        if (strcmp(dest,"W") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (SE_cars == 0 && NE_cars == 0 && NW_cars == 0){
+                    SE_cars = 1;
+                    NE_cars = 1;
+                    NW_cars = 1;
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex); 
+
+            print_three_regions(carnumber, source, destination);      
+
+            P(mutex);
+            SE_cars = 0;
+            NE_cars = 0;
+            NW_cars = 0;
+            V(mutex); 
+        }
+    }
+
+    if (strcmp(src,"E") == 0) {
+
+        if (strcmp(dest,"N") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (NE_cars == 0){
+                    NE_cars = 1;                        
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex); 
+
+            print_one_region(carnumber, source, destination);  
+
+            P(mutex);
+            NE_cars = 0;
+            V(mutex);
+        }                       
+
+        if (strcmp(dest,"W") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (NE_cars == 0 && NW_cars == 0){
+                    NE_cars = 1; 
+                    NW_cars = 1;
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex);    
+
+            print_two_regions(carnumber, source, destination);
+
+            P(mutex);
+            NW_cars = 0;
+            NE_cars = 0;
+            V(mutex); 
+        }
+
+        if (strcmp(dest,"S") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (NE_cars == 0 && NW_cars == 0 && SW_cars == 0){
+                    NE_cars = 1; 
+                    NW_cars = 1;
+                    SW_cars = 1;
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex); 
+
+            print_three_regions(carnumber, source, destination);
+
+            P(mutex);
+            NW_cars = 0;
+            NE_cars = 0;
+            SW_cars = 0;
+            V(mutex);                           
+        }
+    }
+
+    if (strcmp(src,"W") == 0) {
+
+        if (strcmp(dest,"S") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (SW_cars == 0){
+                    SW_cars = 1;                         
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex); 
+
+            print_one_region(carnumber, source, destination);                
+
+            P(mutex);
+            SW_cars = 0;
+            V(mutex);
+        }                       
+
+        if (strcmp(dest,"E") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (SW_cars == 0 && SE_cars == 0){
+                    SW_cars = 1; 
+                    SE_cars = 1;                        
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex); 
+
+            print_two_regions(carnumber, source, destination);   
+
+            P(mutex);
+            SW_cars = 0;
+            SE_cars = 0;
+            V(mutex); 
+        }
+
+        if (strcmp(dest,"N") == 0) {
+
+            while (1) {
+                P(mutex);
+                if (SW_cars == 0 && SE_cars == 0 && NE_cars == 0){
+                    SW_cars = 1; 
+                    SE_cars = 1;       
+                    NE_cars = 1;
+                    break;
+                }                        
+                V(mutex);
+            }                
+            V(mutex); 
+
+            print_three_regions(carnumber, source, destination);  
+
+            P(mutex);
+            NE_cars = 0;
+            SW_cars = 0;
+            SE_cars = 0;
+            V(mutex); 
+        }
+    }        
 }
 
 
@@ -213,6 +521,17 @@ approachintersection(void * unusedpointer,
  *      free to modiy this code as necessary for your solution.
  */
 
+void
+init_intersection_locks(void) 
+{    
+    if (mutex == NULL) {
+        mutex = sem_create("mutex",1);
+        if (mutex == NULL) {
+            panic("mutex: lock_create failed\n");
+        }
+    }
+}
+
 int
 createcars(int nargs,
            char ** args)
@@ -225,6 +544,8 @@ createcars(int nargs,
 
         (void) nargs;
         (void) args;
+        
+        init_intersection_locks();
 
         /*
          * Start NCARS approachintersection() threads.

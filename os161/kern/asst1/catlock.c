@@ -65,6 +65,12 @@ enum Eater currentEater = NONE;
 
 static struct lock *bowl1, *bowl2, *currentEaterOccupied;
 
+static volatile int cat_bowl1;
+static volatile int cat_bowl2;
+static volatile int mouse_bowl1;
+static volatile int mouse_bowl1;
+
+
 /*
  * 
  * Function Definitions
@@ -79,12 +85,17 @@ init_locks(void) {
             panic("bowl1: lock_create failed\n");
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
     if (bowl2 == NULL) {
         bowl2 = lock_create("bowl2");
         if (bowl2 == NULL) {
             panic("bowl2: lock_create failed\n");
         }
+<<<<<<< HEAD
     }
     
     if (currentEaterOccupied == NULL) {
@@ -92,6 +103,8 @@ init_locks(void) {
         if (currentEaterOccupied == NULL) {
             panic("currentEaterOccupied: lock_create failed\n");
         }
+=======
+>>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
     }
     
     currentEater = NONE;
@@ -132,6 +145,7 @@ catlock(void * unusedpointer,
     /*
      * Avoid unused variable warnings.
      */
+<<<<<<< HEAD
 
     (void) unusedpointer;
     // (void) catnumber;
@@ -142,6 +156,16 @@ catlock(void * unusedpointer,
         while(1) {
             bool eaten = false;
             
+=======
+
+    (void) unusedpointer;
+    //(void) catnumber;
+
+    /*int i;
+
+    for (i = 0; i < NITERATIONS; i++) {
+        if (cat_bowl1 == 1 && cat_bowl2 == 0) {
+>>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
             lock_acquire(bowl1);
             lock_acquire(currentEaterOccupied);
             
@@ -199,7 +223,11 @@ catlock(void * unusedpointer,
             
             if(eaten) break;
         }
+<<<<<<< HEAD
     }
+=======
+    }*/
+>>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
 }
 
 /*
@@ -225,6 +253,7 @@ mouselock(void * unusedpointer,
     /*
      * Avoid unused variable warnings.
      */
+<<<<<<< HEAD
 
     (void) unusedpointer;
     //(void) mousenumber;
@@ -289,6 +318,21 @@ mouselock(void * unusedpointer,
     }
 }
 
+=======
+
+    (void) unusedpointer;
+    //(void) mousenumber;
+
+    /*int i;
+
+    for (i = 0; i < NITERATIONS; i++) {
+        lock_acquire(bowl1);
+        lock_eat("mouse", mousenumber, 1, i);
+        lock_release(bowl1);
+    }*/
+}
+
+>>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
 /*
  * catmouselock()
  *
@@ -323,6 +367,10 @@ catmouselock(int nargs,
      */
 
     for (index = 0; index < NCATS; index++) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
         error = thread_fork("catlock thread",
                 NULL,
                 index,
