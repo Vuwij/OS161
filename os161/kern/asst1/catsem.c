@@ -146,7 +146,7 @@ catmousesem(int nargs,
     /*
      * Start NCATS catsem() threads.
      */
-
+    
     for (index = 0; index < NCATS; index++) {
 
         error = thread_fork("catsem Thread",

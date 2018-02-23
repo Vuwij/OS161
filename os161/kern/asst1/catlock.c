@@ -20,9 +20,9 @@
 #include <thread.h>
 #include <synch.h>
 
-#define bool	int
-#define true	1
-#define false	0
+#define bool int
+#define true 1
+#define false 0
 
 
 /*
@@ -60,15 +60,13 @@
  */
 
 bool bowl1_occupied, bowl2_occupied;
-enum Eater {NONE = 0, CAT = 1, MOUSE = 2};
+
+enum Eater {
+    NONE = 0, CAT = 1, MOUSE = 2
+};
 enum Eater currentEater = NONE;
 
 static struct lock *bowl1, *bowl2, *currentEaterOccupied;
-
-static volatile int cat_bowl1;
-static volatile int cat_bowl2;
-static volatile int mouse_bowl1;
-static volatile int mouse_bowl1;
 
 
 /*
@@ -85,28 +83,21 @@ init_locks(void) {
             panic("bowl1: lock_create failed\n");
         }
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
     if (bowl2 == NULL) {
         bowl2 = lock_create("bowl2");
         if (bowl2 == NULL) {
             panic("bowl2: lock_create failed\n");
         }
-<<<<<<< HEAD
     }
-    
+
     if (currentEaterOccupied == NULL) {
         currentEaterOccupied = lock_create("currentEaterOccupied");
         if (currentEaterOccupied == NULL) {
             panic("currentEaterOccupied: lock_create failed\n");
         }
-=======
->>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
     }
-    
+
     currentEater = NONE;
     bowl1_occupied = false;
     bowl2_occupied = false;
@@ -145,73 +136,62 @@ catlock(void * unusedpointer,
     /*
      * Avoid unused variable warnings.
      */
-<<<<<<< HEAD
-
     (void) unusedpointer;
-    // (void) catnumber;
+    (void) catnumber;
 
     int i;
-
     for (i = 0; i < NITERATIONS; i++) {
+        bool eaten = false;
+        
         while(1) {
-            bool eaten = false;
-            
-=======
-
-    (void) unusedpointer;
-    //(void) catnumber;
-
-    /*int i;
-
-    for (i = 0; i < NITERATIONS; i++) {
-        if (cat_bowl1 == 1 && cat_bowl2 == 0) {
->>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
             lock_acquire(bowl1);
             lock_acquire(currentEaterOccupied);
-            
-            if(!bowl1_occupied && currentEater != MOUSE) {
+            if (!bowl1_occupied && currentEater != MOUSE) {
                 bowl1_occupied = true;
-                if(currentEater == NONE) currentEater = CAT;
-                
+                if (currentEater == NONE) currentEater = CAT;
+
                 lock_release(currentEaterOccupied);
-                lock_release(bowl1); 
-                
+                lock_release(bowl1);
+
                 lock_eat("cat", catnumber, 1, i);
                 eaten = true;
-                
+
                 lock_acquire(bowl1);
                 lock_acquire(bowl2);
                 lock_acquire(currentEaterOccupied);
-                
-                if(bowl2_occupied == false) {
+
+
+                if (bowl2_occupied == false) {
                     kprintf("empty\n");
                     currentEater = NONE;
                 }
                 bowl1_occupied = false;
             }
-            
+
             lock_release(currentEaterOccupied);
             lock_release(bowl2);
             lock_release(bowl1);
             
+            if (eaten) break;
+            
             lock_acquire(bowl2);
             lock_acquire(currentEaterOccupied);
-            
-            if(!bowl2_occupied && currentEater != MOUSE) {
+
+            if (!bowl2_occupied && currentEater != MOUSE) {
                 bowl2_occupied = true;
-                if(currentEater == NONE) currentEater = CAT;
-                
+                if (currentEater == NONE) currentEater = CAT;
+
                 lock_release(currentEaterOccupied);
                 lock_release(bowl2);
-                
+
                 lock_eat("cat", catnumber, 2, i);
                 eaten = true;
-                
+
                 lock_acquire(bowl1);
                 lock_acquire(bowl2);
                 lock_acquire(currentEaterOccupied);
-                
-                if(bowl1_occupied == false) {
+
+                if (bowl1_occupied == false) {
                     kprintf("empty\n");
                     currentEater = NONE;
                 }
@@ -221,13 +201,13 @@ catlock(void * unusedpointer,
             lock_release(bowl2);
             lock_release(bowl1);
             
-            if(eaten) break;
+            if (eaten) break;
         }
-<<<<<<< HEAD
+        
+        // Go for a walk
+        clocksleep(6);
     }
-=======
-    }*/
->>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
+    kprintf("Cat %d left\n", catnumber);
 }
 
 /*
@@ -253,86 +233,81 @@ mouselock(void * unusedpointer,
     /*
      * Avoid unused variable warnings.
      */
-<<<<<<< HEAD
 
     (void) unusedpointer;
-    //(void) mousenumber;
+    (void) mousenumber;
 
     int i;
-
     for (i = 0; i < NITERATIONS; i++) {
+        bool eaten = false;
+        
         while(1) {
-            bool eaten = false;
-            
             lock_acquire(bowl1);
             lock_acquire(currentEaterOccupied);
-            
-            if(!bowl1_occupied && currentEater != CAT) {
+            if (!bowl1_occupied && currentEater != CAT) {
                 bowl1_occupied = true;
-                if(currentEater == NONE) currentEater = MOUSE;
-                
+                if (currentEater == NONE) currentEater = MOUSE;
+
                 lock_release(currentEaterOccupied);
-                lock_release(bowl1); 
-                
+                lock_release(bowl1);
+
                 lock_eat("mouse", mousenumber, 1, i);
                 eaten = true;
-                
+
                 lock_acquire(bowl1);
                 lock_acquire(bowl2);
                 lock_acquire(currentEaterOccupied);
-                
-                if(bowl2_occupied == false) currentEater = NONE;
+
+
+                if (bowl2_occupied == false) {
+                    kprintf("empty\n");
+                    currentEater = NONE;
+                }
                 bowl1_occupied = false;
             }
-            
+
             lock_release(currentEaterOccupied);
             lock_release(bowl2);
             lock_release(bowl1);
             
+            if (eaten) break;
+            
             lock_acquire(bowl2);
             lock_acquire(currentEaterOccupied);
-            
-            if(!bowl2_occupied && currentEater != CAT) {
+
+            if (!bowl2_occupied && currentEater != CAT) {
                 bowl2_occupied = true;
-                if(currentEater == NONE) currentEater = MOUSE;
-                
+                if (currentEater == NONE) currentEater = MOUSE;
+
                 lock_release(currentEaterOccupied);
                 lock_release(bowl2);
-                
+
                 lock_eat("mouse", mousenumber, 2, i);
                 eaten = true;
-                
+
                 lock_acquire(bowl1);
                 lock_acquire(bowl2);
                 lock_acquire(currentEaterOccupied);
-                
-                if(bowl1_occupied == false) currentEater = NONE;
+
+                if (bowl1_occupied == false) {
+                    kprintf("empty\n");
+                    currentEater = NONE;
+                }
                 bowl2_occupied = false;
             }
             lock_release(currentEaterOccupied);
             lock_release(bowl2);
             lock_release(bowl1);
             
-            if(eaten) break;
+            if (eaten) break;
         }
+        
+        // Go for a walk
+        clocksleep(6);
     }
+    kprintf("Mouse %d left\n", mousenumber);
 }
 
-=======
-
-    (void) unusedpointer;
-    //(void) mousenumber;
-
-    /*int i;
-
-    for (i = 0; i < NITERATIONS; i++) {
-        lock_acquire(bowl1);
-        lock_eat("mouse", mousenumber, 1, i);
-        lock_release(bowl1);
-    }*/
-}
-
->>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
 /*
  * catmouselock()
  *
@@ -361,16 +336,11 @@ catmouselock(int nargs,
     (void) args;
 
     init_locks();
-
     /*
      * Start NCATS catlock() threads.
      */
 
     for (index = 0; index < NCATS; index++) {
-<<<<<<< HEAD
-=======
-
->>>>>>> b648df3e9f57a013d5e0f17e6e63b926aed89991
         error = thread_fork("catlock thread",
                 NULL,
                 index,
@@ -383,7 +353,6 @@ catmouselock(int nargs,
          */
 
         if (error) {
-
             panic("catlock: thread_fork failed: %s\n",
                     strerror(error)
                     );
@@ -408,13 +377,14 @@ catmouselock(int nargs,
          */
 
         if (error) {
-
             panic("mouselock: thread_fork failed: %s\n",
                     strerror(error)
                     );
         }
     }
-
+    
+    while(1);
+    
     return 0;
 }
 
