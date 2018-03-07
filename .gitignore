@@ -10,7 +10,6 @@
 /os161/lib/libc
 /os161/sbin/*
 !/os161/sbin/Makefile
-/os161/testbin/*
 
 # SVN Stuff
 /os161/.svn/wc.db
