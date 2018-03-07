@@ -6,9 +6,9 @@ make
 
 #Kernel configuration
 cd kern/conf
-./config ASST1
+./config ASST2
 cd ..
-cd compile/ASST1
+cd compile/ASST2
 make depend
 
 make

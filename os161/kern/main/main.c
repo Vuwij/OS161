@@ -148,6 +148,25 @@ sys_reboot(int code) {
 }
 
 /*
+ * write() system call.
+ *
+ */
+int
+sys_write(int filehandle, const void *buf, size_t size) {
+    kprintf("%s", (char*) buf);
+    return 0;
+}
+
+/*
+ * exit() system call.
+ *
+ */
+int
+sys_exit(int exit) {
+    return 0;
+}
+
+/*
  * Kernel main. Boot up, then fork the menu thread; wait for a reboot
  * request, and then shut down.
  */
@@ -155,7 +174,6 @@ int
 kmain(char *arguments) {
     boot();
     
-    kprintf("Hello World\n");
     menu(arguments);
 
     /* Should not get here */

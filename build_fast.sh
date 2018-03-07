@@ -1,4 +1,4 @@
-cd os161/kern/compile/ASST1
+cd os161/kern/compile/ASST2
 make
 make install
 cd ../../..
