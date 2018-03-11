@@ -162,6 +162,7 @@ int
 sys_write(struct trapframe *tf) {
     int filehandle = tf->tf_a0;
     char *buf = (char *) tf->tf_a1;
+    //kprintf("0x%x\n", (int) buf);
     int size = tf->tf_a2;
     
     // Validate errors
