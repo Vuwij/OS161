@@ -60,7 +60,7 @@ thread_create(const char *name) {
 
     // If you add things to the thread structure, be sure to initialize
     // them here.
-
+        
     return thread;
 }
 
@@ -77,7 +77,7 @@ thread_destroy(struct thread *thread) {
 
     // If you add things to the thread structure, be sure to dispose of
     // them here or in thread_exit.
-
+    
     // These things are cleaned up in thread_exit.
     assert(thread->t_vmspace == NULL);
     assert(thread->t_cwd == NULL);
@@ -318,6 +318,31 @@ fail:
     kfree(newguy);
 
     return result;
+}
+
+void
+thread_join(const char *name) {
+    int i;
+    
+    while(1) {
+        int s = splhigh();
+        
+        int stillwaiting = 0;
+        for (i = 0; i < array_getnum(sleepers); i++) {
+            struct thread *t = array_getguy(sleepers, i);
+            
+            if (strcmp(t->t_name, name) == 0) {
+                stillwaiting = 1;
+            }
+        }
+        splx(s);
+        
+        thread_yield();
+        
+        if(!stillwaiting) {
+            return;
+        }
+    }    
 }
 
 /*

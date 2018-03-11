@@ -153,8 +153,24 @@ sys_reboot(int code) {
  */
 int
 sys_write(int filehandle, const void *buf, size_t size) {
-    kprintf("%s", (char*) buf);
-    return 0;
+    char buf2[size / sizeof(char) + 1];
+    memcpy(buf2, buf, size);
+    buf2[size / sizeof(char)] = '\0';
+    kprintf("%s", buf2);
+    return size;
+}
+
+/*
+ * read() system call.
+ *
+ */
+int sys_read(int filehandle, void *buf, size_t size) {
+
+    char ch;
+    kgets(buf, sizeof (buf));
+    kprintf("test\n");
+    
+    return size;
 }
 
 /*
@@ -163,7 +179,9 @@ sys_write(int filehandle, const void *buf, size_t size) {
  */
 int
 sys_exit(int exit) {
-    return 0;
+    kprintf("Thread exited\n");
+    thread_exit();
+    return EINVAL; // Thread exits here
 }
 
 /*

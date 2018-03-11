@@ -25,6 +25,9 @@ struct thread {
 	/* Public thread members - can be used by other code      */
 	/**********************************************************/
 	
+        int pid;
+        int parent_pid;
+        
 	/*
 	 * This is public because it isn't part of the thread system,
 	 * and will need to be manipulated by the userprog and/or vm
@@ -62,6 +65,11 @@ int thread_fork(const char *name,
 		void *data1, unsigned long data2, 
 		void (*func)(void *, unsigned long),
 		struct thread **ret);
+
+/* Thread Join
+ */
+
+void thread_join(const char *name);
 
 /*
  * Cause the current thread to exit.

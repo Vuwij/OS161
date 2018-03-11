@@ -74,3 +74,9 @@ runprogram(char *progname)
 	return EINVAL;
 }
 
+int
+closeprogram(char *progname)
+{
+    /* Ends and goes back to kernel mode*/
+    return EINVAL;
+}

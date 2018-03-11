@@ -11,6 +11,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>os161</sourceRootElem>
+                <sourceRootElem>markertest</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

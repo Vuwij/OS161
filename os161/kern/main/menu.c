@@ -108,10 +108,13 @@ common_prog(int nargs, char **args) {
         return result;
     }
 
+    kprintf("Waiting for program\n");
+    thread_join(args[0]);
+    kprintf("Finished\n");
+    
 #if OPT_DUMBSYNCH
     clocksleep(5);
 #endif
-
     return 0;
 }
 
