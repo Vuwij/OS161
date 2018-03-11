@@ -158,6 +158,22 @@ sys_write(int filehandle, const void *buf, size_t size) {
 }
 
 /*
+ * read() system call.
+ *
+ */
+int 
+sys_read(int filehandle, char *buf, size_t size) {
+    if (filehandle != STDIN_FILENO) {
+        return 1;
+    }
+    else {
+        *buf = getch();
+        putch(*buf);
+        return 0;
+    }
+}
+
+/*
  * exit() system call.
  *
  */
