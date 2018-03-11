@@ -43,6 +43,8 @@ struct thread {
 	struct vnode *t_cwd;
 };
 
+extern struct thread *curthread;
+
 /* Call once during startup to allocate data structures. */
 struct thread *thread_bootstrap(void);
 

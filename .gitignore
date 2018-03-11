@@ -6,6 +6,8 @@
 /os161/kern/compile/ASST3/*
 /os161/kern/compile/ASST4/*
 
+root/kernel-ASST2
+
 /os161/bin/*
 /os161/lib/hostcompat
 /os161/lib/libc

@@ -18,7 +18,7 @@ int sys_waitpid(pid_t pid, int *returncode, int flags);
  * security and permissions, you can ignore it.
  */
 int sys_open(const char *filename, int flags, ...);
-int sys_read(int filehandle, char *buf, size_t size);
+int sys_read(struct trapframe *tf);
 int sys_write(struct trapframe *tf);
 int sys_close(int filehandle);
 int sys_reboot(int code);

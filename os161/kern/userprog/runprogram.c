@@ -46,7 +46,11 @@ runprogram(char *progname)
 
 	/* Activate it. */
 	as_activate(curthread->t_vmspace);
-
+        
+        kprintf("Entry Point 0x%x\n", entrypoint);
+        kprintf("VBase0 0x%x\n", curthread->t_vmspace->as_vbase2);
+        kprintf("# Pages: %d", curthread->t_vmspace->as_npages2);
+        
 	/* Load the executable. */
 	result = load_elf(v, &entrypoint);
 	if (result) {
@@ -65,6 +69,7 @@ runprogram(char *progname)
 		return result;
 	}
 
+        
 	/* Warp to user mode. */
 	md_usermode(0 /*argc*/, NULL /*userspace addr of argv*/,
 		    stackptr, entrypoint);

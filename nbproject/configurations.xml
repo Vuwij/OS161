@@ -1709,10 +1709,10 @@
       <item path="os161/kern/fs/vfs/vnode.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -1945,10 +1945,10 @@
       <item path="os161/lib/libc/bzero.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
