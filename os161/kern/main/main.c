@@ -16,7 +16,6 @@
 #include <vm.h>
 #include <syscall.h>
 #include <version.h>
-
 /*
  * These two pieces of data are maintained by the makefiles and build system.
  * buildconfig is the name of the config file the kernel was configured with.
@@ -145,42 +144,6 @@ sys_reboot(int code) {
 
     panic("reboot operation failed\n");
     return 0;
-}
-
-/*
- * write() system call.
- *
- */
-int
-sys_write(int filehandle, const void *buf, size_t size) {
-    char buf2[size / sizeof(char) + 1];
-    memcpy(buf2, buf, size);
-    buf2[size / sizeof(char)] = '\0';
-    kprintf("%s", buf2);
-    return size;
-}
-
-int 
-sys_read(int filehandle, char *buf, size_t size) {
-    if (filehandle != STDIN_FILENO) {
-        return 1;
-    }
-    else {
-        *buf = getch();
-        putch(*buf);
-        return 0;
-    }
-}
-
-/*
- * exit() system call.
- *
- */
-int
-sys_exit(int exit) {
-    kprintf("Thread exited\n");
-    thread_exit();
-    return EINVAL; // Thread exits here
 }
 
 /*

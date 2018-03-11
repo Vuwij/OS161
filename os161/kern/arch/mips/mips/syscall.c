@@ -5,8 +5,9 @@
 #include <machine/spl.h>
 #include <machine/trapframe.h>
 #include <kern/callno.h>
+#include <kern/unistd.h>
 #include <syscall.h>
-
+#include <thread.h>
 
 /*
  * System call handler.
@@ -85,8 +86,8 @@ mips_syscall(struct trapframe *tf)
                 retval = tf->tf_a2;
                 break;
             case SYS_write:
-                retval = sys_write(tf->tf_a0, (void *) tf->tf_a1, tf->tf_a2);
-                err = 0;
+                err = sys_write(tf);
+                retval = tf->tf_a2;
                 break;
             case SYS_close:
                 break;
@@ -151,4 +152,51 @@ md_forkentry(struct trapframe *tf)
 	 */
 
 	(void)tf;
+}
+
+/*
+ * write() system call.
+ *
+ */
+int
+sys_write(struct trapframe *tf) {
+    int filehandle = tf->tf_a0;
+    char *buf = (char *) tf->tf_a1;
+    int size = tf->tf_a2;
+    
+    // Validate errors
+    if(filehandle != STDOUT_FILENO) return EBADF;
+    
+    
+    
+    char buf2[size / sizeof(char) + 1];
+    memcpy(buf2, buf, size);
+    buf2[size / sizeof(char)] = '\0';
+    kprintf("%s", buf2);
+    return 0;
+}
+
+int 
+sys_read(int filehandle, char *buf, size_t size) {
+    if (filehandle != STDIN_FILENO) return EBADF;
+    
+    // If the address written is in the stack
+    
+    // If the 
+    
+    
+    *buf = getch();
+    putch(*buf);
+    return 0;
+}
+
+/*
+ * exit() system call.
+ *
+ */
+int
+sys_exit(int exit) {
+    kprintf("Thread exited\n");
+    thread_exit();
+    return EINVAL; // Thread exits here
 }

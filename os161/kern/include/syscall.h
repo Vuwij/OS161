@@ -19,7 +19,7 @@ int sys_waitpid(pid_t pid, int *returncode, int flags);
  */
 int sys_open(const char *filename, int flags, ...);
 int sys_read(int filehandle, char *buf, size_t size);
-int sys_write(int filehandle, const void *buf, size_t size);
+int sys_write(struct trapframe *tf);
 int sys_close(int filehandle);
 int sys_reboot(int code);
 int sys_sync(void);

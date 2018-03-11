@@ -36,7 +36,7 @@ runprogram(char *progname)
 
 	/* We should be a new thread. */
 	assert(curthread->t_vmspace == NULL);
-
+        
 	/* Create a new address space. */
 	curthread->t_vmspace = as_create();
 	if (curthread->t_vmspace==NULL) {
@@ -57,7 +57,7 @@ runprogram(char *progname)
 
 	/* Done with the file now. */
 	vfs_close(v);
-
+        
 	/* Define the user stack in the address space */
 	result = as_define_stack(curthread->t_vmspace, &stackptr);
 	if (result) {
