@@ -1,41 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="markertest" displayName="markertest" projectFiles="true">
-      <itemPath>markertest/asst0-01-hello.py</itemPath>
-      <itemPath>markertest/asst0-02-dbflags.py</itemPath>
-      <itemPath>markertest/asst1-01-lock.py</itemPath>
-      <itemPath>markertest/asst1-02-cv.py</itemPath>
-      <itemPath>markertest/asst1-03-cat.py</itemPath>
-      <itemPath>markertest/asst1-04-stoplight.py</itemPath>
-      <itemPath>markertest/asst2-01-console.py</itemPath>
-      <itemPath>markertest/asst2-02-addtest.py</itemPath>
-      <itemPath>markertest/asst2-03-argtest.py</itemPath>
-      <itemPath>markertest/asst2-04-forktest.py</itemPath>
-      <itemPath>markertest/asst2-05-forkbomb.py</itemPath>
-      <itemPath>markertest/asst2-06-crash.py</itemPath>
-      <itemPath>markertest/asst2-07-badcall.py</itemPath>
-      <itemPath>markertest/asst2-08-addexec.py</itemPath>
-      <itemPath>markertest/asst2-09-exittest.py</itemPath>
-      <itemPath>markertest/asst2-10-wait.py</itemPath>
-      <itemPath>markertest/asst2-11-draw.py</itemPath>
-      <itemPath>markertest/asst2-12-facts.py</itemPath>
-      <itemPath>markertest/asst3-01-crash.py</itemPath>
-      <itemPath>markertest/asst3-02-badcall.py</itemPath>
-      <itemPath>markertest/asst3-03-stacktest.py</itemPath>
-      <itemPath>markertest/asst3-04-timeit.py</itemPath>
-      <itemPath>markertest/asst3-05-malloctest.py</itemPath>
-      <itemPath>markertest/asst3-06-btree.py</itemPath>
-      <itemPath>markertest/asst3-07-bigprog.py</itemPath>
-      <itemPath>markertest/asst3-08-sty.py</itemPath>
-      <itemPath>markertest/asst3-09-forktest.py</itemPath>
-      <itemPath>markertest/asst3-10-facts.py</itemPath>
-      <itemPath>markertest/asst3-11-hasher.py</itemPath>
-      <itemPath>markertest/asst3-12-huge.py</itemPath>
-      <itemPath>markertest/asst3-13-matmult.py</itemPath>
-      <itemPath>markertest/asst3-14-triplemat.py</itemPath>
-      <itemPath>markertest/asst3-15-parallelvm.py</itemPath>
-    </logicalFolder>
     <df root="os161" name="0">
       <df name="bin">
         <df name="sh">
@@ -232,7 +197,6 @@
   <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
   <sourceRootList>
     <Elem>os161</Elem>
-    <Elem>markertest</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -274,6 +238,9 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/arch/mips/mips</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -313,6 +280,9 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/dev/generic</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -320,6 +290,9 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/dev/lamebus</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -327,10 +300,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/fs/sfs</pElem>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -338,6 +311,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/fs/vfs</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -345,10 +322,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/lib</pElem>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -367,6 +344,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/test</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -374,6 +355,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/thread</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -381,6 +366,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/userprog</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -395,6 +384,10 @@
         <cTool>
           <incDir>
             <pElem>os161/lib/libc</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -418,72 +411,6 @@
           </preprocessorList>
         </cTool>
       </folder>
-      <item path="markertest/asst0-01-hello.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst0-02-dbflags.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst1-01-lock.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst1-02-cv.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst1-03-cat.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst1-04-stoplight.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-01-console.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-02-addtest.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-03-argtest.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-04-forktest.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-05-forkbomb.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-06-crash.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-07-badcall.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-08-addexec.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-09-exittest.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-10-wait.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-11-draw.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst2-12-facts.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-01-crash.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-02-badcall.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-03-stacktest.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-04-timeit.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-05-malloctest.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-06-btree.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-07-bigprog.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-08-sty.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-09-forktest.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-10-facts.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-11-hasher.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-12-huge.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-13-matmult.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-14-triplemat.py" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="markertest/asst3-15-parallelvm.py" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="os161/bin/sh/sh.c" ex="false" tool="0" flavor2="2">
         <cTool flags="0">
         </cTool>
@@ -491,10 +418,7 @@
       <item path="os161/kern/arch/mips/mips/dumbvm.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -504,9 +428,6 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/lamebus</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -518,9 +439,6 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/lamebus</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
             <pElem>os161/kern/dev</pElem>
@@ -530,29 +448,20 @@
       <item path="os161/kern/arch/mips/mips/pcb.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/arch/mips/mips/ram.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/arch/mips/mips/spl.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
@@ -563,20 +472,14 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/arch/mips/mips/trap.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -643,20 +546,14 @@
       <item path="os161/kern/dev/generic/beep.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/generic/console.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
             <pElem>os161/kern/dev</pElem>
           </incDir>
@@ -668,11 +565,8 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -682,9 +576,6 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -693,20 +584,14 @@
       <item path="os161/kern/dev/generic/random.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/generic/rtclock.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -729,9 +614,6 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/generic</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
@@ -741,9 +623,6 @@
       <item path="os161/kern/dev/lamebus/con_lser.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/generic</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
@@ -753,9 +632,6 @@
       <item path="os161/kern/dev/lamebus/emu.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -764,9 +640,6 @@
       <item path="os161/kern/dev/lamebus/emu_att.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -775,10 +648,7 @@
       <item path="os161/kern/dev/lamebus/lamebus.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
             <pElem>os161/kern/dev</pElem>
           </incDir>
         </cTool>
@@ -786,31 +656,22 @@
       <item path="os161/kern/dev/lamebus/lhd.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/lamebus/lhd_att.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/lamebus/lrandom.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -822,20 +683,14 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/lamebus/lser.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
             <pElem>os161/kern/dev</pElem>
           </incDir>
@@ -844,22 +699,16 @@
       <item path="os161/kern/dev/lamebus/lser_att.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/lamebus/ltimer.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -869,22 +718,16 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/lamebus/ltrace.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -894,11 +737,8 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -908,12 +748,9 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/generic</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -923,9 +760,6 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/generic</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
@@ -946,72 +780,30 @@
       </item>
       <item path="os161/kern/fs/vfs/device.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/devnull.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/vfscwd.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/vfslist.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/vfslookup.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/vfspath.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/vnode.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/lib/array.c" ex="false" tool="0" flavor2="2">
@@ -1060,152 +852,62 @@
       </item>
       <item path="os161/kern/test/arraytest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/bitmaptest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/fstest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/malloctest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/queuetest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/synchtest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/threadtest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/tt3.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/thread/hardclock.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/thread/scheduler.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/thread/synch.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/thread/thread.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/userprog/loadelf.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/userprog/runprogram.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/userprog/uio.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/hostcompat/err.c" ex="false" tool="0" flavor2="2">
@@ -1222,132 +924,54 @@
       </item>
       <item path="os161/lib/libc/__printf.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/atoi.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/bzero.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/memcpy.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/memmove.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/snprintf.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strcat.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strchr.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strcmp.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strcpy.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strlen.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strrchr.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strtok_r.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/sbin/dumpsfs/disk.c" ex="false" tool="0" flavor2="2">
@@ -1386,1022 +1010,6 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <flagsDictionary>
-        <element flagsID="0" commonFlags="-g"/>
-      </flagsDictionary>
-      <codeAssistance>
-      </codeAssistance>
-      <makefileType>
-        <makeTool>
-          <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>/bin/csh build_fast.sh</buildCommand>
-          <cleanCommand>/bin/csh build.sh</cleanCommand>
-          <executablePath></executablePath>
-        </makeTool>
-        <preBuild>
-          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
-          <preBuildCommand></preBuildCommand>
-        </preBuild>
-      </makefileType>
-      <folder path="0/bin">
-        <cTool>
-          <incDir>
-            <pElem>root/hostinclude</pElem>
-          </incDir>
-          <preprocessorList>
-            <Elem>HOST</Elem>
-          </preprocessorList>
-        </cTool>
-      </folder>
-      <folder path="0/kern/arch">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/arch/mips/mips</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/asst1">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/asst1</pElem>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/compile">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/compile/ASST0</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/compile/ASST1">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/compile/ASST2">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/dev/generic">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/dev/generic</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/dev/lamebus">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/dev/lamebus</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/fs/sfs">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/fs/sfs</pElem>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/fs/vfs">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/fs/vfs</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/lib">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/lib</pElem>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/main">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/main</pElem>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/test">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/test</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/thread">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/thread</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/kern/userprog">
-        <cTool>
-          <incDir>
-            <pElem>os161/kern/userprog</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/lib">
-        <cTool>
-          <incDir>
-            <pElem>os161/lib/libc</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/lib/hostcompat">
-        <cTool>
-          <incDir>
-            <pElem>root/hostinclude</pElem>
-          </incDir>
-        </cTool>
-      </folder>
-      <folder path="0/sbin">
-        <cTool>
-          <incDir>
-            <pElem>root/hostinclude</pElem>
-          </incDir>
-          <preprocessorList>
-            <Elem>HOST</Elem>
-          </preprocessorList>
-        </cTool>
-      </folder>
-      <folder path="0/testbin">
-        <cTool>
-          <incDir>
-            <pElem>root/hostinclude</pElem>
-          </incDir>
-          <preprocessorList>
-            <Elem>HOST</Elem>
-          </preprocessorList>
-        </cTool>
-      </folder>
-      <item path="os161/kern/arch/mips/mips/dumbvm.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/arch/mips/mips/interrupt.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev/lamebus</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/arch/mips/mips/lamebus_mips.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev/lamebus</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-            <pElem>os161/kern/dev</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/arch/mips/mips/pcb.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/arch/mips/mips/ram.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/arch/mips/mips/spl.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/arch/mips/mips/syscall.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/arch/mips/mips/trap.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/asst1/catlock.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/asst1/catsem.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/asst1/stoplight.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/compile/ASST1/autoconf.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/compile/ASST1/vers.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/compile/ASST2/autoconf.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/compile/ASST2/vers.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/generic/beep.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/generic/console.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-            <pElem>os161/kern/dev</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/generic/pseudorand.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/generic/pseudorand_att.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/generic/random.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/generic/rtclock.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/init.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/beep_ltimer.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev/generic</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/con_lser.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev/generic</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/emu.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/emu_att.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/lamebus.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-            <pElem>os161/kern/dev</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/lhd.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/lhd_att.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/lrandom.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/lrandom_att.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/lser.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-            <pElem>os161/kern/dev</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/lser_att.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/ltimer.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/ltimer_att.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/ltrace.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/ltrace_att.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/random_lrandom.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev/generic</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/dev/lamebus/rtclock_ltimer.c"
-            ex="false"
-            tool="0"
-            flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/dev/generic</pElem>
-            <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/fs/sfs/sfs_fs.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/fs/sfs/sfs_io.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/fs/sfs/sfs_vnode.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/fs/vfs/device.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/fs/vfs/devnull.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/fs/vfs/vfscwd.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/fs/vfs/vfslist.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/fs/vfs/vfslookup.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/fs/vfs/vfspath.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/fs/vfs/vnode.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/lib/array.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/lib/bitmap.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/lib/copyinout.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/lib/kgets.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/lib/kheap.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/lib/kprintf.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/lib/misc.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/lib/ntoh.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/lib/queue.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/main/main.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/main/menu.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-        </cTool>
-      </item>
-      <item path="os161/kern/test/arraytest.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/test/bitmaptest.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/test/fstest.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/test/malloctest.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/test/queuetest.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/test/synchtest.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/test/threadtest.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/test/tt3.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/thread/hardclock.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/thread/scheduler.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/thread/synch.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/thread/thread.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/userprog/loadelf.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/userprog/runprogram.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/kern/userprog/uio.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/__printf.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/atoi.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/bzero.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/memcpy.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/memmove.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/snprintf.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/strcat.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/strchr.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/strcmp.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/strcpy.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/strlen.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/strrchr.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-      <item path="os161/lib/libc/strtok_r.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="0">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
-        </cTool>
-      </item>
-    </conf>
-    <conf name="Marker" type="0">
-      <toolsSet>
-        <compilerSet>default</compilerSet>
-        <dependencyChecking>false</dependencyChecking>
-        <rebuildPropChanged>false</rebuildPropChanged>
-      </toolsSet>
-      <flagsDictionary>
         <element flagsID="0" commonFlags="-O2"/>
         <element flagsID="1" commonFlags="-g"/>
       </flagsDictionary>
@@ -2433,6 +1041,9 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/arch/mips/mips</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -2472,6 +1083,9 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/dev/generic</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -2479,6 +1093,9 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/dev/lamebus</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -2486,10 +1103,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/fs/sfs</pElem>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -2497,6 +1114,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/fs/vfs</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -2504,10 +1125,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/lib</pElem>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -2526,6 +1147,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/test</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -2533,6 +1158,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/thread</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -2540,6 +1169,10 @@
         <cTool>
           <incDir>
             <pElem>os161/kern/userprog</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -2554,6 +1187,10 @@
         <cTool>
           <incDir>
             <pElem>os161/lib/libc</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </folder>
@@ -2577,17 +1214,14 @@
           </preprocessorList>
         </cTool>
       </folder>
-      <item path="os161/bin/sh/sh.c" ex="false" tool="0" flavor2="9">
+      <item path="os161/bin/sh/sh.c" ex="false" tool="0" flavor2="2">
         <cTool flags="0">
         </cTool>
       </item>
       <item path="os161/kern/arch/mips/mips/dumbvm.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -2597,9 +1231,6 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/lamebus</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -2611,9 +1242,6 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/lamebus</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
             <pElem>os161/kern/dev</pElem>
@@ -2623,29 +1251,20 @@
       <item path="os161/kern/arch/mips/mips/pcb.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/arch/mips/mips/ram.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/arch/mips/mips/spl.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
@@ -2656,20 +1275,14 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/arch/mips/mips/trap.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -2736,20 +1349,14 @@
       <item path="os161/kern/dev/generic/beep.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/generic/console.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
             <pElem>os161/kern/dev</pElem>
           </incDir>
@@ -2761,11 +1368,8 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -2775,9 +1379,6 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -2786,20 +1387,14 @@
       <item path="os161/kern/dev/generic/random.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/generic/rtclock.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -2822,9 +1417,6 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/generic</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
@@ -2834,9 +1426,6 @@
       <item path="os161/kern/dev/lamebus/con_lser.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/generic</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
@@ -2846,9 +1435,6 @@
       <item path="os161/kern/dev/lamebus/emu.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -2857,9 +1443,6 @@
       <item path="os161/kern/dev/lamebus/emu_att.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -2868,10 +1451,7 @@
       <item path="os161/kern/dev/lamebus/lamebus.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
             <pElem>os161/kern/dev</pElem>
           </incDir>
         </cTool>
@@ -2879,31 +1459,22 @@
       <item path="os161/kern/dev/lamebus/lhd.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/lamebus/lhd_att.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/lamebus/lrandom.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
@@ -2915,20 +1486,14 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/lamebus/lser.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
             <pElem>os161/kern/dev</pElem>
           </incDir>
@@ -2937,22 +1502,16 @@
       <item path="os161/kern/dev/lamebus/lser_att.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/lamebus/ltimer.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -2962,22 +1521,16 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="os161/kern/dev/lamebus/ltrace.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -2987,11 +1540,8 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -3001,12 +1551,9 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/generic</pElem>
             <pElem>os161/kern/dev</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -3016,9 +1563,6 @@
             flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/dev/generic</pElem>
             <pElem>os161/kern/dev</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
@@ -3039,72 +1583,30 @@
       </item>
       <item path="os161/kern/fs/vfs/device.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/devnull.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/vfscwd.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/vfslist.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/vfslookup.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/vfspath.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/fs/vfs/vnode.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/lib/array.c" ex="false" tool="0" flavor2="2">
@@ -3153,152 +1655,808 @@
       </item>
       <item path="os161/kern/test/arraytest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/bitmaptest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/fstest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/malloctest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/queuetest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/synchtest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/threadtest.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/test/tt3.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/thread/hardclock.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/thread/scheduler.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/thread/synch.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/thread/thread.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/userprog/loadelf.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/userprog/runprogram.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/userprog/uio.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/hostcompat/err.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="os161/lib/hostcompat/hostcompat.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="os161/lib/hostcompat/time.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/__printf.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/atoi.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/bzero.c" ex="false" tool="0" flavor2="2">
+<<<<<<< HEAD
+        <cTool flags="0">
           <incDir>
             <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
             <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
+=======
+        <cTool flags="1">
+>>>>>>> 246b87a122e03d6024e60e1c9d6d7b451269b668
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/memcpy.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/memmove.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/snprintf.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/strcat.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/strchr.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/strcmp.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/strcpy.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/strlen.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/strrchr.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/lib/libc/strtok_r.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/sbin/dumpsfs/disk.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="os161/sbin/dumpsfs/dumpsfs.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="os161/sbin/dumpsfs/support.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="os161/sbin/mksfs/disk.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="os161/sbin/mksfs/mksfs.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="os161/sbin/mksfs/support.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="os161/testbin/hash/hash.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+        </cTool>
+      </item>
+    </conf>
+    <conf name="Marker" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-O2"/>
+        <element flagsID="1" commonFlags="-g"/>
+      </flagsDictionary>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>/bin/csh build.sh</buildCommand>
+          <cleanCommand>/bin/csh build.sh</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="Questions.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="0/bin">
+        <cTool>
+          <incDir>
+            <pElem>root/hostinclude</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>HOST</Elem>
+          </preprocessorList>
+        </cTool>
+      </folder>
+      <folder path="0/kern/arch">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/arch/mips/mips</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/kern/compile">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/kern/dev/generic">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/dev/generic</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/kern/dev/lamebus">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/dev/lamebus</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/kern/fs/sfs">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/fs/sfs</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/kern/fs/vfs">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/fs/vfs</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/kern/lib">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/lib</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/kern/main">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/main</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/kern/test">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/test</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/kern/thread">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/thread</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/kern/userprog">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/userprog</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/lib/hostcompat">
+        <cTool>
+          <incDir>
+            <pElem>root/hostinclude</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/lib/libc">
+        <cTool>
+          <incDir>
+            <pElem>os161/lib/libc</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/sbin">
+        <cTool>
+          <incDir>
+            <pElem>root/hostinclude</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>HOST</Elem>
+          </preprocessorList>
+        </cTool>
+      </folder>
+      <folder path="0/testbin">
+        <cTool>
+          <incDir>
+            <pElem>root/hostinclude</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>HOST</Elem>
+          </preprocessorList>
+        </cTool>
+      </folder>
+      <item path="os161/bin/sh/sh.c" ex="false" tool="0" flavor2="9">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="os161/kern/arch/mips/mips/dumbvm.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/arch/mips/mips/interrupt.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev/lamebus</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/arch/mips/mips/lamebus_mips.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev/lamebus</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+            <pElem>os161/kern/dev</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/arch/mips/mips/pcb.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/arch/mips/mips/ram.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/arch/mips/mips/spl.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/arch/mips/mips/syscall.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/arch/mips/mips/trap.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/compile/ASST0/autoconf.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/compile/ASST0/vers.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/generic/beep.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/generic/console.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/compile/ASST0</pElem>
+            <pElem>os161/kern/dev</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/generic/pseudorand.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/generic/pseudorand_att.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/generic/random.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/generic/rtclock.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/init.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/beep_ltimer.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev/generic</pElem>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/con_lser.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev/generic</pElem>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/emu.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/emu_att.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/lamebus.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/compile/ASST0</pElem>
+            <pElem>os161/kern/dev</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/lhd.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/lhd_att.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/lrandom.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/lrandom_att.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/lser.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/compile/ASST0</pElem>
+            <pElem>os161/kern/dev</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/lser_att.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/ltimer.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/ltimer_att.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/ltrace.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/ltrace_att.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/random_lrandom.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev/generic</pElem>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/dev/lamebus/rtclock_ltimer.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/dev/generic</pElem>
+            <pElem>os161/kern/dev</pElem>
+            <pElem>os161/kern/compile/ASST0</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="os161/kern/fs/sfs/sfs_fs.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/fs/sfs/sfs_io.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/fs/sfs/sfs_vnode.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/fs/vfs/device.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/fs/vfs/devnull.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/fs/vfs/vfscwd.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/fs/vfs/vfslist.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/fs/vfs/vfslookup.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/fs/vfs/vfspath.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/fs/vfs/vnode.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/array.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/bitmap.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/copyinout.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/kgets.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/kheap.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/kprintf.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/misc.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/ntoh.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/queue.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/main/main.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/main/menu.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/test/arraytest.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/test/bitmaptest.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/test/fstest.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/test/malloctest.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/test/queuetest.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/test/synchtest.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/test/threadtest.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/test/tt3.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/thread/hardclock.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/thread/scheduler.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/thread/synch.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/thread/thread.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/userprog/loadelf.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
         </cTool>
       </item>
       <item path="os161/kern/userprog/runprogram.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/userprog/uio.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/hostcompat/err.c" ex="false" tool="0" flavor2="9">
@@ -3315,132 +2473,54 @@
       </item>
       <item path="os161/lib/libc/__printf.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/atoi.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/bzero.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/memcpy.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/memmove.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/snprintf.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST2/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST2</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strcat.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strchr.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strcmp.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strcpy.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strlen.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strrchr.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/lib/libc/strtok_r.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
-          <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
-            <pElem>os161/kern/include/kern</pElem>
-            <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
-          </incDir>
         </cTool>
       </item>
       <item path="os161/sbin/dumpsfs/disk.c" ex="false" tool="0" flavor2="9">
@@ -3470,6 +2550,12 @@
       <item path="os161/testbin/hash/hash.c" ex="false" tool="0" flavor2="9">
         <cTool flags="0">
         </cTool>
+      </item>
+      <item path="pull.sh" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="push.sh" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="submit.sh" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

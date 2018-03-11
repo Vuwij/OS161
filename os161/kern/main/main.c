@@ -160,17 +160,16 @@ sys_write(int filehandle, const void *buf, size_t size) {
     return size;
 }
 
-/*
- * read() system call.
- *
- */
-int sys_read(int filehandle, void *buf, size_t size) {
-
-    char ch;
-    kgets(buf, sizeof (buf));
-    kprintf("test\n");
-    
-    return size;
+int 
+sys_read(int filehandle, char *buf, size_t size) {
+    if (filehandle != STDIN_FILENO) {
+        return 1;
+    }
+    else {
+        *buf = getch();
+        putch(*buf);
+        return 0;
+    }
 }
 
 /*

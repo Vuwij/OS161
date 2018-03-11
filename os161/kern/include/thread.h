@@ -27,6 +27,7 @@ struct thread {
 	
         int pid;
         int parent_pid;
+        int child_pid[1000];
         
 	/*
 	 * This is public because it isn't part of the thread system,
