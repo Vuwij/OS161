@@ -105,7 +105,6 @@ vm_fault(int faulttype, vaddr_t faultaddress)
 	assert(as->as_pbase2 != 0);
 	assert(as->as_npages2 != 0);
 	assert(as->as_stackpbase != 0);
-//        kprintf("0x%x", as->as_vbase1);
 	assert((as->as_vbase1 & PAGE_FRAME) == as->as_vbase1);
 	assert((as->as_pbase1 & PAGE_FRAME) == as->as_pbase1);
 	assert((as->as_vbase2 & PAGE_FRAME) == as->as_vbase2);

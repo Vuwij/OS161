@@ -80,6 +80,7 @@ mips_syscall(struct trapframe *tf) {
             break;
         case SYS_fork:
             retval = (pid_t) sys_fork(tf);
+            err = 0;
             break;
         case SYS_waitpid:
             break;
@@ -227,32 +228,32 @@ sys_read(struct trapframe *tf) {
 }
 
 struct trapframe tfchild;
-struct addrspace* addrchild;
 
 static
 void
 child_fork(void *ptr, unsigned long nargs) {
     (void) ptr;
     (void) nargs;
-    
-    /* Create a new address space. */
-    curthread->t_vmspace = addrchild;
+
+    /* Create a new address space and activate */
+    struct addrspace* addrspace2 = (struct addrspace*) ptr;
+    curthread->t_vmspace = addrspace2;
     if (curthread->t_vmspace == NULL) {
         panic("Child fork failed\n");
     }
 
-    /* Activate it. */
     as_activate(curthread->t_vmspace);
     
-    tfchild.tf_a3 = 0; // Return Value
-    tfchild.tf_v0 = 0; // Error Signal
-    tfchild.tf_epc += 4; // Advance Program Counter
     assert(curspl == 0);
     
-    /* Warp to user mode. */
+    /* Create a new trapframe*/
     struct trapframe tfchild2;
     tfchild2 = tfchild;
+    tfchild2.tf_a3 = 0; // Return Value
+    tfchild2.tf_v0 = 0; // Error Signal
+    tfchild2.tf_epc += 4; // Advance Program Counter
 
+    /* Warp to user mode. */
     mips_usermode(&tfchild2);
 
     /* md_usermode does not return */
@@ -262,17 +263,17 @@ child_fork(void *ptr, unsigned long nargs) {
 
 pid_t sys_fork(struct trapframe *tf) {
     // Make a copy of the address space and trapframe
-    addrchild = kmalloc(sizeof(struct addrspace));
+    struct addrspace* addrchild = kmalloc(sizeof(struct addrspace));
     memcpy(&tfchild, tf, sizeof(struct trapframe));
     as_copy(curthread->t_vmspace, &addrchild);
     
-    int result = thread_fork(strcat(curthread->t_name, " child"), NULL , 0, child_fork, NULL);
+    int result = thread_fork(strcat(curthread->t_name, " child"), addrchild , 1, child_fork, NULL);
     if (result) {
         kprintf("thread_fork failed: %s\n", strerror(result));
         return result;
     }
     
-    return 1; // Parent returns 0
+    return 1; // Parent returns PID of child
 }
 
 int sys_getpid(struct trapframe *tf) {

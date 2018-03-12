@@ -31,6 +31,7 @@ dofork(void)
 {
 	int pid;
 	pid = fork();
+        
 	if (pid < 0) {
 		warn("fork");
 	}
@@ -41,8 +42,8 @@ int
 main(int argc, const char * argv[])
 {
         int i;
-	int n = 1;
-	
+	int n = 4;
+	printf("FORK TESTING\n");
 	if (argc == 2) {
 	        n = atoi(argv[1]);
 	}
