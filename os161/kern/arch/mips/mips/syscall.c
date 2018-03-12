@@ -8,9 +8,11 @@
 #include <kern/unistd.h>
 #include <syscall.h>
 #include <thread.h>
+#include <curthread.h>
 #include <vm.h>
 
 #include "addrspace.h"
+
 /*
  * System call handler.
  *
@@ -49,111 +51,98 @@
  */
 
 void
-mips_syscall(struct trapframe *tf)
-{
-	int callno;
-	int32_t retval;
-	int err;
+mips_syscall(struct trapframe *tf) {
+    int callno;
+    int32_t retval;
+    int err;
 
-	assert(curspl==0);
+    assert(curspl == 0);
 
-	callno = tf->tf_v0;
+    callno = tf->tf_v0;
 
-	/*
-	 * Initialize retval to 0. Many of the system calls don't
-	 * really return a value, just 0 for success and -1 on
-	 * error. Since retval is the value returned on success,
-	 * initialize it to 0 by default; thus it's not necessary to
-	 * deal with it except for calls that return other values, 
-	 * like write.
-	 */
+    /*
+     * Initialize retval to 0. Many of the system calls don't
+     * really return a value, just 0 for success and -1 on
+     * error. Since retval is the value returned on success,
+     * initialize it to 0 by default; thus it's not necessary to
+     * deal with it except for calls that return other values, 
+     * like write.
+     */
 
-	retval = 0;
-        
-	switch (callno) {
-            case SYS__exit:
-                err = sys_exit(tf->tf_a0);
-                break;
-	    case SYS_reboot:
-		err = sys_reboot(tf->tf_a0);
-		break;
-            case SYS_fork:
-                break;
-            case SYS_waitpid:
-                break;
-            case SYS_open:
-                break;
-            case SYS_read:
-                err = sys_read(tf);
-                retval = tf->tf_a2;
-                break;
-            case SYS_write:
-                err = sys_write(tf);
-                retval = tf->tf_a2;
-                break;
-            case SYS_close:
-                break;
-            case SYS_sync:
-                break;
-            case SYS_sbrk:
-                break;
-            case SYS_getpid:
-                break;
-            case SYS_ioctl:
-                break;
-            case SYS_lseek:
-                break;
-            case SYS_fsync:
-                break;
-            case SYS_ftruncate:
-                break;
-            case SYS_fstat:
-                break;
-                
-	    default:
-		kprintf("Unknown syscall %d\n", callno);
-		err = ENOSYS;
-		break;
-	}
+    retval = 0;
+
+    switch (callno) {
+        case SYS__exit:
+            err = sys_exit(tf->tf_a0);
+            break;
+        case SYS_reboot:
+            err = sys_reboot(tf->tf_a0);
+            break;
+        case SYS_fork:
+            retval = (pid_t) sys_fork(tf);
+            break;
+        case SYS_waitpid:
+            break;
+        case SYS_open:
+            break;
+        case SYS_read:
+            err = sys_read(tf);
+            retval = tf->tf_a2;
+            break;
+        case SYS_write:
+            err = sys_write(tf);
+            retval = tf->tf_a2;
+            break;
+        case SYS_close:
+            break;
+        case SYS_sync:
+            break;
+        case SYS_sbrk:
+            break;
+        case SYS_getpid:
+            retval = sys_getpid(tf);
+            break;
+        case SYS_ioctl:
+            break;
+        case SYS_lseek:
+            break;
+        case SYS_fsync:
+            break;
+        case SYS_ftruncate:
+            break;
+        case SYS_fstat:
+            break;
+
+        default:
+            kprintf("Unknown syscall %d\n", callno);
+            err = ENOSYS;
+            break;
+    }
 
 
-	if (err) {
-		/*
-		 * Return the error code. This gets converted at
-		 * userlevel to a return value of -1 and the error
-		 * code in errno.
-		 */
-		tf->tf_v0 = err;
-		tf->tf_a3 = 1;      /* signal an error */
-	}
-	else {
-		/* Success. */
-		tf->tf_v0 = retval;
-		tf->tf_a3 = 0;      /* signal no error */
-	}
-	
-	/*
-	 * Now, advance the program counter, to avoid restarting
-	 * the syscall over and over again.
-	 */
-	
-	tf->tf_epc += 4;
+    if (err) {
+        /*
+         * Return the error code. This gets converted at
+         * userlevel to a return value of -1 and the error
+         * code in errno.
+         */
+        tf->tf_v0 = err;
+        tf->tf_a3 = 1; /* signal an error */
+    } else {
+        /* Success. */
+        tf->tf_v0 = retval;
+        tf->tf_a3 = 0; /* signal no error */
+    }
 
-	/* Make sure the syscall code didn't forget to lower spl */
-	assert(curspl==0);
-}
+    /*
+     * Now, advance the program counter, to avoid restarting
+     * the syscall over and over again.
+     */
 
-void
-md_forkentry(struct trapframe *tf)
-{
-	/*
-	 * This function is provided as a reminder. You need to write
-	 * both it and the code that calls it.
-	 *
-	 * Thus, you can trash it and do things another way if you prefer.
-	 */
+    tf->tf_epc += 4;
 
-	(void)tf;
+    /* Make sure the syscall code didn't forget to lower spl */
+    assert(curspl == 0);
 }
 
 /*
@@ -165,77 +154,129 @@ sys_write(struct trapframe *tf) {
     int filehandle = tf->tf_a0;
     char *buf = (char *) tf->tf_a1;
     int size = tf->tf_a2;
-    
+
     // Validate errors
-    if(filehandle != STDOUT_FILENO && filehandle != STDERR_FILENO) return EBADF;
-    
+    if (filehandle != STDOUT_FILENO && filehandle != STDERR_FILENO) return EBADF;
+
     // Stack Area
     u_int32_t stacktop = USERSTACK;
     u_int32_t sp = tf->tf_sp;
-    
+
     // Heap Area
     u_int32_t heapbottom = curthread->t_vmspace->as_vbase1;
     u_int32_t heaptop = curthread->t_vmspace->as_npages1 * PAGE_SIZE + heapbottom;
-        
+
     int valid = 0;
-    
+
     // Data in Stack
-    if((u_int32_t) buf > (u_int32_t) sp && (u_int32_t) buf < (u_int32_t) stacktop) {
+    if ((u_int32_t) buf > (u_int32_t) sp && (u_int32_t) buf < (u_int32_t) stacktop) {
         valid = 1;
     }
     // Data in Heap
-    if((u_int32_t) buf > (u_int32_t) heapbottom && (u_int32_t) buf < (u_int32_t) heaptop) {
+    if ((u_int32_t) buf > (u_int32_t) heapbottom && (u_int32_t) buf < (u_int32_t) heaptop) {
         valid = 1;
     }
-    
-    if(!valid) {
-        kprintf("Buf 0x%x SP 0x%x\n", (int) buf,  (int) sp);
+
+    if (!valid) {
+        kprintf("Buf 0x%x SP 0x%x\n", (int) buf, (int) sp);
         return EFAULT;
     }
-    
-    char buf2[size / sizeof(char) + 1];
+
+    char buf2[size / sizeof (char) + 1];
     memcpy(buf2, buf, size);
-    buf2[size / sizeof(char)] = '\0';
+    buf2[size / sizeof (char)] = '\0';
     kprintf("%s", buf2);
     return 0;
 }
 
-int 
+int
 sys_read(struct trapframe *tf) {
     int filehandle = tf->tf_a0;
     char *buf = (char *) tf->tf_a1;
-    int size = tf->tf_a2; 
-    
+
     if (filehandle != STDIN_FILENO) return EBADF;
-    
+
     // Stack Area
     u_int32_t stacktop = USERSTACK;
     u_int32_t sp = tf->tf_sp;
-    
+
     // Heap Area
     u_int32_t heapbottom = curthread->t_vmspace->as_vbase1;
     u_int32_t heaptop = curthread->t_vmspace->as_npages1 * PAGE_SIZE + heapbottom;
-        
+
     int valid = 0;
-    
+
     // Data in Stack
-    if((u_int32_t) buf > (u_int32_t) sp && (u_int32_t) buf < (u_int32_t) stacktop) {
+    if ((u_int32_t) buf > (u_int32_t) sp && (u_int32_t) buf < (u_int32_t) stacktop) {
         valid = 1;
     }
     // Data in Heap
-    if((u_int32_t) buf > (u_int32_t) heapbottom && (u_int32_t) buf < (u_int32_t) heaptop) {
+    if ((u_int32_t) buf > (u_int32_t) heapbottom && (u_int32_t) buf < (u_int32_t) heaptop) {
         valid = 1;
     }
-    
-    if(!valid) {
-        kprintf("Buf 0x%x SP 0x%x\n", (int) buf,  (int) sp);
+
+    if (!valid) {
+        kprintf("Buf 0x%x SP 0x%x\n", (int) buf, (int) sp);
         return EFAULT;
     }
-    
-    
+
+
     *buf = getch();
     putch(*buf);
     return 0;
+}
+
+struct trapframe tfchild;
+struct addrspace* addrchild;
+
+static
+void
+child_fork(void *ptr, unsigned long nargs) {
+    (void) ptr;
+    (void) nargs;
+    
+    /* Create a new address space. */
+    curthread->t_vmspace = addrchild;
+    if (curthread->t_vmspace == NULL) {
+        panic("Child fork failed\n");
+    }
+
+    /* Activate it. */
+    as_activate(curthread->t_vmspace);
+    
+    tfchild.tf_a3 = 0; // Return Value
+    tfchild.tf_v0 = 0; // Error Signal
+    tfchild.tf_epc += 4; // Advance Program Counter
+    assert(curspl == 0);
+    
+    /* Warp to user mode. */
+    struct trapframe tfchild2;
+    tfchild2 = tfchild;
+
+    mips_usermode(&tfchild2);
+
+    /* md_usermode does not return */
+    panic("md_usermode returned\n");
+}
+
+
+pid_t sys_fork(struct trapframe *tf) {
+    // Make a copy of the address space and trapframe
+    addrchild = kmalloc(sizeof(struct addrspace));
+    memcpy(&tfchild, tf, sizeof(struct trapframe));
+    as_copy(curthread->t_vmspace, &addrchild);
+    
+    int result = thread_fork(strcat(curthread->t_name, " child"), NULL , 0, child_fork, NULL);
+    if (result) {
+        kprintf("thread_fork failed: %s\n", strerror(result));
+        return result;
+    }
+    
+    return 1; // Parent returns 0
+}
+
+int sys_getpid(struct trapframe *tf) {
+    return curthread->pid;
 }
 
 /*

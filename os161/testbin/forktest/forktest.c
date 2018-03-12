@@ -147,7 +147,7 @@ main(int argc, char *argv[])
 		return 1;
 	}
 	warnx("Starting.");
-
+    
 	test(nowait);
 
 	warnx("Complete.");

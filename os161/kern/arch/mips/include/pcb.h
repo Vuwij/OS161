@@ -6,6 +6,7 @@
 #define _MACHINE_PCB_H_
 
 #include <machine/setjmp.h>
+#include <machine/trapframe.h>
 
 /* Size of kernel stacks (bytes) */
 #define STACK_SIZE  4096

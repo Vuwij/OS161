@@ -10,7 +10,7 @@ int sys_reboot(int code);
 /* Required. */
 int sys_exit(int code);
 int sys_execv(const char *prog, char *const *args);
-pid_t sys_fork(void);
+pid_t sys_fork(struct trapframe *tf);
 int sys_waitpid(pid_t pid, int *returncode, int flags);
 /* 
  * Open actually takes either two or three args: the optional third
@@ -27,7 +27,7 @@ int sys_sync(void);
 int sys_rmdir(const char *dirname);
 
 /* Recommended. */
-int sys_getpid(void);
+int sys_getpid(struct trapframe *tf);
 int sys_ioctl(int filehandle, int code, void *buf);
 int sys_lseek(int filehandle, off_t pos, int code);
 int sys_fsync(int filehandle);
