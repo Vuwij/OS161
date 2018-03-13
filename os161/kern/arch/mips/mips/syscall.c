@@ -227,33 +227,31 @@ sys_read(struct trapframe *tf) {
     return 0;
 }
 
-struct trapframe tfchild;
-
 static
 void
 child_fork(void *ptr, unsigned long nargs) {
     (void) ptr;
     (void) nargs;
-
-    /* Create a new address space and activate */
-    struct addrspace* addrspace2 = (struct addrspace*) ptr;
+    
+    unsigned* argv = (unsigned*) ptr;
+    struct addrspace* addrspace2 = (struct addrspace*) argv[0];
+    struct trapframe* tfchild = (struct trapframe*) argv[1];
+    
+    // Create a new address space and activate
     curthread->t_vmspace = addrspace2;
     if (curthread->t_vmspace == NULL) {
         panic("Child fork failed\n");
     }
-
     as_activate(curthread->t_vmspace);
-    
     assert(curspl == 0);
     
-    /* Create a new trapframe*/
-    struct trapframe tfchild2;
-    tfchild2 = tfchild;
-    tfchild2.tf_a3 = 0; // Return Value
-    tfchild2.tf_v0 = 0; // Error Signal
-    tfchild2.tf_epc += 4; // Advance Program Counter
-
+    // Create a new trapframe
+    tfchild->tf_a3 = 0; // Return Value
+    tfchild->tf_v0 = 0; // Error Signal
+    tfchild->tf_epc += 4; // Advance Program Counter
+    
     /* Warp to user mode. */
+    struct trapframe tfchild2 = *tfchild;
     mips_usermode(&tfchild2);
 
     /* md_usermode does not return */
@@ -262,12 +260,20 @@ child_fork(void *ptr, unsigned long nargs) {
 
 
 pid_t sys_fork(struct trapframe *tf) {
-    // Make a copy of the address space and trapframe
+    // Make a copy of the address space
     struct addrspace* addrchild = kmalloc(sizeof(struct addrspace));
-    memcpy(&tfchild, tf, sizeof(struct trapframe));
     as_copy(curthread->t_vmspace, &addrchild);
     
-    int result = thread_fork(strcat(curthread->t_name, " child"), addrchild , 1, child_fork, NULL);
+    // Make a copy of the trapframe
+    struct trapframe* tfchild = kmalloc(sizeof(struct trapframe));
+    memcpy(tfchild, tf, sizeof(struct trapframe));
+    
+    // Pass the arguments into argv
+    unsigned *argv = kmalloc(sizeof(unsigned) * 2);
+    argv[0] = (unsigned) addrchild;
+    argv[1] = (unsigned) tfchild;
+    
+    int result = thread_fork(curthread->t_name, argv, 2, child_fork, NULL);
     if (result) {
         kprintf("thread_fork failed: %s\n", strerror(result));
         return result;
