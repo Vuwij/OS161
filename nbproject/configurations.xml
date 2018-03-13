@@ -925,6 +925,17 @@
         <cTool flags="1">
         </cTool>
       </item>
+      <item path="os161/kern/lib/hashtable.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/lib</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
+          </incDir>
+        </cTool>
+      </item>
       <item path="os161/kern/lib/kgets.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
         </cTool>
@@ -935,6 +946,17 @@
       </item>
       <item path="os161/kern/lib/kprintf.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/linkedlist.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="1">
+          <incDir>
+            <pElem>os161/kern/lib</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
+          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/lib/misc.c" ex="false" tool="0" flavor2="2">
@@ -1202,10 +1224,10 @@
       <item path="os161/lib/libc/strcmp.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -1963,10 +1985,10 @@
       <item path="os161/kern/fs/vfs/vfslookup.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -2002,6 +2024,17 @@
         <cTool flags="1">
         </cTool>
       </item>
+      <item path="os161/kern/lib/hashtable.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/lib</pElem>
+            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST1</pElem>
+          </incDir>
+        </cTool>
+      </item>
       <item path="os161/kern/lib/kgets.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
         </cTool>
@@ -2012,6 +2045,17 @@
       </item>
       <item path="os161/kern/lib/kprintf.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
+        </cTool>
+      </item>
+      <item path="os161/kern/lib/linkedlist.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>os161/kern/lib</pElem>
+            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/include/kern</pElem>
+            <pElem>os161/kern/include</pElem>
+            <pElem>os161/kern/compile/ASST1</pElem>
+          </incDir>
         </cTool>
       </item>
       <item path="os161/kern/lib/misc.c" ex="false" tool="0" flavor2="2">
@@ -2127,10 +2171,10 @@
       <item path="os161/kern/thread/scheduler.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -2279,10 +2323,10 @@
       <item path="os161/lib/libc/strcmp.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
           <incDir>
-            <pElem>os161/kern/compile/ASST1/machine</pElem>
+            <pElem>os161/kern/compile/ASST2/machine</pElem>
             <pElem>os161/kern/include/kern</pElem>
             <pElem>os161/kern/include</pElem>
-            <pElem>os161/kern/compile/ASST1</pElem>
+            <pElem>os161/kern/compile/ASST2</pElem>
           </incDir>
         </cTool>
       </item>
@@ -2370,7 +2414,7 @@
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>/bin/csh build.sh</buildCommand>
+          <buildCommand>/bin/csh build_fast.sh</buildCommand>
           <cleanCommand>/bin/csh build.sh</cleanCommand>
           <executablePath></executablePath>
         </makeTool>
@@ -2896,6 +2940,10 @@
         <cTool flags="1">
         </cTool>
       </item>
+      <item path="os161/kern/include/hashtable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="os161/kern/include/linkedlist.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="os161/kern/lib/array.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
         </cTool>
@@ -2908,6 +2956,8 @@
         <cTool flags="1">
         </cTool>
       </item>
+      <item path="os161/kern/lib/hashtable.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="os161/kern/lib/kgets.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
         </cTool>
@@ -2919,6 +2969,8 @@
       <item path="os161/kern/lib/kprintf.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">
         </cTool>
+      </item>
+      <item path="os161/kern/lib/linkedlist.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="os161/kern/lib/misc.c" ex="false" tool="0" flavor2="2">
         <cTool flags="1">

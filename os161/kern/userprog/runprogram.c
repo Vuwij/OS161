@@ -43,7 +43,7 @@ runprogram(char *progname)
 		vfs_close(v);
 		return ENOMEM;
 	}
-
+        
 	/* Activate it. */
 	as_activate(curthread->t_vmspace);
         
@@ -64,7 +64,6 @@ runprogram(char *progname)
 		/* thread_exit destroys curthread->t_vmspace */
 		return result;
 	}
-
         
 	/* Warp to user mode. */
 	md_usermode(0 /*argc*/, NULL /*userspace addr of argv*/,

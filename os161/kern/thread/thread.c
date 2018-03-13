@@ -12,6 +12,8 @@
 #include <scheduler.h>
 #include <addrspace.h>
 #include <vnode.h>
+#include <linkedlist.h>
+#include <hashtable.h>
 #include "opt-synchprobs.h"
 
 /* States a thread can be in. */
@@ -58,9 +60,10 @@ thread_create(const char *name) {
 
     thread->t_cwd = NULL;
 
-    // If you add things to the thread structure, be sure to initialize
-    // them here.
-        
+    thread->parent_pid = 0;
+    thread->pid = 0;
+    thread->child_pid = NULL;
+    
     return thread;
 }
 
@@ -197,7 +200,10 @@ thread_bootstrap(void) {
 
     /* Number of threads starts at 1 */
     numthreads = 1;
-
+    
+    /* All pids are set to empty*/
+    ht_initialize(&pidlist);
+    
     /* Done */
     return me;
 }
@@ -292,7 +298,14 @@ thread_fork(const char *name,
      * existence.
      */
     numthreads++;
-
+    
+    /*
+     * Find the next valid PID for the thread
+     */
+    newguy->parent_pid = curthread->pid;                // Add parent to this
+    newguy->pid = ht_setempty(&pidlist);                // Find a new PID
+    push_begin(&curthread->child_pid, newguy->pid);     // Add this as child of parent
+    
     /* Done with stuff that needs to be atomic */
     splx(s);
 
