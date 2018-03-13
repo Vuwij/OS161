@@ -10,7 +10,6 @@
 #include <hashtable.h>
 #include <linkedlist.h>
 
-
 struct addrspace;
 
 struct thread {
