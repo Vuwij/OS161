@@ -30,4 +30,6 @@ int scheduler_preallocate(int numthreads);
 void scheduler_killall(void);
 void scheduler_shutdown(void);
 
+struct queue* get_run_queue(void);
+
 #endif /* _SCHEDULER_H_ */

@@ -138,3 +138,8 @@ print_run_queue(void)
 	
 	splx(spl);
 }
+
+struct queue*
+get_run_queue(void) {
+    return runqueue;
+}

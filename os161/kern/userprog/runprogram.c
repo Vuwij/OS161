@@ -22,7 +22,7 @@
  * Calls vfs_open on progname and thus may destroy it.
  */
 int
-runprogram(char *progname)
+runprogram(char *progname, int argc, char** argv)
 {
 	struct vnode *v;
 	vaddr_t entrypoint, stackptr;
@@ -64,7 +64,12 @@ runprogram(char *progname)
 		/* thread_exit destroys curthread->t_vmspace */
 		return result;
 	}
-
+        
+        //char** argv = ptr;
+        //kprintf("argc: %d\n", argc);
+        //kprintf("arg0: %s, len: %d\n",argv[0],strlen(argv[0]));
+        
+        //copyout(argv[0], stackptr, )
         
 	/* Warp to user mode. */
 	md_usermode(0 /*argc*/, NULL /*userspace addr of argv*/,
