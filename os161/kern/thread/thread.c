@@ -366,10 +366,11 @@ thread_join(const char *name) {
         struct queue* runqueue = get_run_queue();
 	i = q_getstart(runqueue);
         
+        // if you find the thread in the runqueue it means it hasn't exited
         while (i!=q_getend(runqueue)) {
             struct thread *t = q_getguy(runqueue, i);
-            if (strcmp(t->t_name, name) == 0) {
-                stillwaiting = 1;
+            if (strcmp(t->t_name, name) == 0) {     
+                stillwaiting = 1;       
             }
             i=(i+1)%q_getsize(runqueue);
 	}
