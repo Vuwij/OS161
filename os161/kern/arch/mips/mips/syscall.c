@@ -83,6 +83,8 @@ mips_syscall(struct trapframe *tf) {
             err = 0;
             break;
         case SYS_waitpid:
+            retval = sys_getpid(tf);
+            err = 0;
             break;
         case SYS_open:
             break;
@@ -102,6 +104,7 @@ mips_syscall(struct trapframe *tf) {
             break;
         case SYS_getpid:
             retval = sys_getpid(tf);
+            err = 0;
             break;
         case SYS_ioctl:
             break;
@@ -113,7 +116,9 @@ mips_syscall(struct trapframe *tf) {
             break;
         case SYS_fstat:
             break;
-
+        case SYS_execv:
+            err = sys_execv(tf);
+            
         default:
             kprintf("Unknown syscall %d\n", callno);
             err = ENOSYS;
@@ -230,7 +235,6 @@ sys_read(struct trapframe *tf) {
 static
 void
 child_fork(void *ptr, unsigned long nargs) {
-    (void) ptr;
     (void) nargs;
     
     unsigned* argv = (unsigned*) ptr;
@@ -250,7 +254,7 @@ child_fork(void *ptr, unsigned long nargs) {
     tfchild->tf_v0 = 0; // Error Signal
     tfchild->tf_epc += 4; // Advance Program Counter
     
-    /* Warp to user mode. */
+    // Warp to user mode.
     struct trapframe tfchild2 = *tfchild;
     mips_usermode(&tfchild2);
 
@@ -262,14 +266,17 @@ child_fork(void *ptr, unsigned long nargs) {
 pid_t sys_fork(struct trapframe *tf) {
     // Make a copy of the address space
     struct addrspace* addrchild = kmalloc(sizeof(struct addrspace));
-    as_copy(curthread->t_vmspace, &addrchild);
+    int err = as_copy(curthread->t_vmspace, &addrchild);
+    if(err) return ENOMEM;
     
     // Make a copy of the trapframe
     struct trapframe* tfchild = kmalloc(sizeof(struct trapframe));
     memcpy(tfchild, tf, sizeof(struct trapframe));
+    if(tfchild == NULL) return ENOMEM;
     
     // Pass the arguments into argv
     unsigned *argv = kmalloc(sizeof(unsigned) * 2);
+    if(argv == NULL) return ENOMEM;
     argv[0] = (unsigned) addrchild;
     argv[1] = (unsigned) tfchild;
     
@@ -282,7 +289,25 @@ pid_t sys_fork(struct trapframe *tf) {
     return 1; // Parent returns PID of child
 }
 
+/*
+ * getpid() system call.
+ *
+ */
 int sys_getpid(struct trapframe *tf) {
+    (void) tf;
+    return curthread->pid;
+}
+
+/*
+ * waitpid() system call.
+ *
+ */
+int sys_waitpid(struct trapframe *tf) {
+    pid_t pid = (pid_t) tf->tf_a0;
+    int *returncode = (int *) tf->tf_a1;
+    int flags = (int) tf->tf_a1;
+
+
     return curthread->pid;
 }
 
@@ -292,7 +317,12 @@ int sys_getpid(struct trapframe *tf) {
  */
 int
 sys_exit(int exit) {
-    kprintf("Thread exited\n");
+//    kprintf("Thread exited\n");
     thread_exit();
     return EINVAL; // Thread exits here
+}
+
+int
+sys_execv(struct trapframe *tf) {
+    
 }

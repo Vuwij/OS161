@@ -7,7 +7,7 @@ make
 
 #Kernel configuration
 cd kern/conf
-#./config ASST2
+./config ASST2
 cd ..
 cd compile/ASST2
 #make depend

@@ -305,6 +305,8 @@ file      lib/kheap.c
 file      lib/kprintf.c
 file      lib/kgets.c
 file      lib/misc.c
+file      lib/hashtable.c
+file      lib/linkedlist.c
 
 #
 # Standard C functions

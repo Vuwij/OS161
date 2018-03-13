@@ -7,6 +7,8 @@
 
 /* Get machine-dependent stuff */
 #include <machine/pcb.h>
+#include <hashtable.h>
+#include <linkedlist.h>
 
 struct addrspace;
 
@@ -24,9 +26,9 @@ struct thread {
 	/* Public thread members - can be used by other code      */
 	/**********************************************************/
 	
-        int pid;
-        int parent_pid;
-        int child_pid[1000];
+        unsigned pid;
+        unsigned parent_pid;
+        struct node *child_pid;
         
 	/*
 	 * This is public because it isn't part of the thread system,
@@ -41,6 +43,9 @@ struct thread {
 	 */
 	struct vnode *t_cwd;
 };
+
+/* List of PIDs*/
+struct htable pidlist;
 
 /* Call once during startup to allocate data structures. */
 struct thread *thread_bootstrap(void);

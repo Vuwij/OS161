@@ -43,7 +43,7 @@ runprogram(char *progname, int argc, char** argv)
 		vfs_close(v);
 		return ENOMEM;
 	}
-
+        
 	/* Activate it. */
 	as_activate(curthread->t_vmspace);
         

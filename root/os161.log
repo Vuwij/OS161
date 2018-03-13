@@ -4,10 +4,10 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #45)
+Jason's system version 0 (ASST2 #415)
 
 Cpu is MIPS r2000/r3000
-1884k physical memory available
+1880k physical memory available
 Device probe...
 lamebus0 (system main bus)
 emu0 at lamebus0
@@ -26,18 +26,13 @@ pseudorand0 (virtual)
 
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
-Operation took 0.000178680 seconds
+Waiting for program
+Finished
+Operation took 0.017569480 seconds
 OS/161 kernel [? for menu]: 1. writing to stdout... hello world!
 2. writing to stderr... (program name unknown): false warning!
-
 3. reading from stdin...
-P@r@e@s@s@ @E@n@t@e@r@:@ @f@a@i@l@ @t@o@ @r@e@a@d@ @n@e@w@l@i@n@e@ @o@r@ @c@a@r@r@i@a@g@e@ @r@e@t
-@u@r@n@ @f@r@o@m@ @s@t@d@i@n@ @(@g@o@t@OS/161 kernel [? for menu]:  @0@x@ffffffff)@
-@P@r@e@s@s@ @6@:@ @f@a@i@l@ @t@o@ @r@e@a@d@ @t@h@e@ @6@ @f@r@o@m@ @s@t@d@i@n@ @(@g@o@t@ @0@x@ffffffff)@
-@R@‡u@‡n@‡n@‡i@‡n@‡g@‡ @‡t@‡e@‡s@‡t@‡ @‡c@‡a@‡s@‡e@‡ @‡1.@‡.@‡.@‡ @‡cf@‡a@‡i@‡l@‡e@‡d@‡.@‡ @‡E@‡x@‡p@‡e@‡c@‡t@‡i@‡n@‡g@‡ @‡n@‡e@‡g@‡a@‡t@‡i@‡v@‡e@‡ @‡r@‡e@‡t@‡u@‡r@‡n@‡ @‡v@‡a@‡l@‡u@‡e@‡,@‡ @‡g@‡o@‡t@‡ @‡1.@‡
-@‡R@‡u@‡n@‡n@‡i@‡n@‡g@‡ @‡t@‡e@‡s@‡t@‡ @‡c@‡a@‡s@‡e@‡ @‡2.@‡.@‡.@‡ @‡hellof@‡a@‡i@‡l@‡e@‡d@‡.@‡ @‡E@‡x@‡p@‡e@‡c@‡t@‡i@‡n@‡g@‡ @‡n@‡e@‡g@‡a@‡t@‡i@‡v@‡e@‡ @‡r@‡e@‡t@‡u@‡r@‡n@‡ @‡v@‡a@‡l@‡u@‡e@‡,@‡ @‡g@‡o@‡t@‡ @‡5.@‡
-@‡R@‡u@‡n@‡n@‡i@‡n@‡g@‡ @‡t@‡e@‡s@‡t@‡ @‡c@‡a@‡s@‡e@‡ @‡3.@‡.@‡.@‡ @‡66
+Press Enter: 
 
-
-
-II
+OS/161 kernel [? for menu]: 66fail to read newline or carriage return from stdin (got 0x36)
+Press 6: 
