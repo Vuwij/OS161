@@ -8,7 +8,6 @@
 /* Get machine-dependent stuff */
 #include <machine/pcb.h>
 
-
 struct addrspace;
 
 struct thread {

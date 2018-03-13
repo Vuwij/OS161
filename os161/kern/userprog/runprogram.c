@@ -63,16 +63,29 @@ runprogram(char *progname, int argc, char** argv)
 	if (result) {
 		/* thread_exit destroys curthread->t_vmspace */
 		return result;
-	}
+	}        
         
-        //char** argv = ptr;
-        //kprintf("argc: %d\n", argc);
-        //kprintf("arg0: %s, len: %d\n",argv[0],strlen(argv[0]));
+        // array to hold user space addresses of the args
+        char* user_space_addr[argc];
         
-        //copyout(argv[0], stackptr, )
+        // copy args into user space stack
+        int i;        
+        for (i=argc-1; i>=0; i--) {
+           char* s = kstrdup(argv[i]);
+           s[strlen(s)] = '\0';
+           stackptr = stackptr - (strlen(s)+1);
+           user_space_addr[i] = stackptr;
+           copyout(s, stackptr, strlen(s)+1);
+        }
         
-	/* Warp to user mode. */
-	md_usermode(0 /*argc*/, NULL /*userspace addr of argv*/,
+        // align stack
+        stackptr = stackptr - (stackptr%4);
+        
+        // copy array of pointers to args to the user space
+        stackptr = stackptr - (argc*sizeof(char*));
+        copyout(user_space_addr, stackptr, sizeof(user_space_addr));
+        
+	md_usermode(argc /*argc*/, stackptr /*userspace addr of argv*/,
 		    stackptr, entrypoint);
 	
 	/* md_usermode does not return */

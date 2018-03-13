@@ -35,8 +35,6 @@ static struct array *zombies;
 /* Total number of outstanding threads. Does not count zombies[]. */
 static int numthreads;
 
-//extern struct queue *runqueue;
-
 /*
  * Create a thread. This is used both to create the first thread's 
  * thread structure and to create subsequent threads.
@@ -63,7 +61,7 @@ thread_create(const char *name) {
 
     // If you add things to the thread structure, be sure to initialize
     // them here.
-        
+     
     return thread;
 }
 
