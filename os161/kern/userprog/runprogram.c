@@ -22,7 +22,7 @@
  * Calls vfs_open on progname and thus may destroy it.
  */
 int
-runprogram(char *progname)
+runprogram(char *progname, int argc, char** argv)
 {
 	struct vnode *v;
 	vaddr_t entrypoint, stackptr;

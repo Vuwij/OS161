@@ -67,8 +67,11 @@ cmd_progthread(void *ptr, unsigned long nargs) {
     assert(strlen(args[0]) < sizeof (progname));
 
     strcpy(progname, args[0]);
-
-    result = runprogram(progname);
+    
+    //kprintf("arg0 size: %d\n",sizeof(char)*strlen(args[0]));
+    //kprintf("Running: %s\n", args[0]); 
+    
+    result = runprogram(progname, nargs, args);
     if (result) {
         kprintf("Running program %s failed: %s\n", args[0],
                 strerror(result));
@@ -109,6 +112,7 @@ common_prog(int nargs, char **args) {
     }
 
     kprintf("Waiting for program\n");
+    clocksleep(1);
     thread_join(args[0]);
     kprintf("Finished\n");
     

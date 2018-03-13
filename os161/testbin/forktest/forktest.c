@@ -32,7 +32,7 @@ dofork(void)
             warn("fork");
 	}
         if (pid == 0) {
-            printf("Thread created with PID: %d\n", mypid);
+            printf("Thread created with PID: %d\n", getpid());
         }
 	return pid;
 }
