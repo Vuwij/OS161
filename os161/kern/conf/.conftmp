@@ -1,0 +1,122 @@
+arch mips			
+defdevice       beep			dev/generic/beep.c
+defdevice	con			dev/generic/console.c
+defdevice       rtclock                 dev/generic/rtclock.c
+defdevice       random                  dev/generic/random.c
+defdevice	pseudorand		dev/generic/pseudorand.c
+pseudoattach    pseudorand
+defattach	random0 pseudorand0	dev/generic/pseudorand_att.c
+file        arch/mips/mips/cache_mips1.S	
+file        arch/mips/mips/exception.S		
+file        arch/mips/mips/lamebus_mips.c	
+file        arch/mips/mips/interrupt.c		
+file        arch/mips/mips/pcb.c		
+file        arch/mips/mips/ram.c		
+file        arch/mips/mips/spl.c		
+file        arch/mips/mips/start.S		
+file        arch/mips/mips/switch.S		
+file        arch/mips/mips/syscall.c		
+file        arch/mips/mips/threadstart.S	
+file        arch/mips/mips/trap.c		
+file        arch/mips/mips/tlb_mips1.S		
+file        ../lib/libc/mips-setjmp.S		
+file        lib/copyinout.c			
+defoption   dumbvm
+optfile     dumbvm  arch/mips/mips/dumbvm.c
+defdevice	lamebus			dev/lamebus/lamebus.c
+defdevice	ltimer			dev/lamebus/ltimer.c
+defattach	ltimer* lamebus*	dev/lamebus/ltimer_att.c
+defdevice	lrandom			dev/lamebus/lrandom.c
+defattach	lrandom* lamebus*	dev/lamebus/lrandom_att.c
+defdevice	lhd			dev/lamebus/lhd.c
+defattach	lhd* lamebus*		dev/lamebus/lhd_att.c
+defdevice	lser			dev/lamebus/lser.c
+defattach	lser* lamebus*		dev/lamebus/lser_att.c
+defdevice	lscreen			dev/lamebus/lscreen.c
+defattach	lscreen* lamebus*	dev/lamebus/lscreen_att.c
+defdevice	lnet			dev/lamebus/lnet.c
+defattach	lnet* lamebus*		dev/lamebus/lnet_att.c
+defdevice	ltrace			dev/lamebus/ltrace.c
+defattach	ltrace* lamebus*	dev/lamebus/ltrace_att.c
+defdevice	emu			dev/lamebus/emu.c
+defattach	emu* lamebus*		dev/lamebus/emu_att.c
+defattach	con0 lser*		dev/lamebus/con_lser.c
+defattach	con0 lscreen*		dev/lamebus/con_lscreen.c
+defattach	beep* ltimer*		dev/lamebus/beep_ltimer.c
+defattach       rtclock* ltimer*        dev/lamebus/rtclock_ltimer.c
+defattach	random0 lrandom*	dev/lamebus/random_lrandom.c
+file      lib/array.c
+file      lib/bitmap.c
+file      lib/queue.c
+file      lib/kheap.c
+file      lib/kprintf.c
+file      lib/kgets.c
+file      lib/misc.c
+file      lib/ntoh.c
+file      ../lib/libc/__printf.c
+file      ../lib/libc/snprintf.c
+file      ../lib/libc/atoi.c
+file      ../lib/libc/bzero.c
+file      ../lib/libc/memcpy.c
+file      ../lib/libc/memmove.c
+file      ../lib/libc/strcat.c
+file      ../lib/libc/strchr.c
+file      ../lib/libc/strcmp.c
+file      ../lib/libc/strcpy.c
+file      ../lib/libc/strlen.c
+file      ../lib/libc/strrchr.c
+file      ../lib/libc/strtok_r.c
+file      dev/init.c
+file      fs/vfs/device.c
+file      fs/vfs/vfscwd.c
+file      fs/vfs/vfslist.c
+file      fs/vfs/vfslookup.c
+file      fs/vfs/vfspath.c
+file      fs/vfs/vnode.c
+file      fs/vfs/devnull.c
+file      thread/hardclock.c
+file      thread/synch.c
+file      thread/scheduler.c
+file      thread/thread.c
+defoption dumbsynch
+file      main/main.c
+file      main/menu.c
+file      userprog/loadelf.c
+file      userprog/runprogram.c
+file      userprog/uio.c
+optofffile dumbvm   vm/addrspace.c
+defoption  net
+defoption sfs
+optfile   sfs    fs/sfs/sfs_fs.c
+optfile   sfs    fs/sfs/sfs_io.c
+optfile   sfs    fs/sfs/sfs_vnode.c
+defoption netfs
+defoption synchprobs
+optfile   synchprobs  asst1/catlock.c
+optfile   synchprobs  asst1/catsem.c
+optfile   synchprobs  asst1/stoplight.c
+file		test/arraytest.c
+file		test/bitmaptest.c
+file		test/queuetest.c
+file		test/threadtest.c
+file		test/tt3.c
+file		test/synchtest.c
+file		test/malloctest.c
+file		test/fstest.c
+optfile net	test/nettest.c
+debug				
+device lamebus0			
+device emu* at lamebus*		
+device ltrace* at lamebus*	
+device ltimer* at lamebus*	
+device lrandom* at lamebus*	
+device lhd* at lamebus*		
+device lser* at lamebus*	
+device beep0 at ltimer*		
+device con0 at lser*		
+device rtclock0 at ltimer*	
+device random0 at lrandom*	
+device pseudorand0		
+device random0 at pseudorand0	
+options sfs			
+options dumbvm			
