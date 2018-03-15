@@ -141,9 +141,10 @@ TEST_BEGIN(3)
         putchar('w');
         pid_c = dofork();
 
-        if (getpid() == pid_p)
+        if (getpid() == pid_p){
                 dowait(pid_c);
-
+        }
+        
         if (getpid() != pid_p) {
                 check();
                 putchar('e');

@@ -16,6 +16,7 @@
 #include <hashtable.h>
 #include "opt-synchprobs.h"
 #include <queue.h>
+#include <synch.h>
 
 /* States a thread can be in. */
 typedef enum {
@@ -205,6 +206,12 @@ thread_bootstrap(void) {
     /* All pids are set to empty*/
     ht_initialize(&pidlist);
     
+    /* initially no thread has exited */
+    initialize_exited_pids_array();
+    
+    wait_pid_sem = sem_create("wait_pid_sem",1);
+    pids_sem = sem_create("pids_sem",1);
+    
     /* Done */
     return me;
 }
@@ -341,7 +348,9 @@ thread_join(const char *name) {
     while(1) {
         
         thread_yield();
+
 //        kprintf("came back\n");
+
         
         int s = splhigh();
         
@@ -379,10 +388,11 @@ thread_join(const char *name) {
         struct queue* runqueue = get_run_queue();
 	i = q_getstart(runqueue);
         
+        // if you find the thread in the runqueue it means it hasn't exited
         while (i!=q_getend(runqueue)) {
             struct thread *t = q_getguy(runqueue, i);
-            if (strcmp(t->t_name, name) == 0) {
-                stillwaiting = 1;
+            if (strcmp(t->t_name, name) == 0) {     
+                stillwaiting = 1;       
             }
             i=(i+1)%q_getsize(runqueue);
 	}
@@ -519,7 +529,17 @@ thread_exit(void) {
         VOP_DECREF(curthread->t_cwd);
         curthread->t_cwd = NULL;
     }
-
+    
+    /*int pid = (int) curthread->pid;
+    P(wait_pid_sem);
+    exited_pids[pid].exited = 1;
+    struct semaphore *sem = exited_pids[pid].sem;
+    V(sem);        
+    V(wait_pid_sem);
+    //P(pids_sem);
+    //ht_remove(&pidlist, pid);
+    //V(pids_sem);*/
+    
     assert(numthreads > 0);
     numthreads--;
     mi_switch(S_ZOMB);
@@ -647,4 +667,13 @@ mi_threadstart(void *data1, unsigned long data2,
 
     /* Done. */
     thread_exit();
+}
+
+void initialize_exited_pids_array(void) {
+    int i;
+    for (i=1;i<10000;i++) {
+        exited_pids[i].exited = 0;
+        exited_pids[i].sem = NULL;
+    }
+    return;
 }
