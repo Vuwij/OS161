@@ -10,7 +10,7 @@ cd kern/conf
 ./config ASST2
 cd ..
 cd compile/ASST2
-#make depend
+make depend
 
 make
 make install
