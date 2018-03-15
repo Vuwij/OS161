@@ -176,7 +176,7 @@ void
 as_reset(struct addrspace *as)
 {
     if (as==NULL) {
-            return NULL;
+            return;
     }
     
     as->as_vbase1 = 0;
