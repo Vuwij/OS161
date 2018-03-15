@@ -209,8 +209,9 @@ thread_bootstrap(void) {
     /* initially no thread has exited */
     initialize_exited_pids_array();
     
+    initialize_exitcodes();
+    
     wait_pid_sem = sem_create("wait_pid_sem",1);
-    pids_sem = sem_create("pids_sem",1);
     
     /* Done */
     return me;
@@ -530,15 +531,20 @@ thread_exit(void) {
         curthread->t_cwd = NULL;
     }
     
-    /*int pid = (int) curthread->pid;
+    
+    int pid = (int) curthread->pid;
+    //kprintf("Exiting, pid: %d\n", pid);
     P(wait_pid_sem);
     exited_pids[pid].exited = 1;
-    struct semaphore *sem = exited_pids[pid].sem;
-    V(sem);        
+    exitcodes[pid] = 1;
+    if (exited_pids[pid].waiting_for_me == 1) {
+        struct semaphore *sem = exited_pids[pid].sem;
+        V(sem); 
+    }           
     V(wait_pid_sem);
     //P(pids_sem);
     //ht_remove(&pidlist, pid);
-    //V(pids_sem);*/
+    //V(pids_sem);
     
     assert(numthreads > 0);
     numthreads--;
@@ -673,7 +679,17 @@ void initialize_exited_pids_array(void) {
     int i;
     for (i=1;i<10000;i++) {
         exited_pids[i].exited = 0;
+        exited_pids[i].waiting_for_me = 0;
         exited_pids[i].sem = NULL;
+    }
+    return;
+}
+
+
+void initialize_exitcodes(void) {
+    int i;
+    for (i=1;i<10000;i++) {
+        exitcodes[i] = -1;
     }
     return;
 }

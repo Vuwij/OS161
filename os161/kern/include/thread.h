@@ -50,14 +50,20 @@ struct htable pidlist;
 /**********************************************/
 struct wait_pid {
     int exited;
+    int waiting_for_me;
     struct semaphore *sem;
+    //struct cv* pid_cv;
 };
 
-static struct wait_pid exited_pids[10000];
+struct wait_pid exited_pids[10000];
+
+int exitcodes[10000];
 
 void initialize_exited_pids_array(void);
 
-struct semaphore *wait_pid_sem, *pids_sem;
+void initialize_exitcodes(void);
+
+struct semaphore *wait_pid_sem;
 
 /***********************************************/
 

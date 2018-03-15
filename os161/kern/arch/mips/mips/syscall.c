@@ -89,7 +89,7 @@ mips_syscall(struct trapframe *tf) {
             break;
         case SYS_waitpid:
             err = sys_waitpid(tf);
-            retval = tf->tf_a1;
+            retval = tf->tf_a0;     // return pid
             break;
         case SYS_open:
             break;
@@ -163,7 +163,7 @@ mips_syscall(struct trapframe *tf) {
  */
 int
 sys_write(struct trapframe *tf) {
-    int filehandle = tf->tf_a0;
+    /*int filehandle = tf->tf_a0;
     char *buf = (char *) tf->tf_a1;
     int size = tf->tf_a2;
 
@@ -174,6 +174,43 @@ sys_write(struct trapframe *tf) {
     size_t actual;
     int err = copyinstr((const_userptr_t) buf, buf2, size + 1, &actual);
     if(err) return err;
+    kprintf("%s", buf2);
+    return 0;*/
+    
+    int filehandle = tf->tf_a0;
+    char *buf = (char *) tf->tf_a1;
+    int size = tf->tf_a2;
+
+    // Validate errors
+    if (filehandle != STDOUT_FILENO && filehandle != STDERR_FILENO) return EBADF;
+
+    // Stack Area
+    u_int32_t stacktop = USERSTACK;
+    u_int32_t sp = tf->tf_sp;
+
+    // Heap Area
+    u_int32_t heapbottom = curthread->t_vmspace->as_vbase1;
+    u_int32_t heaptop = curthread->t_vmspace->as_npages1 * PAGE_SIZE + heapbottom;
+
+    int valid = 0;
+
+    // Data in Stack
+    if ((u_int32_t) buf > (u_int32_t) sp && (u_int32_t) buf < (u_int32_t) stacktop) {
+        valid = 1;
+    }
+    // Data in Heap
+    if ((u_int32_t) buf > (u_int32_t) heapbottom && (u_int32_t) buf < (u_int32_t) heaptop) {
+        valid = 1;
+    }
+
+    if (!valid) {
+        kprintf("Buf 0x%x SP 0x%x\n", (int) buf, (int) sp);
+        return EFAULT;
+    }
+
+    char buf2[size / sizeof (char) + 1];
+    memcpy(buf2, buf, size);
+    buf2[size / sizeof (char)] = '\0';
     kprintf("%s", buf2);
     return 0;
 }
@@ -249,7 +286,7 @@ pid_t sys_fork(struct trapframe *tf) {
         return result;
     }
     
-    return 1; // Parent returns PID of child
+    return curthread->child_pid->val; // Parent returns PID of child
 }
 
 /*
@@ -269,27 +306,45 @@ int sys_waitpid(struct trapframe *tf) {
     pid_t pid = (pid_t) tf->tf_a0;
     int *returncode = (int *) tf->tf_a1;
     int flags = (int) tf->tf_a1;
-
+    
+    //kprintf("here\n");
+    //kprintf("my pid: %d, waiting for: %d\n", curthread->pid, pid);
+    
     if ((unsigned)pid == curthread->pid || (unsigned)pid == curthread->parent_pid) {
         return 0;
     }
-        
-    
+    //kprintf("after if, my pid: %d, waiting for: %d\n", curthread->pid, pid);  
+    //kprintf("sem: %d\n", wait_pid_sem->count);
+    //kprintf("exited: %d\n",exited_pids[pid].exited);
     //P(pids_sem);
-    /*P(wait_pid_sem);
+    P(wait_pid_sem);
     if (exited_pids[pid].exited == 0) {
         //V(pids_sem);
         //P(wait_pid_sem);
         struct semaphore *sem = sem_create("sem", 0);
+        //struct lock *lock = lock_create("pid_lock");
+        //struct cv* cv = cv_create("pid_cv");
         exited_pids[pid].sem = sem;
+        exited_pids[pid].waiting_for_me = 1;
+        //exited_pids[pid].pid_cv = cv;
         V(wait_pid_sem);
+        //kprintf("going to sleep! my pid: %d, waiting for: %d\n", curthread->pid, pid);
         P(sem);
+        //kprintf("woke up! my pid: %d, waiting for: %d\n", curthread->pid, pid);
+        //lock_acquire(lock);
+        //cv_wait(cv, lock);
         sem_destroy(sem);
         P(wait_pid_sem);
         exited_pids[pid].sem = NULL;
+        exitcodes[pid] = -1;
+        //exited_pids[pid].pid_cv = cv;
         V(wait_pid_sem);
+        return 0;
     }
-    V(wait_pid_sem);*/
+    V(wait_pid_sem);
+    
+    if (exitcodes[pid] == -1)    
+        return EINVAL;
     
     return 0;
 }
@@ -380,7 +435,7 @@ sys_execv(struct trapframe *tf) {
     }
 
     // array to hold user space addresses of the args
-    char* user_space_addr[argc];
+    char* user_space_addr[argc+1];
 
     // copy args into user space stack
     for (i = argc - 1; i >= 0; i--) {
@@ -390,12 +445,15 @@ sys_execv(struct trapframe *tf) {
         user_space_addr[i] = stackptr;
         copyout(s, stackptr, strlen(s) + 1);
     }
+    
+    // set last element to NULL
+    user_space_addr[argc] = NULL;
 
     // align stack
     stackptr = stackptr - (stackptr % 4);
 
     // copy array of pointers to args to the user space
-    stackptr = stackptr - (argc * sizeof (char*));
+    stackptr = stackptr - ((argc+1) * sizeof (char*));
     copyout(user_space_addr, stackptr, sizeof (user_space_addr));
 
     md_usermode(argc, stackptr, stackptr, entrypoint);
