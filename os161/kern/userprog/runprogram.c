@@ -22,80 +22,77 @@
  * Calls vfs_open on progname and thus may destroy it.
  */
 int
-runprogram(char *progname, int argc, char** argv)
-{
-	struct vnode *v;
-	vaddr_t entrypoint, stackptr;
-	int result;
+runprogram(char *progname, int argc, char** argv) {
+    struct vnode *v;
+    vaddr_t entrypoint, stackptr;
+    int result;
 
-	/* Open the file. */
-	result = vfs_open(progname, O_RDONLY, &v);
-	if (result) {
-		return result;
-	}
+    /* Open the file. */
+    result = vfs_open(progname, O_RDONLY, &v);
+    if (result) {
+        return result;
+    }
 
-	/* We should be a new thread. */
-	assert(curthread->t_vmspace == NULL);
-        
-	/* Create a new address space. */
-	curthread->t_vmspace = as_create();
-	if (curthread->t_vmspace==NULL) {
-		vfs_close(v);
-		return ENOMEM;
-	}
-        
-	/* Activate it. */
-	as_activate(curthread->t_vmspace);
-        
-	/* Load the executable. */
-	result = load_elf(v, &entrypoint);
-	if (result) {
-		/* thread_exit destroys curthread->t_vmspace */
-		vfs_close(v);
-		return result;
-	}
+    /* We should be a new thread. */
+    assert(curthread->t_vmspace == NULL);
 
-	/* Done with the file now. */
-	vfs_close(v);
-        
-	/* Define the user stack in the address space */
-	result = as_define_stack(curthread->t_vmspace, &stackptr);
-	if (result) {
-		/* thread_exit destroys curthread->t_vmspace */
-		return result;
-	}        
-        
-        // array to hold user space addresses of the args
-        char* user_space_addr[argc];
-        
-        // copy args into user space stack
-        int i;        
-        for (i=argc-1; i>=0; i--) {
-           char* s = kstrdup(argv[i]);
-           s[strlen(s)] = '\0';
-           stackptr = stackptr - (strlen(s)+1);
-           user_space_addr[i] = stackptr;
-           copyout(s, stackptr, strlen(s)+1);
-        }
-        
-        // align stack
-        stackptr = stackptr - (stackptr%4);
-        
-        // copy array of pointers to args to the user space
-        stackptr = stackptr - (argc*sizeof(char*));
-        copyout(user_space_addr, stackptr, sizeof(user_space_addr));
-        
-	md_usermode(argc /*argc*/, stackptr /*userspace addr of argv*/,
-		    stackptr, entrypoint);
-	
-	/* md_usermode does not return */
-	panic("md_usermode returned\n");
-	return EINVAL;
+    /* Create a new address space. */
+    curthread->t_vmspace = as_create();
+    if (curthread->t_vmspace == NULL) {
+        vfs_close(v);
+        return ENOMEM;
+    }
+
+    /* Activate it. */
+    as_activate(curthread->t_vmspace);
+
+    /* Load the executable. */
+    result = load_elf(v, &entrypoint);
+    if (result) {
+        /* thread_exit destroys curthread->t_vmspace */
+        vfs_close(v);
+        return result;
+    }
+
+    /* Done with the file now. */
+    vfs_close(v);
+
+    /* Define the user stack in the address space */
+    result = as_define_stack(curthread->t_vmspace, &stackptr);
+    if (result) {
+        /* thread_exit destroys curthread->t_vmspace */
+        return result;
+    }
+
+    // array to hold user space addresses of the args
+    char* user_space_addr[argc];
+
+    // copy args into user space stack
+    int i;
+    for (i = argc - 1; i >= 0; i--) {
+        char* s = kstrdup(argv[i]);
+        s[strlen(s)] = '\0';
+        stackptr = stackptr - (strlen(s) + 1);
+        user_space_addr[i] = stackptr;
+        copyout(s, stackptr, strlen(s) + 1);
+    }
+
+    // align stack
+    stackptr = stackptr - (stackptr % 4);
+
+    // copy array of pointers to args to the user space
+    stackptr = stackptr - (argc * sizeof (char*));
+    copyout(user_space_addr, stackptr, sizeof (user_space_addr));
+
+    md_usermode(argc, stackptr, stackptr, entrypoint);
+
+    /* md_usermode does not return */
+    panic("md_usermode returned\n");
+    return EINVAL;
 }
 
 int
-closeprogram(char *progname)
-{
+closeprogram(char *progname) {
     /* Ends and goes back to kernel mode*/
     return EINVAL;
 }

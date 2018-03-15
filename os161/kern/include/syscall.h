@@ -27,4 +27,8 @@ int sys_rename(const char *oldfile, const char *newfile);
 int sys_link(const char *oldfile, const char *newfile);
 int sys_chdir(const char *path);
 
+void syscall_bootstrap(void);
+
+extern struct lock *execv_lock;
+
 #endif /* _SYSCALL_H_ */

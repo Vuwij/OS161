@@ -74,6 +74,7 @@ boot(void) {
     dev_bootstrap();
     vm_bootstrap();
     kprintf_bootstrap();
+    syscall_bootstrap();
 
     /* Default bootfs - but ignore failure, in case emu0 doesn't exist */
     vfs_setbootfs("emu0");
