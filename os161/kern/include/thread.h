@@ -29,6 +29,7 @@ struct thread {
         unsigned pid;
         unsigned parent_pid;
         struct node *child_pid;
+        unsigned exitcode;
         
 	/*
 	 * This is public because it isn't part of the thread system,

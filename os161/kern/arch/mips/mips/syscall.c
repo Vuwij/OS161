@@ -319,7 +319,7 @@ int sys_waitpid(struct trapframe *tf) {
     //kprintf("exited: %d\n",exited_pids[pid].exited);
     //P(pids_sem);
     P(wait_pid_sem);
-    if (exited_pids[pid].exited == 0) {
+    if (exited_pids[pid].exited == -1) {
         //V(pids_sem);
         //P(wait_pid_sem);
         struct semaphore *sem = sem_create("sem", 0);
@@ -344,7 +344,7 @@ int sys_waitpid(struct trapframe *tf) {
     }
     V(wait_pid_sem);
     
-    if (exitcodes[pid] == -1)    
+    if (exited_pids[pid].exited == curthread->exitcode)    
         return EINVAL;
     
     return 0;
@@ -355,8 +355,19 @@ int sys_waitpid(struct trapframe *tf) {
  *
  */
 int
-sys_exit(int exit) {
+sys_exit(int exitcode) {
 //    kprintf("Thread exited\n");
+    
+    int pid = (int) curthread->pid;
+    //kprintf("Exiting, pid: %d\n", pid);
+    P(wait_pid_sem);
+    exited_pids[pid].exited = exitcode;
+    exitcodes[pid] = 1;
+    if (exited_pids[pid].waiting_for_me == 1) {
+        struct semaphore *sem = exited_pids[pid].sem;
+        V(sem); 
+    }           
+    V(wait_pid_sem);
     
     thread_exit();
     return EINVAL; // Thread exits here

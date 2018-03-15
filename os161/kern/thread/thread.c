@@ -65,6 +65,7 @@ thread_create(const char *name) {
     thread->parent_pid = 0;
     thread->pid = 0;
     thread->child_pid = NULL;
+    thread->exitcode = -1;
     
     return thread;
 }
@@ -532,16 +533,7 @@ thread_exit(void) {
     }
     
     
-    int pid = (int) curthread->pid;
-    //kprintf("Exiting, pid: %d\n", pid);
-    P(wait_pid_sem);
-    exited_pids[pid].exited = 1;
-    exitcodes[pid] = 1;
-    if (exited_pids[pid].waiting_for_me == 1) {
-        struct semaphore *sem = exited_pids[pid].sem;
-        V(sem); 
-    }           
-    V(wait_pid_sem);
+    
     //P(pids_sem);
     //ht_remove(&pidlist, pid);
     //V(pids_sem);

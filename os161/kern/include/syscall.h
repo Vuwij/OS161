@@ -6,7 +6,7 @@
  */
 
 int sys_reboot(int code);
-int sys_exit(int code);
+int sys_exit(int exitcode);
 int sys_execv(struct trapframe *tf);
 pid_t sys_fork(struct trapframe *tf);
 int sys_waitpid(struct trapframe *tf);
