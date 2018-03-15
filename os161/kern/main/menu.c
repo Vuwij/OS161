@@ -104,10 +104,6 @@ common_prog(int nargs, char **args) {
         return result;
     }
 
-    /*while(1) {
-        thread_yield();
-    }*/
-    
     kprintf("Waiting for program\n");
     clocksleep(1);
     thread_join(args[0]);

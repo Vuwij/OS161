@@ -349,7 +349,7 @@ thread_join(const char *name) {
         
         thread_yield();
 
-       kprintf("came back\n");
+//        kprintf("came back\n");
 
         
         int s = splhigh();
