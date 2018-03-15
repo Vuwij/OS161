@@ -170,10 +170,11 @@ sys_write(struct trapframe *tf) {
     // Validate errors
     if (filehandle != STDOUT_FILENO && filehandle != STDERR_FILENO) return EBADF;
 
-    char buf2[size / sizeof (char)];
+    char buf2[size + 1];
     size_t actual;
-    int err = copyinstr((const_userptr_t) buf, buf2, size + 1, &actual);
+    int err = copyinstr((const_userptr_t) buf, buf2, size + 5, &actual);
     if(err) return err;
+    buf2[size] = '\0';
     kprintf("%s", buf2);
     return 0;*/
     
@@ -222,7 +223,7 @@ sys_read(struct trapframe *tf) {
     size_t size = (size_t) tf->tf_a2;
 
     if (filehandle != STDIN_FILENO) return EBADF;
-
+    
     char kbuf = getch();
     size_t actual;
     int err = copyoutstr( &kbuf, (userptr_t) buf, size + 1, &actual);
@@ -363,7 +364,7 @@ sys_exit(int exit) {
 
 struct lock *execv_lock;
 
-#define MAX_ARG 100
+#define MAX_ARG 10
 
 int
 sys_execv(struct trapframe *tf) {
@@ -395,7 +396,7 @@ sys_execv(struct trapframe *tf) {
     
     // Open the program
     struct vnode *v;
-    int err = vfs_open(progname, O_RDONLY, &v);
+    int err = vfs_open(prognamek, O_RDONLY, &v);
     if(err) {
         kfree(prognamek);
         for (i = 0; i < MAX_ARG; ++i) {
