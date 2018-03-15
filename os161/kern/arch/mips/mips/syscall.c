@@ -168,33 +168,10 @@ sys_write(struct trapframe *tf) {
     // Validate errors
     if (filehandle != STDOUT_FILENO && filehandle != STDERR_FILENO) return EBADF;
 
-    // Stack Area
-    u_int32_t stacktop = USERSTACK;
-    u_int32_t sp = tf->tf_sp;
-
-    // Heap Area
-    u_int32_t heapbottom = curthread->t_vmspace->as_vbase1;
-    u_int32_t heaptop = curthread->t_vmspace->as_npages1 * PAGE_SIZE + heapbottom;
-
-    int valid = 0;
-
-    // Data in Stack
-    if ((u_int32_t) buf > (u_int32_t) sp && (u_int32_t) buf < (u_int32_t) stacktop) {
-        valid = 1;
-    }
-    // Data in Heap
-    if ((u_int32_t) buf > (u_int32_t) heapbottom && (u_int32_t) buf < (u_int32_t) heaptop) {
-        valid = 1;
-    }
-
-    if (!valid) {
-        kprintf("Buf 0x%x SP 0x%x\n", (int) buf, (int) sp);
-        return EFAULT;
-    }
-
-    char buf2[size / sizeof (char) + 1];
-    memcpy(buf2, buf, size);
-    buf2[size / sizeof (char)] = '\0';
+    char buf2[size / sizeof (char)];
+    size_t actual;
+    int err = copyinstr((const_userptr_t) buf, buf2, size + 1, &actual);
+    if(err) return err;
     kprintf("%s", buf2);
     return 0;
 }
@@ -203,36 +180,16 @@ int
 sys_read(struct trapframe *tf) {
     int filehandle = tf->tf_a0;
     char *buf = (char *) tf->tf_a1;
+    size_t size = (size_t) tf->tf_a2;
 
     if (filehandle != STDIN_FILENO) return EBADF;
 
-    // Stack Area
-    u_int32_t stacktop = USERSTACK;
-    u_int32_t sp = tf->tf_sp;
-
-    // Heap Area
-    u_int32_t heapbottom = curthread->t_vmspace->as_vbase1;
-    u_int32_t heaptop = curthread->t_vmspace->as_npages1 * PAGE_SIZE + heapbottom;
-
-    int valid = 0;
-
-    // Data in Stack
-    if ((u_int32_t) buf > (u_int32_t) sp && (u_int32_t) buf < (u_int32_t) stacktop) {
-        valid = 1;
-    }
-    // Data in Heap
-    if ((u_int32_t) buf > (u_int32_t) heapbottom && (u_int32_t) buf < (u_int32_t) heaptop) {
-        valid = 1;
-    }
-
-    if (!valid) {
-        kprintf("Buf 0x%x SP 0x%x\n", (int) buf, (int) sp);
-        return EFAULT;
-    }
-
-
-    *buf = getch();
-    putch(*buf);
+    char kbuf = getch();
+    size_t actual;
+    int err = copyoutstr( &kbuf, (userptr_t) buf, size + 1, &actual);
+    if(err) return err;
+    
+    putch(kbuf);
     return 0;
 }
 
