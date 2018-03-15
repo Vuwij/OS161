@@ -183,7 +183,7 @@ sys_read(struct trapframe *tf) {
     size_t size = (size_t) tf->tf_a2;
 
     if (filehandle != STDIN_FILENO) return EBADF;
-
+    
     char kbuf = getch();
     size_t actual;
     int err = copyoutstr( &kbuf, (userptr_t) buf, size + 1, &actual);

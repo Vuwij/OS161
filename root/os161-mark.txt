@@ -2,3 +2,4 @@ console, 15, 15
 add, 5, 5
 argtest, 6, 2
 forktest, 15, 0
+forkbomb, 9, 9
