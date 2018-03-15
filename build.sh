@@ -1,7 +1,7 @@
 cd os161/
 
 #Root configuration
-#./configure --ostree=$HOME/Documents/ECE344/root
+./configure --ostree=$HOME/Documents/ECE344/root
 make
 #cd ..
 

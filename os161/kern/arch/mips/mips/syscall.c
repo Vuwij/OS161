@@ -10,10 +10,13 @@
 #include <thread.h>
 #include <curthread.h>
 #include <vm.h>
-
+#include <kern/limits.h>
+#include <kern/../types.h>
+#include <vfs.h>
 #include "addrspace.h"
 #include <synch.h>
 #include <hashtable.h>
+
 
 /*
  * System call handler.
@@ -119,8 +122,9 @@ mips_syscall(struct trapframe *tf) {
         case SYS_fstat:
             break;
         case SYS_execv:
-            err = sys_execv(tf);
-            
+            retval = sys_execv(tf);
+            err = 0;
+            break;
         default:
             kprintf("Unknown syscall %d\n", callno);
             err = ENOSYS;
@@ -166,33 +170,10 @@ sys_write(struct trapframe *tf) {
     // Validate errors
     if (filehandle != STDOUT_FILENO && filehandle != STDERR_FILENO) return EBADF;
 
-    // Stack Area
-    u_int32_t stacktop = USERSTACK;
-    u_int32_t sp = tf->tf_sp;
-
-    // Heap Area
-    u_int32_t heapbottom = curthread->t_vmspace->as_vbase1;
-    u_int32_t heaptop = curthread->t_vmspace->as_npages1 * PAGE_SIZE + heapbottom;
-
-    int valid = 0;
-
-    // Data in Stack
-    if ((u_int32_t) buf > (u_int32_t) sp && (u_int32_t) buf < (u_int32_t) stacktop) {
-        valid = 1;
-    }
-    // Data in Heap
-    if ((u_int32_t) buf > (u_int32_t) heapbottom && (u_int32_t) buf < (u_int32_t) heaptop) {
-        valid = 1;
-    }
-
-    if (!valid) {
-        kprintf("Buf 0x%x SP 0x%x\n", (int) buf, (int) sp);
-        return EFAULT;
-    }
-
-    char buf2[size / sizeof (char) + 1];
-    memcpy(buf2, buf, size);
-    buf2[size / sizeof (char)] = '\0';
+    char buf2[size / sizeof (char)];
+    size_t actual;
+    int err = copyinstr((const_userptr_t) buf, buf2, size + 1, &actual);
+    if(err) return err;
     kprintf("%s", buf2);
     return 0;
 }
@@ -201,36 +182,16 @@ int
 sys_read(struct trapframe *tf) {
     int filehandle = tf->tf_a0;
     char *buf = (char *) tf->tf_a1;
+    size_t size = (size_t) tf->tf_a2;
 
     if (filehandle != STDIN_FILENO) return EBADF;
 
-    // Stack Area
-    u_int32_t stacktop = USERSTACK;
-    u_int32_t sp = tf->tf_sp;
-
-    // Heap Area
-    u_int32_t heapbottom = curthread->t_vmspace->as_vbase1;
-    u_int32_t heaptop = curthread->t_vmspace->as_npages1 * PAGE_SIZE + heapbottom;
-
-    int valid = 0;
-
-    // Data in Stack
-    if ((u_int32_t) buf > (u_int32_t) sp && (u_int32_t) buf < (u_int32_t) stacktop) {
-        valid = 1;
-    }
-    // Data in Heap
-    if ((u_int32_t) buf > (u_int32_t) heapbottom && (u_int32_t) buf < (u_int32_t) heaptop) {
-        valid = 1;
-    }
-
-    if (!valid) {
-        kprintf("Buf 0x%x SP 0x%x\n", (int) buf, (int) sp);
-        return EFAULT;
-    }
-
-
-    *buf = getch();
-    putch(*buf);
+    char kbuf = getch();
+    size_t actual;
+    int err = copyoutstr( &kbuf, (userptr_t) buf, size + 1, &actual);
+    if(err) return err;
+    
+    putch(kbuf);
     return 0;
 }
 
@@ -315,7 +276,7 @@ int sys_waitpid(struct trapframe *tf) {
         
     
     //P(pids_sem);
-    P(wait_pid_sem);
+    /*P(wait_pid_sem);
     if (exited_pids[pid].exited == 0) {
         //V(pids_sem);
         //P(wait_pid_sem);
@@ -328,7 +289,7 @@ int sys_waitpid(struct trapframe *tf) {
         exited_pids[pid].sem = NULL;
         V(wait_pid_sem);
     }
-    V(wait_pid_sem);
+    V(wait_pid_sem);*/
     
     return 0;
 }
@@ -345,7 +306,109 @@ sys_exit(int exit) {
     return EINVAL; // Thread exits here
 }
 
+struct lock *execv_lock;
+
+#define MAX_ARG 100
+
 int
 sys_execv(struct trapframe *tf) {
+    kprintf("Execv\n");
     
+    char *progname = (char *) tf->tf_a0;
+    char **argv = (char **) tf->tf_a1;
+//    
+    char *prognamek = kmalloc(sizeof(char) * PATH_MAX);
+    char **argvk = (char **) kmalloc(sizeof(char*) * MAX_ARG);
+    int i;
+    for (i = 0; i < MAX_ARG; ++i) {
+        argvk[i] = (char *) kmalloc(sizeof(char) * PATH_MAX);
+    }
+    
+    // Copy in the program name and arguments
+    size_t actual; 
+    if(copyinstr((const_userptr_t) progname, prognamek, PATH_MAX, &actual)) {
+        return EFAULT; // Bad program name
+    }
+    
+    i = 0;
+    while(1) {
+        copyinstr((const_userptr_t) argv[i], argvk[i], PATH_MAX, &actual);
+        if(argv[i] == NULL) break;
+        ++i;
+    }
+    int argc = i;
+    
+    // Open the program
+    struct vnode *v;
+    int err = vfs_open(progname, O_RDONLY, &v);
+    if(err) {
+        kfree(prognamek);
+        for (i = 0; i < MAX_ARG; ++i) {
+            kfree(argvk[i]);
+        }
+        kfree(argvk);
+        return err;
+    }
+    
+    // Reset the address space
+    as_reset(curthread->t_vmspace);
+    as_activate(curthread->t_vmspace);
+    
+    // Load file into address space
+    vaddr_t entrypoint, stackptr;
+    err = load_elf(v, &entrypoint);
+    if(err) {
+        kfree(prognamek);
+        for (i = 0; i < MAX_ARG; ++i) {
+            kfree(argvk[i]);
+        }
+        kfree(argvk);
+        return err;
+    }
+    
+    vfs_close(v);
+    
+    /* Define the user stack in the address space */
+    err = as_define_stack(curthread->t_vmspace, &stackptr);
+    if (err) {
+        kfree(prognamek);
+        for (i = 0; i < MAX_ARG; ++i) {
+            kfree(argvk[i]);
+        }
+        kfree(argvk);
+        return err;
+    }
+
+    // array to hold user space addresses of the args
+    char* user_space_addr[argc];
+
+    // copy args into user space stack
+    for (i = argc - 1; i >= 0; i--) {
+        char* s = kstrdup(argvk[i]);
+        s[strlen(s)] = '\0';
+        stackptr = stackptr - (strlen(s) + 1);
+        user_space_addr[i] = stackptr;
+        copyout(s, stackptr, strlen(s) + 1);
+    }
+
+    // align stack
+    stackptr = stackptr - (stackptr % 4);
+
+    // copy array of pointers to args to the user space
+    stackptr = stackptr - (argc * sizeof (char*));
+    copyout(user_space_addr, stackptr, sizeof (user_space_addr));
+
+    md_usermode(argc, stackptr, stackptr, entrypoint);
+    
+    return 0;
 }
+
+void syscall_bootstrap(void) {
+    if (execv_lock == NULL) {
+        execv_lock = lock_create("execv_lock");
+        if (execv_lock == NULL) {
+            panic("execv_lock: lock_create failed\n");
+        }
+    }
+}
+

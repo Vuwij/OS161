@@ -348,7 +348,9 @@ thread_join(const char *name) {
     while(1) {
         
         thread_yield();
-        //kprintf("came back\n");
+
+       kprintf("came back\n");
+
         
         int s = splhigh();
         
@@ -528,7 +530,7 @@ thread_exit(void) {
         curthread->t_cwd = NULL;
     }
     
-    int pid = (int) curthread->pid;
+    /*int pid = (int) curthread->pid;
     P(wait_pid_sem);
     exited_pids[pid].exited = 1;
     struct semaphore *sem = exited_pids[pid].sem;
@@ -536,7 +538,7 @@ thread_exit(void) {
     V(wait_pid_sem);
     //P(pids_sem);
     //ht_remove(&pidlist, pid);
-    //V(pids_sem);
+    //V(pids_sem);*/
     
     assert(numthreads > 0);
     numthreads--;

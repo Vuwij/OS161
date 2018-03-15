@@ -173,6 +173,22 @@ as_create(void)
 }
 
 void
+as_reset(struct addrspace *as)
+{
+    if (as==NULL) {
+            return NULL;
+    }
+    
+    as->as_vbase1 = 0;
+    as->as_pbase1 = 0;
+    as->as_npages1 = 0;
+    as->as_vbase2 = 0;
+    as->as_pbase2 = 0;
+    as->as_npages2 = 0;
+    as->as_stackpbase = 0;
+}
+
+void
 as_destroy(struct addrspace *as)
 {
 	kfree(as);
