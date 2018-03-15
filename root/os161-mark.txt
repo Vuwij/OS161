@@ -1,5 +1,6 @@
 console, 15, 15
 add, 5, 5
-argtest, 6, 2
+argtest, 6, 6
 forktest, 15, 0
-forkbomb, 9, 9
+forkbomb, 9, 0
+crash, 3, 3

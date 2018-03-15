@@ -71,6 +71,7 @@ runprogram(char *progname, int argc, char** argv) {
     int i;
     for (i = argc - 1; i >= 0; i--) {
         char* s = kstrdup(argv[i]);
+        int t = strlen(s);
         s[strlen(s)] = '\0';
         stackptr = stackptr - (strlen(s) + 1);
         user_space_addr[i] = stackptr;
