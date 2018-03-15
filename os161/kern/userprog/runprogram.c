@@ -66,7 +66,7 @@ runprogram(char *progname, int argc, char** argv)
 	}        
         
         // array to hold user space addresses of the args
-        char* user_space_addr[argc];
+        char* user_space_addr[argc+1];
         
         // copy args into user space stack
         int i;        
@@ -77,6 +77,9 @@ runprogram(char *progname, int argc, char** argv)
            user_space_addr[i] = stackptr;
            copyout(s, stackptr, strlen(s)+1);
         }
+        
+        // set last element to NULL
+        user_space_addr[argc] = NULL;
         
         // align stack
         stackptr = stackptr - (stackptr%4);

@@ -12,6 +12,8 @@
 #include <vm.h>
 
 #include "addrspace.h"
+#include <synch.h>
+#include <hashtable.h>
 
 /*
  * System call handler.
@@ -83,8 +85,8 @@ mips_syscall(struct trapframe *tf) {
             err = 0;
             break;
         case SYS_waitpid:
-            retval = sys_getpid(tf);
-            err = 0;
+            err = sys_waitpid(tf);
+            retval = tf->tf_a1;
             break;
         case SYS_open:
             break;
@@ -307,8 +309,28 @@ int sys_waitpid(struct trapframe *tf) {
     int *returncode = (int *) tf->tf_a1;
     int flags = (int) tf->tf_a1;
 
-
-    return curthread->pid;
+    if ((unsigned)pid == curthread->pid || (unsigned)pid == curthread->parent_pid) {
+        return 0;
+    }
+        
+    
+    //P(pids_sem);
+    P(wait_pid_sem);
+    if (exited_pids[pid].exited == 0) {
+        //V(pids_sem);
+        //P(wait_pid_sem);
+        struct semaphore *sem = sem_create("sem", 0);
+        exited_pids[pid].sem = sem;
+        V(wait_pid_sem);
+        P(sem);
+        sem_destroy(sem);
+        P(wait_pid_sem);
+        exited_pids[pid].sem = NULL;
+        V(wait_pid_sem);
+    }
+    V(wait_pid_sem);
+    
+    return 0;
 }
 
 /*
@@ -318,6 +340,7 @@ int sys_waitpid(struct trapframe *tf) {
 int
 sys_exit(int exit) {
 //    kprintf("Thread exited\n");
+    
     thread_exit();
     return EINVAL; // Thread exits here
 }

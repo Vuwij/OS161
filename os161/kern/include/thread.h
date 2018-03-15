@@ -47,6 +47,20 @@ struct thread {
 /* List of PIDs*/
 struct htable pidlist;
 
+/**********************************************/
+struct wait_pid {
+    int exited;
+    struct semaphore *sem;
+};
+
+static struct wait_pid exited_pids[10000];
+
+void initialize_exited_pids_array(void);
+
+struct semaphore *wait_pid_sem, *pids_sem;
+
+/***********************************************/
+
 /* Call once during startup to allocate data structures. */
 struct thread *thread_bootstrap(void);
 

@@ -141,11 +141,15 @@ TEST_BEGIN(3)
         putchar('w');
         pid_c = dofork();
 
-        if (getpid() == pid_p)
+        if (getpid() == pid_p){
                 dowait(pid_c);
-
+                printf("got tired of waiting");
+        }
+        
         if (getpid() != pid_p) {
+            printf("im here");
                 check();
+                printf("im here 2");
                 putchar('e');
                 exit(0);
         } 
