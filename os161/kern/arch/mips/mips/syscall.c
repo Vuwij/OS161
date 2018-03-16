@@ -244,13 +244,14 @@ pid_t sys_fork(struct trapframe *tf) {
     argv[0] = (unsigned) addrchild;
     argv[1] = (unsigned) tfchild;
     
-    int result = thread_fork(curthread->t_name, argv, 2, child_fork, NULL);
+    struct thread * childthread;
+    int result = thread_fork(curthread->t_name, argv, 2, child_fork, &childthread);
     if (result) {
         kprintf("thread_fork failed: %s\n", strerror(result));
         return result;
     }
     
-    return curthread->child_pid->val; // Parent returns PID of child
+    return childthread->pid; // Parent returns PID of child
 }
 
 /*
@@ -269,47 +270,55 @@ int sys_getpid(struct trapframe *tf) {
 int sys_waitpid(struct trapframe *tf) {
     pid_t pid = (pid_t) tf->tf_a0;
     int *returncode = (int *) tf->tf_a1;
-    int flags = (int) tf->tf_a1;
+    int flags = (int) tf->tf_a2;
     
-    //kprintf("here\n");
-    //kprintf("my pid: %d, waiting for: %d\n", curthread->pid, pid);
-    
+    // Cannot wait for current and parent PID
     if ((unsigned)pid == curthread->pid || (unsigned)pid == curthread->parent_pid) {
-        return 0;
+       return 0;
     }
-    //kprintf("after if, my pid: %d, waiting for: %d\n", curthread->pid, pid);  
-    //kprintf("sem: %d\n", wait_pid_sem->count);
-    //kprintf("exited: %d\n",exited_pids[pid].exited);
-    //P(pids_sem);
-    P(wait_pid_sem);
-    if (exited_pids[pid].exited == -1) {
-        //V(pids_sem);
-        //P(wait_pid_sem);
-        struct semaphore *sem = sem_create("sem", 0);
-        //struct lock *lock = lock_create("pid_lock");
-        //struct cv* cv = cv_create("pid_cv");
-        exited_pids[pid].sem = sem;
-        exited_pids[pid].waiting_for_me = 1;
-        //exited_pids[pid].pid_cv = cv;
-        V(wait_pid_sem);
-        //kprintf("going to sleep! my pid: %d, waiting for: %d\n", curthread->pid, pid);
-        P(sem);
-        //kprintf("woke up! my pid: %d, waiting for: %d\n", curthread->pid, pid);
-        //lock_acquire(lock);
-        //cv_wait(cv, lock);
-        sem_destroy(sem);
-        P(wait_pid_sem);
-        exited_pids[pid].sem = NULL;
-        exitcodes[pid] = -1;
-        //exited_pids[pid].pid_cv = cv;
-        V(wait_pid_sem);
-        return 0;
-    }
-    V(wait_pid_sem);
     
-    if (exited_pids[pid].exited == curthread->exitcode)    
+    // Can only wait for its old child
+    if (!exists(curthread->child_pid, pid))
         return EINVAL;
     
+    lock_acquire(pidtablelock);
+    
+    // Check if child PID is in PID table, if not, return
+    if(!ht_get_val(&pidlist, pid)) {
+        lock_release(pidtablelock);
+        return EINVAL;
+    }
+    
+    // Check if child PID has exited
+    if(exitcodes[pid] != -1) {
+        int childexitcode = exitcodes[pid];
+        exitcodes[pid] = -1;
+        ht_remove(&pidlist, pid);
+        remove_val(&curthread->child_pid, pid);
+        lock_release(pidtablelock);
+        
+        copyout( &childexitcode, (userptr_t) returncode, sizeof(int));
+        return 0;
+    }
+    
+    // Create the PID CV if it doesn't exist
+    if(waitpid[pid] == NULL) {
+        waitpid[pid] = cv_create("cv");
+    }
+    
+    // While the PID is still in the PID table
+    while(exitcodes[pid] == -1) {
+        cv_wait(waitpid[pid], pidtablelock);
+    }  
+    
+    lock_acquire(pidtablelock);
+    int childexitcode = exitcodes[pid];
+    exitcodes[pid] = -1;
+    ht_remove(&pidlist, pid);
+    remove_val(&curthread->child_pid, pid);
+    lock_release(pidtablelock);
+    
+    copyout( &childexitcode, (userptr_t) returncode, sizeof(int));
     return 0;
 }
 
@@ -319,24 +328,25 @@ int sys_waitpid(struct trapframe *tf) {
  */
 int
 sys_exit(int exitcode) {
-//    kprintf("Thread exited\n");
+
+    int pid = (int) curthread->pid;   
     
-    int pid = (int) curthread->pid;
-    //kprintf("Exiting, pid: %d\n", pid);
-    P(wait_pid_sem);
-    exited_pids[pid].exited = exitcode;
-    exitcodes[pid] = 1;
-    if (exited_pids[pid].waiting_for_me == 1) {
-        struct semaphore *sem = exited_pids[pid].sem;
-        V(sem); 
-    }           
-    V(wait_pid_sem);
+        
+    // Create an exit code
+    lock_acquire(pidtablelock);
+    exitcodes[curthread->pid] = exitcode;
+    
+    // Signal any sleeping threads
+    if(waitpid[curthread->pid] != NULL) {
+        lock_release(pidtablelock);
+        cv_broadcast(waitpid[curthread->pid], pidtablelock);
+    }
+    lock_release(pidtablelock);
     
     thread_exit();
-    return EINVAL; // Thread exits here
+    
+    return EINVAL;
 }
-
-struct lock *execv_lock;
 
 #define MAX_ARG 10
 
@@ -437,10 +447,4 @@ sys_execv(struct trapframe *tf) {
 }
 
 void syscall_bootstrap(void) {
-    if (execv_lock == NULL) {
-        execv_lock = lock_create("execv_lock");
-        if (execv_lock == NULL) {
-            panic("execv_lock: lock_create failed\n");
-        }
-    }
 }

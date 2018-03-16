@@ -197,7 +197,6 @@ cv_wait(struct cv *cv, struct lock *lock) {
     int s = splhigh();
     thread_sleep(cv);
     splx(s); 
-    
 }
 
 void

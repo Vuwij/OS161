@@ -28,7 +28,7 @@ int ht_setempty(struct htable *ht) {
 }
 
 int ht_remove(struct htable *ht, int id) {
-    if(ht->id[id] == 1) return -1;
+    if(ht->id[id] == 0) return -1;
     ht->id[id] = 0;
     return 0;
 }

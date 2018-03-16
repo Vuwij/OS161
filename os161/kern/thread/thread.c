@@ -206,13 +206,11 @@ thread_bootstrap(void) {
     
     /* All pids are set to empty*/
     ht_initialize(&pidlist);
-    
-    /* initially no thread has exited */
-    initialize_exited_pids_array();
-    
-    initialize_exitcodes();
-    
-    wait_pid_sem = sem_create("wait_pid_sem",1);
+    pidtablelock = lock_create("pidtablelock");
+    unsigned i;
+    for(i = 0; i < sizeof(exitcodes) / sizeof(int); ++i) {
+        exitcodes[i] = -1;
+    }
     
     /* Done */
     return me;
@@ -312,9 +310,13 @@ thread_fork(const char *name,
     /*
      * Find the next valid PID for the thread
      */
+    
+    lock_acquire(pidtablelock);
     newguy->parent_pid = curthread->pid;                // Add parent to this
     newguy->pid = ht_setempty(&pidlist);                // Find a new PID
-    push_begin(&curthread->child_pid, newguy->pid);     // Add this as child of parent
+    
+    push_end(&curthread->child_pid, newguy->pid);     // Add this as child of parent
+    lock_release(pidtablelock);
     
     /* Done with stuff that needs to be atomic */
     splx(s);
@@ -532,12 +534,6 @@ thread_exit(void) {
         curthread->t_cwd = NULL;
     }
     
-    
-    
-    //P(pids_sem);
-    //ht_remove(&pidlist, pid);
-    //V(pids_sem);
-    
     assert(numthreads > 0);
     numthreads--;
     mi_switch(S_ZOMB);
@@ -667,21 +663,3 @@ mi_threadstart(void *data1, unsigned long data2,
     thread_exit();
 }
 
-void initialize_exited_pids_array(void) {
-    int i;
-    for (i=1;i<10000;i++) {
-        exited_pids[i].exited = 0;
-        exited_pids[i].waiting_for_me = 0;
-        exited_pids[i].sem = NULL;
-    }
-    return;
-}
-
-
-void initialize_exitcodes(void) {
-    int i;
-    for (i=1;i<10000;i++) {
-        exitcodes[i] = -1;
-    }
-    return;
-}

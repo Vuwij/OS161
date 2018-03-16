@@ -10,7 +10,7 @@
  * Test case 3:
  *      result expected: wer
  * Test case 4:
- *      result expected: arcsp
+ *      result expected: asrcp
  * Test case 5:
  *      result expected: acp
  *
@@ -98,7 +98,7 @@ TEST_BEGIN(1)
         pid_p = getpid();
         putchar('w');
         pid_c = dofork();
-
+        
         if (getpid() == pid_p) {
                 check();
                 dowait(pid_c);

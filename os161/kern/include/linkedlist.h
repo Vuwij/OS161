@@ -8,7 +8,7 @@ struct node {
 
 void print_list(struct node * head);
 
-void push_end(struct node * head, int val);
+void push_end(struct node ** head, int val);
 
 void push_begin(struct node ** head, int val);
 
@@ -17,6 +17,10 @@ int pop(struct node ** head);
 int remove_last(struct node * head);
 
 int remove_by_index(struct node ** head, int n);
+
+int remove_val(struct node ** head, int val);
+
+int exists(struct node * head, int val);
 
 #endif /* LINKEDLIST_H */
 

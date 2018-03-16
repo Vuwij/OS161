@@ -11,8 +11,13 @@ void print_list(struct node * head) {
     }
 }
 
-void push_end(struct node * head, int val) {
-    struct node * current = head;
+void push_end(struct node ** head, int val) {
+    if(*head == NULL) {
+        push_begin(head, val);
+        return;
+    }
+    
+    struct node * current = *head;
     while (current->next != NULL) {
         current = current->next;
     }
@@ -30,6 +35,40 @@ void push_begin(struct node ** head, int val) {
     new_node->val = val;
     new_node->next = *head;
     *head = new_node;
+}
+
+int exists(struct node * head, int val) {
+    struct node * current = head;
+
+    while (current != NULL) {
+        if(current->val == val) return 1;
+        current = current->next;
+    }
+    
+    return 0;
+}
+
+int remove_val(struct node ** head, int val) {
+    struct node * current = *head;
+    
+    // If the first is in linked list
+    if(current->val == val) {
+        *head = current->next;
+        kfree(current);
+        return 1;
+    }
+    
+    while (current->next != NULL) {
+        if(current->next->val == val) {
+            struct node *next = current->next;
+            current->next = next->next;
+            kfree(next);
+            return 1;
+        }
+        current = current->next;
+    }
+    
+    return 0;
 }
 
 int pop(struct node ** head) {

@@ -47,24 +47,13 @@ struct thread {
 
 /* List of PIDs*/
 struct htable pidlist;
-
-/**********************************************/
-struct wait_pid {
-    int exited;
-    int waiting_for_me;
-    struct semaphore *sem;
-    //struct cv* pid_cv;
-};
-
-struct wait_pid exited_pids[10000];
-
+struct cv *waitpid[10000];
+struct lock *pidtablelock;
 int exitcodes[10000];
 
-void initialize_exited_pids_array(void);
+/**********************************************/
 
-void initialize_exitcodes(void);
 
-struct semaphore *wait_pid_sem;
 
 /***********************************************/
 
