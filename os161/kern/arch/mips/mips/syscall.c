@@ -269,11 +269,22 @@ int sys_getpid(struct trapframe *tf) {
 int sys_waitpid(struct trapframe *tf) {
     pid_t pid = (pid_t) tf->tf_a0;
     int *returncode = (int *) tf->tf_a1;
-    int flags = (int) tf->tf_a2;
+    int flags = (int *) tf->tf_a2;
+    
+    if(pid == 0)
+        return EINVAL;
+    
+    char test[4];
+    if(copyin((const_userptr_t) returncode, &test, 1)) {
+        return EFAULT;
+    }
+    
+    if(flags != 0)
+        return EINVAL;
     
     // Cannot wait for current and parent PID
     if ((unsigned)pid == curthread->pid || (unsigned)pid == curthread->parent_pid) {
-       return 0;
+       return EINVAL;
     }
     
     // Can only wait for its old child
@@ -379,10 +390,11 @@ sys_execv(struct trapframe *tf) {
     
     i = 0;
     while(1) {
-        if(copyinstr((const_userptr_t) argv[i], argvk[i], PATH_MAX, &actual)) {
+        if(argv[i] == NULL) break;
+        int err = copyinstr((const_userptr_t) argv[i], argvk[i], PATH_MAX, &actual);
+        if(err == EFAULT) {
             return EFAULT;
         }
-        if(argv[i] == NULL) break;
         ++i;
     }
     int argc = i;

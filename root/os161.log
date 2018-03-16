@@ -4,7 +4,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -43,15 +43,16 @@ Running test case 6... passed.
 Running test case 7... passed.
 Running test case 8... passed.
 Press any key 3 times in the next set of tests.
-Running test case 9...I passed.
-Running test case 10...I passed.
-Running test case 11... Ipassed.sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+Running test case 9... Ipassed.
+Running test case 10... Ipassed.
+Running test case 11... Ipassed.
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -71,16 +72,16 @@ lser0 at lamebus0
 con0 at lser0
 pseudorand0 (virtual)
 
-OS/161 kernel [? for menu]: p /testbin/os161testerprog 49953 47873
-p /testbin/os161testerprog 49953 47873
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 48323 14084
+p /testbin/os161testerprog 48323 14084
 Waiting for program
-Answer: 97826sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+Answer: 62407sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -113,7 +114,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -143,7 +144,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -169,12 +170,9 @@ Waiting for program
 thread_fork failed: Out of memory
 kmalloc: Subpage allocator couldn't get a page
 kmalloc: Subpage allocator couldn't get a page
-kmalloc: Subpage allocator couldn't get a page
-kmalloc: Subpage allocator couldn't get a page
 thread_fork failed: Out of memory
 thread_fork failed: Out of memory
-kmalloc: Subpage allocator couldn't get a page
-kmalloc: Subpage allocator couldn't get a page
+thread_fork failed: Out of memory
 kmalloc: Subpage allocator couldn't get a page
 kmalloc: Subpage allocator couldn't get a page
 thread_fork failed: Out of memory
@@ -182,14 +180,7 @@ thread_fork failed: Out of memory
 thread_fork failed: Out of memory
 kmalloc: Subpage allocator couldn't get a page
 kmalloc: Subpage allocator couldn't get a page
-kmalloc: Subpage allocator couldn't get a page
-kmalloc: Subpage allocator couldn't get a page
 thread_fork failed: Out of memory
-thread_fork failed: Out of memory
-kmalloc: Subpage allocator couldn't get a page
-kmalloc: Subpage allocator couldn't get a page
-kmalloc: Subpage allocator couldn't get a page
-kmalloc: Subpage allocator couldn't get a page
 thread_fork failed: Out of memory
 thread_fork failed: Out of memory
 kmalloc: Subpage allocator couldn't get a page
@@ -1317,13 +1308,20 @@ kmalloc: Subpage allocator couldn't get a page
 kmalloc: Subpage allocator couldn't get a page
 kmalloc: Subpage allocator couldn't get a page
 kmalloc: Subpage allocator couldn't get a page
-ksys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpsys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -1366,7 +1364,7 @@ Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose: aaFatal user mode trap 2 (TLB miss on load, epc 0x400100, vaddr 0x0)
 Finished
-Operation took 0.533879800 seconds
+Operation took 0.442821120 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1390,7 +1388,7 @@ Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose:b bFatal user mode trap 2 (TLB miss on load, epc 0x400118, vaddr 0x40000000)
 Finished
-Operation took 0.593714640 seconds
+Operation took 0.593920640 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1414,7 +1412,7 @@ Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose: ccFatal user mode trap 4 (Address error on load, epc 0x400130, vaddr 0x80000000)
 Finished
-Operation took 0.593886600 seconds
+Operation took 0.593660480 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1436,9 +1434,9 @@ Waiting for program
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
-Choose: ddFatal user mode trap 3 (TLB miss on store, epc 0x400148, vaddr 0x0)
+Choose:d dFatal user mode trap 3 (TLB miss on store, epc 0x400148, vaddr 0x0)
 Finished
-Operation took 0.593340600 seconds
+Operation took 0.593830480 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1462,7 +1460,7 @@ Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose: eeFatal user mode trap 3 (TLB miss on store, epc 0x400158, vaddr 0x40000000)
 Finished
-Operation took 0.593899960 seconds
+Operation took 0.583610960 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1486,7 +1484,7 @@ Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose: ggFatal user mode trap 5 (Address error on store, epc 0x400178, vaddr 0x80000000)
 Finished
-Operation took 0.593888960 seconds
+Operation took 0.593425640 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1508,9 +1506,9 @@ Waiting for program
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
-Choose: hhFatal user mode trap 2 (TLB miss on load, epc 0x40018c, vaddr 0x0)
+Choose:h hFatal user mode trap 2 (TLB miss on load, epc 0x40018c, vaddr 0x0)
 Finished
-Operation took 0.593600640 seconds
+Operation took 0.593804360 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1534,7 +1532,7 @@ Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose:i iFatal user mode trap 2 (TLB miss on load, epc 0x4001b0, vaddr 0x40000000)
 Finished
-Operation took 0.593823480 seconds
+Operation took 0.593665520 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1558,7 +1556,7 @@ Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose: jjFatal user mode trap 4 (Address error on load, epc 0x4001d4, vaddr 0x80000000)
 Finished
-Operation took 0.583690160 seconds
+Operation took 0.593498560 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1582,7 +1580,7 @@ Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose: kkFatal user mode trap 4 (Address error on load, epc 0x4001fc, vaddr 0x7fffff9d)
 Finished
-Operation took 0.493352480 seconds
+Operation took 0.593928880 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1606,7 +1604,7 @@ Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose:l lFatal user mode trap 10 (Illegal instruction, epc 0x4001ec, vaddr 0x0)
 Finished
-Operation took 0.593771120 seconds
+Operation took 0.583686120 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1628,9 +1626,9 @@ Waiting for program
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
-Choose:m mFatal user mode trap 9 (Break instruction, epc 0x400238, vaddr 0x0)
+Choose: mmFatal user mode trap 9 (Break instruction, epc 0x400238, vaddr 0x0)
 Finished
-Operation took 0.594112080 seconds
+Operation took 0.593588920 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -1652,13 +1650,13 @@ Waiting for program
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
-Choose:n nFatal user mode trap 9 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+Choose: nnFatal user mode trap 9 (Bsys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -1702,70 +1700,34 @@ Waiting for program
 Choose:c cc
 /testbin/os161testerprog: passed: wait for pid -8
 /testbin/os161testerprog: passed: wait for pid -1
-/testbin/os161testerprog: FAILURE: pid zero: Operation succeeded
+/testbin/os161testerprog: passed: pid zero
 /testbin/os161testerprog: passed: nonexistent pid
-/testbin/os161testerprog: FAILURE: wait with NULL status: Operation succeeded
-/testbin/os161testerprog: FAILURE: wait with invalid pointer status: Operation succeeded
-/testbin/os161testerprog: FAILURE: wait with kernel pointer status: Operation succeeded
+/testbin/os161testerprog: passed: wait with NULL status
+/testbin/os161testerprog: passed: wait with invalid pointer status
+/testbin/os161testerprog: passed: wait with kernel pointer status
 /testbin/os161testerprog: passed: wait with unaligned status: Operation succeeded
-/testbin/os161testerprog: FAILURE: wait with bad flags: Operation succeeded
-/testbin/os161testerprog: FAILURE: wait for self: Operation succeeded
-/testbin/os161testerprog: FAILURE: wait for parent (from child): Operation succeeded
+/testbin/os161testerprog: passed: wait with bad flags
+/testbin/os161testerprog: passed: wait for self
+/testbin/os161testerprog: passed: wait for parent (from child)
 /testbin/os161testerprog: passed: wait for parent test (from parent): Operation succeeded
-Choose: Finished
-Operation took 0.597735480 seconds
-OS/161 kernel [? for menu]: bbb
+Choose:b Fibnished
+Operation took 0.565802720 seconds
+OS/161 kernel [? for menu]: b
 /testbin/os161testerprog: passed: exec NULL
 /testbin/os161testerprog: passed: exec invalid pointer
 /testbin/os161testerprog: passed: exec kernel pointer
 /testbin/os161testerprog: passed: exec the empty string
 /testbin/os161testerprog: passed: exec /bin/true with NULL arglist
-panic: Fatal exception 2 (TLB miss on load) in kernel mode
-panic: EPC 0x8000ce10, exception vaddr 0x40000000
-sleep: Dropping thread <boot/menu>
-sleep: Dropping thread /testbin/os161testerprog
-panic: I can't handle this... I think I'll just die now...
-sys161: 1804908141 cycles (32680027k, 150533u, 1772077581i)
-sys161: 10133 irqs 1936 exns 0r/0w disk 30r/3099w console 10r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 72.092904 seconds (25.0359 mhz)
-sys161: Elapsed virtual time: 72.196325640 seconds (25 mhz)
-sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+/testbin/os161testerprog: passed: exec /bin/true with invalid pointer arglist
+/testbin/os161testerprog: passed: exec /bin/true with kernel pointer arglist
+/testbin/os161testerprog: passed: exec /bin/true with invalid pointer arg
+/testbin/os161testerprog: passed: exec /bin/true with kernel pointer argsys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
-
-Cpu is MIPS r2000/r3000
-1788k physical memory available
-Device probe...
-lamebus0 (system main bus)
-emu0 at lamebus0
-ltrace0 at lamebus0
-ltimer0 at lamebus0
-hardclock on ltimer0 (100 hz)
-beep0 at ltimer0
-rtclock0 at ltimer0
-lrandom0 at lamebus0
-random0 at lrandom0
-lhd0 at lamebus0
-lhd1 at lamebus0
-lser0 at lamebus0
-con0 at lser0
-pseudorand0 (virtual)
-
-OS/161 kernel [? for menu]: p /testbin/os161testerprog 
-p /testbin/os161testerprog 
-Waiting for program
-Answer: 1234567
-sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
-
-OS/161 base system version 1.11
-Copyright (c) 2000, 2001, 2002, 2003
-   President and Fellows of Harvard College.  All rights reserved.
-
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -1789,14 +1751,45 @@ OS/161 kernel [? for menu]: p /testbin/os161testerprog
 p /testbin/os161testerprog 
 Waiting for program
 Finished
-Operation took 0.523617840 seconds
-OSsys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+Operation took 0.101304320 seconds
+OS/161 kernel [? for menu]: Answer: 1234567sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
+
+Cpu is MIPS r2000/r3000
+1788k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (100 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+Finished
+Operation took 0.493297280 seconds
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -1829,7 +1822,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -1849,34 +1842,36 @@ lser0 at lamebus0
 con0 at lser0
 pseudorand0 (virtual)
 
-OS/161 kernel [? for menu]: p /testbin/os161testerprog box 5
-p /testbin/os161testerprog box 5
+OS/161 kernel [? for menu]: p /testbin/os161testerprog box 6
+p /testbin/os161testerprog box 6
 Waiting for program
-*****
-*****
-*****
+******
+******
+******
+******
+******
+******
 Finished
-Operation took 0.221794160 seconds
-OS/161 kernel [? for menu]: *****
-*****
-p /testbin/os161testerprog pyramid 3
-p /testbin/os161testerprog pyramid 3
+Operation took 1.006712400 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog pyramid 4
+p /testbin/os161testerprog pyramid 4
 Waiting for program
-  *
- ***
-*****
+   *
+  ***
 Finished
-Operation took 0.322388440 seconds
-OS/161 kernel [? for menu]: p /testbin/os161testerprog triangle 7
+Operation took 0.131797760 seconds
+OS/161 kernel [? for menu]:  *****
+*******
+p /testbin/os161testerprog triangle 7
 p /testbin/os161testerprog triangle 7
 Waiting for program
 *
-Finished
-Operation took 0.071046360 seconds
-OS/161 kernel [? for menu]: **
+**
 ***
 ****
-*****
+Finished
+Operation took 0.272165000 seconds
+OS/161 kernel [? for menu]: *****
 ******
 *******
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
@@ -1885,7 +1880,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #128)
+Jason's system version 0 (ASST2 #146)
 
 Cpu is MIPS r2000/r3000
 1788k physical memory available
@@ -1908,18 +1903,10 @@ pseudorand0 (virtual)
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
-12! +11! +10! +9! +8! +7! +panic: Fatal exception 2 (TLB miss on load) in kernel mode
-panic: EPC 0x80013b64, exception vaddr 0x0
-sleep: Dropping thread <boot/menu>
-sleep: Dropping thread /testbin/os161testerprog
-sleep: Dropping thread /testbin/os161testerprog
-sleep: Dropping thread /testbin/os161testerprog
-sleep: Dropping thread /testbin/os161testerprog
-sleep: Dropping thread /testbin/os161testerprog
-sleep: Dropping thread /testbin/os161testerprog
-scheduler: Dropping thread /testbin/os161testerprog.
-panic: I can't handle this... I think I'll just die now...
-sys161: 44024298 cycles (7338071k, 6164u, 36680063i)
-sys161: 925 irqs 117 exns 0r/0w disk 28r/1170w console 22r/0w/6m emufs 0r/0w net
-sys161: Elapsed real time: 1.669092 seconds (26.3762 mhz)
-sys161: Elapsed virtual time: 1.760971920 seconds (25 mhz)
+12! +/testbin/os161testerprog: 11: execv failed: Bad memory address
+11! +/testbin/os161testerprog: 10: execv failed: Bad memory address
+10! +/testbin/os161testerprog: 9: execv fai9! +/testbin/os161testerprog: 8: execv failed: Bad memory address
+led: Bad memory address
+8! +7! +6! +5! +4! +3! +2! +1! =Finished
+Operation took 0.533796840 seconds
+OS/161 kernel [? for menu]: 
