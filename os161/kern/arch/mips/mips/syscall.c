@@ -17,6 +17,7 @@
 #include <synch.h>
 #include <hashtable.h>
 
+#define MENU_CALL 1
 
 /*
  * System call handler.
@@ -266,9 +267,6 @@ int sys_getpid(struct trapframe *tf) {
  * waitpid() system call.
  *
  */
-
-#define KERNEL_CALL 1
-
 int sys_waitpid(struct trapframe *tf, int call) {
     pid_t pid = (pid_t) tf->tf_a0;
     int *returncode = (int *) tf->tf_a1;
@@ -277,7 +275,7 @@ int sys_waitpid(struct trapframe *tf, int call) {
     if(pid == 0)
         return EINVAL;
     
-    if (call != KERNEL_CALL) {
+    if (call != MENU_CALL) {
         char test[4];
         if(copyin((const_userptr_t) returncode, &test, 1)) {
             return EFAULT;
@@ -305,9 +303,9 @@ int sys_waitpid(struct trapframe *tf, int call) {
     }
     
     // Check if child PID has exited
-    if(exitcodes[pid] != -1) {
+    if(exitcodes[pid] != -1000) {
         int childexitcode = exitcodes[pid];
-        exitcodes[pid] = -1;
+        exitcodes[pid] = -1000;
         ht_remove(&pidlist, pid);
         remove_val(&curthread->child_pid, pid);
         lock_release(pidtablelock);
@@ -322,13 +320,13 @@ int sys_waitpid(struct trapframe *tf, int call) {
     }
     
     // While the PID is still in the PID table
-    while(exitcodes[pid] == -1) {
+    while(exitcodes[pid] == -1000) {
         cv_wait(waitpid[pid], pidtablelock);
     }  
     
     lock_acquire(pidtablelock);
     int childexitcode = exitcodes[pid];
-    exitcodes[pid] = -1;
+    exitcodes[pid] = -1000;
     ht_remove(&pidlist, pid);
     remove_val(&curthread->child_pid, pid);
     lock_release(pidtablelock);
@@ -362,13 +360,12 @@ sys_exit(int exitcode) {
     return EINVAL;
 }
 
-#define MAX_ARG 10
+#define MAX_ARG 15
 
 int
 sys_execv(struct trapframe *tf) {
     char *progname = (char *) tf->tf_a0;
-    char **argv = (char **) tf->tf_a1;
-//    
+    char **argv = (char **) tf->tf_a1;    
     char *prognamek = kmalloc(sizeof(char) * PATH_MAX);
     char **argvk = (char **) kmalloc(sizeof(char*) * MAX_ARG);
     int i;

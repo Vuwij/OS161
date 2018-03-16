@@ -70,7 +70,7 @@ cmd_progthread(void *ptr, unsigned long nargs) {
     if (result) {
         kprintf("Running program %s failed: %s\n", args[0],
                 strerror(result));
-        return;
+        sys_exit(0);    // if there is an error, exit
     }
 
     /* NOTREACHED: runprogram only returns on error. */
@@ -102,6 +102,7 @@ common_prog(int nargs, char **args) {
     result = thread_fork(args[0] /* thread name */,
             args /* thread arg */, nargs /* thread arg */,
             cmd_progthread, &childthread);
+
     if (result) {
         kprintf("thread_fork failed: %s\n", strerror(result));
         return result;
@@ -112,11 +113,7 @@ common_prog(int nargs, char **args) {
     tf->tf_a0 = childthread->pid;
     tf->tf_a1 = &x;
     tf->tf_a2 = 0;
-    sys_waitpid(tf,1);
-    //kprintf("Waiting for program\n");
-    //clocksleep(1);
-    //thread_join(args[0]);    
-    //kprintf("Finished\n");
+    sys_waitpid(tf,1);      // wait for the program to exit
     
 #if OPT_DUMBSYNCH
     clocksleep(5);

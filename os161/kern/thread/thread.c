@@ -209,7 +209,7 @@ thread_bootstrap(void) {
     pidtablelock = lock_create("pidtablelock");
     unsigned i;
     for(i = 0; i < sizeof(exitcodes) / sizeof(int); ++i) {
-        exitcodes[i] = -1;
+        exitcodes[i] = -1000;
     }
     
     /* Done */
