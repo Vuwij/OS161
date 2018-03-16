@@ -18,6 +18,8 @@
 #include "opt-sfs.h"
 #include "opt-net.h"
 #include "opt-dumbsynch.h"
+#include <machine/trapframe.h>
+#include <syscall.h>
 
 #define _PATH_SHELL "/bin/sh"
 
@@ -95,19 +97,26 @@ common_prog(int nargs, char **args) {
     kprintf("Warning: this probably won't work with a "
             "synchronization-problems kernel.\n");
 #endif
-
+    
+    struct thread * childthread;
     result = thread_fork(args[0] /* thread name */,
             args /* thread arg */, nargs /* thread arg */,
-            cmd_progthread, NULL);
+            cmd_progthread, &childthread);
     if (result) {
         kprintf("thread_fork failed: %s\n", strerror(result));
         return result;
     }
-
-    kprintf("Waiting for program\n");
-    clocksleep(1);
-    thread_join(args[0]);
-    kprintf("Finished\n");
+    
+    struct trapframe* tf = kmalloc(sizeof(struct trapframe));
+    int x;
+    tf->tf_a0 = childthread->pid;
+    tf->tf_a1 = &x;
+    tf->tf_a2 = 0;
+    sys_waitpid(tf,1);
+    //kprintf("Waiting for program\n");
+    //clocksleep(1);
+    //thread_join(args[0]);    
+    //kprintf("Finished\n");
     
 #if OPT_DUMBSYNCH
     clocksleep(5);

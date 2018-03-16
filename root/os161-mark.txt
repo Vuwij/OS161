@@ -8,5 +8,5 @@ badcall, 21, 21
 addexec, 10, 10
 exittest, 5, 5
 wait, 15, 15
-draw, 12, 4
+draw, 12, 12
 facts, 24, 0

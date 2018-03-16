@@ -88,7 +88,7 @@ mips_syscall(struct trapframe *tf) {
             err = 0;
             break;
         case SYS_waitpid:
-            err = sys_waitpid(tf);
+            err = sys_waitpid(tf,0);
             retval = tf->tf_a0;     // return pid
             break;
         case SYS_open:
@@ -266,7 +266,10 @@ int sys_getpid(struct trapframe *tf) {
  * waitpid() system call.
  *
  */
-int sys_waitpid(struct trapframe *tf) {
+
+#define KERNEL_CALL 1
+
+int sys_waitpid(struct trapframe *tf, int call) {
     pid_t pid = (pid_t) tf->tf_a0;
     int *returncode = (int *) tf->tf_a1;
     int flags = (int *) tf->tf_a2;
@@ -274,9 +277,11 @@ int sys_waitpid(struct trapframe *tf) {
     if(pid == 0)
         return EINVAL;
     
-    char test[4];
-    if(copyin((const_userptr_t) returncode, &test, 1)) {
-        return EFAULT;
+    if (call != KERNEL_CALL) {
+        char test[4];
+        if(copyin((const_userptr_t) returncode, &test, 1)) {
+            return EFAULT;
+        }
     }
     
     if(flags != 0)

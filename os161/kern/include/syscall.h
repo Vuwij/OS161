@@ -9,7 +9,7 @@ int sys_reboot(int code);
 int sys_exit(int exitcode);
 int sys_execv(struct trapframe *tf);
 pid_t sys_fork(struct trapframe *tf);
-int sys_waitpid(struct trapframe *tf);
+int sys_waitpid(struct trapframe *tf, int call);
 int sys_open(const char *filename, int flags, ...);
 int sys_read(struct trapframe *tf);
 int sys_write(struct trapframe *tf);
