@@ -1,34 +1,116 @@
-Running all tests for Assignment 1
-Running: /cad2/ece344s/tester/scripts/asst1-01-lock.py
-lock
-lock
-lock
-lock
-lock
-lock
-lock
-lock
-lock
-lock
+Running all tests for Assignment 2
+Running: /cad2/ece344s/tester/scripts/asst2-01-console.py
+console
 PASS
-Mark for lock is 10 out of 10
-
-Running: /cad2/ece344s/tester/scripts/asst1-02-cv.py
-condition variable
 PASS
-Mark for condition variable is 10 out of 10
-
-Running: /cad2/ece344s/tester/scripts/asst1-03-cat.py
-cat/mouse using semaphores
-TIMEOUT ERROR
-cat/mouse using locks
 PASS
-Mark for cat/mouse using locks is 25 out of 25
-
-Running: /cad2/ece344s/tester/scripts/asst1-04-stoplight.py
-stoplight
-maximum regions that were occupied = 2
 PASS
-Mark for stoplight is 50 out of 50
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+Mark for console is 15 out of 15
 
-You received 95 marks out of 95
+Running: /cad2/ece344s/tester/scripts/asst2-02-addtest.py
+add
+PASS
+Mark for add is 5 out of 5
+
+Running: /cad2/ece344s/tester/scripts/asst2-03-argtest.py
+argtest
+PASS
+PASS
+PASS
+Mark for argtest is 6 out of 6
+
+Running: /cad2/ece344s/tester/scripts/asst2-04-forktest.py
+forktest
+PASS
+Mark for forktest is 15 out of 15
+
+Running: /cad2/ece344s/tester/scripts/asst2-05-forkbomb.py
+forkbomb
+PASS
+Mark for forkbomb is 9 out of 9
+
+Running: /cad2/ece344s/tester/scripts/asst2-06-crash.py
+crash
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+Mark for crash is 13 out of 13
+
+Running: /cad2/ece344s/tester/scripts/asst2-07-badcall.py
+badcall
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+PASS
+Mark for badcall is 21 out of 21
+
+Running: /cad2/ece344s/tester/scripts/asst2-08-addexec.py
+addexec
+PASS
+Mark for addexec is 10 out of 10
+
+Running: /cad2/ece344s/tester/scripts/asst2-09-exittest.py
+exittest
+PASS
+Mark for exittest is 5 out of 5
+
+Running: /cad2/ece344s/tester/scripts/asst2-10-wait.py
+wait
+PASS
+PASS
+PASS
+PASS
+PASS
+Mark for wait is 15 out of 15
+
+Running: /cad2/ece344s/tester/scripts/asst2-11-draw.py
+draw
+PASS
+PASS
+PASS
+Mark for draw is 12 out of 12
+
+Running: /cad2/ece344s/tester/scripts/asst2-12-facts.py
+facts
+PASS
+Mark for facts is 24 out of 24
+
+You received 150 marks out of 150

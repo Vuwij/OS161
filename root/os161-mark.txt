@@ -1,1 +1,12 @@
 console, 15, 15
+add, 5, 5
+argtest, 6, 6
+forktest, 15, 15
+forkbomb, 9, 9
+crash, 13, 13
+badcall, 21, 21
+addexec, 10, 10
+exittest, 5, 5
+wait, 15, 15
+draw, 12, 12
+facts, 24, 24
