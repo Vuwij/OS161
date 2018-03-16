@@ -73,7 +73,7 @@ copyfail(void)
  *
  * Assumes userspace runs from 0 through USERTOP-1.
  */
-static
+
 int
 copycheck(const_userptr_t userptr, size_t len, size_t *stoplen)
 {

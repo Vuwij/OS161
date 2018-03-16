@@ -186,6 +186,7 @@ u_int64_t htonll(u_int64_t);
  * These functions are machine-dependent.
  */
  
+int copycheck(const_userptr_t userptr, size_t len, size_t *stoplen);
 int copyin(const_userptr_t usersrc, void *dest, size_t len);
 int copyout(const void *src, userptr_t userdest, size_t len);
 int copyinstr(const_userptr_t usersrc, char *dest, size_t len, size_t *got);

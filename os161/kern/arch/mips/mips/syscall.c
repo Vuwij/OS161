@@ -122,8 +122,7 @@ mips_syscall(struct trapframe *tf) {
         case SYS_fstat:
             break;
         case SYS_execv:
-            retval = sys_execv(tf);
-            err = 0;
+            err = sys_execv(tf);
             break;
         default:
             kprintf("Unknown syscall %d\n", callno);
@@ -331,7 +330,6 @@ sys_exit(int exitcode) {
 
     int pid = (int) curthread->pid;   
     
-        
     // Create an exit code
     lock_acquire(pidtablelock);
     exitcodes[curthread->pid] = exitcode;
@@ -352,8 +350,6 @@ sys_exit(int exitcode) {
 
 int
 sys_execv(struct trapframe *tf) {
-    kprintf("Execv\n");
-    
     char *progname = (char *) tf->tf_a0;
     char **argv = (char **) tf->tf_a1;
 //    
@@ -370,13 +366,27 @@ sys_execv(struct trapframe *tf) {
         return EFAULT; // Bad program name
     }
     
+    if(strcmp(prognamek, "") == 0)
+        return EINVAL;
+    
+    if(argv == NULL)
+        return EFAULT;
+    
+    char test[4];
+    if(copyin((const_userptr_t) argv, &test, 1)) {
+        return EFAULT;
+    }
+    
     i = 0;
     while(1) {
-        copyinstr((const_userptr_t) argv[i], argvk[i], PATH_MAX, &actual);
+        if(copyinstr((const_userptr_t) argv[i], argvk[i], PATH_MAX, &actual)) {
+            return EFAULT;
+        }
         if(argv[i] == NULL) break;
         ++i;
     }
     int argc = i;
+    
     
     // Open the program
     struct vnode *v;

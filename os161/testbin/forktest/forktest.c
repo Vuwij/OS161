@@ -31,9 +31,6 @@ dofork(void)
 	if (pid < 0) {
             warn("fork");
 	}
-        if (pid == 0) {
-            printf("Thread created with PID: %d\n", getpid());
-        }
 	return pid;
 }
 
@@ -113,16 +110,16 @@ test(int nowait)
 	 */
 
 	pid0 = dofork();
-//	putchar('0');
+	putchar('0');
 	check();
 	pid1 = dofork();
-//	putchar('1');
+	putchar('1');
 	check();
 	pid2 = dofork();
-//	putchar('2');
+	putchar('2');
 	check();
 	pid3 = dofork();
-//	putchar('3');
+	putchar('3');
 	check();
 
 	/*
@@ -153,6 +150,6 @@ main(int argc, char *argv[])
     
 	test(nowait);
 
-//	warnx("Complete.");
+	warnx("Complete.");
 	return 0;
 }

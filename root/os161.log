@@ -4,10 +4,10 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #41)
+Jason's system version 0 (ASST2 #128)
 
 Cpu is MIPS r2000/r3000
-228k physical memory available
+1788k physical memory available
 Device probe...
 lamebus0 (system main bus)
 emu0 at lamebus0
@@ -28,12 +28,12 @@ OS/161 kernel [? for menu]: p /testbin/os161testerprog
 p /testbin/os161testerprog 
 Waiting for program
 1. writing to stdout... hello world!
-2. writing to stderr... /testbin/os161testerprog: false warning!
-
+2. writing to stderr... /testbin/os161testerprog: false warning
+!
 3. reading from stdin...
 Press Enter: 
-passed.
-6Press 6: 6passed.
+passed.6
+Press 6: 6passed.
 Running test case 1... passed.
 Running test case 2... passed.
 Running test case 3... passed.
@@ -43,19 +43,18 @@ Running test case 6... passed.
 Running test case 7... passed.
 Running test case 8... passed.
 Press any key 3 times in the next set of tests.
-Running test case 9... Ipassed.
-Running test case 10... Ipassed.
-Running test case 11...I passed.
-sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+Running test case 9...I passed.
+Running test case 10...I passed.
+Running test case 11... Ipassed.sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #41)
+Jason's system version 0 (ASST2 #128)
 
 Cpu is MIPS r2000/r3000
-228k physical memory available
+1788k physical memory available
 Device probe...
 lamebus0 (system main bus)
 emu0 at lamebus0
@@ -72,20 +71,19 @@ lser0 at lamebus0
 con0 at lser0
 pseudorand0 (virtual)
 
-OS/161 kernel [? for menu]: p /testbin/os161testerprog 33549 22290
-p /testbin/os161testerprog 33549 22290
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 49953 47873
+p /testbin/os161testerprog 49953 47873
 Waiting for program
-Answer: 55839
-sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+Answer: 97826sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #41)
+Jason's system version 0 (ASST2 #128)
 
 Cpu is MIPS r2000/r3000
-228k physical memory available
+1788k physical memory available
 Device probe...
 lamebus0 (system main bus)
 emu0 at lamebus0
@@ -107,60 +105,18 @@ p /testbin/os161testerprog test
 Waiting for program
 argc: 2
 argv[0]: /testbin/os161testerprog
-argv[1]: testsys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
-
-OS/161 base system version 1.11
-Copyright (c) 2000, 2001, 2002, 2003
-   President and Fellows of Harvard College.  All rights reserved.
-
-Jason's system version 0 (ASST2 #41)
-
-Cpu is MIPS r2000/r3000
-228k physical memory available
-Device probe...
-lamebus0 (system main bus)
-emu0 at lamebus0
-ltrace0 at lamebus0
-ltimer0 at lamebus0
-hardclock on ltimer0 (100 hz)
-beep0 at ltimer0
-rtclock0 at ltimer0
-lrandom0 at lamebus0
-random0 at lrandom0
-lhd0 at lamebus0
-lhd1 at lamebus0
-lser0 at lamebus0
-con0 at lser0
-pseudorand0 (virtual)
-
-OS/161 kernel [? for menu]: p /testbin/os161testerprog 
-p /testbin/os161testerprog 
-Waiting for program
-Finished
-Operation took 0.030939920 seconds
-OS/161 kernel [? for menu]: /testbin/os161testerprog: Starting.
-Thread created with PID: 2
-Thread created with PID: 3
-/testbin/os161testerprog: pid 4: exit 1
-/testbin/os161testerprog: pid 4: exit 1
-/testbin/os161testerprog: pid /testbin/os161testerprog: pid 4: exit 2
-/testbin/os161testerprog: pid 4: exit 2
-/testbin/os161testerprog: pid 1: exit 2
-/testbin/os161testerprog: pid 4: exit 3
-/testbin/os161testerprog: pid 4: exit 3
-4: exit 1
-/testbin/os161testerprog: pid 1: exit 1
-
+argv[1]: test
+argv[2]: [NULL]
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #41)
+Jason's system version 0 (ASST2 #128)
 
 Cpu is MIPS r2000/r3000
-228k physical memory available
+1788k physical memory available
 Device probe...
 lamebus0 (system main bus)
 emu0 at lamebus0
@@ -180,18 +136,1197 @@ pseudorand0 (virtual)
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
-Finished
-Operation took 0.020993400 seconds
-OS/161 kernel [? for menu]: sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+/testbin/os161testerprog: Starting.
+001111222222223333333333333333sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST2 #41)
+Jason's system version 0 (ASST2 #128)
 
 Cpu is MIPS r2000/r3000
-228k physical memory available
+1788k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (100 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+thread_fork failed: Out of memory
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+thread_fork failed: Out of memory
+thread_fork failed: Out of memory
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+thread_fork failed: Out of memory
+thread_fork failed: Out of memory
+thread_fork failed: Out of memory
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+thread_fork failed: Out of memory
+thread_fork failed: Out of memory
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+thread_fork failed: Out of memory
+thread_fork failed: Out of memory
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+thread_fork failed: Out of memory
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+ksys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST2 #128)
+
+Cpu is MIPS r2000/r3000
+1788k physical memory available
 Device probe...
 lamebus0 (system main bus)
 emu0 at lamebus0
@@ -231,7 +1366,7 @@ Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose: aaFatal user mode trap 2 (TLB miss on load, epc 0x400100, vaddr 0x0)
 Finished
-Operation took 0.965597760 seconds
+Operation took 0.533879800 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -253,9 +1388,9 @@ Waiting for program
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
-Choose: bbFatal user mode trap 2 (TLB miss on load, epc 0x400118, vaddr 0x40000000)
+Choose:b bFatal user mode trap 2 (TLB miss on load, epc 0x400118, vaddr 0x40000000)
 Finished
-Operation took 0.895534160 seconds
+Operation took 0.593714640 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
@@ -277,13 +1412,514 @@ Waiting for program
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
-Choose: cFinished
-Operation took 0.201734440 seconds
-OS/161 kernel [? for menu]: cFatal user mode trap 4 (Address error on load, epc 0x400130, vaddr 0x80000000)
-p /testbin/os161testerprog 
+Choose: ccFatal user mode trap 4 (Address error on load, epc 0x400130, vaddr 0x80000000)
+Finished
+Operation took 0.593886600 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Waiting for program
-Running program /testbin/os161testerprog failed: Out of memory
+[a] read from NULL
+[b] read from invalid address
+[c] read from kernel address
+[d] write to NULL
+[e] write to invalid address
+[f] write to code segment
+[g] write to kernel address
+[h] jump to NULL
+[i] jump to invalid address
+[j] jump to kernel address
+[k] alignment error
+[l] illegal instruction
+[m] divide by zero
+[n] mod by zero
+[o] Recurse infinitely
+[*] Run everything (in subprocesses)
+Note: [f] may not cause an exception on some platforms, in which
+case it'll appear to fail.
+Choose: ddFatal user mode trap 3 (TLB miss on store, epc 0x400148, vaddr 0x0)
 Finished
-Operation took 0.945730120 seconds
-OS/161 kernel [? for menu]: dd
+Operation took 0.593340600 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+[a] read from NULL
+[b] read from invalid address
+[c] read from kernel address
+[d] write to NULL
+[e] write to invalid address
+[f] write to code segment
+[g] write to kernel address
+[h] jump to NULL
+[i] jump to invalid address
+[j] jump to kernel address
+[k] alignment error
+[l] illegal instruction
+[m] divide by zero
+[n] mod by zero
+[o] Recurse infinitely
+[*] Run everything (in subprocesses)
+Note: [f] may not cause an exception on some platforms, in which
+case it'll appear to fail.
+Choose: eeFatal user mode trap 3 (TLB miss on store, epc 0x400158, vaddr 0x40000000)
+Finished
+Operation took 0.593899960 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+[a] read from NULL
+[b] read from invalid address
+[c] read from kernel address
+[d] write to NULL
+[e] write to invalid address
+[f] write to code segment
+[g] write to kernel address
+[h] jump to NULL
+[i] jump to invalid address
+[j] jump to kernel address
+[k] alignment error
+[l] illegal instruction
+[m] divide by zero
+[n] mod by zero
+[o] Recurse infinitely
+[*] Run everything (in subprocesses)
+Note: [f] may not cause an exception on some platforms, in which
+case it'll appear to fail.
+Choose: ggFatal user mode trap 5 (Address error on store, epc 0x400178, vaddr 0x80000000)
+Finished
+Operation took 0.593888960 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+[a] read from NULL
+[b] read from invalid address
+[c] read from kernel address
+[d] write to NULL
+[e] write to invalid address
+[f] write to code segment
+[g] write to kernel address
+[h] jump to NULL
+[i] jump to invalid address
+[j] jump to kernel address
+[k] alignment error
+[l] illegal instruction
+[m] divide by zero
+[n] mod by zero
+[o] Recurse infinitely
+[*] Run everything (in subprocesses)
+Note: [f] may not cause an exception on some platforms, in which
+case it'll appear to fail.
+Choose: hhFatal user mode trap 2 (TLB miss on load, epc 0x40018c, vaddr 0x0)
+Finished
+Operation took 0.593600640 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+[a] read from NULL
+[b] read from invalid address
+[c] read from kernel address
+[d] write to NULL
+[e] write to invalid address
+[f] write to code segment
+[g] write to kernel address
+[h] jump to NULL
+[i] jump to invalid address
+[j] jump to kernel address
+[k] alignment error
+[l] illegal instruction
+[m] divide by zero
+[n] mod by zero
+[o] Recurse infinitely
+[*] Run everything (in subprocesses)
+Note: [f] may not cause an exception on some platforms, in which
+case it'll appear to fail.
+Choose:i iFatal user mode trap 2 (TLB miss on load, epc 0x4001b0, vaddr 0x40000000)
+Finished
+Operation took 0.593823480 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+[a] read from NULL
+[b] read from invalid address
+[c] read from kernel address
+[d] write to NULL
+[e] write to invalid address
+[f] write to code segment
+[g] write to kernel address
+[h] jump to NULL
+[i] jump to invalid address
+[j] jump to kernel address
+[k] alignment error
+[l] illegal instruction
+[m] divide by zero
+[n] mod by zero
+[o] Recurse infinitely
+[*] Run everything (in subprocesses)
+Note: [f] may not cause an exception on some platforms, in which
+case it'll appear to fail.
+Choose: jjFatal user mode trap 4 (Address error on load, epc 0x4001d4, vaddr 0x80000000)
+Finished
+Operation took 0.583690160 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+[a] read from NULL
+[b] read from invalid address
+[c] read from kernel address
+[d] write to NULL
+[e] write to invalid address
+[f] write to code segment
+[g] write to kernel address
+[h] jump to NULL
+[i] jump to invalid address
+[j] jump to kernel address
+[k] alignment error
+[l] illegal instruction
+[m] divide by zero
+[n] mod by zero
+[o] Recurse infinitely
+[*] Run everything (in subprocesses)
+Note: [f] may not cause an exception on some platforms, in which
+case it'll appear to fail.
+Choose: kkFatal user mode trap 4 (Address error on load, epc 0x4001fc, vaddr 0x7fffff9d)
+Finished
+Operation took 0.493352480 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+[a] read from NULL
+[b] read from invalid address
+[c] read from kernel address
+[d] write to NULL
+[e] write to invalid address
+[f] write to code segment
+[g] write to kernel address
+[h] jump to NULL
+[i] jump to invalid address
+[j] jump to kernel address
+[k] alignment error
+[l] illegal instruction
+[m] divide by zero
+[n] mod by zero
+[o] Recurse infinitely
+[*] Run everything (in subprocesses)
+Note: [f] may not cause an exception on some platforms, in which
+case it'll appear to fail.
+Choose:l lFatal user mode trap 10 (Illegal instruction, epc 0x4001ec, vaddr 0x0)
+Finished
+Operation took 0.593771120 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+[a] read from NULL
+[b] read from invalid address
+[c] read from kernel address
+[d] write to NULL
+[e] write to invalid address
+[f] write to code segment
+[g] write to kernel address
+[h] jump to NULL
+[i] jump to invalid address
+[j] jump to kernel address
+[k] alignment error
+[l] illegal instruction
+[m] divide by zero
+[n] mod by zero
+[o] Recurse infinitely
+[*] Run everything (in subprocesses)
+Note: [f] may not cause an exception on some platforms, in which
+case it'll appear to fail.
+Choose:m mFatal user mode trap 9 (Break instruction, epc 0x400238, vaddr 0x0)
+Finished
+Operation took 0.594112080 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+[a] read from NULL
+[b] read from invalid address
+[c] read from kernel address
+[d] write to NULL
+[e] write to invalid address
+[f] write to code segment
+[g] write to kernel address
+[h] jump to NULL
+[i] jump to invalid address
+[j] jump to kernel address
+[k] alignment error
+[l] illegal instruction
+[m] divide by zero
+[n] mod by zero
+[o] Recurse infinitely
+[*] Run everything (in subprocesses)
+Note: [f] may not cause an exception on some platforms, in which
+case it'll appear to fail.
+Choose:n nFatal user mode trap 9 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST2 #128)
+
+Cpu is MIPS r2000/r3000
+1788k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (100 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+[a-|, 0-4, *, ?=menu, !=quit]
+[a] reboot                  [b] execv                   
+[c] waitpid                 [d] sbrk                    
+[e] __time                  [f] fsync                   
+[g] ftruncate               [h] fstat                   
+[i] remove                  [j] rename                  
+[k] link                    [l] mkdir                   
+[m] rmdir                   [n] chdir                   
+[o] getdirentry             [p] read                    
+[q] write                   [r] open                    
+[s] lseek                   [t] stat                    
+[u] lstat                   [v] close                   
+[w] ioctl                   [x] symlink                 
+[y] readlink                [z] dup2                    
+[{] __getcwd                [|] pipe                    
+[0] asst0                   [2] asst2                   
+[3] asst3                   [4] asst4                   
+[*] all                     [!] quit                    
+Choose:c cc
+/testbin/os161testerprog: passed: wait for pid -8
+/testbin/os161testerprog: passed: wait for pid -1
+/testbin/os161testerprog: FAILURE: pid zero: Operation succeeded
+/testbin/os161testerprog: passed: nonexistent pid
+/testbin/os161testerprog: FAILURE: wait with NULL status: Operation succeeded
+/testbin/os161testerprog: FAILURE: wait with invalid pointer status: Operation succeeded
+/testbin/os161testerprog: FAILURE: wait with kernel pointer status: Operation succeeded
+/testbin/os161testerprog: passed: wait with unaligned status: Operation succeeded
+/testbin/os161testerprog: FAILURE: wait with bad flags: Operation succeeded
+/testbin/os161testerprog: FAILURE: wait for self: Operation succeeded
+/testbin/os161testerprog: FAILURE: wait for parent (from child): Operation succeeded
+/testbin/os161testerprog: passed: wait for parent test (from parent): Operation succeeded
+Choose: Finished
+Operation took 0.597735480 seconds
+OS/161 kernel [? for menu]: bbb
+/testbin/os161testerprog: passed: exec NULL
+/testbin/os161testerprog: passed: exec invalid pointer
+/testbin/os161testerprog: passed: exec kernel pointer
+/testbin/os161testerprog: passed: exec the empty string
+/testbin/os161testerprog: passed: exec /bin/true with NULL arglist
+panic: Fatal exception 2 (TLB miss on load) in kernel mode
+panic: EPC 0x8000ce10, exception vaddr 0x40000000
+sleep: Dropping thread <boot/menu>
+sleep: Dropping thread /testbin/os161testerprog
+panic: I can't handle this... I think I'll just die now...
+sys161: 1804908141 cycles (32680027k, 150533u, 1772077581i)
+sys161: 10133 irqs 1936 exns 0r/0w disk 30r/3099w console 10r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 72.092904 seconds (25.0359 mhz)
+sys161: Elapsed virtual time: 72.196325640 seconds (25 mhz)
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST2 #128)
+
+Cpu is MIPS r2000/r3000
+1788k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (100 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+Answer: 1234567
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST2 #128)
+
+Cpu is MIPS r2000/r3000
+1788k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (100 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+Finished
+Operation took 0.523617840 seconds
+OSsys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST2 #128)
+
+Cpu is MIPS r2000/r3000
+1788k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (100 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+1 wekp
+2 ewp
+3 wer
+4 asrcp
+5 acpsys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST2 #128)
+
+Cpu is MIPS r2000/r3000
+1788k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (100 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+OS/161 kernel [? for menu]: p /testbin/os161testerprog box 5
+p /testbin/os161testerprog box 5
+Waiting for program
+*****
+*****
+*****
+Finished
+Operation took 0.221794160 seconds
+OS/161 kernel [? for menu]: *****
+*****
+p /testbin/os161testerprog pyramid 3
+p /testbin/os161testerprog pyramid 3
+Waiting for program
+  *
+ ***
+*****
+Finished
+Operation took 0.322388440 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog triangle 7
+p /testbin/os161testerprog triangle 7
+Waiting for program
+*
+Finished
+Operation took 0.071046360 seconds
+OS/161 kernel [? for menu]: **
+***
+****
+*****
+******
+*******
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+
+OS/161 base system version 1.11
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Jason's system version 0 (ASST2 #128)
+
+Cpu is MIPS r2000/r3000
+1788k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (100 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+Waiting for program
+12! +11! +10! +9! +8! +7! +panic: Fatal exception 2 (TLB miss on load) in kernel mode
+panic: EPC 0x80013b64, exception vaddr 0x0
+sleep: Dropping thread <boot/menu>
+sleep: Dropping thread /testbin/os161testerprog
+sleep: Dropping thread /testbin/os161testerprog
+sleep: Dropping thread /testbin/os161testerprog
+sleep: Dropping thread /testbin/os161testerprog
+sleep: Dropping thread /testbin/os161testerprog
+sleep: Dropping thread /testbin/os161testerprog
+scheduler: Dropping thread /testbin/os161testerprog.
+panic: I can't handle this... I think I'll just die now...
+sys161: 44024298 cycles (7338071k, 6164u, 36680063i)
+sys161: 925 irqs 117 exns 0r/0w disk 28r/1170w console 22r/0w/6m emufs 0r/0w net
+sys161: Elapsed real time: 1.669092 seconds (26.3762 mhz)
+sys161: Elapsed virtual time: 1.760971920 seconds (25 mhz)
