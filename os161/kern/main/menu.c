@@ -388,8 +388,6 @@ static const char *dbflagmenu[] = {
     NULL
 };
 
-int df_flag = 0;
-
 static
 int
 cmd_dbflags(int n, char **a) {
@@ -397,7 +395,7 @@ cmd_dbflags(int n, char **a) {
     (void) a;
 
     showmenu("OS/161 debug flags", dbflagmenu);
-    kprintf("Current value of dbflags is 0x%x\n", df_flag);
+    kprintf("Current value of dbflags is 0x%x\n", dbflags);
     return 0;
 }
 
@@ -418,13 +416,13 @@ cmd_df(int nargs, char **args) {
     }
 
     if (!strcmp(state, "on")) {
-        if ((df_flag >> (flagnum - 1)) % 2 == 0) {
-            df_flag += (1 << (flagnum - 1));
+        if ((dbflags >> (flagnum - 1)) % 2 == 0) {
+            dbflags += (1 << (flagnum - 1));
         }
     }
     else if (!strcmp(state, "off")) {
-        if ((df_flag >> (flagnum - 1)) % 2 == 1) {
-            df_flag -= (1 << (flagnum - 1));
+        if ((dbflags >> (flagnum - 1)) % 2 == 1) {
+            dbflags -= (1 << (flagnum - 1));
         }
     }
     else {

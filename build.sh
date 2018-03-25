@@ -7,9 +7,9 @@ make clean
 
 #Kernel configuration
 cd kern/conf
-./config ASST2
+./config ASST3
 cd ..
-cd compile/ASST2
+cd compile/ASST3
 make depend
 
 make

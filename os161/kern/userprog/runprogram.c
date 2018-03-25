@@ -23,6 +23,8 @@
  */
 int
 runprogram(char *progname, int argc, char** argv) {
+    DEBUG(DB_VM, "runprogram\n");
+    
     struct vnode *v;
     vaddr_t entrypoint, stackptr;
     int result;

@@ -1,7 +1,7 @@
 
 
 
-
-p testbin/timeit
+df 6 on
+p testbin/printf
 
 
