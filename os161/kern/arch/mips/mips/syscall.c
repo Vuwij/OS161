@@ -16,6 +16,7 @@
 #include "addrspace.h"
 #include <synch.h>
 #include <hashtable.h>
+#include <clock.h>
 
 #define MENU_CALL 1
 
@@ -90,7 +91,7 @@ mips_syscall(struct trapframe *tf) {
             break;
         case SYS_waitpid:
             err = sys_waitpid(tf,0);
-            retval = tf->tf_a0;     // return pid
+            retval = tf->tf_a0;    // return pid
             break;
         case SYS_open:
             break;
@@ -126,7 +127,7 @@ mips_syscall(struct trapframe *tf) {
             err = sys_execv(tf);
             break;
         case SYS___time:
-            err = sys___time(tf);
+            err = sys___time(tf, &retval); 
             break;
         default:
             kprintf("Unknown syscall %d\n", callno);
@@ -484,6 +485,25 @@ sys_execv(struct trapframe *tf) {
  *
  */
 int
-sys___time(struct trapframe *tf) {
+sys___time(struct trapframe *tf, int32_t* retval) {
+    time_t *seconds = (time_t*) tf->tf_a0;
+    u_int32_t *nanoseconds = (u_int32_t *) tf->tf_a1;
     
+    time_t kseconds;
+    u_int32_t knanoseconds;
+    
+    gettime(&kseconds, &knanoseconds);
+    int err;
+    if(seconds != NULL) {
+        err = copyout(&kseconds, (userptr_t) seconds, sizeof(time_t));
+        if (err) return err;
+    }
+    if(nanoseconds != NULL) {
+        err = copyout(&knanoseconds, (userptr_t) nanoseconds, sizeof(u_int32_t));
+        if (err) return err;
+    }
+    
+    *retval = kseconds;
+    
+    return 0;
 }
