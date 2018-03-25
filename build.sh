@@ -2,14 +2,14 @@ cd os161/
 
 #Root configuration
 ./configure --ostree=$HOME/Documents/ECE344/root
-make
+make clean
 #cd ..
 
 #Kernel configuration
 cd kern/conf
-./config ASST2
+./config ASST3
 cd ..
-cd compile/ASST2
+cd compile/ASST3
 make depend
 
 make
