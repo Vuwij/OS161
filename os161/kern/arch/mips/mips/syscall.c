@@ -85,8 +85,8 @@ mips_syscall(struct trapframe *tf) {
             err = sys_reboot(tf->tf_a0);
             break;
         case SYS_fork:
-            retval = (pid_t) sys_fork(tf);
-            err = 0;
+            err = sys_fork(tf);
+            retval = tf->tf_a0;
             break;
         case SYS_waitpid:
             err = sys_waitpid(tf,0);
@@ -125,6 +125,9 @@ mips_syscall(struct trapframe *tf) {
         case SYS_execv:
             err = sys_execv(tf);
             break;
+        case SYS___time:
+            err = sys___time(tf);
+            break;
         default:
             kprintf("Unknown syscall %d\n", callno);
             err = ENOSYS;
@@ -155,6 +158,9 @@ mips_syscall(struct trapframe *tf) {
 
     /* Make sure the syscall code didn't forget to lower spl */
     assert(curspl == 0);
+}
+
+void syscall_bootstrap(void) {
 }
 
 /*
@@ -227,7 +233,7 @@ child_fork(void *ptr, unsigned long nargs) {
 }
 
 
-pid_t sys_fork(struct trapframe *tf) {
+int sys_fork(struct trapframe *tf) {
     // Make a copy of the address space
     struct addrspace* addrchild = kmalloc(sizeof(struct addrspace));
     int err = as_copy(curthread->t_vmspace, &addrchild);
@@ -251,7 +257,8 @@ pid_t sys_fork(struct trapframe *tf) {
         return result;
     }
     
-    return childthread->pid; // Parent returns PID of child
+    tf->tf_a0 = childthread->pid; // Parent returns PID of child
+    return 0;
 }
 
 /*
@@ -270,7 +277,7 @@ int sys_getpid(struct trapframe *tf) {
 int sys_waitpid(struct trapframe *tf, int call) {
     pid_t pid = (pid_t) tf->tf_a0;
     int *returncode = (int *) tf->tf_a1;
-    int flags = (int *) tf->tf_a2;
+    int flags = (int) tf->tf_a2;
     
     if(pid == 0)
         return EINVAL;
@@ -341,8 +348,6 @@ int sys_waitpid(struct trapframe *tf, int call) {
  */
 int
 sys_exit(int exitcode) {
-
-    int pid = (int) curthread->pid;   
     
     // Create an exit code
     lock_acquire(pidtablelock);
@@ -362,6 +367,10 @@ sys_exit(int exitcode) {
 
 #define MAX_ARG 15
 
+/*
+ * sys_execv() system call.
+ *
+ */
 int
 sys_execv(struct trapframe *tf) {
     char *progname = (char *) tf->tf_a0;
@@ -451,8 +460,8 @@ sys_execv(struct trapframe *tf) {
         char* s = kstrdup(argvk[i]);
         s[strlen(s)] = '\0';
         stackptr = stackptr - (strlen(s) + 1);
-        user_space_addr[i] = stackptr;
-        copyout(s, stackptr, strlen(s) + 1);
+        user_space_addr[i] = (char*) stackptr;
+        copyout(s, (userptr_t) stackptr, strlen(s) + 1);
     }
     
     // set last element to NULL
@@ -463,12 +472,18 @@ sys_execv(struct trapframe *tf) {
 
     // copy array of pointers to args to the user space
     stackptr = stackptr - ((argc+1) * sizeof (char*));
-    copyout(user_space_addr, stackptr, sizeof (user_space_addr));
+    copyout(user_space_addr, (userptr_t) stackptr, sizeof (user_space_addr));
 
-    md_usermode(argc, stackptr, stackptr, entrypoint);
+    md_usermode(argc, (userptr_t) stackptr, stackptr, entrypoint);
     
     return 0;
 }
 
-void syscall_bootstrap(void) {
+/*
+ * sys_execv() system call.
+ *
+ */
+int
+sys___time(struct trapframe *tf) {
+    
 }
