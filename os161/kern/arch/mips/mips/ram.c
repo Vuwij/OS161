@@ -1,47 +1,49 @@
 #include <types.h>
 #include <lib.h>
 #include <vm.h>
-#include <machine/pcb.h>  /* for mips_ramsize */
+#include <machine/pcb.h>
+#include <coremap.h>
 
-u_int32_t firstfree;   /* first free virtual address; set by start.S */
+u_int32_t firstfree; /* first free virtual address; set by start.S */
 
-static u_int32_t firstpaddr;  /* address of first free physical page */
-static u_int32_t lastpaddr;   /* one past end of last free physical page */
+static u_int32_t firstpaddr; /* address of first free physical page */
+static u_int32_t lastpaddr; /* one past end of last free physical page */
 
 /*
  * Called very early in system boot to figure out how much physical
  * RAM is available.
  */
 void
-ram_bootstrap(void)
-{
-	u_int32_t ramsize;
-	
-	/* Get size of RAM. */
-	ramsize = mips_ramsize();
+ram_bootstrap(void) {
+    u_int32_t ramsize;
 
-	/*
-	 * This is the same as the last physical address, as long as
-	 * we have less than 508 megabytes of memory. If we had more,
-	 * various annoying properties of the MIPS architecture would
-	 * force the RAM to be discontiguous. This is not a case we 
-	 * are going to worry about.
-	 */
-	if (ramsize > 508*1024*1024) {
-		ramsize = 508*1024*1024;
-	}
+    /* Get size of RAM. */
+    ramsize = mips_ramsize();
 
-	lastpaddr = ramsize;
+    /*
+     * This is the same as the last physical address, as long as
+     * we have less than 508 megabytes of memory. If we had more,
+     * various annoying properties of the MIPS architecture would
+     * force the RAM to be discontiguous. This is not a case we 
+     * are going to worry about.
+     */
+    if (ramsize > 508 * 1024 * 1024) {
+        ramsize = 508 * 1024 * 1024;
+    }
 
-	/* 
-	 * Get first free virtual address from where start.S saved it.
-	 * Convert to physical address.
-	 */
-	firstpaddr = firstfree - MIPS_KSEG0;
+    lastpaddr = ramsize;
 
-	kprintf("Cpu is MIPS r2000/r3000\n");
-	kprintf("%uk physical memory available\n", 
-		(lastpaddr-firstpaddr)/1024);
+    /* 
+     * Get first free virtual address from where start.S saved it.
+     * Convert to physical address.
+     */
+    firstpaddr = firstfree - MIPS_KSEG0;
+
+    kprintf("Cpu is MIPS r2000/r3000\n");
+    kprintf("%uk physical memory available\n",
+            (lastpaddr - firstpaddr) / 1024);
+    kprintf("%u total physical pages available\n",
+            (lastpaddr - firstpaddr) / PAGE_SIZE);
 }
 
 /*
@@ -61,19 +63,42 @@ ram_bootstrap(void)
  * so it is not synchronized.
  */
 paddr_t
-ram_stealmem(unsigned long npages)
-{
-	u_int32_t size = npages * PAGE_SIZE;
-	u_int32_t paddr;
+ram_stealmem(unsigned long npages) {
+    u_int32_t size = npages * PAGE_SIZE;
+    u_int32_t paddr;
+    kprintf("lastpaddr 0x%x", lastpaddr);
+    if (firstpaddr + size > lastpaddr) {
+        return 0;
+    }
 
-	if (firstpaddr + size > lastpaddr) {
-		return 0;
-	}
+    paddr = firstpaddr;
+    firstpaddr += size;
 
-	paddr = firstpaddr;
-	firstpaddr += size;
+    return paddr;
+}
 
-	return paddr;
+paddr_t
+ram_borrowmem(unsigned long npages) {
+    if(coremap == NULL)
+        return ram_stealmem(npages);
+    
+    
+    int count = 0, i, startframe = -1;
+    for(i = 0; i < cm_totalframes; ++i) {
+        if(coremap[i].usedby == CM_FREE) {
+            count++;
+            if(count == npages) {
+                startframe = i - npages + 1;
+            }
+        }
+    }
+    
+    if(startframe == -1) return 0;
+    
+    for (i = startframe; i < startframe + npages; ++i) {
+        coremap[i].usedby = CM_USED;
+    }
+    return coremap[startframe].addr;
 }
 
 /*
@@ -82,9 +107,7 @@ ram_stealmem(unsigned long npages)
  * manage.
  */
 void
-ram_getsize(u_int32_t *lo, u_int32_t *hi)
-{
-	*lo = firstpaddr;
-	*hi = lastpaddr;
-	firstpaddr = lastpaddr = 0;
+ram_getsize(u_int32_t *lo, u_int32_t *hi) {
+    *lo = firstpaddr;
+    *hi = lastpaddr;
 }

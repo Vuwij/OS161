@@ -393,6 +393,7 @@ file      userprog/uio.c
 #
 
 optofffile dumbvm   vm/addrspace.c
+optofffile dumbvm   vm/coremap.c
 
 #
 # Network

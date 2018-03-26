@@ -7,6 +7,7 @@
 #include <vm.h>
 #include <machine/spl.h>
 #include <machine/tlb.h>
+#include <coremap.h>
 
 /*
  * Note! If OPT_DUMBVM is set, as is the case until you start the VM
@@ -15,7 +16,6 @@
  */
 
 #define DUMBVM_STACKPAGES    12
-
 
 void
 vm_bootstrap(void) {
@@ -32,8 +32,8 @@ getppages(unsigned long npages) {
 
     spl = splhigh();
 
-    addr = ram_stealmem(npages);
-
+    addr = ram_borrowmem(npages);
+    
     splx(spl);
     return addr;
 }

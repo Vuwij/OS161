@@ -507,6 +507,7 @@ static const char *mainmenu[] = {
     "[1c] Stoplight                      ",
 #endif
     "[kh] Kernel heap stats              ",
+    "[cm] View Core Map                  ",
     "[q] Quit and shut down              ",
     NULL
 };
