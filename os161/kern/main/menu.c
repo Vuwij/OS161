@@ -20,6 +20,7 @@
 #include "opt-dumbsynch.h"
 #include <machine/trapframe.h>
 #include <syscall.h>
+#include <coremap.h>
 
 #define _PATH_SHELL "/bin/sh"
 
@@ -344,6 +345,17 @@ cmd_kheapstats(int nargs, char **args) {
     return 0;
 }
 
+static
+int
+cmd_coremap(int nargs, char **args) {
+    (void) nargs;
+    (void) args;
+
+    cm_print();
+
+    return 0;
+}
+
 ////////////////////////////////////////
 //
 // Menus.
@@ -563,6 +575,7 @@ static struct {
 
     /* stats */
     { "kh", cmd_kheapstats},
+    { "cm", cmd_coremap},
 
     /* base system tests */
     { "at", arraytest},
