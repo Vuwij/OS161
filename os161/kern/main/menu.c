@@ -20,6 +20,8 @@
 #include "opt-dumbsynch.h"
 #include <machine/trapframe.h>
 #include <syscall.h>
+#include <machine/tlb.h>
+
 
 #define _PATH_SHELL "/bin/sh"
 
@@ -108,12 +110,17 @@ common_prog(int nargs, char **args) {
         return result;
     }
     
+    
+    
     struct trapframe* tf = kmalloc(sizeof(struct trapframe));
     int x;
     tf->tf_a0 = childthread->pid;
     tf->tf_a1 = &x;
     tf->tf_a2 = 0;
     sys_waitpid(tf,1);      // wait for the program to exit
+    //kfree(tf);
+    
+    
     
 #if OPT_DUMBSYNCH
     clocksleep(5);
@@ -344,6 +351,22 @@ cmd_kheapstats(int nargs, char **args) {
     return 0;
 }
 
+static
+int
+cmd_TLB(int nargs, char **args) {
+    (void) nargs;
+    (void) args;
+    
+    int i;
+    u_int32_t ehi, elo;
+    for (i=0; i<NUM_TLB; i++) {
+        TLB_Read(&ehi, &elo, i);
+        kprintf("ehi:0x%x elo:0x%x\n", ehi, elo);                
+    }
+    
+    return 0;
+}
+
 ////////////////////////////////////////
 //
 // Menus.
@@ -508,6 +531,7 @@ static const char *mainmenu[] = {
 #endif
     "[kh] Kernel heap stats              ",
     "[q] Quit and shut down              ",
+    "[tlb] Print TLB                     ",
     NULL
 };
 
@@ -552,6 +576,7 @@ static struct {
     { "q", cmd_quit},
     { "exit", cmd_quit},
     { "halt", cmd_quit},
+    { "tlb", cmd_TLB},
 
 #if OPT_SYNCHPROBS
     /* in-kernel synchronization problems */

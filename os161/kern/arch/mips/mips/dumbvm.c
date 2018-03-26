@@ -71,7 +71,7 @@ vm_fault(int faulttype, vaddr_t faultaddress)
 
 	spl = splhigh();
 
-	faultaddress &= PAGE_FRAME;
+	faultaddress &= PAGE_FRAME;     // get virtual page 
 
 	DEBUG(DB_VM, "dumbvm: fault: 0x%x\n", faultaddress);
 
@@ -141,7 +141,8 @@ vm_fault(int faulttype, vaddr_t faultaddress)
 			continue;
 		}
 		ehi = faultaddress;
-		elo = paddr | TLBLO_DIRTY | TLBLO_VALID;
+		elo = paddr | TLBLO_DIRTY | TLBLO_VALID;                
+		DEBUG(DB_VM, "vm_fault\n");
 		DEBUG(DB_VM, "dumbvm: 0x%x -> 0x%x\n", faultaddress, paddr);
 		TLB_Write(ehi, elo, i);
 		splx(spl);
