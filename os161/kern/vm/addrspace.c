@@ -7,6 +7,7 @@
 #include <vm.h>
 #include <machine/spl.h>
 #include <machine/tlb.h>
+#include <coremap.h>
 
 /*
  * Note! If OPT_DUMBVM is set, as is the case until you start the VM
@@ -15,7 +16,6 @@
  */
 
 #define DUMBVM_STACKPAGES    12
-
 
 void
 vm_bootstrap(void) {
@@ -32,8 +32,8 @@ getppages(unsigned long npages) {
 
     spl = splhigh();
 
-    addr = ram_stealmem(npages);
-
+    addr = ram_borrowmem(npages);
+    
     splx(spl);
     return addr;
 }
@@ -277,6 +277,7 @@ as_prepare_load(struct addrspace *as) {
 
     DEBUG(DB_VM, "as_prepare_load\n");
     
+            
     assert(as->as_pbase1 == 0);
     assert(as->as_pbase2 == 0);
     assert(as->as_stackpbase == 0);
@@ -295,7 +296,8 @@ as_prepare_load(struct addrspace *as) {
     if (as->as_stackpbase == 0) {
         return ENOMEM;
     }
-
+    
+    as_print(as);
 
     (void) as;
     return 0;
@@ -373,4 +375,11 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
 
     *ret = newas;
     return 0;
+}
+
+void as_print(struct addrspace *as) {
+    kprintf("# Pages\tPHY base\tVIRT base\n");
+    kprintf("%d\t0x%x\t\t0x%x\n", as->as_npages1, as->as_pbase1, as->as_vbase1);
+    kprintf("%d\t0x%x\t\t0x%x\n", as->as_npages2, as->as_pbase2, as->as_vbase2);
+    kprintf("0x%x\n", as->as_stackpbase);
 }

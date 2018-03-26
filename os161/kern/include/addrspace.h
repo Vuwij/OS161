@@ -73,6 +73,7 @@ int               as_copy(struct addrspace *src, struct addrspace **ret);
 void              as_activate(struct addrspace *);
 void              as_destroy(struct addrspace *);
 void              as_reset(struct addrspace *);
+void              as_print(struct addrspace *);
 
 int               as_define_region(struct addrspace *as, 
 				   vaddr_t vaddr, size_t sz,

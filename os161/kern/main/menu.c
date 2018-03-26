@@ -20,8 +20,12 @@
 #include "opt-dumbsynch.h"
 #include <machine/trapframe.h>
 #include <syscall.h>
+<<<<<<< HEAD
 #include <machine/tlb.h>
 
+=======
+#include <coremap.h>
+>>>>>>> 31ebf2f3b57a21c60ae60905411cc6c414eb44c3
 
 #define _PATH_SHELL "/bin/sh"
 
@@ -353,6 +357,7 @@ cmd_kheapstats(int nargs, char **args) {
 
 static
 int
+<<<<<<< HEAD
 cmd_TLB(int nargs, char **args) {
     (void) nargs;
     (void) args;
@@ -364,6 +369,14 @@ cmd_TLB(int nargs, char **args) {
         kprintf("ehi:0x%x elo:0x%x\n", ehi, elo);                
     }
     
+=======
+cmd_coremap(int nargs, char **args) {
+    (void) nargs;
+    (void) args;
+
+    cm_print();
+
+>>>>>>> 31ebf2f3b57a21c60ae60905411cc6c414eb44c3
     return 0;
 }
 
@@ -530,6 +543,7 @@ static const char *mainmenu[] = {
     "[1c] Stoplight                      ",
 #endif
     "[kh] Kernel heap stats              ",
+    "[cm] View Core Map                  ",
     "[q] Quit and shut down              ",
     "[tlb] Print TLB                     ",
     NULL
@@ -587,6 +601,7 @@ static struct {
 
     /* stats */
     { "kh", cmd_kheapstats},
+    { "cm", cmd_coremap},
 
     /* base system tests */
     { "at", arraytest},
