@@ -20,12 +20,8 @@
 #include "opt-dumbsynch.h"
 #include <machine/trapframe.h>
 #include <syscall.h>
-<<<<<<< HEAD
 #include <machine/tlb.h>
-
-=======
 #include <coremap.h>
->>>>>>> 31ebf2f3b57a21c60ae60905411cc6c414eb44c3
 
 #define _PATH_SHELL "/bin/sh"
 
@@ -122,7 +118,7 @@ common_prog(int nargs, char **args) {
     tf->tf_a1 = &x;
     tf->tf_a2 = 0;
     sys_waitpid(tf,1);      // wait for the program to exit
-    //kfree(tf);
+    kfree(tf);
     
     
     
@@ -357,26 +353,33 @@ cmd_kheapstats(int nargs, char **args) {
 
 static
 int
-<<<<<<< HEAD
 cmd_TLB(int nargs, char **args) {
     (void) nargs;
     (void) args;
     
-    int i;
+    int i, valid, dirty;
     u_int32_t ehi, elo;
+    
+    kprintf("VA\t\tPA\t\tValid\tDirty\n");
+    
     for (i=0; i<NUM_TLB; i++) {
-        TLB_Read(&ehi, &elo, i);
-        kprintf("ehi:0x%x elo:0x%x\n", ehi, elo);                
+        TLB_Read(&ehi, &elo, i);   
+        valid = elo&TLBLO_VALID ? 1 : 0;
+        dirty = elo&TLBLO_DIRTY ? 1 : 0;
+        kprintf("0x%x\t0x%x\t\t%d\t%d\n", ehi,elo, valid, dirty);                       
     }
     
-=======
+    return 0;
+}
+    
+static
+int
 cmd_coremap(int nargs, char **args) {
     (void) nargs;
     (void) args;
 
     cm_print();
 
->>>>>>> 31ebf2f3b57a21c60ae60905411cc6c414eb44c3
     return 0;
 }
 
@@ -589,8 +592,7 @@ static struct {
     { "panic", cmd_panic},
     { "q", cmd_quit},
     { "exit", cmd_quit},
-    { "halt", cmd_quit},
-    { "tlb", cmd_TLB},
+    { "halt", cmd_quit},    
 
 #if OPT_SYNCHPROBS
     /* in-kernel synchronization problems */
@@ -602,6 +604,7 @@ static struct {
     /* stats */
     { "kh", cmd_kheapstats},
     { "cm", cmd_coremap},
+    { "tlb", cmd_TLB},
 
     /* base system tests */
     { "at", arraytest},

@@ -78,6 +78,7 @@ runprogram(char *progname, int argc, char** argv) {
         stackptr = stackptr - (strlen(s) + 1);
         user_space_addr[i] = stackptr;
         copyout(s, stackptr, strlen(s) + 1);
+        kfree(s);
     }
     
     // set last element to NULL

@@ -69,6 +69,7 @@
 void ram_bootstrap(void);
 paddr_t ram_stealmem(unsigned long npages);
 paddr_t ram_borrowmem(unsigned long npages);
+void ram_returnmem(vaddr_t addr); 
 void ram_getsize(paddr_t *lo, paddr_t *hi);
 
 /*

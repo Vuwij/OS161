@@ -31,7 +31,7 @@ getppages(unsigned long npages) {
     paddr_t addr;
 
     spl = splhigh();
-
+     
     addr = ram_borrowmem(npages);
     
     splx(spl);
@@ -48,6 +48,7 @@ alloc_kpages(int npages) {
     if (pa == 0) {
         return 0;
     }
+    
     return PADDR_TO_KVADDR(pa);
 }
 
@@ -55,13 +56,24 @@ void
 free_kpages(vaddr_t addr) {
     DEBUG(DB_VM, "  free_kpages: 0x%x\n", addr);
     /* nothing */
-
-    (void) addr;
+    /*int index;
+    u_int32_t ehi, elo;
+    
+    index = TLB_Probe(addr,0);
+    if (index == -1) {
+        
+    }
+    TLB_Read(&ehi,&elo,index);*/
+    
+    //(void) addr;
+    ram_returnmem(addr);        
+    
 }
 
 int
 vm_fault(int faulttype, vaddr_t faultaddress) {
-//    DEBUG(DB_VM, "vm_fault: faulttype: %d, address 0x%x\n", faultaddress);
+
+    
     
     vaddr_t vbase1, vtop1, vbase2, vtop2, stackbase, stacktop;
     paddr_t paddr;
@@ -130,16 +142,21 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
 
     /* make sure it's page-aligned */
     assert((paddr & PAGE_FRAME) == paddr);
-
+    //kprintf("faulttype: %d, faultaddr: 0x%x\n",faulttype,faultaddress);
     for (i = 0; i < NUM_TLB; i++) {
         TLB_Read(&ehi, &elo, i);
+        //kprintf("elo: 0x%x\n",elo);
         if (elo & TLBLO_VALID) {
+            //kprintf("valid: 0x%x\n",elo);
             continue;
         }
         ehi = faultaddress;
         elo = paddr | TLBLO_DIRTY | TLBLO_VALID;
+        //kprintf("i: %d, write: 0x%x\n",i,elo);
         DEBUG(DB_VM, "  dumbvm: 0x%x -> 0x%x\n", faultaddress, paddr);
         TLB_Write(ehi, elo, i);
+        TLB_Read(&ehi, &elo, i);
+        //kprintf("after elo: 0x%x\n",elo);        
         splx(spl);
         return 0;
     }
@@ -192,7 +209,9 @@ as_reset(struct addrspace *as) {
 void
 as_destroy(struct addrspace *as) {
     DEBUG(DB_VM, "as_destroy\n");
-
+    kfree(PADDR_TO_KVADDR(as->as_pbase1));
+    kfree(PADDR_TO_KVADDR(as->as_pbase2));
+    kfree(PADDR_TO_KVADDR(as->as_stackpbase));
     kfree(as);
 }
 

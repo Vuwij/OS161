@@ -97,8 +97,20 @@ ram_borrowmem(unsigned long npages) {
     
     for (i = startframe; i < startframe + npages; ++i) {
         coremap[i].usedby = CM_USED;
+        coremap[i].vaddr = PADDR_TO_KVADDR(coremap[startframe].addr);
     }
     return coremap[startframe].addr;
+}
+
+void
+ram_returnmem(vaddr_t addr) {
+    int i;
+    for(i = 0; i < cm_totalframes; ++i) {
+        if(coremap[i].vaddr == addr) {
+            coremap[i].usedby = CM_FREE;
+            coremap[i].vaddr = 0;            
+        }
+    }
 }
 
 /*
