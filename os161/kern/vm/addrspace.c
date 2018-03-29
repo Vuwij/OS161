@@ -66,7 +66,7 @@ free_kpages(vaddr_t addr) {
     TLB_Read(&ehi,&elo,index);*/
     
     //(void) addr;
-    ram_returnmem(addr);        
+    //ram_returnmem(addr);        
     
 }
 
@@ -136,21 +136,16 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
 
     /* make sure it's page-aligned */
     assert((paddr & PAGE_FRAME) == paddr);
-    //kprintf("faulttype: %d, faultaddr: 0x%x\n",faulttype,faultaddress);
     for (i = 0; i < NUM_TLB; i++) {
         TLB_Read(&ehi, &elo, i);
-        //kprintf("elo: 0x%x\n",elo);
         if (elo & TLBLO_VALID) {
-            //kprintf("valid: 0x%x\n",elo);
             continue;
         }
         ehi = faultaddress;
         elo = paddr | TLBLO_DIRTY | TLBLO_VALID;
-        //kprintf("i: %d, write: 0x%x\n",i,elo);
         DEBUG(DB_VM, "  dumbvm: 0x%x -> 0x%x\n", faultaddress, paddr);
         TLB_Write(ehi, elo, i);
-        TLB_Read(&ehi, &elo, i);
-        //kprintf("after elo: 0x%x\n",elo);        
+        TLB_Read(&ehi, &elo, i);  
         splx(spl);
         return 0;
     }
@@ -173,6 +168,14 @@ as_create(void) {
      * Write this.
      */
     
+    as->as_vbase1 = 0;
+    as->as_pbase1 = 0;
+    as->as_npages1 = 0;
+    as->as_vbase2 = 0;
+    as->as_pbase2 = 0;
+    as->as_npages2 = 0;
+    as->as_stackpbase = 0;
+    
     return as;
 }
 
@@ -186,7 +189,9 @@ as_reset(struct addrspace *as) {
     as->as_vbase1 = 0;
     as->as_pbase1 = 0;
     as->as_npages1 = 0;
-
+    as->as_vbase2 = 0;
+    as->as_pbase2 = 0;
+    as->as_npages2 = 0;
     as->as_stackpbase = 0;
 }
 
@@ -236,8 +241,6 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, size_t sz,
      */
     DEBUG(DB_VM, "as_define_region 0x%x, Size %d, Flags RWX: %d%d%d\n", vaddr, sz, readable, writeable, executable);
     
-    pd_request_page(&as->page_directory, vaddr);
-
     size_t npages;
 
     /* Align the region. First, the base... */
@@ -253,18 +256,30 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, size_t sz,
     (void) readable;
     (void) writeable;
     (void) executable;
-
-    if (as->as_vbase1 == 0) {
-        as->as_vbase1 = vaddr;
-        as->as_npages1 = npages;
-        return 0;
+    
+    int i;
+    for (i=0; i<npages; i++) {
+        pd_request_page(&as->page_directory, vaddr);
+    }
+    
+    /*if (as->as_vbase1 == 0) {
+            as->as_vbase1 = vaddr;
+            as->as_npages1 = npages;
+            return 0;
     }
 
+    if (as->as_vbase2 == 0) {
+            as->as_vbase2 = vaddr;
+            as->as_npages2 = npages;
+            return 0;
+    }*/
+
+    return 0;
     /*
      * Support for more than two regions is not available.
      */
-    kprintf("dumbvm: Warning: too many regions\n");
-    return EUNIMP;
+    /*kprintf("dumbvm: Warning: too many regions\n");
+    return EUNIMP;*/
 }
 
 int
@@ -279,10 +294,10 @@ as_prepare_load(struct addrspace *as) {
     assert(as->as_pbase1 == 0);
     assert(as->as_stackpbase == 0);
 
-    as->as_pbase1 = getppages(as->as_npages1);
+    /*as->as_pbase1 = getppages(as->as_npages1);
     if (as->as_pbase1 == 0) {
         return ENOMEM;
-    }
+    }*/
     
     as->as_stackpbase = getppages(DUMBVM_STACKPAGES);
     if (as->as_stackpbase == 0) {
@@ -363,7 +378,7 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
 }
 
 void as_print(struct addrspace *as) {
-    kprintf("# Pages\tPHY base\tVIRT base\n");
+    /*kprintf("# Pages\tPHY base\tVIRT base\n");
     kprintf("%d\t0x%x\t\t0x%x\n", as->as_npages1, as->as_pbase1, as->as_vbase1);
-    kprintf("0x%x\n", as->as_stackpbase);
+    kprintf("0x%x\n", as->as_stackpbase);*/
 }
