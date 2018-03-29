@@ -9,6 +9,7 @@
 #include <machine/pcb.h>
 #include <hashtable.h>
 #include <linkedlist.h>
+#include <page.h>
 
 struct addrspace;
 
@@ -43,6 +44,7 @@ struct thread {
 	 * and is manipulated by the virtual filesystem (VFS) code.
 	 */
 	struct vnode *t_cwd;
+
 };
 
 /* List of PIDs*/
@@ -51,11 +53,6 @@ struct cv *waitpid[10000];
 struct lock *pidtablelock;
 int exitcodes[10000];
 
-/**********************************************/
-
-
-
-/***********************************************/
 
 /* Call once during startup to allocate data structures. */
 struct thread *thread_bootstrap(void);

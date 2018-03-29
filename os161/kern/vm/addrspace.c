@@ -8,6 +8,7 @@
 #include <machine/spl.h>
 #include <machine/tlb.h>
 #include <coremap.h>
+#include <pagedirectory.h>
 
 /*
  * Note! If OPT_DUMBVM is set, as is the case until you start the VM
@@ -22,7 +23,6 @@ vm_bootstrap(void) {
     /* Do nothing. */
 }
 
-static
 paddr_t
 getppages(unsigned long npages) {
     DEBUG(DB_VM, "  getppages: %d\n", npages);
@@ -85,7 +85,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     spl = splhigh();
 
     faultaddress &= PAGE_FRAME;
-
+        
     switch (faulttype) {
         case VM_FAULT_READONLY:
             /* We always create pages read-write, so we can't get this */
@@ -112,27 +112,21 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     assert(as->as_vbase1 != 0);
     assert(as->as_pbase1 != 0);
     assert(as->as_npages1 != 0);
-    assert(as->as_vbase2 != 0);
-    assert(as->as_pbase2 != 0);
-    assert(as->as_npages2 != 0);
+    
     assert(as->as_stackpbase != 0);
     assert((as->as_vbase1 & PAGE_FRAME) == as->as_vbase1);
     assert((as->as_pbase1 & PAGE_FRAME) == as->as_pbase1);
-    assert((as->as_vbase2 & PAGE_FRAME) == as->as_vbase2);
-    assert((as->as_pbase2 & PAGE_FRAME) == as->as_pbase2);
+
     assert((as->as_stackpbase & PAGE_FRAME) == as->as_stackpbase);
 
     vbase1 = as->as_vbase1;
     vtop1 = vbase1 + as->as_npages1 * PAGE_SIZE;
-    vbase2 = as->as_vbase2;
-    vtop2 = vbase2 + as->as_npages2 * PAGE_SIZE;
+
     stackbase = USERSTACK - DUMBVM_STACKPAGES * PAGE_SIZE;
     stacktop = USERSTACK;
 
     if (faultaddress >= vbase1 && faultaddress < vtop1) {
         paddr = (faultaddress - vbase1) + as->as_pbase1;
-    } else if (faultaddress >= vbase2 && faultaddress < vtop2) {
-        paddr = (faultaddress - vbase2) + as->as_pbase2;
     } else if (faultaddress >= stackbase && faultaddress < stacktop) {
         paddr = (faultaddress - stackbase) + as->as_stackpbase;
     } else {
@@ -178,15 +172,7 @@ as_create(void) {
     /*
      * Write this.
      */
-
-    as->as_vbase1 = 0;
-    as->as_pbase1 = 0;
-    as->as_npages1 = 0;
-    as->as_vbase2 = 0;
-    as->as_pbase2 = 0;
-    as->as_npages2 = 0;
-    as->as_stackpbase = 0;
-
+    
     return as;
 }
 
@@ -200,9 +186,7 @@ as_reset(struct addrspace *as) {
     as->as_vbase1 = 0;
     as->as_pbase1 = 0;
     as->as_npages1 = 0;
-    as->as_vbase2 = 0;
-    as->as_pbase2 = 0;
-    as->as_npages2 = 0;
+
     as->as_stackpbase = 0;
 }
 
@@ -210,7 +194,6 @@ void
 as_destroy(struct addrspace *as) {
     DEBUG(DB_VM, "as_destroy\n");
     kfree(PADDR_TO_KVADDR(as->as_pbase1));
-    kfree(PADDR_TO_KVADDR(as->as_pbase2));
     kfree(PADDR_TO_KVADDR(as->as_stackpbase));
     kfree(as);
 }
@@ -253,6 +236,8 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, size_t sz,
      */
     DEBUG(DB_VM, "as_define_region 0x%x, Size %d, Flags RWX: %d%d%d\n", vaddr, sz, readable, writeable, executable);
     
+    pd_request_page(&as->page_directory, vaddr);
+
     size_t npages;
 
     /* Align the region. First, the base... */
@@ -275,12 +260,6 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, size_t sz,
         return 0;
     }
 
-    if (as->as_vbase2 == 0) {
-        as->as_vbase2 = vaddr;
-        as->as_npages2 = npages;
-        return 0;
-    }
-
     /*
      * Support for more than two regions is not available.
      */
@@ -298,19 +277,13 @@ as_prepare_load(struct addrspace *as) {
     
             
     assert(as->as_pbase1 == 0);
-    assert(as->as_pbase2 == 0);
     assert(as->as_stackpbase == 0);
 
     as->as_pbase1 = getppages(as->as_npages1);
     if (as->as_pbase1 == 0) {
         return ENOMEM;
     }
-
-    as->as_pbase2 = getppages(as->as_npages2);
-    if (as->as_pbase2 == 0) {
-        return ENOMEM;
-    }
-
+    
     as->as_stackpbase = getppages(DUMBVM_STACKPAGES);
     if (as->as_stackpbase == 0) {
         return ENOMEM;
@@ -366,8 +339,6 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
 
     newas->as_vbase1 = old->as_vbase1;
     newas->as_npages1 = old->as_npages1;
-    newas->as_vbase2 = old->as_vbase2;
-    newas->as_npages2 = old->as_npages2;
 
     if (as_prepare_load(newas)) {
         as_destroy(newas);
@@ -375,16 +346,11 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
     }
 
     assert(newas->as_pbase1 != 0);
-    assert(newas->as_pbase2 != 0);
     assert(newas->as_stackpbase != 0);
 
     memmove((void *) PADDR_TO_KVADDR(newas->as_pbase1),
             (const void *) PADDR_TO_KVADDR(old->as_pbase1),
             old->as_npages1 * PAGE_SIZE);
-
-    memmove((void *) PADDR_TO_KVADDR(newas->as_pbase2),
-            (const void *) PADDR_TO_KVADDR(old->as_pbase2),
-            old->as_npages2 * PAGE_SIZE);
 
     memmove((void *) PADDR_TO_KVADDR(newas->as_stackpbase),
             (const void *) PADDR_TO_KVADDR(old->as_stackpbase),
@@ -399,6 +365,5 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
 void as_print(struct addrspace *as) {
     kprintf("# Pages\tPHY base\tVIRT base\n");
     kprintf("%d\t0x%x\t\t0x%x\n", as->as_npages1, as->as_pbase1, as->as_vbase1);
-    kprintf("%d\t0x%x\t\t0x%x\n", as->as_npages2, as->as_pbase2, as->as_vbase2);
     kprintf("0x%x\n", as->as_stackpbase);
 }

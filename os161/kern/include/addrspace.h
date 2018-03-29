@@ -3,6 +3,7 @@
 
 #include <vm.h>
 #include "opt-dumbvm.h"
+#include <pagedirectory.h>
 
 struct vnode;
 
@@ -31,6 +32,9 @@ struct addrspace {
 	paddr_t as_pbase2;
 	size_t as_npages2;
 	paddr_t as_stackpbase;
+        
+        /* Page table */
+        struct pagedirectory page_directory;
 #endif
 };
 
@@ -67,6 +71,8 @@ struct addrspace {
  *                (Normally called *after* as_complete_load().) Hands
  *                back the initial stack pointer for the new process.
  */
+
+paddr_t getppages(unsigned long npages);
 
 struct addrspace *as_create(void);
 int               as_copy(struct addrspace *src, struct addrspace **ret);

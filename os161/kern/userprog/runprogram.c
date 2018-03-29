@@ -73,11 +73,10 @@ runprogram(char *progname, int argc, char** argv) {
     int i;
     for (i = argc - 1; i >= 0; i--) {
         char* s = kstrdup(argv[i]);
-        int t = strlen(s);
         s[strlen(s)] = '\0';
         stackptr = stackptr - (strlen(s) + 1);
-        user_space_addr[i] = stackptr;
-        copyout(s, stackptr, strlen(s) + 1);
+        user_space_addr[i] = (char*) stackptr;
+        copyout(s, (userptr_t) stackptr, strlen(s) + 1);
         kfree(s);
     }
     
@@ -89,9 +88,9 @@ runprogram(char *progname, int argc, char** argv) {
 
     // copy array of pointers to args to the user space
     stackptr = stackptr - ((argc+1) * sizeof (char*));
-    copyout(user_space_addr, stackptr, sizeof (user_space_addr));
+    copyout(user_space_addr, (userptr_t) stackptr, sizeof (user_space_addr));
 
-    md_usermode(argc, stackptr, stackptr, entrypoint);
+    md_usermode(argc, (userptr_t) stackptr, stackptr, entrypoint);
 
     /* md_usermode does not return */
     panic("md_usermode returned\n");
@@ -101,5 +100,7 @@ runprogram(char *progname, int argc, char** argv) {
 int
 closeprogram(char *progname) {
     /* Ends and goes back to kernel mode*/
+    (void) progname;
+    
     return EINVAL;
 }

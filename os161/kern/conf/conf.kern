@@ -394,6 +394,9 @@ file      userprog/uio.c
 
 optofffile dumbvm   vm/addrspace.c
 optofffile dumbvm   vm/coremap.c
+optofffile dumbvm   vm/page.c
+optofffile dumbvm   vm/pagetable.c
+optofffile dumbvm   vm/pagedirectory.c
 
 #
 # Network

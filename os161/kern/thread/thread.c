@@ -347,46 +347,14 @@ fail:
 
 void
 thread_join(const char *name) {
-    //int i;
     
     while(1) {
         
         thread_yield();
-
-//        kprintf("came back\n");
-
         
         int s = splhigh();
         
         int stillwaiting = 0;
-        /*for (i = 0; i < array_getnum(sleepers); i++) {
-            struct thread *t = array_getguy(sleepers, i);
-            
-            if (strcmp(t->t_name, name) == 0) {
-                stillwaiting = 1;
-            }
-        }
-        splx(s);
-        
-        thread_yield();
-        
-        if(!stillwaiting) {
-            return;
-        }*/
-        
-        
-        /*for (i = 0; i < array_getnum(zombies); i++) {
-            struct thread *t = array_getguy(zombies, i);
-            kprintf("i: %d, name: %s",i,t->t_name);
-            if (strcmp(t->t_name, name) == 0) {
-                stillwaiting = 0;
-            }
-        }
-        
-        splx(s);
-        
-        if (!stillwaiting)        
-            return;*/
         
         int i;
         struct queue* runqueue = get_run_queue();
