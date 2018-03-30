@@ -21,13 +21,22 @@ void pd_allocate_pages(struct pagedirectory* pd) {
     }
 }
 
-
 void pd_print(struct pagedirectory* pd) {
     kprintf("Tab Pag PFN\tM R V P\t\n");
     int i;
     for (i = 0; i < 1024; ++i) {
         if(pd->pde[i] != NULL) {
             pt_print(pd->pde[i], i);
+        }
+    }
+}
+
+void pd_free(struct pagedirectory* pd) {
+    int i;
+    for (i = 0; i < 1024; ++i) {
+        if(pd->pde[i] != NULL) {
+            pt_free(pd->pde[i], i);
+            kfree(pd->pde[i]);
         }
     }
 }

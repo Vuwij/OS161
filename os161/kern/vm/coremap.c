@@ -21,6 +21,7 @@ void coremap_bootstrap() {
         coremap[i].usedby = CM_FREE;
         coremap[i].pid = 0;
         coremap[i].vaddr = 0; // Virtual Address is 0;
+        coremap[i].length = 0;
     }
     
     // Get Coremap usage
@@ -56,7 +57,7 @@ struct coremap_entry* cm_getcmentryfromaddress(paddr_t paddr) {
 
 void cm_print() {
     int i;
-    kprintf("\nFrame #\tPHY ADDR\t USER\n");
+    kprintf("\nFrame #\tPHY ADDR\tUSER\tLength\n");
     for (i = 0; i < cm_totalframes; i++) {
         if (coremap[i].usedby == CM_FREE) continue;
         kprintf("%d:\t0x%x\t\t", i, coremap[i].addr);
@@ -68,6 +69,7 @@ void cm_print() {
             kprintf("KTEMP");
         if (coremap[i].usedby == CM_USED)
             kprintf("PID %d, VA: 0x%x", coremap[i].pid, coremap[i].vaddr);
-        kprintf("\n");
+        
+        kprintf("\t%d\n", coremap[i].length);
     }
 }

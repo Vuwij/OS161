@@ -16,5 +16,7 @@ void pd_allocate_pages(struct pagedirectory*);
 
 void pd_print(struct pagedirectory*);
 
+void pd_free(struct pagedirectory*);
+
 #endif /* PAGEDIRECTORY_H */
 

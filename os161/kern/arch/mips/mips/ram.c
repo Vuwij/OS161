@@ -99,7 +99,35 @@ ram_borrowmem(unsigned long npages) {
     for (i = startframe; i < startframe + npages; ++i) {
         coremap[i].usedby = CM_KTEMP;
     }
+    
+    // Set the length of the mapped memory (so it can be deleted)
+    coremap[startframe].length = npages;
+    
     return coremap[startframe].addr;
+}
+
+// Kernel returns memory
+void
+ram_returnmem(vaddr_t addr) {
+    int i, startframe = -1, npages = -1;
+    
+    for(i = 0; i < cm_totalframes; ++i) {
+        if(PADDR_TO_KVADDR(coremap[i].addr) == addr) {
+            startframe = i;
+            npages = coremap[i].length;
+            break;
+        }
+    }
+    
+    if (startframe == -1) {
+        kprintf("ERROR 0x%x is not allocated", addr);
+    }
+    
+    for (i = startframe; i < startframe + npages; ++i) {
+        coremap[i].usedby = CM_FREE;
+        coremap[i].vaddr = 0;
+        coremap[i].pid = 0;
+    }
 }
 
 // Borrow some memory as user, signs the pid and address
@@ -114,14 +142,27 @@ ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr) {
     return paddr;
 }
 
+// User returns memory
 void
-ram_returnmem(vaddr_t addr) {
-    int i;
+ram_returnmemuser(int pid, vaddr_t addr) {
+    int i, startframe = -1, npages = -1;
+    
     for(i = 0; i < cm_totalframes; ++i) {
-        if(coremap[i].vaddr == addr) {
-            coremap[i].usedby = CM_FREE;
-            coremap[i].vaddr = 0;            
+        if(coremap[i].vaddr == addr && coremap[i].pid == pid) {
+            startframe = i;
+            npages = coremap[i].length;
+            break;
         }
+    }
+    
+    if (startframe == -1) {
+        kprintf("ERROR 0x%x is not allocated", addr);
+    }
+    
+    for (i = startframe; i < startframe + npages; ++i) {
+        coremap[i].usedby = CM_FREE;
+        coremap[i].vaddr = 0;
+        coremap[i].pid = 0;
     }
 }
 

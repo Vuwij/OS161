@@ -68,9 +68,15 @@
 
 void ram_bootstrap(void);
 paddr_t ram_stealmem(unsigned long npages);
+
+// Kernel Borrows and returns
 paddr_t ram_borrowmem(unsigned long npages);
+void ram_returnmem(vaddr_t addr);
+
+// User Borrows and returns
 paddr_t ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr);
-void ram_returnmem(vaddr_t addr); 
+void ram_returnmemuser(int pid, vaddr_t addr); 
+
 void ram_getsize(paddr_t *lo, paddr_t *hi);
 
 /*

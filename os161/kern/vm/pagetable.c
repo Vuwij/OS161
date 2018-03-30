@@ -25,3 +25,12 @@ void pt_print(struct pagetable* pt, int table) {
         }
     }
 }
+
+void pt_free(struct pagetable* pt, int table) {
+    int i;
+    for (i = 0; i < 1024; ++i) {
+        if(pt->pte[i].V != 0 || pt->pte[i].PFN != 0) {
+            p_free(&pt->pte[i], table, i);
+        }
+    }
+}

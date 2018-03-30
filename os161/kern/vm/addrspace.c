@@ -37,19 +37,17 @@ alloc_upages(int npages, vaddr_t vaddr) {
 
 void
 free_upages(vaddr_t addr) {
-    /* nothing */
-
-    (void) addr;
+    int spl = splhigh();
+    ram_returnmemuser(curthread->pid, addr);
+    splx(spl);
 }
 
 /* Allocate/free some kernel-space virtual pages */
 vaddr_t
 alloc_kpages(int npages) {
-    int spl;
-    
     paddr_t addr;
 
-    spl = splhigh();
+    int spl = splhigh();
     addr = ram_borrowmem(npages);
     splx(spl);
 
@@ -62,6 +60,12 @@ alloc_kpages(int npages) {
 void
 free_kpages(vaddr_t addr) {
     DEBUG(DB_VM, "  free_kpages: 0x%x\n", addr);
+    
+    // Remove the memory from the core map
+    int spl = splhigh();
+    ram_returnmem(addr);
+    splx(spl);
+    
     /* nothing */
     /*int index;
     u_int32_t ehi, elo;
@@ -73,8 +77,7 @@ free_kpages(vaddr_t addr) {
     TLB_Read(&ehi,&elo,index);*/
 
     //(void) addr;
-    //ram_returnmem(addr);        
-
+    //ram_returnmem(addr);
 }
 
 int
@@ -182,8 +185,8 @@ as_reset(struct addrspace *as) {
 void
 as_destroy(struct addrspace *as) {
     DEBUG(DB_VM, "as_destroy\n");
-    kfree(PADDR_TO_KVADDR(as->as_pbase1));
-    kfree(PADDR_TO_KVADDR(as->as_stackpbase));
+    
+    pd_free(&as->page_directory);
     kfree(as);
 }
 

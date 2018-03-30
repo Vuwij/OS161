@@ -536,13 +536,13 @@ subpage_kfree(void *ptr) {
 void *
 kmalloc(size_t sz) {
     if (sz >= LARGEST_SUBPAGE_SIZE) {
-        DEBUG(DB_VM, "kmalloc: %d\n", sz);
-        
         unsigned long npages;
         vaddr_t address;
 
         /* Round up to a whole number of pages. */
         npages = (sz + PAGE_SIZE - 1) / PAGE_SIZE;
+        
+        DEBUG(DB_VM, "kmalloc: %d, %d\n", sz, npages);
         address = alloc_kpages(npages);
         if (address == 0) {
             return NULL;

@@ -15,5 +15,7 @@ void pt_allocate_page(struct pagetable*, int table);
 
 void pt_print(struct pagetable*, int table);
 
+void pt_free(struct pagetable* pt, int table);
+
 #endif /* PAGETABLE_H */
 
