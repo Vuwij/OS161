@@ -120,7 +120,7 @@ ram_returnmem(vaddr_t addr) {
     }
     
     if (startframe == -1) {
-        kprintf("ERROR 0x%x is not allocated", addr);
+        kprintf("ERROR 0x%x is not allocated\n", addr);
     }
     
     for (i = startframe; i < startframe + npages; ++i) {
@@ -156,7 +156,7 @@ ram_returnmemuser(int pid, vaddr_t addr) {
     }
     
     if (startframe == -1) {
-        kprintf("ERROR 0x%x is not allocated", addr);
+        kprintf("ERROR 0x%x is not allocated\n", addr);
     }
     
     for (i = startframe; i < startframe + npages; ++i) {

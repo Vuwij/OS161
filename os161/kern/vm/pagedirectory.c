@@ -2,6 +2,13 @@
 
 #include "lib.h"
 
+void pd_initialize(struct pagedirectory* pd) {
+    int i;
+    for (i = 0; i < 1024; ++i) {
+        pd->pde[i] = NULL;
+    }
+}
+
 struct page* pd_request_page(struct pagedirectory* pd, vaddr_t vaddr) {
     unsigned entry = vaddr >> 22;
     if(pd->pde[entry] == NULL) {
@@ -12,7 +19,6 @@ struct page* pd_request_page(struct pagedirectory* pd, vaddr_t vaddr) {
 }
 
 void pd_allocate_pages(struct pagedirectory* pd) {
-    kprintf("Tab Pag PFN\tM R V P\t\n");
     int i;
     for (i = 0; i < 1024; ++i) {
         if(pd->pde[i] != NULL) {
@@ -37,6 +43,7 @@ void pd_free(struct pagedirectory* pd) {
         if(pd->pde[i] != NULL) {
             pt_free(pd->pde[i], i);
             kfree(pd->pde[i]);
+            pd->pde[i] = NULL;
         }
     }
 }

@@ -10,6 +10,8 @@ struct pagedirectory {
     struct pagetable* pde[1024]; // The page table is created on request
 };
 
+void pd_initialize(struct pagedirectory*);
+
 struct page* pd_request_page(struct pagedirectory*, vaddr_t);
 
 void pd_allocate_pages(struct pagedirectory*);

@@ -147,21 +147,10 @@ as_create(void) {
     DEBUG(DB_VM, "as_create\n");
 
     struct addrspace *as = kmalloc(sizeof (struct addrspace));
+    pd_initialize(&as->page_directory);
     if (as == NULL) {
         return NULL;
     }
-
-    /*
-     * Write this.
-     */
-
-    as->as_vbase1 = 0;
-    as->as_pbase1 = 0;
-    as->as_npages1 = 0;
-    as->as_vbase2 = 0;
-    as->as_pbase2 = 0;
-    as->as_npages2 = 0;
-    as->as_stackpbase = 0;
 
     return as;
 }
@@ -172,31 +161,20 @@ as_reset(struct addrspace *as) {
     if (as == NULL) {
         return;
     }
-
-    as->as_vbase1 = 0;
-    as->as_pbase1 = 0;
-    as->as_npages1 = 0;
-    as->as_vbase2 = 0;
-    as->as_pbase2 = 0;
-    as->as_npages2 = 0;
-    as->as_stackpbase = 0;
 }
 
 void
 as_destroy(struct addrspace *as) {
     DEBUG(DB_VM, "as_destroy\n");
     
+//    pd_print(&as->page_directory);
     pd_free(&as->page_directory);
     kfree(as);
+    as = NULL;
 }
 
 void
 as_activate(struct addrspace *as) {
-    //    DEBUG(DB_VM, "as_activate\n");
-
-    /*
-     * Write this.
-     */
     int i, spl;
 
     (void) as;
@@ -206,8 +184,6 @@ as_activate(struct addrspace *as) {
     for (i = 0; i < NUM_TLB; i++) {
         TLB_Write(TLBHI_INVALID(i), TLBLO_INVALID(), i);
     }
-
-    (void) as; // suppress warning until code gets written
 }
 
 /*
@@ -244,14 +220,12 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, size_t sz,
     for (i = 0; i < npages; i++) {
         struct page* p = pd_request_page(&as->page_directory, vaddr);
         p->V = 1; // Temporarily set the valid bit to 1
+        vaddr = vaddr + PAGE_SIZE;
     }
 }
 
 int
 as_prepare_load(struct addrspace *as) {
-    /*
-     * Write this.
-     */
 
     DEBUG(DB_VM, "as_prepare_load\n");
     
@@ -259,10 +233,10 @@ as_prepare_load(struct addrspace *as) {
     struct page* p = pd_request_page(&as->page_directory, USERSTACK - PAGE_SIZE);
     p->V = 1;
     
-    pd_print(&as->page_directory);
-    
     // Automatically allocate all the pages without a page frame number
     pd_allocate_pages(&as->page_directory);
+    
+    pd_print(&as->page_directory);
     
     cm_print();
     
@@ -271,9 +245,6 @@ as_prepare_load(struct addrspace *as) {
 
 int
 as_complete_load(struct addrspace *as) {
-    /*
-     * Write this.
-     */
     DEBUG(DB_VM, "as_complete_load\n");
 
     (void) as;
@@ -282,9 +253,7 @@ as_complete_load(struct addrspace *as) {
 
 int
 as_define_stack(struct addrspace *as, vaddr_t *stackptr) {
-    /*
-     * Write this.
-     */
+
     DEBUG(DB_VM, "as_define_stack\n");
 
     /* Initial user-level stack pointer */
@@ -295,40 +264,18 @@ as_define_stack(struct addrspace *as, vaddr_t *stackptr) {
 
 int
 as_copy(struct addrspace *old, struct addrspace **ret) {
-    /*
-     * Write this.
-     */
-//    DEBUG(DB_VM, "as_copy\n");
-//
-//    struct addrspace *newas;
-//
-//    newas = as_create();
-//    if (newas == NULL) {
-//        return ENOMEM;
-//    }
-//
-//    newas->as_vbase1 = old->as_vbase1;
-//    newas->as_npages1 = old->as_npages1;
-//
-//    if (as_prepare_load(newas)) {
-//        as_destroy(newas);
-//        return ENOMEM;
-//    }
-//
-//    assert(newas->as_pbase1 != 0);
-//    assert(newas->as_stackpbase != 0);
-//
-//    memmove((void *) PADDR_TO_KVADDR(newas->as_pbase1),
-//            (const void *) PADDR_TO_KVADDR(old->as_pbase1),
-//            old->as_npages1 * PAGE_SIZE);
-//
-//    memmove((void *) PADDR_TO_KVADDR(newas->as_stackpbase),
-//            (const void *) PADDR_TO_KVADDR(old->as_stackpbase),
-//            DUMBVM_STACKPAGES * PAGE_SIZE);
-//
-//    (void) old;
-//
-//    *ret = newas;
+    DEBUG(DB_VM, "as_copy\n");
+
+    struct addrspace *newas = as_create();
+    if (newas == NULL) {
+        return ENOMEM;
+    }
+    
+    // Temporarily use the exact same address space
+    // TODO: Implement Copy on Write
+    memmove(newas, old, sizeof(struct addrspace));
+
+    *ret = newas;
     return 0;
 }
 
