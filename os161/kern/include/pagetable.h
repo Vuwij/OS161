@@ -9,7 +9,11 @@ struct pagetable {
     struct page pte[1024];  // 2^10 page table entries per page table
 };
 
-paddr_t pt_request_page(struct pagetable*, vaddr_t);
+struct page* pt_request_page(struct pagetable*, vaddr_t);
+
+void pt_allocate_page(struct pagetable*, int table);
+
+void pt_print(struct pagetable*, int table);
 
 #endif /* PAGETABLE_H */
 

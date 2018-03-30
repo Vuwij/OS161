@@ -77,6 +77,7 @@ ram_stealmem(unsigned long npages) {
     return paddr;
 }
 
+// Borrow some memory as kernel
 paddr_t
 ram_borrowmem(unsigned long npages) {
     if(coremap == NULL)
@@ -96,10 +97,21 @@ ram_borrowmem(unsigned long npages) {
     if(startframe == -1) return 0;
     
     for (i = startframe; i < startframe + npages; ++i) {
-        coremap[i].usedby = CM_USED;
-        coremap[i].vaddr = PADDR_TO_KVADDR(coremap[startframe].addr);
+        coremap[i].usedby = CM_KTEMP;
     }
     return coremap[startframe].addr;
+}
+
+// Borrow some memory as user, signs the pid and address
+paddr_t
+ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr) {
+    paddr_t paddr = ram_borrowmem(npages);
+    struct coremap_entry* cmentry = cm_getcmentryfromaddress(paddr);
+    cmentry->usedby = CM_USED;
+    cmentry->pid = pid;
+    cmentry->vaddr = vaddr;
+    
+    return paddr;
 }
 
 void

@@ -5,10 +5,10 @@
 
 struct coremap_entry *coremap = NULL;
 int cm_totalframes;
+paddr_t firstpaddr, lastpaddr; // First physical address, used as offset
 
 void coremap_bootstrap() {
-    u_int32_t firstpaddr, lastpaddr;
-    ram_getsize(&firstpaddr, &lastpaddr);
+    ram_getsize((paddr_t) &firstpaddr, (paddr_t) &lastpaddr);
     
     cm_totalframes = (lastpaddr - firstpaddr) / PAGE_SIZE;
     coremap = kmalloc(cm_totalframes * sizeof(struct coremap_entry));
@@ -43,23 +43,29 @@ void coremap_getkernelusage() {
     
     int i;
     for (i = 0; i < cm_totalframes; i++) {
-        if(coremap[i].usedby == CM_USED) // The used area is the kernel area
+        if(coremap[i].usedby == CM_KTEMP) // The used area is the kernel area
             coremap[i].usedby = CM_KERNEL;
     }
     cm_print();
+}
+
+struct coremap_entry* cm_getcmentryfromaddress(paddr_t paddr) {
+    int id = (paddr - firstpaddr) >> 12;
+    return &coremap[id];
 }
 
 void cm_print() {
     int i;
     kprintf("\nFrame #\tPHY ADDR\t USER\n");
     for (i = 0; i < cm_totalframes; i++) {
+        if (coremap[i].usedby == CM_FREE) continue;
         kprintf("%d:\t0x%x\t\t", i, coremap[i].addr);
-        if (coremap[i].usedby == CM_FREE)
-            kprintf("FREE");
         if (coremap[i].usedby == CM_COREMAP)
             kprintf("COREMAP");
         if (coremap[i].usedby == CM_KERNEL)
             kprintf("KERNEL");
+        if (coremap[i].usedby == CM_KTEMP)
+            kprintf("KTEMP");
         if (coremap[i].usedby == CM_USED)
             kprintf("PID %d, VA: 0x%x", coremap[i].pid, coremap[i].vaddr);
         kprintf("\n");

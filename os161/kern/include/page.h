@@ -12,8 +12,9 @@ struct page {
     u_int32_t PFN   : 27;       // Page Frame Number (0 - 61 (0b111101))
 };
 
-paddr_t p_request_page(struct page*, vaddr_t);
+void p_allocate_page(struct page*, int table, int page);
 
+void p_print(struct page*, int table, int page);
 
 #endif /* PAGE_H */
 

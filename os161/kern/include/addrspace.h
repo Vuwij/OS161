@@ -72,7 +72,12 @@ struct addrspace {
  *                back the initial stack pointer for the new process.
  */
 
-paddr_t getppages(unsigned long npages);
+// Page Allocation and freeing for user and 
+paddr_t alloc_upages(int npages, vaddr_t vaddr);
+void free_upages(vaddr_t addr);
+
+vaddr_t alloc_kpages(int npages);
+void free_kpages(vaddr_t addr);
 
 struct addrspace *as_create(void);
 int               as_copy(struct addrspace *src, struct addrspace **ret);

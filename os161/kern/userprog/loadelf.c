@@ -18,6 +18,8 @@
 #include <curthread.h>
 #include <vnode.h>
 
+#include "coremap.h"
+
 /*
  * Load a segment at virtual address VADDR. The segment in memory
  * extends from VADDR up to (but not including) VADDR+MEMSIZE. The
@@ -135,7 +137,7 @@ load_elf(struct vnode *v, vaddr_t *entrypoint) {
             eh.e_machine != EM_MACHINE) {
         return ENOEXEC;
     }
-
+    
     /*
      * Go through the list of segments and set up the address space.
      *
@@ -176,7 +178,7 @@ load_elf(struct vnode *v, vaddr_t *entrypoint) {
                         ph.p_type);
                 return ENOEXEC;
         }
-
+        
         result = as_define_region(curthread->t_vmspace,
                 ph.p_vaddr, ph.p_memsz,
                 ph.p_flags & PF_R,

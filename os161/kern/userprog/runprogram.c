@@ -14,6 +14,7 @@
 #include <vm.h>
 #include <vfs.h>
 #include <test.h>
+#include <coremap.h>
 
 /*
  * Load program "progname" and start running it in usermode.
@@ -37,7 +38,7 @@ runprogram(char *progname, int argc, char** argv) {
 
     /* We should be a new thread. */
     assert(curthread->t_vmspace == NULL);
-
+    
     /* Create a new address space. */
     curthread->t_vmspace = as_create();
     if (curthread->t_vmspace == NULL) {

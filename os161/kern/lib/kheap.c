@@ -2,6 +2,7 @@
 #include <lib.h>
 #include <vm.h>
 #include <machine/spl.h>
+#include <coremap.h>
 
 static
 void
