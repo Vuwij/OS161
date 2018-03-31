@@ -22,6 +22,7 @@
 #include <syscall.h>
 #include <machine/tlb.h>
 #include <coremap.h>
+#include <swapmap.h>
 
 #define _PATH_SHELL "/bin/sh"
 
@@ -355,16 +356,17 @@ cmd_TLB(int nargs, char **args) {
     (void) nargs;
     (void) args;
     
-    int i, valid, dirty;
+    int i, valid, dirty, nocache;
     u_int32_t ehi, elo;
     
-    kprintf("VA\t\tPA\t\tValid\tDirty\n");
+    kprintf("VA\t\tPA\tNoCache\tValid\tDirty\n");
     
     for (i=0; i<NUM_TLB; i++) {
-        TLB_Read(&ehi, &elo, i);   
-        valid = elo&TLBLO_VALID ? 1 : 0;
-        dirty = elo&TLBLO_DIRTY ? 1 : 0;
-        kprintf("0x%x\t0x%x\t\t%d\t%d\n", ehi,elo, valid, dirty);                       
+        TLB_Read(&ehi, &elo, i);
+        nocache = elo & TLBLO_NOCACHE ? 1 : 0;
+        valid = elo & TLBLO_VALID ? 1 : 0;
+        dirty = elo & TLBLO_DIRTY ? 1 : 0;
+        kprintf("0x%x\t0x%x\t%d\t%d\t%d\n", ehi & TLBHI_VPAGE, elo & TLBLO_PPAGE, nocache, valid, dirty);                       
     }
     
     return 0;
@@ -380,6 +382,19 @@ cmd_coremap(int nargs, char **args) {
 
     return 0;
 }
+
+    
+static
+int
+cmd_swapmap(int nargs, char **args) {
+    (void) nargs;
+    (void) args;
+
+    sm_print();
+
+    return 0;
+}
+
 
 ////////////////////////////////////////
 //
@@ -602,6 +617,7 @@ static struct {
     /* stats */
     { "kh", cmd_kheapstats},
     { "cm", cmd_coremap},
+    { "sm", cmd_swapmap},
     { "tlb", cmd_TLB},
 
     /* base system tests */

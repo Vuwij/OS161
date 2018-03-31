@@ -9,6 +9,7 @@
 #include <machine/tlb.h>
 #include <coremap.h>
 #include <pagedirectory.h>
+#include <swapmap.h>
 
 
 #define DUMBVM_STACKPAGES 12
@@ -42,6 +43,15 @@ free_upages(vaddr_t addr) {
     splx(spl);
 }
 
+// Provides the frame number of the physical address
+// Example if frame is 0x42. Physical address is 0x42000. Index on coremap is 0x42000 - first physical address
+void
+free_frame(int frame) {
+    int spl = splhigh();
+    ram_removeframe((frame >> 12) - firstpaddr);
+    splx(spl);
+}
+
 /* Allocate/free some kernel-space virtual pages */
 vaddr_t
 alloc_kpages(int npages) {
@@ -65,25 +75,10 @@ free_kpages(vaddr_t addr) {
     int spl = splhigh();
     ram_returnmem(addr);
     splx(spl);
-    
-    /* nothing */
-    /*int index;
-    u_int32_t ehi, elo;
-    
-    index = TLB_Probe(addr,0);
-    if (index == -1) {
-        
-    }
-    TLB_Read(&ehi,&elo,index);*/
-
-    //(void) addr;
-    //ram_returnmem(addr);
 }
 
 int
 vm_fault(int faulttype, vaddr_t faultaddress) {
-
-    vaddr_t vbase1, vtop1, vbase2, vtop2, stackbase, stacktop;
     paddr_t paddr;
     int i;
     u_int32_t ehi, elo;
@@ -111,26 +106,35 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     
     struct page* p = pd_request_page(&as->page_directory, faultaddress);
     
-    // Page is valid and physical address is setup
-    if(p->V == 1) {
+    if (p->V && p->PFN) { // In memory
         paddr = (p->PFN << 12);
     }
-    else {
-        // Temporarily invalid address requested
+    else if(p->V && p->PFN == 0) { // Requested not allocated
         splx(spl);
         return EFAULT;
+    }
+    else if(!p->V && p->PFN) { // In disk
+        sm_swapin(p, faultaddress);
+        paddr = (p->PFN << 12);
+    }
+    else { // Not requested nor allocated
+        return EFAULT; // TODO
     }
 
     // TLB Stuff
     assert((paddr & PAGE_FRAME) == paddr);
     for (i = 0; i < NUM_TLB; i++) {
         TLB_Read(&ehi, &elo, i);
+        
+        // If the physical page is valid
         if (elo & TLBLO_VALID) {
             continue;
         }
+        
+        // If the physical page is invalid, replace the TLB entry with the new page
         ehi = faultaddress;
         elo = paddr | TLBLO_DIRTY | TLBLO_VALID;
-        DEBUG(DB_VM, "  smartvm: 0x%x -> 0x%x\n", faultaddress, paddr);
+        DEBUG(DB_VM, "  smartvm: 0x%x -> 0x%x\n", faultaddress, paddr); // Prints all the mapping in the TLB
         TLB_Write(ehi, elo, i);
         TLB_Read(&ehi, &elo, i);
         splx(spl);
@@ -167,9 +171,11 @@ void
 as_destroy(struct addrspace *as) {
     DEBUG(DB_VM, "as_destroy\n");
     
-//    pd_print(&as->page_directory);
+    pd_print(&as->page_directory);
+    cm_print();
     pd_free(&as->page_directory);
     kfree(as);
+    cm_print();
     as = NULL;
 }
 
@@ -180,10 +186,13 @@ as_activate(struct addrspace *as) {
     (void) as;
 
     spl = splhigh();
-
+    
+    // Flushes the entire TLB
     for (i = 0; i < NUM_TLB; i++) {
         TLB_Write(TLBHI_INVALID(i), TLBLO_INVALID(), i);
     }
+    
+    splx(spl);
 }
 
 /*
@@ -216,12 +225,14 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, size_t sz,
     npages = sz / PAGE_SIZE;
 
     // Get the page and set the valid to one
-    int i;
+    unsigned i;
     for (i = 0; i < npages; i++) {
         struct page* p = pd_request_page(&as->page_directory, vaddr);
         p->V = 1; // Temporarily set the valid bit to 1
         vaddr = vaddr + PAGE_SIZE;
     }
+    
+    return 0;
 }
 
 int
@@ -233,11 +244,10 @@ as_prepare_load(struct addrspace *as) {
     struct page* p = pd_request_page(&as->page_directory, USERSTACK - PAGE_SIZE);
     p->V = 1;
     
-    // Automatically allocate all the pages without a page frame number
+    // Automatically allocate all the pages without a page frame number. Allocate disk space for these pages
     pd_allocate_pages(&as->page_directory);
     
     pd_print(&as->page_directory);
-    
     cm_print();
     
     return 0;
@@ -258,7 +268,8 @@ as_define_stack(struct addrspace *as, vaddr_t *stackptr) {
 
     /* Initial user-level stack pointer */
     *stackptr = USERSTACK;
-
+    
+    (void) as;
     return 0;
 }
 

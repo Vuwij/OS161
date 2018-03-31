@@ -1,14 +1,12 @@
 #include <page.h>
 #include <addrspace.h>
+#include <swapmap.h>
 
 void p_allocate_page(struct page* p, int table, int page) {
-
-    // Creating the virtual address from the page and the table
-    vaddr_t vaddr = (vaddr_t) ((table << 22) + (page << 12));
     
+    // Allocates a disk location for the page
     if (p->PFN == 0 && p->V == 1) {
-        paddr_t paddr = alloc_upages(1, vaddr);
-        p->PFN = paddr >> 12;
+        sm_swapalloc(p);
     }
 }
 
@@ -17,11 +15,23 @@ void p_print(struct page* p, int table, int page) {
 }
 
 void p_free(struct page* p, int table, int page) {
-        // Creating the virtual address from the page and the table
-    vaddr_t vaddr = (vaddr_t) ((table << 22) + (page << 12));
-    
+    // If its in the memory, free memory
+    if(p->V) {
+        vaddr_t vaddr = (vaddr_t) ((table << 22) + (page << 12));
+
+        if (p->PFN != 0 && p->V == 1) {
+            free_upages(vaddr);
+        }
+    }
+    // If its in the disk, remove bits from bitmap
+    else {
+        sm_swapdealloc(p);
+    }
+}
+
+void p_free_frame(struct page* p) {
     if (p->PFN != 0 && p->V == 1) {
-        free_upages(vaddr);
+        free_frame(p->PFN);
         p->V = 0;
     }
 }

@@ -16,5 +16,11 @@ void p_allocate_page(struct page*, int table, int page);
 
 void p_print(struct page*, int table, int page);
 
+// Free the page using the virtual address
+void p_free(struct page* p, int table, int page);
+
+// Free the page using the frame number
+void p_free_frame(struct page* p);
+
 #endif /* PAGE_H */
 

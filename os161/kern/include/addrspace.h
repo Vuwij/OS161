@@ -75,7 +75,8 @@ struct addrspace {
 // Page Allocation and freeing for user and 
 paddr_t alloc_upages(int npages, vaddr_t vaddr);
 void free_upages(vaddr_t addr);
-
+void free_frame(int frame);
+        
 vaddr_t alloc_kpages(int npages);
 void free_kpages(vaddr_t addr);
 

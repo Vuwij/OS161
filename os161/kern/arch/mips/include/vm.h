@@ -77,6 +77,9 @@ void ram_returnmem(vaddr_t addr);
 paddr_t ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr);
 void ram_returnmemuser(int pid, vaddr_t addr); 
 
+// Both user and kernel return calls this function
+void ram_removeframe(int frame); 
+
 void ram_getsize(paddr_t *lo, paddr_t *hi);
 
 /*

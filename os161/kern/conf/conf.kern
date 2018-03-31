@@ -397,6 +397,7 @@ optofffile dumbvm   vm/coremap.c
 optofffile dumbvm   vm/page.c
 optofffile dumbvm   vm/pagetable.c
 optofffile dumbvm   vm/pagedirectory.c
+optofffile dumbvm   vm/swapmap.c
 
 #
 # Network
