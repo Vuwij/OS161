@@ -110,6 +110,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         paddr = (p->PFN << 12);
     }
     else if(p->V && p->PFN == 0) { // Requested not allocated
+        kprintf("As expected\n");
         splx(spl);
         return EFAULT;
     }
@@ -117,8 +118,24 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         sm_swapin(p, faultaddress);
         paddr = (p->PFN << 12);
     }
-    else { // Not requested nor allocated
-        return EFAULT; // TODO
+    else { 
+        assert(faultaddress < USERSTACK);
+        
+        // Fault location is 
+        if(faultaddress == as->as_stacklocation - PAGE_SIZE) {
+            struct page* p = pd_request_page(&as->page_directory, faultaddress);    // Create a new page
+            
+            if(p->PFN != 0) return EFAULT;                                          // Page has hit the bottom
+            
+            p->V = 1;                                                               
+            pd_allocate_pages(&as->page_directory);                                 // Allocate disk space for page
+            sm_swapin(p, faultaddress);                                             // Swap the page from the disk
+            paddr = (p->PFN << 12);
+            as->as_stacklocation = as->as_stacklocation - PAGE_SIZE;                // Shrink the stack location, stack is never freed
+        }
+        else {
+            return EFAULT;
+        }
     }
 
     // TLB Stuff
@@ -171,11 +188,10 @@ void
 as_destroy(struct addrspace *as) {
     DEBUG(DB_VM, "as_destroy\n");
     
-    pd_print(&as->page_directory);
-    cm_print();
+//    pd_print(&as->page_directory);
+//    cm_print();
     pd_free(&as->page_directory);
     kfree(as);
-    cm_print();
     as = NULL;
 }
 
@@ -243,12 +259,13 @@ as_prepare_load(struct addrspace *as) {
     // Setup the USER STACK pages
     struct page* p = pd_request_page(&as->page_directory, USERSTACK - PAGE_SIZE);
     p->V = 1;
+    as->as_stacklocation = USERSTACK - PAGE_SIZE;
     
     // Automatically allocate all the pages without a page frame number. Allocate disk space for these pages
     pd_allocate_pages(&as->page_directory);
     
-    pd_print(&as->page_directory);
-    cm_print();
+//    pd_print(&as->page_directory);
+//    cm_print();
     
     return 0;
 }
