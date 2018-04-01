@@ -28,6 +28,7 @@ hog(void) {
             err(1, "fork");
         case 0:
             /* child */
+            exit(1);
             execv("/testbin/hog", hargv);
             err(1, "/testbin/hog");
         default:

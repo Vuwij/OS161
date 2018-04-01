@@ -12,9 +12,13 @@
 #include <swapmap.h>
 #include <page.h>
 #include <vfs.h>
+#include <kern/unistd.h>
+
+#include "vnode.h"
 
 
 #define TEXT_SEGMENT_SHIFT 16
+#define MAX_STACK_GROWTH 0x10000000
 
 void
 vm_bootstrap(void) {
@@ -45,9 +49,15 @@ free_upages(vaddr_t addr) {
     splx(spl);
 }
 
+void
+increment_frame(int frame) {
+    int spl = splhigh();
+    ram_incrementframe((frame >> 12) - firstpaddr);
+    splx(spl);
+}
+
 // Provides the frame number of the physical address
 // Example if frame is 0x42. Physical address is 0x42000. Index on coremap is 0x42000 - first physical address
-
 void
 free_frame(int frame) {
     int spl = splhigh();
@@ -128,6 +138,14 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         return 0;
     }
     
+    // Page valid, unallocated
+    if (p->F == 0 && p->V == 1 && p->PFN == 0) {
+        p_allocate_page(p); // Allocate disk space for page
+        sm_swapin(p, faultaddress); // Swap the page from the disk
+        paddr = (p->PFN << 12);
+        return 0;
+    }
+    
     // Page located on disk
     if (!p->V && p->PFN) {
         sm_swapin(p, faultaddress);
@@ -138,16 +156,28 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     if(p->PFN == 0 && p->V == 0){
         assert(faultaddress < USERSTACK);
 
-        // Fault location is part of stack
-        if (faultaddress == as->as_stacklocation) {
-            struct page* p = pd_request_page(&as->page_directory, faultaddress); // Create a new page
-            if (p->PFN != 0) return EFAULT; // Page has hit the bottom
-
+        // Fault location is part of stack (Temporary solution to stack growth method)
+        if (faultaddress <= as->as_stacklocation && faultaddress > (as->as_stacklocation - MAX_STACK_GROWTH)) {
+            unsigned addr = as->as_stacklocation - PAGE_SIZE;
+            
+            // Request pages for a jump
+            while(addr > faultaddress) {
+                struct page* p = pd_request_page(&as->page_directory, addr);
+                if (p->PFN != 0 || p->F != 0 || p->V != 0) return EFAULT; // Page has hit the bottom
+                p->V = 1;
+                addr = addr - PAGE_SIZE;
+            }
+            
+            // The page that actually is requested
+            struct page* p = pd_request_page(&as->page_directory, faultaddress);
+            if (p->PFN != 0 || p->F != 0 || p->V != 0) return EFAULT; // Page has hit the bottom
             p->V = 1;
             p_allocate_page(p); // Allocate disk space for page
             sm_swapin(p, faultaddress); // Swap the page from the disk
             paddr = (p->PFN << 12);
-            as->as_stacklocation = as->as_stacklocation - PAGE_SIZE; // Shrink the stack location, stack location is never freed
+            
+            as->as_stacklocation = faultaddress; // Shrink the stack location, stack location is never freed
+            
         } else {
             return EFAULT;
         }
@@ -207,6 +237,7 @@ as_destroy(struct addrspace *as) {
     cm_print();
     //sm_print();
     vfs_close(as->progfile);
+    
     pd_free(&as->page_directory);
     kfree(as);
     as = NULL;
@@ -269,6 +300,8 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
         vaddr = vaddr + PAGE_SIZE;
         p->PFN = (pindex << TEXT_SEGMENT_SHIFT) + i; 
     }
+    
+    
 
     return 0;
 }
@@ -315,11 +348,16 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
     if (newas == NULL) {
         return ENOMEM;
     }
-
+    
     // Temporarily use the exact same address space
     // TODO: Implement Copy on Write
     memmove(newas, old, sizeof (struct addrspace));
-
+    
+    // New address space must increase VOP_OPEN
+    vfs_open(&old->progname, O_RDONLY, &newas->progfile);
+    
+    // Need to mark all physical memory with 2 so we don't have delete until all processes have ended
+    
     *ret = newas;
     return 0;
 }

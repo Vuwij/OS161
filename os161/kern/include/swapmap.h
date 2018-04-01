@@ -15,6 +15,11 @@ typedef struct bitmap {} Swapmap;
 
 extern Swapmap* swapmap;
 
+#define SWAPCOUNT_COUNT(paddr) ((paddr) & 0x0000FFFF) // The swap file count
+#define SWAPCOUNT_SWAP(paddr) ((paddr) >> 16)         // The swap file index
+
+extern struct node swapcount; // For situations where 2 processes using the same swap area
+
 extern int sm_pagecount; // 1280 or 0x500
 
 void sm_bootstrap();
@@ -32,6 +37,9 @@ int sm_swapout(struct page* p);
 
 // Finds the spot in the swap file to swap in a piece of memory
 int sm_swapin(struct page* p, vaddr_t vaddr);
+
+// Multiple users using fork and have swap are. Uses swapdouble to keep track of swap areas where are used twice
+int sm_swapincrement(struct page* p);
 
 #endif /* SWAPAREA_H */
 

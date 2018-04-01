@@ -13,6 +13,7 @@
 int sm_pagecount;
 struct vnode *swap_fp;
 Swapmap* swapmap;
+struct node swapcount;
 // Initializes the swap area using the disk
 
 void sm_bootstrap() {
@@ -77,10 +78,22 @@ int sm_swapdealloc(struct page* p) {
     assert(p->V == 0);
     assert(p->PFN != 0);
     kprintf("0x%x\n", p->PFN << 12);
-    assert(bitmap_isset(swapmap, p->PFN - 1))
+    int pos = p->PFN - 1;
+    assert(bitmap_isset(swapmap, pos))
     
-    // Updates the bitmap to indicate that swap area is now used
-    bitmap_unmark(swapmap, p->PFN - 1);
+    // Checks if it is doubled in swap count
+    // Updates the bitmap to indicate the swap area is now freed
+//    struct node* swapcountptr = &swapcount;
+//    struct node* n = swapexists(&swapcountptr, pos);
+//    if (n == NULL) {
+//        bitmap_unmark(swapmap, pos);
+//    }
+//    else if (SWAPCOUNT_COUNT(n->val) == 1) {
+//        remove_val(&swapcountptr, n->val);
+        bitmap_unmark(swapmap, pos);
+//    } else {
+//        n->val--;
+//    }
     
     p->PFN = 0;
     
@@ -138,12 +151,42 @@ int sm_swapin(struct page* p, vaddr_t vaddr) {
     int result = VOP_READ(swap_fp, &ku);
     if (result) return result;
     
+    // Checks if it is doubled in swap count
     // Updates the bitmap to indicate the swap area is now freed
-    bitmap_unmark(swapmap, pos);
+//    struct node* swapcountptr = &swapcount;
+//    struct node* n = swapexists(&swapcountptr, pos);
+//    if (n == NULL) {
+//        bitmap_unmark(swapmap, pos);
+//    }
+//    else if (SWAPCOUNT_COUNT(n->val) == 1) {
+//        remove_val(&swapcountptr, n->val);
+        bitmap_unmark(swapmap, pos);
+//    } else {
+//        n->val--;
+//    }
     
     // Updates the page to now point to the physical memory and revalidates the page
     p->PFN = (paddr >> 12);
     p->V = 1;
     
     return 0;
+}
+
+int sm_swapincrement(struct page* p) {
+    // Page must be invalid (located on disk)
+//    assert(p->V == 0);
+//    int pos = p->PFN - 1;
+//    int b = bitmap_isset(swapmap, pos);
+//    assert(b == 1);
+//    
+//    // NEED TO DEBUG
+//    struct node* n = swapexists(&swapcount, pos);
+//    if(n != NULL) {
+//        n->val++;
+//    }
+//    else {
+//        int entry = (pos << 16) + 1;
+//        struct node* s = &swapcount;
+//        push_begin(&s, entry);
+//    }
 }

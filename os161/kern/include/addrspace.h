@@ -27,6 +27,7 @@ struct addrspace {
 	paddr_t as_stackpbase;
 #else
         // Current program information and executable header
+        char progname[50];
         struct vnode *progfile;
         Elf_Ehdr eh;
         

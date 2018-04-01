@@ -4,7 +4,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -60,7 +60,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10001000	1
 16:	0x53000		PID 1, VA: 0x10000000	1
-Operation took 1.553545000 seconds
+Operation took 1.554019840 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Welcome to the palindrome tester!
@@ -87,7 +87,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10001000	1
 16:	0x53000		PID 1, VA: 0x10000000	1
-Operation took 1.549104800 seconds
+Operation took 1.549496800 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Welcome to the palindrome tester!
@@ -114,7 +114,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10001000	1
 16:	0x53000		PID 1, VA: 0x10000000	1
-Operation took 1.548957440 seconds
+Operation took 1.549135440 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Welcome to the palindrome tester!
@@ -141,7 +141,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10001000	1
 16:	0x53000		PID 1, VA: 0x10000000	1
-Operation took 1.548958000 seconds
+Operation took 1.549236840 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -183,7 +183,7 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
-Operation took 0.195573560 seconds
+Operation took 0.195680280 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -225,7 +225,7 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
-Operation took 0.195906800 seconds
+Operation took 0.195959120 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -266,7 +266,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
-Operation took 0.206432640 seconds
+Operation took 0.206219280 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -308,7 +308,7 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
-Operation took 0.195682360 seconds
+Operation took 0.195403960 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -350,7 +350,7 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
-Operation took 0.196039160 seconds
+Operation took 0.196079080 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -371,7 +371,7 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
-Choose:g gFatal user mode trap 5 (Address error on store, epc 0x400178, vaddr 0x80000000)
+Choose: ggFatal user mode trap 5 (Address error on store, epc 0x400178, vaddr 0x80000000)
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -391,7 +391,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
-Operation took 0.206695640 seconds
+Operation took 0.206452960 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -433,7 +433,7 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
-Operation took 0.195621680 seconds
+Operation took 0.195673960 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -454,7 +454,7 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
-Choose:i iFatal user mode trap 2 (TLB miss on load, epc 0x4001b0, vaddr 0x40000000)
+Choose: iiFatal user mode trap 2 (TLB miss on load, epc 0x4001b0, vaddr 0x40000000)
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -475,7 +475,7 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
-Operation took 0.195554480 seconds
+Operation took 0.195845840 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -516,7 +516,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
-Operation took 0.206402560 seconds
+Operation took 0.206437320 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -557,7 +557,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
-Operation took 0.206179360 seconds
+Operation took 0.206400320 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -598,7 +598,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
-Operation took 0.204916200 seconds
+Operation took 0.204587520 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -619,7 +619,7 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
-Choose:m mFatal user mode trap 9 (Break instruction, epc 0x400238, vaddr 0x0)
+Choose: mmFatal user mode trap 9 (Break instruction, epc 0x400238, vaddr 0x0)
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -639,7 +639,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
-Operation took 0.204109080 seconds
+Operation took 0.204149840 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -660,7 +660,7 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
-Choose:n nFatal user mode trap 9 (Break instruction, epc 0x400274, vaddr 0x0)
+Choose: nnFatal user mode trap 9 (Break instruction, epc 0x400274, vaddr 0x0)
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -680,7 +680,7 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
-Operation took 0.204005280 seconds
+Operation took 0.204034000 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -702,18 +702,18 @@ p /testbin/os161testerprog
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose:o osleep: Dropping thread <boot/menu>
-panic: Bus error exception, PC=0x8000d534
-sys161: 871377128 cycles (216596718k, 1761008u, 653019402i)
-sys161: 46700 irqs 42075 exns 928r/0w disk 518r/50577w console 180r/0w/36m emufs 0r/0w net
-sys161: Elapsed real time: 34.855291 seconds (24.9999 mhz)
-sys161: Elapsed virtual time: 34.855085120 seconds (25 mhz)
+panic: Bus error exception, PC=0x8000d7d4
+sys161: 870885508 cycles (216622732k, 1760999u, 652501777i)
+sys161: 46695 irqs 42075 exns 928r/0w disk 518r/50577w console 180r/0w/36m emufs 0r/0w net
+sys161: Elapsed real time: 34.835598 seconds (24.9999 mhz)
+sys161: Elapsed virtual time: 34.835420320 seconds (25 mhz)
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -807,17 +807,17 @@ ait with NULL status
 sleep: Dropping thread <boot/menu>
 sleep: Dropping thread /testbin/os161testerprog
 panic: Bus error exception, PC=0x4042b4
-sys161: 49181169 cycles (11830933k, 125175u, 37225061i)
-sys161: 2382 irqs 1307 exns 56r/0w disk 29r/3161w console 16r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 1.958743 seconds (25.1085 mhz)
-sys161: Elapsed virtual time: 1.967246760 seconds (25 mhz)
+sys161: 48911793 cycles (11836884k, 125175u, 36949734i)
+sys161: 2380 irqs 1305 exns 56r/0w disk 29r/3161w console 16r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.946897 seconds (25.1229 mhz)
+sys161: Elapsed virtual time: 1.956471720 seconds (25 mhz)
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -4891,7 +4891,7 @@ Frame #	PHY ADDR	USER	Length
 36:	0x67000		PID 1, VA: 0x7ffea000	1
 37:	0x68000		PID 1, VA: 0x7ffe9000	1
 38:	0x69000		PID 1, VA: 0x7ffe8000	1
-Operation took 29.725241280 seconds
+Operation took 29.726383200 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 n = 4000
@@ -8900,7 +8900,7 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9616,15 +9616,15 @@ sieve: calculating prime numbers below 24576
  24371  24373  24379  24391  24407  24413  24419  24421 
  24439  24443  24469  24473  24481  24499  24509  24517 
  24527  24533  24547  24551  24571 
-run 2 took 3.757587120 seconds
-run 1 took 3.772475240 seconds
-sieve: 2 runs took about 7 secondssys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+run 2 took 3.758006800 seconds
+run 1 took 3.772793920 seconds
+sieve: 2 runs took about 8 secondssys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9681,7 +9681,7 @@ Frame #	PHY ADDR	USER	Length
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		PID 1, VA: 0x403000	1
 18:	0x55000		PID 1, VA: 0x402000	1
-Operation took 0.169310760 seconds
+Operation took 0.173220960 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 2
 p /testbin/os161testerprog 2
 Entering malloc test 2.
@@ -9712,7 +9712,7 @@ Frame #	PHY ADDR	USER	Length
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		PID 1, VA: 0x403000	1
 18:	0x55000		PID 1, VA: 0x402000	1
-Operation took 0.190994800 seconds
+Operation took 0.190961240 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 5
 p /testbin/os161testerprog 5
 Beginning malloc test 5
@@ -9740,14 +9740,13 @@ Frame #	PHY ADDR	USER	Length
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		PID 1, VA: 0x403000	1
 18:	0x55000		PID 1, VA: 0x402000	1
-Operation took 0.171477880 seconds
-sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+Operation took 0.171609160 secondssys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9779,7 +9778,7 @@ Frame #	PHY ADDR	USER	Length
 6:	0x49000		KERNEL	1
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
-Fatal user mode trap 3 (TLB miss on store, epc 0x4001ac, vaddr 0x7ebfff8c)
+Passed btree test.
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -9799,7 +9798,38 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		KTEMP	1
-Operation took 0.089241440 seconds
+17:	0x54000		KTEMP	1
+18:	0x55000		KTEMP	1
+19:	0x56000		KTEMP	1
+20:	0x57000		KTEMP	1
+21:	0x58000		PID 1, VA: 0x7ebff000	1
+22:	0x59000		PID 1, VA: 0x401000	1
+23:	0x5a000		PID 1, VA: 0x7ec00000	1
+24:	0x5b000		PID 1, VA: 0x7ec01000	1
+25:	0x5c000		PID 1, VA: 0x7fffe000	1
+26:	0x5d000		PID 1, VA: 0x7ec02000	1
+27:	0x5e000		PID 1, VA: 0x7ec03000	1
+28:	0x5f000		PID 1, VA: 0x7fffd000	1
+29:	0x60000		PID 1, VA: 0x7ec04000	1
+30:	0x61000		PID 1, VA: 0x7ec05000	1
+31:	0x62000		PID 1, VA: 0x7ec06000	1
+32:	0x63000		PID 1, VA: 0x7fffc000	1
+33:	0x64000		PID 1, VA: 0x7ec07000	1
+34:	0x65000		PID 1, VA: 0x7ec08000	1
+35:	0x66000		PID 1, VA: 0x7fffb000	1
+36:	0x67000		PID 1, VA: 0x7ec09000	1
+37:	0x68000		PID 1, VA: 0x7ec0a000	1
+38:	0x69000		PID 1, VA: 0x7fffa000	1
+39:	0x6a000		PID 1, VA: 0x7ec0b000	1
+40:	0x6b000		PID 1, VA: 0x7ec0c000	1
+41:	0x6c000		PID 1, VA: 0x7fff9000	1
+42:	0x6d000		PID 1, VA: 0x7ec0d000	1
+43:	0x6e000		PID 1, VA: 0x7ec0e000	1
+44:	0x6f000		PID 1, VA: 0x7fff8000	1
+45:	0x70000		PID 1, VA: 0x7ec0f000	1
+46:	0x71000		PID 1, VA: 0x7ec10000	1
+47:	0x72000		PID 1, VA: 0x7fff7000	1
+Operation took 0.323746480 seconds
 OS/161 kernel [? for menu]: p /testbin/os161testerprog -h
 p /testbin/os161testerprog -h
 /testbin/os161testerprog: malloc: Internal error - local data corrupt
@@ -9824,14 +9854,14 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		PID 1, VA: 0x402000	1
-Operation took 0.143148640 seconds
+Operation took 0.143174840 seconds
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9863,13 +9893,14 @@ Frame #	PHY ADDR	USER	Length
 6:	0x49000		KERNEL	1
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
-Passed bigprog test.sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+Passed bigprog test.
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9927,14 +9958,14 @@ Frame #	PHY ADDR	USER	Length
 20:	0x57000		KTEMP	0
 21:	0x58000		KTEMP	1
 22:	0x59000		KTEMP	1
-Operation took 0.118389120 seconds
+Operation took 0.112591720 seconds
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10008,7 +10039,7 @@ Frame #	PHY ADDR	USER	Length
 35:	0x66000		KTEMP	0
 36:	0x67000		KTEMP	1
 37:	0x68000		KTEMP	1
-3
+3/
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
 1:	0x44000		KERNEL	1
@@ -10050,21 +10081,21 @@ Frame #	PHY ADDR	USER	Length
 37:	0x68000		KTEMP	1
 sleep: Dropping thread <boot/menu>
 sleep: Dropping thread /testbin/os161testerprog
-scheduler: Dropping thread /testbin/os161testerprog.
+sleep: Dropping thread /testbin/os161testerprog
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 panic: Assertion failed: vn->vn_opencount>0, at ../../fs/vfs/vnode.c:124 (vnode_decopen)
-sys161: 44391487 cycles (8273411k, 40223u, 36077853i)
-sys161: 1173 irqs 2192 exns 32r/0w disk 28r/3142w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 1.713554 seconds (25.9061 mhz)
-sys161: Elapsed virtual time: 1.775659480 seconds (25 mhz)
+sys161: 44390111 cycles (8280013k, 40276u, 36069822i)
+sys161: 1174 irqs 2194 exns 32r/0w disk 28r/3138w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.713690 seconds (25.9032 mhz)
+sys161: Elapsed virtual time: 1.775604440 seconds (25 mhz)
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10103,17 +10134,17 @@ scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 panic: Assertion failed: (vaddr_t)tf > (vaddr_t)curthread->t_stack, at ../../arch/mips/mips/trap.c:83 (mips_trap)
-sys161: 41350931 cycles (5205352k, 4658u, 36140921i)
-sys161: 1102 irqs 78 exns 40r/0w disk 28r/1302w console 11r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 1.632631 seconds (25.3278 mhz)
-sys161: Elapsed virtual time: 1.654037240 seconds (25 mhz)
+sys161: 41404134 cycles (5213766k, 4660u, 36185708i)
+sys161: 1106 irqs 80 exns 40r/0w disk 28r/1302w console 11r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.627417 seconds (25.4416 mhz)
+sys161: Elapsed virtual time: 1.656165360 seconds (25 mhz)
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10154,17 +10185,17 @@ scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 panic: Assertion failed: (vaddr_t)tf > (vaddr_t)curthread->t_stack, at ../../arch/mips/mips/trap.c:83 (mips_trap)
-sys161: 53910120 cycles (7836935k, 3140065u, 42933120i)
-sys161: 1279 irqs 249 exns 128r/0w disk 31r/1382w console 34r/0w/2m emufs 0r/0w net
-sys161: Elapsed real time: 2.101388 seconds (25.6545 mhz)
-sys161: Elapsed virtual time: 2.156404800 seconds (25 mhz)
+sys161: 54135745 cycles (7878942k, 3373302u, 42883501i)
+sys161: 1284 irqs 277 exns 128r/0w disk 31r/1382w console 34r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 2.104099 seconds (25.7287 mhz)
+sys161: Elapsed virtual time: 2.165429800 seconds (25 mhz)
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10198,18 +10229,18 @@ OS/161 kernel [? for menu]: p /testbin/os161testerprog
 p /testbin/os161testerprog 
 Entering the huge program - I will stress test your VM
 sleep: Dropping thread <boot/menu>
-panic: Bus error exception, PC=0x8000d534
-sys161: 54537954 cycles (13111865k, 2084u, 41424005i)
-sys161: 1542 irqs 215 exns 368r/0w disk 28r/1007w console 50r/0w/2m emufs 0r/0w net
-sys161: Elapsed real time: 2.182588 seconds (24.9877 mhz)
-sys161: Elapsed virtual time: 2.181518160 seconds (25 mhz)
+panic: Bus error exception, PC=0x8000d7d4
+sys161: 54465395 cycles (13106245k, 2084u, 41357066i)
+sys161: 1544 irqs 216 exns 368r/0w disk 28r/1007w console 50r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 2.180143 seconds (24.9825 mhz)
+sys161: Elapsed virtual time: 2.178615800 seconds (25 mhz)
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10242,18 +10273,18 @@ Frame #	PHY ADDR	USER	Length
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 sleep: Dropping thread <boot/menu>
-panic: Bus error exception, PC=0x8000d534
-sys161: 55215598 cycles (13391022k, 360268u, 41464308i)
-sys161: 1514 irqs 419 exns 384r/0w disk 28r/952w console 52r/0w/2m emufs 0r/0w net
-sys161: Elapsed real time: 2.201858 seconds (25.0768 mhz)
-sys161: Elapsed virtual time: 2.208623920 seconds (25 mhz)
+panic: Bus error exception, PC=0x8000d7d4
+sys161: 55273001 cycles (13302906k, 360279u, 41609816i)
+sys161: 1512 irqs 429 exns 384r/0w disk 28r/952w console 52r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 2.202600 seconds (25.0944 mhz)
+sys161: Elapsed virtual time: 2.210920040 seconds (25 mhz)
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10291,17 +10322,17 @@ sleep: Dropping thread /testbin/os161testerprog
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 panic: Bus error exception, PC=0x4000b0
-sys161: 42651717 cycles (5348267k, 3623u, 37299827i)
-sys161: 1170 irqs 89 exns 32r/0w disk 28r/1184w console 17r/0w/5m emufs 0r/0w net
-sys161: Elapsed real time: 1.692856 seconds (25.1951 mhz)
-sys161: Elapsed virtual time: 1.706068680 seconds (25 mhz)
+sys161: 41949104 cycles (5213014k, 3622u, 36732468i)
+sys161: 1160 irqs 88 exns 32r/0w disk 28r/1184w console 13r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.669407 seconds (25.1281 mhz)
+sys161: Elapsed virtual time: 1.677964160 seconds (25 mhz)
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10345,18 +10376,18 @@ scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
-panic: Bus error exception, PC=0x8000d534
-sys161: 44519169 cycles (5876771k, 47427u, 38594971i)
-sys161: 1197 irqs 142 exns 32r/0w disk 30r/1489w console 9r/0w/2m emufs 0r/0w net
-sys161: Elapsed real time: 1.766456 seconds (25.2025 mhz)
-sys161: Elapsed virtual time: 1.780766760 seconds (25 mhz)
+panic: Bus error exception, PC=0x8000d7d4
+sys161: 44468840 cycles (5882861k, 47428u, 38538551i)
+sys161: 1198 irqs 146 exns 32r/0w disk 30r/1489w console 9r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 1.761632 seconds (25.243 mhz)
+sys161: Elapsed virtual time: 1.778753600 seconds (25 mhz)
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10400,18 +10431,18 @@ scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
-panic: Bus error exception, PC=0x8000d534
-sys161: 44456761 cycles (5883269k, 47429u, 38526063i)
-sys161: 1197 irqs 146 exns 32r/0w disk 30r/1489w console 9r/0w/2m emufs 0r/0w net
-sys161: Elapsed real time: 1.761323 seconds (25.2405 mhz)
-sys161: Elapsed virtual time: 1.778270440 seconds (25 mhz)
+panic: Bus error exception, PC=0x8000d7d4
+sys161: 44499811 cycles (5876256k, 47427u, 38576128i)
+sys161: 1196 irqs 142 exns 32r/0w disk 30r/1489w console 9r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 1.762505 seconds (25.248 mhz)
+sys161: Elapsed virtual time: 1.779992440 seconds (25 mhz)
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
-Jason's system version 0 (ASST3 #388)
+Jason's system version 0 (ASST3 #462)
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10455,8 +10486,8 @@ scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
-panic: Bus error exception, PC=0x8000d534
-sys161: 44508955 cycles (5871335k, 47427u, 38590193i)
+panic: Bus error exception, PC=0x8000d7d4
+sys161: 44518587 cycles (5872327k, 47427u, 38598833i)
 sys161: 1194 irqs 142 exns 32r/0w disk 30r/1489w console 9r/0w/2m emufs 0r/0w net
-sys161: Elapsed real time: 1.771613 seconds (25.1234 mhz)
-sys161: Elapsed virtual time: 1.780358200 seconds (25 mhz)
+sys161: Elapsed real time: 1.763601 seconds (25.243 mhz)
+sys161: Elapsed virtual time: 1.780743480 seconds (25 mhz)

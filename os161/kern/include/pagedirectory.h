@@ -13,11 +13,17 @@ struct pagedirectory {
 // Intializes the page directory
 void pd_initialize(struct pagedirectory*);
 
+// Same as pd_request_page, but doesn't create a page table if no exists. Returns NULL instead
+struct page* pd_page_exists(struct pagedirectory*, vaddr_t);
+
 // Requests for a page. if the page table doesn't exist, create the page table
 struct page* pd_request_page(struct pagedirectory*, vaddr_t);
 
 // Print the page directory
 void pd_print(struct pagedirectory*);
+
+// Free all the pages in the page directory
+void pd_copy(struct pagedirectory*);
 
 // Free all the pages in the page directory
 void pd_free(struct pagedirectory*);

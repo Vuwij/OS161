@@ -133,6 +133,7 @@ ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr) {
     cmentry->usedby = CM_USED;
     cmentry->pid = pid;
     cmentry->vaddr = vaddr;
+    cmentry->usecount = 1;
     
     return paddr;
 }
@@ -150,11 +151,26 @@ ram_returnmemuser(int pid, vaddr_t addr) {
         }
     }
     
+    // Another process is using the memory
+    if(coremap[startframe].usecount > 1) {
+        coremap[startframe].usecount--;
+        return;
+    }
+    
     if (startframe == -1) {
         kprintf("ERROR 0x%x is not allocated\n", addr);
     }
     
     ram_removeframe(startframe);
+}
+
+// User increment memory usecount using frame number
+void
+ram_incrementframe(int frame) {
+    // TODO some error checking
+    int i;
+    int npages = coremap[frame].length;
+    coremap[frame].usecount++;
 }
 
 // User returns memory using frame number

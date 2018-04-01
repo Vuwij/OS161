@@ -46,6 +46,8 @@
 #include <thread.h>
 #include <curthread.h>
 
+#include "addrspace.h"
+
 /*
  * Recovery function. If a fatal fault occurs during copyin, copyout,
  * copyinstr, or copyoutstr, execution resumes here. (This behavior is
@@ -57,9 +59,8 @@
  */
 static
 void
-copyfail(void)
-{
-	longjmp(curthread->t_pcb.pcb_copyjmp, 1);
+copyfail(void) {
+    longjmp(curthread->t_pcb.pcb_copyjmp, 1);
 }
 
 /*
@@ -75,31 +76,31 @@ copyfail(void)
  */
 
 int
-copycheck(const_userptr_t userptr, size_t len, size_t *stoplen)
-{
-	vaddr_t bot, top;
+copycheck(const_userptr_t userptr, size_t len, size_t *stoplen) {
+    
+    vaddr_t bot, top;
 
-	*stoplen = len;
+    *stoplen = len;
 
-	bot = (vaddr_t) userptr;
-	top = bot+len-1;
+    bot = (vaddr_t) userptr;
+    top = bot + len - 1;
 
-	if (top < bot) {
-		/* addresses wrapped around */
-		return EFAULT;
-	}
+    if (top < bot) {
+        /* addresses wrapped around */
+        return EFAULT;
+    }
 
-	if (bot >= USERTOP) {
-		/* region is within the kernel */
-		return EFAULT;
-	}
+    if (bot >= USERTOP) {
+        /* region is within the kernel */
+        return EFAULT;
+    }
 
-	if (top >= USERTOP) {
-		/* region overlaps the kernel. adjust the max length. */
-		*stoplen = USERTOP - bot;
-	}
+    if (top >= USERTOP) {
+        /* region overlaps the kernel. adjust the max length. */
+        *stoplen = USERTOP - bot;
+    }
 
-	return 0;
+    return 0;
 }
 
 /*
@@ -110,32 +111,31 @@ copycheck(const_userptr_t userptr, size_t len, size_t *stoplen)
  * the pcb_badfaultfunc/copyfail logic.
  */
 int
-copyin(const_userptr_t usersrc, void *dest, size_t len)
-{
-	int result;
-	size_t stoplen;
+copyin(const_userptr_t usersrc, void *dest, size_t len) {
+    int result;
+    size_t stoplen;
 
-	result = copycheck(usersrc, len, &stoplen);
-	if (result) {
-		return result;
-	}
-	if (stoplen != len) {
-		/* Single block, can't legally truncate it. */
-		return EFAULT;
-	}
+    result = copycheck(usersrc, len, &stoplen);
+    if (result) {
+        return result;
+    }
+    if (stoplen != len) {
+        /* Single block, can't legally truncate it. */
+        return EFAULT;
+    }
 
-	curthread->t_pcb.pcb_badfaultfunc = copyfail;
+    curthread->t_pcb.pcb_badfaultfunc = copyfail;
 
-	result = setjmp(curthread->t_pcb.pcb_copyjmp);
-	if (result) {
-		curthread->t_pcb.pcb_badfaultfunc = NULL;
-		return EFAULT;
-	}
+    result = setjmp(curthread->t_pcb.pcb_copyjmp);
+    if (result) {
+        curthread->t_pcb.pcb_badfaultfunc = NULL;
+        return EFAULT;
+    }
 
-	memcpy(dest, (const void *)usersrc, len);
+    memcpy(dest, (const void *) usersrc, len);
 
-	curthread->t_pcb.pcb_badfaultfunc = NULL;
-	return 0;
+    curthread->t_pcb.pcb_badfaultfunc = NULL;
+    return 0;
 }
 
 /*
@@ -146,32 +146,31 @@ copyin(const_userptr_t usersrc, void *dest, size_t len)
  * protected by the pcb_badfaultfunc/copyfail logic.
  */
 int
-copyout(const void *src, userptr_t userdest, size_t len)
-{
-	int result;
-	size_t stoplen;
+copyout(const void *src, userptr_t userdest, size_t len) {
+    int result;
+    size_t stoplen;
 
-	result = copycheck(userdest, len, &stoplen);
-	if (result) {
-		return result;
-	}
-	if (stoplen != len) {
-		/* Single block, can't legally truncate it. */
-		return EFAULT;
-	}
+    result = copycheck(userdest, len, &stoplen);
+    if (result) {
+        return result;
+    }
+    if (stoplen != len) {
+        /* Single block, can't legally truncate it. */
+        return EFAULT;
+    }
 
-	curthread->t_pcb.pcb_badfaultfunc = copyfail;
+    curthread->t_pcb.pcb_badfaultfunc = copyfail;
 
-	result = setjmp(curthread->t_pcb.pcb_copyjmp);
-	if (result) {
-		curthread->t_pcb.pcb_badfaultfunc = NULL;
-		return EFAULT;
-	}
+    result = setjmp(curthread->t_pcb.pcb_copyjmp);
+    if (result) {
+        curthread->t_pcb.pcb_badfaultfunc = NULL;
+        return EFAULT;
+    }
 
-	memcpy((void *)userdest, src, len);
+    memcpy((void *) userdest, src, len);
 
-	curthread->t_pcb.pcb_badfaultfunc = NULL;
-	return 0;
+    curthread->t_pcb.pcb_badfaultfunc = NULL;
+    return 0;
 }
 
 /*
@@ -193,23 +192,22 @@ copyout(const void *src, userptr_t userdest, size_t len)
 static
 int
 copystr(char *dest, const char *src, size_t maxlen, size_t stoplen,
-	size_t *gotlen)
-{
-	size_t i;
-	for (i=0; i<maxlen && i<stoplen; i++) {
-		dest[i] = src[i];
-		if (src[i]==0) {
-			if (gotlen != NULL) {
-				*gotlen = i+1;
-			}
-			return 0;
-		}
-	}
-	if (stoplen < maxlen) {
-		/* ran into user-kernel boundary */
-		return EFAULT;
-	}
-	return ENAMETOOLONG;
+        size_t *gotlen) {
+    size_t i;
+    for (i = 0; i < maxlen && i < stoplen; i++) {
+        dest[i] = src[i];
+        if (src[i] == 0) {
+            if (gotlen != NULL) {
+                *gotlen = i + 1;
+            }
+            return 0;
+        }
+    }
+    if (stoplen < maxlen) {
+        /* ran into user-kernel boundary */
+        return EFAULT;
+    }
+    return ENAMETOOLONG;
 }
 
 /*
@@ -221,28 +219,27 @@ copystr(char *dest, const char *src, size_t maxlen, size_t stoplen,
  * process.
  */
 int
-copyinstr(const_userptr_t usersrc, char *dest, size_t len, size_t *actual)
-{
-	int result;
-	size_t stoplen;
+copyinstr(const_userptr_t usersrc, char *dest, size_t len, size_t *actual) {
+    int result;
+    size_t stoplen;
 
-	result = copycheck(usersrc, len, &stoplen);
-	if (result) {
-		return result;
-	}
+    result = copycheck(usersrc, len, &stoplen);
+    if (result) {
+        return result;
+    }
 
-	curthread->t_pcb.pcb_badfaultfunc = copyfail;
+    curthread->t_pcb.pcb_badfaultfunc = copyfail;
 
-	result = setjmp(curthread->t_pcb.pcb_copyjmp);
-	if (result) {
-		curthread->t_pcb.pcb_badfaultfunc = NULL;
-		return EFAULT;
-	}
+    result = setjmp(curthread->t_pcb.pcb_copyjmp);
+    if (result) {
+        curthread->t_pcb.pcb_badfaultfunc = NULL;
+        return EFAULT;
+    }
 
-	result = copystr(dest, (const char *)usersrc, len, stoplen, actual);
+    result = copystr(dest, (const char *) usersrc, len, stoplen, actual);
 
-	curthread->t_pcb.pcb_badfaultfunc = NULL;
-	return result;
+    curthread->t_pcb.pcb_badfaultfunc = NULL;
+    return result;
 }
 
 /*
@@ -254,26 +251,25 @@ copyinstr(const_userptr_t usersrc, char *dest, size_t len, size_t *actual)
  * process.
  */
 int
-copyoutstr(const char *src, userptr_t userdest, size_t len, size_t *actual)
-{
-	int result;
-	size_t stoplen;
+copyoutstr(const char *src, userptr_t userdest, size_t len, size_t *actual) {
+    int result;
+    size_t stoplen;
 
-	result = copycheck(userdest, len, &stoplen);
-	if (result) {
-		return result;
-	}
+    result = copycheck(userdest, len, &stoplen);
+    if (result) {
+        return result;
+    }
 
-	curthread->t_pcb.pcb_badfaultfunc = copyfail;
+    curthread->t_pcb.pcb_badfaultfunc = copyfail;
 
-	result = setjmp(curthread->t_pcb.pcb_copyjmp);
-	if (result) {
-		curthread->t_pcb.pcb_badfaultfunc = NULL;
-		return EFAULT;
-	}
+    result = setjmp(curthread->t_pcb.pcb_copyjmp);
+    if (result) {
+        curthread->t_pcb.pcb_badfaultfunc = NULL;
+        return EFAULT;
+    }
 
-	result = copystr((char *)userdest, src, len, stoplen, actual);
+    result = copystr((char *) userdest, src, len, stoplen, actual);
 
-	curthread->t_pcb.pcb_badfaultfunc = NULL;
-	return result;
+    curthread->t_pcb.pcb_badfaultfunc = NULL;
+    return result;
 }

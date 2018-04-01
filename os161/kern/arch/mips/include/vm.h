@@ -80,6 +80,9 @@ void ram_returnmemuser(int pid, vaddr_t addr);
 // Both user and kernel return calls this function
 void ram_removeframe(int frame); 
 
+// Called by forked user to increase the number that uses the frame
+void ram_incrementframe(int frame); 
+
 void ram_getsize(paddr_t *lo, paddr_t *hi);
 
 /*

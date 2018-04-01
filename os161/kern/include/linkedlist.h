@@ -22,5 +22,7 @@ int remove_val(struct node ** head, int val);
 
 int exists(struct node * head, int val);
 
+struct node * swapexists(struct node * head, int val);
+
 #endif /* LINKEDLIST_H */
 

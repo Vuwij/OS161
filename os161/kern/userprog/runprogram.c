@@ -50,6 +50,7 @@ runprogram(char *progname, int argc, char** argv) {
     as_activate(curthread->t_vmspace);
 
     /* Load the executable. */
+    strcpy(curthread->t_vmspace->progname, progname);
     curthread->t_vmspace->progfile = v;
     result = load_elf(v, &entrypoint);
     if (result) {

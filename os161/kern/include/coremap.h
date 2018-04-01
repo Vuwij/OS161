@@ -11,6 +11,7 @@ struct coremap_entry {
     paddr_t addr;       // Physical Address
     unsigned usedby;    // What is the memory segment used by
     unsigned pid;       // PID of process using this physical address
+    unsigned usecount;  // Number of processes using the entry
     vaddr_t vaddr;      // Virtual Address
     unsigned length;    // Length of coremap (for page allocations greater than single page)
 };
