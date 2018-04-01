@@ -2,6 +2,7 @@ cd os161/
 
 #Root configuration
 ./configure --ostree=$HOME/Documents/ECE344/root
+make
 make clean
 #cd ..
 

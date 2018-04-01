@@ -215,8 +215,9 @@ void
 as_destroy(struct addrspace *as) {
     DEBUG(DB_VM, "as_destroy\n");
 
-    //    pd_print(&as->page_directory);
-    //    cm_print();
+    //pd_print(&as->page_directory);
+    cm_print();
+    //sm_print();
     vfs_close(as->progfile);
     pd_free(&as->page_directory);
     kfree(as);
