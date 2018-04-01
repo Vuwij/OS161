@@ -1,5 +1,6 @@
 cd os161/kern/conf
-#./config ASST2
+
+./config ASST3
 cd ../compile/ASST3
 make
 make install

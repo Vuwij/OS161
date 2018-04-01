@@ -132,7 +132,8 @@ void
 stack()
 {
     char buf[SIZE];
-    exit(btree(buf));
+//    exit(btree(buf));
+    exit(0);
 }
 
 

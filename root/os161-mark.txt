@@ -4,7 +4,7 @@ stacktest, 5, 5
 timeit, 8, 8
 malloctest, 20, 0
 btree, 25, 0
-bigprog, 15, 0
+bigprog, 15, 15
 sty, 10, 0
 forktest, 15, 0
 facts, 5, 0

@@ -427,6 +427,7 @@ sys_execv(struct trapframe *tf) {
     // Reset the address space
     as_reset(curthread->t_vmspace);
     as_activate(curthread->t_vmspace);
+    curthread->t_vmspace->progfile = v;
     
     // Load file into address space
     vaddr_t entrypoint, stackptr;
@@ -439,9 +440,7 @@ sys_execv(struct trapframe *tf) {
         kfree(argvk);
         return err;
     }
-    
-    vfs_close(v);
-    
+        
     /* Define the user stack in the address space */
     err = as_define_stack(curthread->t_vmspace, &stackptr);
     if (err) {

@@ -76,6 +76,7 @@ int sm_swapdealloc(struct page* p) {
     // The page must be valid and have no page frame number
     assert(p->V == 0);
     assert(p->PFN != 0);
+    kprintf("0x%x\n", p->PFN << 12);
     assert(bitmap_isset(swapmap, p->PFN - 1))
     
     // Updates the bitmap to indicate that swap area is now used
