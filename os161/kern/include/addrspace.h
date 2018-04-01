@@ -4,6 +4,8 @@
 #include <vm.h>
 #include "opt-dumbvm.h"
 #include <pagedirectory.h>
+#include <uio.h>
+#include <elf.h>
 
 struct vnode;
 
@@ -24,6 +26,12 @@ struct addrspace {
 	size_t as_npages2;
 	paddr_t as_stackpbase;
 #else
+        // Current program information and executable header
+        struct vnode *progfile;
+        Elf_Ehdr eh;
+        
+        vaddr_t as_codestart;
+        vaddr_t as_codeend;
         vaddr_t as_stacklocation;
         vaddr_t as_heap_start;
         vaddr_t as_heap_end;
@@ -82,7 +90,7 @@ void              as_reset(struct addrspace *);
 void              as_print(struct addrspace *);
 
 int               as_define_region(struct addrspace *as, 
-				   vaddr_t vaddr, size_t sz,
+				   vaddr_t vaddr, int pindex, size_t sz,
 				   int readable, 
 				   int writeable,
 				   int executable);
@@ -95,9 +103,12 @@ int               as_define_stack(struct addrspace *as, vaddr_t *initstackptr);
  *    load_elf - load an ELF user program executable into the current
  *               address space. Returns the entry point (initial PC)
  *               in the space pointed to by ENTRYPOINT.
+ *   
+ *    load_elf_segment - called from vm_fault. Actually load the segment when demanded by the code
  */
 
 int load_elf(struct vnode *v, vaddr_t *entrypoint);
 
+int load_elf_segment(int segment, int part);
 
 #endif /* _ADDRSPACE_H_ */
