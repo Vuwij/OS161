@@ -25,6 +25,9 @@ struct addrspace {
 	paddr_t as_stackpbase;
 #else
         vaddr_t as_stacklocation;
+        vaddr_t as_heap_start;
+        vaddr_t as_heap_end;
+        vaddr_t as_data;
         struct pagedirectory page_directory;
 #endif
 };

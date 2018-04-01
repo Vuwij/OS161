@@ -133,6 +133,14 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             paddr = (p->PFN << 12);
             as->as_stacklocation = as->as_stacklocation - PAGE_SIZE;                // Shrink the stack location, stack is never freed
         }
+        else if (faultaddress <= as->as_heap_end && faultaddress >= as->as_heap_start ) {
+            struct page* p = pd_request_page(&as->page_directory, faultaddress);
+            if(p->PFN != 0) return EFAULT; 
+            p->V = 1;                                                               
+            pd_allocate_pages(&as->page_directory);                             
+            sm_swapin(p, faultaddress);                                           
+            paddr = (p->PFN << 12);
+        }
         else {
             return EFAULT;
         }
@@ -168,11 +176,15 @@ as_create(void) {
     DEBUG(DB_VM, "as_create\n");
 
     struct addrspace *as = kmalloc(sizeof (struct addrspace));
-    pd_initialize(&as->page_directory);
+    
     if (as == NULL) {
         return NULL;
     }
-
+    
+    pd_initialize(&as->page_directory);
+    as->as_heap_start = 0;
+    as->as_heap_end = 0;
+    
     return as;
 }
 
@@ -247,6 +259,9 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, size_t sz,
         p->V = 1; // Temporarily set the valid bit to 1
         vaddr = vaddr + PAGE_SIZE;
     }
+    
+    as->as_heap_start = vaddr;
+    as->as_heap_end = vaddr;
     
     return 0;
 }
