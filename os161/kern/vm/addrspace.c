@@ -10,9 +10,11 @@
 #include <coremap.h>
 #include <pagedirectory.h>
 #include <swapmap.h>
+#include <page.h>
+#include <vfs.h>
 
 
-#define DUMBVM_STACKPAGES 12
+#define TEXT_SEGMENT_SHIFT 16
 
 void
 vm_bootstrap(void) {
@@ -23,7 +25,7 @@ vm_bootstrap(void) {
 paddr_t
 alloc_upages(int npages, vaddr_t vaddr) {
     int spl;
-    
+
     paddr_t addr;
 
     spl = splhigh();
@@ -45,6 +47,7 @@ free_upages(vaddr_t addr) {
 
 // Provides the frame number of the physical address
 // Example if frame is 0x42. Physical address is 0x42000. Index on coremap is 0x42000 - first physical address
+
 void
 free_frame(int frame) {
     int spl = splhigh();
@@ -70,7 +73,7 @@ alloc_kpages(int npages) {
 void
 free_kpages(vaddr_t addr) {
     DEBUG(DB_VM, "  free_kpages: 0x%x\n", addr);
-    
+
     // Remove the memory from the core map
     int spl = splhigh();
     ram_returnmem(addr);
@@ -103,37 +106,49 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
 
     as = curthread->t_vmspace;
     if (as == NULL) return EFAULT;
-    
+
     struct page* p = pd_request_page(&as->page_directory, faultaddress);
-    
-    if (p->V && p->PFN) { // In memory
+
+
+    // Page in memory
+    if (p->V && p->PFN) {
         paddr = (p->PFN << 12);
     }
-    else if(p->V && p->PFN == 0) { // Requested not allocated
-        kprintf("As expected\n");
-        splx(spl);
-        return EFAULT;
+    
+    // Page on file, not loaded
+    if (p->F && p->V == 0) {
+        int segment = (p->PFN >> TEXT_SEGMENT_SHIFT);
+        int part = p->PFN - (segment << TEXT_SEGMENT_SHIFT);
+        p->V = 1;
+        p->PFN = 0;
+        p_allocate_page(p); // Allocate disk space for page
+        sm_swapin(p, faultaddress); // Swap the page from the disk
+        paddr = (p->PFN << 12);
+        load_elf_segment(segment, part);
+        return 0;
     }
-    else if(!p->V && p->PFN) { // In disk
+    
+    // Page located on disk
+    if (!p->V && p->PFN) {
         sm_swapin(p, faultaddress);
         paddr = (p->PFN << 12);
     }
-    else { 
+    
+    // Page not allocated, allocate from stack
+    if(p->PFN == 0 && p->V == 0){
         assert(faultaddress < USERSTACK);
-        
-        // Fault location is 
-        if(faultaddress == as->as_stacklocation - PAGE_SIZE) {
-            struct page* p = pd_request_page(&as->page_directory, faultaddress);    // Create a new page
-            
-            if(p->PFN != 0) return EFAULT;                                          // Page has hit the bottom
-            
-            p->V = 1;                                                               
-            pd_allocate_pages(&as->page_directory);                                 // Allocate disk space for page
-            sm_swapin(p, faultaddress);                                             // Swap the page from the disk
+
+        // Fault location is part of stack
+        if (faultaddress == as->as_stacklocation) {
+            struct page* p = pd_request_page(&as->page_directory, faultaddress); // Create a new page
+            if (p->PFN != 0) return EFAULT; // Page has hit the bottom
+
+            p->V = 1;
+            p_allocate_page(p); // Allocate disk space for page
+            sm_swapin(p, faultaddress); // Swap the page from the disk
             paddr = (p->PFN << 12);
-            as->as_stacklocation = as->as_stacklocation - PAGE_SIZE;                // Shrink the stack location, stack is never freed
-        }
-        else {
+            as->as_stacklocation = as->as_stacklocation - PAGE_SIZE; // Shrink the stack location, stack location is never freed
+        } else {
             return EFAULT;
         }
     }
@@ -142,16 +157,16 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     assert((paddr & PAGE_FRAME) == paddr);
     for (i = 0; i < NUM_TLB; i++) {
         TLB_Read(&ehi, &elo, i);
-        
+
         // If the physical page is valid
         if (elo & TLBLO_VALID) {
             continue;
         }
-        
+
         // If the physical page is invalid, replace the TLB entry with the new page
         ehi = faultaddress;
         elo = paddr | TLBLO_DIRTY | TLBLO_VALID;
-        DEBUG(DB_VM, "  smartvm: 0x%x -> 0x%x\n", faultaddress, paddr); // Prints all the mapping in the TLB
+        DEBUG(DB_VM, "  smartvm:%d 0x%x -> 0x%x\n", faulttype, faultaddress, paddr); // Prints all the mapping in the TLB
         TLB_Write(ehi, elo, i);
         TLB_Read(&ehi, &elo, i);
         splx(spl);
@@ -187,9 +202,10 @@ as_reset(struct addrspace *as) {
 void
 as_destroy(struct addrspace *as) {
     DEBUG(DB_VM, "as_destroy\n");
-    
-//    pd_print(&as->page_directory);
-//    cm_print();
+
+    //    pd_print(&as->page_directory);
+    //    cm_print();
+    vfs_close(as->progfile);
     pd_free(&as->page_directory);
     kfree(as);
     as = NULL;
@@ -202,12 +218,12 @@ as_activate(struct addrspace *as) {
     (void) as;
 
     spl = splhigh();
-    
+
     // Flushes the entire TLB
     for (i = 0; i < NUM_TLB; i++) {
         TLB_Write(TLBHI_INVALID(i), TLBLO_INVALID(), i);
     }
-    
+
     splx(spl);
 }
 
@@ -222,7 +238,7 @@ as_activate(struct addrspace *as) {
  * want to implement them.
  */
 int
-as_define_region(struct addrspace *as, vaddr_t vaddr, size_t sz,
+as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
         int readable, int writeable, int executable) {
     /*
      * Write this.
@@ -241,13 +257,18 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, size_t sz,
     npages = sz / PAGE_SIZE;
 
     // Get the page and set the valid to one
+    
+    // The page frame number temporarily stores the index of the code region and the shift in the text segment. This enables maps
+    // the code into the individual segments in the code using pindex and i
+    assert(npages < (1 << TEXT_SEGMENT_SHIFT));
     unsigned i;
     for (i = 0; i < npages; i++) {
         struct page* p = pd_request_page(&as->page_directory, vaddr);
-        p->V = 1; // Temporarily set the valid bit to 1
+        p->F = 1; // Indicates that the page is on file
         vaddr = vaddr + PAGE_SIZE;
+        p->PFN = (pindex << TEXT_SEGMENT_SHIFT) + i; 
     }
-    
+
     return 0;
 }
 
@@ -255,18 +276,13 @@ int
 as_prepare_load(struct addrspace *as) {
 
     DEBUG(DB_VM, "as_prepare_load\n");
-    
+
     // Setup the USER STACK pages
     struct page* p = pd_request_page(&as->page_directory, USERSTACK - PAGE_SIZE);
-    p->V = 1;
     as->as_stacklocation = USERSTACK - PAGE_SIZE;
-    
-    // Automatically allocate all the pages without a page frame number. Allocate disk space for these pages
-    pd_allocate_pages(&as->page_directory);
-    
+
 //    pd_print(&as->page_directory);
-//    cm_print();
-    
+
     return 0;
 }
 
@@ -285,7 +301,7 @@ as_define_stack(struct addrspace *as, vaddr_t *stackptr) {
 
     /* Initial user-level stack pointer */
     *stackptr = USERSTACK;
-    
+
     (void) as;
     return 0;
 }
@@ -298,10 +314,10 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
     if (newas == NULL) {
         return ENOMEM;
     }
-    
+
     // Temporarily use the exact same address space
     // TODO: Implement Copy on Write
-    memmove(newas, old, sizeof(struct addrspace));
+    memmove(newas, old, sizeof (struct addrspace));
 
     *ret = newas;
     return 0;

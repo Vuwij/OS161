@@ -18,17 +18,8 @@ struct page* pd_request_page(struct pagedirectory* pd, vaddr_t vaddr) {
     return pt_request_page(pd->pde[entry], vaddr);
 }
 
-void pd_allocate_pages(struct pagedirectory* pd) {
-    int i;
-    for (i = 0; i < 1024; ++i) {
-        if(pd->pde[i] != NULL) {
-            pt_allocate_page(pd->pde[i], i);
-        }
-    }
-}
-
 void pd_print(struct pagedirectory* pd) {
-    kprintf("Tab Pag PFN\tM R V P\t\n");
+    kprintf("Tab Pag PFN\tM R V F P\t\n");
     int i;
     for (i = 0; i < 1024; ++i) {
         if(pd->pde[i] != NULL) {
