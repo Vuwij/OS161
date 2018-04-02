@@ -4,7 +4,19 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -41,6 +53,13 @@ I will take a large palindrome and test it.
 Here it is:
 amanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanama
 Testing.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................IS a palindrome
+<<<<<<< HEAD
+<<<<<<< HEAD
+Operation took 1.543726520 seconds
+=======
+Operation took 1.541300680 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -60,7 +79,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10001000	1
 16:	0x53000		PID 1, VA: 0x10000000	1
+<<<<<<< HEAD
 Operation took 1.554019840 seconds
+=======
+Operation took 1.553545000 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Welcome to the palindrome tester!
@@ -68,6 +92,13 @@ I will take a large palindrome and test it.
 Here it is:
 amanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanama
 Testing.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................IS a palindrome
+<<<<<<< HEAD
+<<<<<<< HEAD
+Operation took 1.537126880 seconds
+=======
+Operation took 1.536977320 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -87,7 +118,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10001000	1
 16:	0x53000		PID 1, VA: 0x10000000	1
+<<<<<<< HEAD
 Operation took 1.549496800 seconds
+=======
+Operation took 1.549104800 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Welcome to the palindrome tester!
@@ -95,6 +131,13 @@ I will take a large palindrome and test it.
 Here it is:
 amanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanama
 Testing.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................IS a palindrome
+<<<<<<< HEAD
+<<<<<<< HEAD
+Operation took 1.536931120 seconds
+=======
+Operation took 1.537078480 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -114,7 +157,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10001000	1
 16:	0x53000		PID 1, VA: 0x10000000	1
+<<<<<<< HEAD
 Operation took 1.549135440 seconds
+=======
+Operation took 1.548957440 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 Welcome to the palindrome tester!
@@ -122,6 +170,13 @@ I will take a large palindrome and test it.
 Here it is:
 amanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanamaamanaplanacaretabanamyriadasumalacaliarahoopapintacatalpaagasanoilabirdayellavatacawapaxawagataxanayaramacapayamagayatsarawallacaralugerawardabinawomanavassalawolfatunaanitapallafretawattabayadaubatanacabadatumagallahatafagazapasayajawalayawetagallopatugatrotatrapatramatorracaperatopatonkatollaballafairasaxaminimatenorabassapasseracapitalarutanamenatedacabalatangasunanassamawasagajamadamasubasaltanaxonasailanadawadiaradianaroomaroodaripatadapariaharevelareelareedapoolaplugapinapeekaparabolaadogapatacudanuafanapalarumanodanetaalaganeelabatikamugamotanapamaximamoodaleekagrubagobageladrabacitadelatotalacedaratapagagaratamanorabaragalacolaapapayawatabarajagabanagapaganabagajarabatawayapapaalocalagarabaronamataragagapataradecalatotaledaticabardalegabogaburgakeeladoomamixamapanatomagumakitabaleenagalaatenadonamuralapanafaunaducatapagodaalobarapakeepanipagulpaloopadeeraleeraleverahairapadatapiradooramooranaidaraidawadanaliasanoxanatlasabusamadamajagasawamassananusagnatalabacadetanemanaturalatipacaressapassabaronetaminimaxasariafallaballotaknotapotarepacarrotamartapartatortagutapollagatewayalawajayasapazagafatahallagamutadabacanatabuadayabattawaterfallapatinaanutaflowalassavanamowanibadrawaregularacallawarastayagamayapacamarayanaxatagawaxapawacatavalleyadribalionasagaaplatacatnipapooharailacalamusadairymanabateracanalpanama
 Testing.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................IS a palindrome
+<<<<<<< HEAD
+<<<<<<< HEAD
+Operation took 1.536938880 seconds
+=======
+Operation took 1.537296360 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -141,7 +196,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10001000	1
 16:	0x53000		PID 1, VA: 0x10000000	1
+<<<<<<< HEAD
 Operation took 1.549236840 seconds
+=======
+Operation took 1.548958000 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -162,7 +222,15 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
+Choose:a aFatal user mode trap 2 (TLB miss on load, epc 0x400100, vaddr 0x0)
+Operation took 0.181375760 seconds
+=======
 Choose: aaFatal user mode trap 2 (TLB miss on load, epc 0x400100, vaddr 0x0)
+<<<<<<< HEAD
+Operation took 0.181549600 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -183,7 +251,12 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
+<<<<<<< HEAD
 Operation took 0.195680280 seconds
+=======
+Operation took 0.195573560 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -204,6 +277,15 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
+<<<<<<< HEAD
+Choose:b bFatal user mode trap 2 (TLB miss on load, epc 0x400118, vaddr 0x40000000)
+Operation took 0.181814120 seconds
+=======
+Choose: bbFatal user mode trap 2 (TLB miss on load, epc 0x400118, vaddr 0x40000000)
+Operation took 0.201880960 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 Choose:b bFatal user mode trap 2 (TLB miss on load, epc 0x400118, vaddr 0x40000000)
 
 Frame #	PHY ADDR	USER	Length
@@ -225,7 +307,12 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
+<<<<<<< HEAD
 Operation took 0.195959120 seconds
+=======
+Operation took 0.195906800 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -246,6 +333,14 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
+Choose: ccFatal user mode trap 4 (Address error on load, epc 0x400130, vaddr 0x80000000)
+<<<<<<< HEAD
+Operation took 0.211785440 seconds
+=======
+Operation took 0.211736480 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 Choose:c cFatal user mode trap 4 (Address error on load, epc 0x400130, vaddr 0x80000000)
 
 Frame #	PHY ADDR	USER	Length
@@ -266,7 +361,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
+<<<<<<< HEAD
 Operation took 0.206219280 seconds
+=======
+Operation took 0.206432640 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -287,6 +387,14 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
+Choose: ddFatal user mode trap 3 (TLB miss on store, epc 0x400148, vaddr 0x0)
+<<<<<<< HEAD
+Operation took 0.201669600 seconds
+=======
+Operation took 0.181469720 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 Choose:d dFatal user mode trap 3 (TLB miss on store, epc 0x400148, vaddr 0x0)
 
 Frame #	PHY ADDR	USER	Length
@@ -308,7 +416,12 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
+<<<<<<< HEAD
 Operation took 0.195403960 seconds
+=======
+Operation took 0.195682360 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -329,6 +442,14 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
+Choose: eeFatal user mode trap 3 (TLB miss on store, epc 0x400158, vaddr 0x40000000)
+<<<<<<< HEAD
+Operation took 0.181727760 seconds
+=======
+Operation took 0.181803360 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 Choose:e eFatal user mode trap 3 (TLB miss on store, epc 0x400158, vaddr 0x40000000)
 
 Frame #	PHY ADDR	USER	Length
@@ -350,7 +471,12 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
+<<<<<<< HEAD
 Operation took 0.196079080 seconds
+=======
+Operation took 0.196039160 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -371,7 +497,18 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
 Choose: ggFatal user mode trap 5 (Address error on store, epc 0x400178, vaddr 0x80000000)
+=======
+Choose:g gFatal user mode trap 5 (Address error on store, epc 0x400178, vaddr 0x80000000)
+<<<<<<< HEAD
+<<<<<<< HEAD
+Operation took 0.192067000 seconds
+=======
+Operation took 0.211940800 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -391,7 +528,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
+<<<<<<< HEAD
 Operation took 0.206452960 seconds
+=======
+Operation took 0.206695640 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -413,6 +555,13 @@ p /testbin/os161testerprog
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose:h hFatal user mode trap 2 (TLB miss on load, epc 0x40018c, vaddr 0x0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+Operation took 0.181435400 seconds
+=======
+Operation took 0.201714920 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -433,7 +582,12 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
+<<<<<<< HEAD
 Operation took 0.195673960 seconds
+=======
+Operation took 0.195621680 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -454,7 +608,19 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
 Choose: iiFatal user mode trap 2 (TLB miss on load, epc 0x4001b0, vaddr 0x40000000)
+=======
+<<<<<<< HEAD
+Choose: iiFatal user mode trap 2 (TLB miss on load, epc 0x4001b0, vaddr 0x40000000)
+<<<<<<< HEAD
+Operation took 0.181680880 seconds
+=======
+Operation took 0.181609080 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Choose:i iFatal user mode trap 2 (TLB miss on load, epc 0x4001b0, vaddr 0x40000000)
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -475,7 +641,12 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		KTEMP	1
+<<<<<<< HEAD
 Operation took 0.195845840 seconds
+=======
+Operation took 0.195554480 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -497,6 +668,13 @@ p /testbin/os161testerprog
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose: jjFatal user mode trap 4 (Address error on load, epc 0x4001d4, vaddr 0x80000000)
+<<<<<<< HEAD
+<<<<<<< HEAD
+Operation took 0.211883880 seconds
+=======
+Operation took 0.212190160 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -516,7 +694,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
+<<<<<<< HEAD
 Operation took 0.206437320 seconds
+=======
+Operation took 0.206402560 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -537,6 +720,14 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
+Choose:k kFatal user mode trap 4 (Address error on load, epc 0x4001fc, vaddr 0x7fffff9d)
+<<<<<<< HEAD
+Operation took 0.191754200 seconds
+=======
+Operation took 0.191735560 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 Choose: kkFatal user mode trap 4 (Address error on load, epc 0x4001fc, vaddr 0x7fffff9d)
 
 Frame #	PHY ADDR	USER	Length
@@ -557,7 +748,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
+<<<<<<< HEAD
 Operation took 0.206400320 seconds
+=======
+Operation took 0.206179360 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -578,7 +774,15 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
+Choose:l lFatal user mode trap 10 (Illegal instruction, epc 0x4001ec, vaddr 0x0)
+Operation took 0.190214520 seconds
+=======
 Choose: llFatal user mode trap 10 (Illegal instruction, epc 0x4001ec, vaddr 0x0)
+<<<<<<< HEAD
+Operation took 0.189973520 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -598,7 +802,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
+<<<<<<< HEAD
 Operation took 0.204587520 seconds
+=======
+Operation took 0.204916200 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -619,7 +828,19 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
 Choose: mmFatal user mode trap 9 (Break instruction, epc 0x400238, vaddr 0x0)
+=======
+<<<<<<< HEAD
+Choose: mmFatal user mode trap 9 (Break instruction, epc 0x400238, vaddr 0x0)
+<<<<<<< HEAD
+Operation took 0.189499960 seconds
+=======
+Operation took 0.189180120 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Choose:m mFatal user mode trap 9 (Break instruction, epc 0x400238, vaddr 0x0)
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -639,7 +860,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
+<<<<<<< HEAD
 Operation took 0.204149840 seconds
+=======
+Operation took 0.204109080 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -660,7 +886,20 @@ p /testbin/os161testerprog
 [*] Run everything (in subprocesses)
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
+<<<<<<< HEAD
 Choose: nnFatal user mode trap 9 (Break instruction, epc 0x400274, vaddr 0x0)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Choose:n nFatal user mode trap 9 (Break instruction, epc 0x400274, vaddr 0x0)
+Operation took 0.189584920 seconds
+=======
+Choose: nnFatal user mode trap 9 (Break instruction, epc 0x400274, vaddr 0x0)
+Operation took 0.189408440 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Choose:n nFatal user mode trap 9 (Break instruction, epc 0x400274, vaddr 0x0)
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -680,7 +919,12 @@ Frame #	PHY ADDR	USER	Length
 14:	0x51000		PID 1, VA: 0x400000	1
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
+<<<<<<< HEAD
 Operation took 0.204034000 seconds
+=======
+Operation took 0.204005280 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 [a] read from NULL
@@ -702,18 +946,53 @@ p /testbin/os161testerprog
 Note: [f] may not cause an exception on some platforms, in which
 case it'll appear to fail.
 Choose:o osleep: Dropping thread <boot/menu>
+<<<<<<< HEAD
 panic: Bus error exception, PC=0x8000d7d4
 sys161: 870885508 cycles (216622732k, 1760999u, 652501777i)
 sys161: 46695 irqs 42075 exns 928r/0w disk 518r/50577w console 180r/0w/36m emufs 0r/0w net
 sys161: Elapsed real time: 34.835598 seconds (24.9999 mhz)
 sys161: Elapsed virtual time: 34.835420320 seconds (25 mhz)
+=======
+<<<<<<< HEAD
+panic: Bus error exception, PC=0x8000d484
+<<<<<<< HEAD
+sys161: 867677462 cycles (211230071k, 1760931u, 654686460i)
+sys161: 46675 irqs 41978 exns 928r/0w disk 518r/42878w console 162r/0w/37m emufs 0r/0w net
+sys161: Elapsed real time: 34.705260 seconds (25.0013 mhz)
+sys161: Elapsed virtual time: 34.707098480 seconds (25 mhz)
+=======
+sys161: 867904013 cycles (211219285k, 1760945u, 654923783i)
+sys161: 46672 irqs 41983 exns 928r/0w disk 518r/42878w console 162r/0w/37m emufs 0r/0w net
+sys161: Elapsed real time: 34.537770 seconds (25.1291 mhz)
+sys161: Elapsed virtual time: 34.716160520 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+panic: Bus error exception, PC=0x8000d534
+sys161: 871377128 cycles (216596718k, 1761008u, 653019402i)
+sys161: 46700 irqs 42075 exns 928r/0w disk 518r/50577w console 180r/0w/36m emufs 0r/0w net
+sys161: Elapsed real time: 34.855291 seconds (24.9999 mhz)
+sys161: Elapsed virtual time: 34.855085120 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -807,17 +1086,50 @@ ait with NULL status
 sleep: Dropping thread <boot/menu>
 sleep: Dropping thread /testbin/os161testerprog
 panic: Bus error exception, PC=0x4042b4
+<<<<<<< HEAD
 sys161: 48911793 cycles (11836884k, 125175u, 36949734i)
 sys161: 2380 irqs 1305 exns 56r/0w disk 29r/3161w console 16r/0w/3m emufs 0r/0w net
 sys161: Elapsed real time: 1.946897 seconds (25.1229 mhz)
 sys161: Elapsed virtual time: 1.956471720 seconds (25 mhz)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+sys161: 47886892 cycles (11244449k, 125164u, 36517279i)
+sys161: 2387 irqs 1293 exns 72r/0w disk 29r/2549w console 10r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.902802 seconds (25.1665 mhz)
+sys161: Elapsed virtual time: 1.915475680 seconds (25 mhz)
+=======
+sys161: 47887471 cycles (11245244k, 125166u, 36517061i)
+sys161: 2388 irqs 1296 exns 72r/0w disk 29r/2549w console 10r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.902997 seconds (25.1642 mhz)
+sys161: Elapsed virtual time: 1.915498840 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+sys161: 49181169 cycles (11830933k, 125175u, 37225061i)
+sys161: 2382 irqs 1307 exns 56r/0w disk 29r/3161w console 16r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.958743 seconds (25.1085 mhz)
+sys161: Elapsed virtual time: 1.967246760 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -4850,6 +5162,13 @@ calling foo: n-i = 3996, &i = 0x7ffe8910
 calling foo: n-i = 3997, &i = 0x7ffe88f8
 calling foo: n-i = 3998, &i = 0x7ffe88e0
 calling foo: n-i = 3999, &i = 0x7ffe88c8
+<<<<<<< HEAD
+<<<<<<< HEAD
+Operation took 29.755559920 seconds
+=======
+Operation took 29.754564880 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -4891,7 +5210,12 @@ Frame #	PHY ADDR	USER	Length
 36:	0x67000		PID 1, VA: 0x7ffea000	1
 37:	0x68000		PID 1, VA: 0x7ffe9000	1
 38:	0x69000		PID 1, VA: 0x7ffe8000	1
+<<<<<<< HEAD
 Operation took 29.726383200 seconds
+=======
+Operation took 29.725241280 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 n = 4000
@@ -8900,7 +9224,19 @@ OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9616,15 +9952,46 @@ sieve: calculating prime numbers below 24576
  24371  24373  24379  24391  24407  24413  24419  24421 
  24439  24443  24469  24473  24481  24499  24509  24517 
  24527  24533  24547  24551  24571 
+<<<<<<< HEAD
 run 2 took 3.758006800 seconds
 run 1 took 3.772793920 seconds
 sieve: 2 runs took about 8 secondssys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+run 2 took 3.755510120 seconds
+run 1 took 3.755496040 seconds
+sieve: 2 runs took about 8 seconds
+=======
+run 2 took 3.755127920 seconds
+run 1 took 3.755723160 seconds
+sieve: 2 runs took about 7 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+=======
+run 2 took 3.757587120 seconds
+run 1 took 3.772475240 seconds
+sieve: 2 runs took about 7 secondssys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9658,6 +10025,14 @@ OS/161 kernel [? for menu]: p /testbin/os161testerprog 1
 p /testbin/os161testerprog 1
 *** Malloc test 1 ***
 Allocating 16384 bytes
+<<<<<<< HEAD
+/testbin/os161testerprog: malloc: initial sbrk failed: No such device
+<<<<<<< HEAD
+Operation took 0.121667800 seconds
+=======
+Operation took 0.123026040 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 /testbin/os161testerprog: malloc: Internal error - local data corrupt
 /testbin/os161testerprog: malloc: heapbase 0x4e552920; heaptop 0x332e332e
 
@@ -9681,7 +10056,12 @@ Frame #	PHY ADDR	USER	Length
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		PID 1, VA: 0x403000	1
 18:	0x55000		PID 1, VA: 0x402000	1
+<<<<<<< HEAD
 Operation took 0.173220960 seconds
+=======
+Operation took 0.169310760 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 2
 p /testbin/os161testerprog 2
 Entering malloc test 2.
@@ -9689,6 +10069,14 @@ Make sure you read and understand the comment in malloctest.c that
 explains the conditions this test assumes.
 
 Testing how much memory we can allocate:
+<<<<<<< HEAD
+/testbin/os161testerprog: malloc: initial sbrk failed: No such device
+<<<<<<< HEAD
+Operation took 0.139588240 seconds
+=======
+Operation took 0.140216440 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 /testbin/os161testerprog: malloc: Internal error - local data corrupt
 /testbin/os161testerprog: malloc: heapbase 0x4e552920; heaptop 0x332e332e
 
@@ -9712,11 +10100,25 @@ Frame #	PHY ADDR	USER	Length
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		PID 1, VA: 0x403000	1
 18:	0x55000		PID 1, VA: 0x402000	1
+<<<<<<< HEAD
 Operation took 0.190961240 seconds
+=======
+Operation took 0.190994800 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 5
 p /testbin/os161testerprog 5
 Beginning malloc test 5
 Seeded random number generator with 0.
+<<<<<<< HEAD
+/testbin/os161testerprog: malloc: initial sbrk failed: No such device
+<<<<<<< HEAD
+Operation took 0.120829960 seconds
+OSsys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+=======
+Operation took 0.120836720 secondssys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 /testbin/os161testerprog: malloc: Internal error - local data corrupt
 /testbin/os161testerprog: malloc: heapbase 0x4e552920; heaptop 0x332e332e
 
@@ -9740,13 +10142,31 @@ Frame #	PHY ADDR	USER	Length
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		PID 1, VA: 0x403000	1
 18:	0x55000		PID 1, VA: 0x402000	1
+<<<<<<< HEAD
 Operation took 0.171609160 secondssys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+=======
+Operation took 0.171477880 seconds
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9778,7 +10198,26 @@ Frame #	PHY ADDR	USER	Length
 6:	0x49000		KERNEL	1
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
+<<<<<<< HEAD
 Passed btree test.
+=======
+Fatal user mode trap 3 (TLB miss on store, epc 0x4001ac, vaddr 0x7ebfff8c)
+<<<<<<< HEAD
+<<<<<<< HEAD
+Operation took 0.100084960 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog -h
+p /testbin/os161testerprog -h
+/testbin/os161testerprog: malloc: initial sbrk failed: No such device
+Operation took 0.103336760 seconds
+=======
+Operation took 0.101544800 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog -h
+p /testbin/os161testerprog -h
+/testbin/os161testerprog: malloc: initial sbrk failed: No such device
+Operation took 0.103395840 seconds
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Frame #	PHY ADDR	USER	Length
 0:	0x43000		COREMAP	0
@@ -9854,14 +10293,31 @@ Frame #	PHY ADDR	USER	Length
 15:	0x52000		PID 1, VA: 0x10000000	1
 16:	0x53000		PID 1, VA: 0x401000	1
 17:	0x54000		PID 1, VA: 0x402000	1
+<<<<<<< HEAD
 Operation took 0.143174840 seconds
+=======
+Operation took 0.143148640 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9893,14 +10349,47 @@ Frame #	PHY ADDR	USER	Length
 6:	0x49000		KERNEL	1
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
+<<<<<<< HEAD
 Passed bigprog test.
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+=======
+<<<<<<< HEAD
+sleep: Dropping thread <boot/menu>
+panic: Assertion failed: index < b->nbits, at ../../lib/bitmap.c:112 (bitmap_mark)
+<<<<<<< HEAD
+sys161: 118608226 cycles (64382780k, 0u, 54225446i)
+sys161: 1344 irqs 0 exns 0r/0w disk 28r/993w console 4r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 4.737085 seconds (25.0382 mhz)
+sys161: Elapsed virtual time: 4.744329040 seconds (25 mhz)
+=======
+sys161: 108278187 cycles (64326702k, 0u, 43951485i)
+sys161: 1302 irqs 0 exns 0r/0w disk 28r/993w console 4r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 4.333648 seconds (24.9855 mhz)
+sys161: Elapsed virtual time: 4.331127480 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+=======
+Passed bigprog test.sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9932,6 +10421,43 @@ Frame #	PHY ADDR	USER	Length
 6:	0x49000		KERNEL	1
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 6
 p /testbin/os161testerprog 6
+<<<<<<< HEAD
+<<<<<<< HEAD
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: SuERROR 0x400000 is not allocated
+ERROR 0x401000 is not allocated
+ERROR 0x10000000 is not allocated
+ERROR 0x7ffff000 is not allocated
+bpage allocator couldn't get a page
+Fatal user mode trap 2 (TLB miss on load, epc 0x4008f4, vaddr 0x4008f4)
+ERROR 0x401000 is not allocated
+=======
+panic: Fatal exception 3 (TLB miss on store) in kernel mode
+panic: EPC 0x8000c4a4, exception vaddr 0x4
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+sleep: Dropping thread <boot/menu>
+sleep: Dropping thread /testbin/os161testerprog
+sleep: Dropping thread /testbin/os161testerprog
+sleep: Dropping thread /testbin/os161testerprog
+scheduler: Dropping thread /testbin/os161testerprog.
+<<<<<<< HEAD
+panic: Assertion failed: bitmap_isset(swapmap, p->PFN - 1), at ../../vm/swapmap.c:79 (sm_swapdealloc)
+sys161: 44967950 cycles (7026238k, 450477u, 37491235i)
+sys161: 1326 irqs 47 exns 32r/0w disk 29r/1681w console 20r/0w/6m emufs 0r/0w net
+sys161: Elapsed real time: 1.719146 seconds (26.1571 mhz)
+sys161: Elapsed virtual time: 1.798718000 seconds (25 mhz)
+=======
+scheduler: Dropping thread /testbin/os161testerprog.
+panic: I can't handle this... I think I'll just die now...
+sys161: 42465817 cycles (5076986k, 424u, 37388407i)
+sys161: 1079 irqs 33 exns 32r/0w disk 29r/1323w console 9r/0w/4m emufs 0r/0w net
+sys161: Elapsed real time: 1.676114 seconds (25.3359 mhz)
+sys161: Elapsed virtual time: 1.698632680 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 Fatal user mode trap 3 (TLB miss on store, epc 0x40014c, vaddr 0x4954a4a0)
 
 Frame #	PHY ADDR	USER	Length
@@ -9958,14 +10484,31 @@ Frame #	PHY ADDR	USER	Length
 20:	0x57000		KTEMP	0
 21:	0x58000		KTEMP	1
 22:	0x59000		KTEMP	1
+<<<<<<< HEAD
 Operation took 0.112591720 seconds
+=======
+Operation took 0.118389120 seconds
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -9998,6 +10541,50 @@ Frame #	PHY ADDR	USER	Length
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 /testbin/os161testerprog: Starting.
+<<<<<<< HEAD
+<<<<<<< HEAD
+01/testbin/os161testerprog: waitpi2/testbin/os161testerprogFatal user mode trap 2 (TLB miss on load, epc 0x400448, vaddr 0x20)
+ERROR 0x400000 is not allocated
+=======
+01/testbin/os161testerprog: waitpid2/testbin/os161testerprogERROR 0x400000 is not allocated
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+ERROR 0x401000 is not allocated
+ERROR 0x10000000 is not allocated
+ERROR 0x7ffff000 is not allocated
+3ERROR 0x400000 is not allocated
+ERROR 0x401000 is not allocated
+ERROR 0x10000000 is not allocated
+ERROR 0x7ffff000 is not allocated
+<<<<<<< HEAD
+ERROR 0x400000 is not allocated
+ERROR 0x401000 is not allocated
+ERROR 0x10000000 is not allocated
+ERROR 0x7ffff000 is not allocated
+/testbin/os161testerprogFatal user mode trap 2 (TLB miss on load, epc 0x400448, vaddr 0x20)
+ERROR 0x10000000 is not allocated
+ERROR 0x7ffff000 is not allocated
+dFatal user mode trap 2 (TLB miss on load, epc 0x400764, vaddr 0x400764)
+Operation took 0.212511880 seconds
+OS/161 kernel [? for menu]: p /testbin/os161testerprog 
+p /testbin/os161testerprog 
+/testbin/os161testerprog: Starting.
+01/testbin/os161testerprog: waitpid
+2ERROR 0x400000 is not allocated
+ERROR 0x401000 is not allocated
+ERROR 0x10000000 is not allocated
+ERROR 0x7ffff000 is not allocated
+/testbin/os161testerprog0scheduler: Dropping thread /testbin/os161testerprog.
+scheduler: Dropping thread /testbin/os161testerprog.
+scheduler: Dropping thread <boot/menu>.
+scheduler: Dropping thread /testbin/os161testerprog.
+panic: Bus error exception, PC=0x400160
+sys161: 83399262 cycles (11144259k, 89705u, 72165298i)
+sys161: 1586 irqs 4887 exns 64r/0w disk 56r/2228w console 16r/0w/5m emufs 0r/0w net
+sys161: Elapsed real time: 3.324981 seconds (25.0826 mhz)
+sys161: Elapsed virtual time: 3.335970480 seconds (25 mhz)
+=======
+/testbin/os161testerprog0
+=======
 01/testbin/os161testerprog: waitpi2/testbin/os161testerprogFatal user mode trap 2 (TLB miss on load, epc 0x400448, vaddr 0x20)
 
 Frame #	PHY ADDR	USER	Length
@@ -10079,23 +10666,52 @@ Frame #	PHY ADDR	USER	Length
 35:	0x66000		KTEMP	0
 36:	0x67000		KTEMP	1
 37:	0x68000		KTEMP	1
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
 sleep: Dropping thread <boot/menu>
 sleep: Dropping thread /testbin/os161testerprog
 sleep: Dropping thread /testbin/os161testerprog
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
+<<<<<<< HEAD
+panic: Bus error exception, PC=0x400440
+sys161: 43307084 cycles (7035552k, 50995u, 36220537i)
+sys161: 1205 irqs 2788 exns 32r/0w disk 28r/1496w console 8r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.731026 seconds (25.0182 mhz)
+sys161: Elapsed virtual time: 1.732283360 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 panic: Assertion failed: vn->vn_opencount>0, at ../../fs/vfs/vnode.c:124 (vnode_decopen)
+<<<<<<< HEAD
 sys161: 44390111 cycles (8280013k, 40276u, 36069822i)
 sys161: 1174 irqs 2194 exns 32r/0w disk 28r/3138w console 9r/0w/3m emufs 0r/0w net
 sys161: Elapsed real time: 1.713690 seconds (25.9032 mhz)
 sys161: Elapsed virtual time: 1.775604440 seconds (25 mhz)
+=======
+sys161: 44391487 cycles (8273411k, 40223u, 36077853i)
+sys161: 1173 irqs 2192 exns 32r/0w disk 28r/3142w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.713554 seconds (25.9061 mhz)
+sys161: Elapsed virtual time: 1.775659480 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10127,24 +10743,85 @@ Frame #	PHY ADDR	USER	Length
 6:	0x49000		KERNEL	1
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
+<<<<<<< HEAD
+<<<<<<< HEAD
+12! +11! +10! +9! +8! +kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allocator couldn't get a page
+kmalloc: Subpage allERROR 0x400000 is not allocated
+ERROR 0x401000 is not allocated
+ERROR 0x10000000 is not allocated
+ERROR 0x7ffff000 is not allocated
+ocator couldn't get a page
+Fatal user mode trap 2 (TLB miss on load, epc 0x4008c4, vaddr 0x4008c4)
+ERROR 0x401000 is not allocated
+sleep: Dropping thread <boot/menu>
+sleep: Dropping thread /testbin/os161testerprog
+sleep: Dropping thread /testbin/os161testerprog
+sleep: Dropping thread /testbin/os161testerprog
+scheduler: Dropping thread /testbin/os161testerprog.
+panic: Assertion failed: bitmap_isset(swapmap, p->PFN - 1), at ../../vm/swapmap.c:79 (sm_swapdealloc)
+sys161: 44783799 cycles (8474865k, 6244u, 36302690i)
+sys161: 1541 irqs 74 exns 32r/0w disk 28r/1891w console 27r/0w/7m emufs 0r/0w net
+sys161: Elapsed real time: 1.701640 seconds (26.318 mhz)
+sys161: Elapsed virtual time: 1.791351960 seconds (25 mhz)
+=======
+12! +11! +10! +9! +8! +panic: Fatal exception 3 (TLB miss on store) in kernel mode
+panic: EPC 0x8000c4a4, exception vaddr 0x4
+sleep: Dropping thread <boot/menu>
+=======
 12! +11! +10! +9! +8! +sleep: Dropping thread <boot/menu>
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
 sleep: Dropping thread /testbin/os161testerprog
 sleep: Dropping thread /testbin/os161testerprog
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
+<<<<<<< HEAD
+panic: I can't handle this... I think I'll just die now...
+sys161: 41384433 cycles (5207044k, 4656u, 36172733i)
+sys161: 1098 irqs 62 exns 32r/0w disk 28r/1350w console 10r/0w/4m emufs 0r/0w net
+sys161: Elapsed real time: 1.633522 seconds (25.3345 mhz)
+sys161: Elapsed virtual time: 1.655377320 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 panic: Assertion failed: (vaddr_t)tf > (vaddr_t)curthread->t_stack, at ../../arch/mips/mips/trap.c:83 (mips_trap)
+<<<<<<< HEAD
 sys161: 41404134 cycles (5213766k, 4660u, 36185708i)
 sys161: 1106 irqs 80 exns 40r/0w disk 28r/1302w console 11r/0w/3m emufs 0r/0w net
 sys161: Elapsed real time: 1.627417 seconds (25.4416 mhz)
 sys161: Elapsed virtual time: 1.656165360 seconds (25 mhz)
+=======
+sys161: 41350931 cycles (5205352k, 4658u, 36140921i)
+sys161: 1102 irqs 78 exns 40r/0w disk 28r/1302w console 11r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.632631 seconds (25.3278 mhz)
+sys161: Elapsed virtual time: 1.654037240 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10185,17 +10862,50 @@ scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 panic: Assertion failed: (vaddr_t)tf > (vaddr_t)curthread->t_stack, at ../../arch/mips/mips/trap.c:83 (mips_trap)
+<<<<<<< HEAD
 sys161: 54135745 cycles (7878942k, 3373302u, 42883501i)
 sys161: 1284 irqs 277 exns 128r/0w disk 31r/1382w console 34r/0w/2m emufs 0r/0w net
 sys161: Elapsed real time: 2.104099 seconds (25.7287 mhz)
 sys161: Elapsed virtual time: 2.165429800 seconds (25 mhz)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+sys161: 50006108 cycles (7622560k, 2448382u, 39935166i)
+sys161: 1235 irqs 135 exns 128r/0w disk 31r/1382w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.964552 seconds (25.4542 mhz)
+sys161: Elapsed virtual time: 2.000244320 seconds (25 mhz)
+=======
+sys161: 50681626 cycles (7681034k, 2914342u, 40086250i)
+sys161: 1240 irqs 179 exns 128r/0w disk 31r/1382w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.976910 seconds (25.6368 mhz)
+sys161: Elapsed virtual time: 2.027265040 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+sys161: 53910120 cycles (7836935k, 3140065u, 42933120i)
+sys161: 1279 irqs 249 exns 128r/0w disk 31r/1382w console 34r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 2.101388 seconds (25.6545 mhz)
+sys161: Elapsed virtual time: 2.156404800 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10229,18 +10939,53 @@ OS/161 kernel [? for menu]: p /testbin/os161testerprog
 p /testbin/os161testerprog 
 Entering the huge program - I will stress test your VM
 sleep: Dropping thread <boot/menu>
+<<<<<<< HEAD
 panic: Bus error exception, PC=0x8000d7d4
 sys161: 54465395 cycles (13106245k, 2084u, 41357066i)
 sys161: 1544 irqs 216 exns 368r/0w disk 28r/1007w console 50r/0w/2m emufs 0r/0w net
 sys161: Elapsed real time: 2.180143 seconds (24.9825 mhz)
 sys161: Elapsed virtual time: 2.178615800 seconds (25 mhz)
+=======
+<<<<<<< HEAD
+panic: Assertion failed: index < b->nbits, at ../../lib/bitmap.c:112 (bitmap_mark)
+<<<<<<< HEAD
+sys161: 98852808 cycles (63478624k, 0u, 35374184i)
+sys161: 1267 irqs 0 exns 0r/0w disk 28r/993w console 4r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 3.953923 seconds (25.0012 mhz)
+sys161: Elapsed virtual time: 3.954112320 seconds (25 mhz)
+=======
+sys161: 98852935 cycles (63486851k, 0u, 35366084i)
+sys161: 1266 irqs 0 exns 0r/0w disk 28r/993w console 4r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 2.593562 seconds (38.1147 mhz)
+sys161: Elapsed virtual time: 3.954117400 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+panic: Bus error exception, PC=0x8000d534
+sys161: 54537954 cycles (13111865k, 2084u, 41424005i)
+sys161: 1542 irqs 215 exns 368r/0w disk 28r/1007w console 50r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 2.182588 seconds (24.9877 mhz)
+sys161: Elapsed virtual time: 2.181518160 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10273,18 +11018,53 @@ Frame #	PHY ADDR	USER	Length
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 sleep: Dropping thread <boot/menu>
+<<<<<<< HEAD
 panic: Bus error exception, PC=0x8000d7d4
 sys161: 55273001 cycles (13302906k, 360279u, 41609816i)
 sys161: 1512 irqs 429 exns 384r/0w disk 28r/952w console 52r/0w/2m emufs 0r/0w net
 sys161: Elapsed real time: 2.202600 seconds (25.0944 mhz)
 sys161: Elapsed virtual time: 2.210920040 seconds (25 mhz)
+=======
+<<<<<<< HEAD
+panic: Bus error exception, PC=0x8000d484
+<<<<<<< HEAD
+sys161: 54237206 cycles (18059346k, 0u, 36177860i)
+sys161: 1470 irqs 74 exns 384r/0w disk 28r/952w console 8r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 2.170917 seconds (24.9835 mhz)
+sys161: Elapsed virtual time: 2.169488240 seconds (25 mhz)
+=======
+sys161: 54243110 cycles (18060600k, 0u, 36182510i)
+sys161: 1468 irqs 74 exns 384r/0w disk 28r/952w console 8r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 2.171106 seconds (24.9841 mhz)
+sys161: Elapsed virtual time: 2.169724400 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+panic: Bus error exception, PC=0x8000d534
+sys161: 55215598 cycles (13391022k, 360268u, 41464308i)
+sys161: 1514 irqs 419 exns 384r/0w disk 28r/952w console 52r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 2.201858 seconds (25.0768 mhz)
+sys161: Elapsed virtual time: 2.208623920 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10317,22 +11097,55 @@ Frame #	PHY ADDR	USER	Length
 OS/161 kernel [? for menu]: p /testbin/os161testerprog 
 p /testbin/os161testerprog 
 /testbin/os161testerprog: Starting: running three copies of /testbin/matmult...
+<<<<<<< HEAD
+<<<<<<< HEAD
+sys161: 49222108 cycles (12090831k, 3619u, 37127658i)
+sys161: 1205 irqs 86 exns 32r/0w disk 28r/955w console 25r/0w/6m emufs 0r/0w net
+sys161: Elapsed real time: 1.942347 seconds (25.3416 mhz)
+sys161: Elapsed virtual time: 1.968884320 seconds (25 mhz)
+=======
+sys161: 48613878 cycles (11606378k, 3616u, 37003884i)
+sys161: 1202 irqs 83 exns 32r/0w disk 28r/955w console 25r/0w/6m emufs 0r/0w net
+sys161: Elapsed real time: 1.933144 seconds (25.1476 mhz)
+sys161: Elapsed virtual time: 1.944555120 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 sleep: Dropping thread <boot/menu>
 sleep: Dropping thread /testbin/os161testerprog
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 panic: Bus error exception, PC=0x4000b0
+<<<<<<< HEAD
 sys161: 41949104 cycles (5213014k, 3622u, 36732468i)
 sys161: 1160 irqs 88 exns 32r/0w disk 28r/1184w console 13r/0w/3m emufs 0r/0w net
 sys161: Elapsed real time: 1.669407 seconds (25.1281 mhz)
 sys161: Elapsed virtual time: 1.677964160 seconds (25 mhz)
+=======
+sys161: 42651717 cycles (5348267k, 3623u, 37299827i)
+sys161: 1170 irqs 89 exns 32r/0w disk 28r/1184w console 17r/0w/5m emufs 0r/0w net
+sys161: Elapsed real time: 1.692856 seconds (25.1951 mhz)
+sys161: Elapsed virtual time: 1.706068680 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10368,26 +11181,69 @@ Job size approximately 58800 bytes
 Forking 18 jobs; total load 1033k
 Process 0 (pid 2) starting computation...
 sleep: Dropping thread <boot/menu>
+<<<<<<< HEAD
+sleep: Dropping thread /testbin/os161testerprog
+<<<<<<< HEAD
+sleep: Dropping thread /testbin/os161testerprog
+=======
+=======
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+scheduler: Dropping thread /testbin/os161testerprog.
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
+<<<<<<< HEAD
+panic: I can't handle this... I think I'll just die now...
+<<<<<<< HEAD
+sys161: 46554554 cycles (7913473k, 21017u, 38620064i)
+sys161: 1264 irqs 127 exns 136r/0w disk 30r/1452w console 8r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.831276 seconds (25.4219 mhz)
+sys161: Elapsed virtual time: 1.862182160 seconds (25 mhz)
+=======
+sys161: 46863444 cycles (7896616k, 16814u, 38950014i)
+sys161: 1261 irqs 117 exns 136r/0w disk 30r/1457w console 8r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.844085 seconds (25.4128 mhz)
+sys161: Elapsed virtual time: 1.874537760 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
-scheduler: Dropping thread /testbin/os161testerprog.
+<<<<<<< HEAD
 panic: Bus error exception, PC=0x8000d7d4
 sys161: 44468840 cycles (5882861k, 47428u, 38538551i)
 sys161: 1198 irqs 146 exns 32r/0w disk 30r/1489w console 9r/0w/2m emufs 0r/0w net
 sys161: Elapsed real time: 1.761632 seconds (25.243 mhz)
 sys161: Elapsed virtual time: 1.778753600 seconds (25 mhz)
+=======
+panic: Bus error exception, PC=0x8000d534
+sys161: 44519169 cycles (5876771k, 47427u, 38594971i)
+sys161: 1197 irqs 142 exns 32r/0w disk 30r/1489w console 9r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 1.766456 seconds (25.2025 mhz)
+sys161: Elapsed virtual time: 1.780766760 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10426,23 +11282,58 @@ sleep: Dropping thread <boot/menu>
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
+<<<<<<< HEAD
+panic: I can't handle this... I think I'll just die now...
+<<<<<<< HEAD
+sys161: 46497974 cycles (7912212k, 25216u, 38560546i)
+sys161: 1264 irqs 129 exns 136r/0w disk 30r/1447w console 8r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.824377 seconds (25.487 mhz)
+sys161: Elapsed virtual time: 1.859918960 seconds (25 mhz)
+=======
+sys161: 46501834 cycles (7909332k, 25217u, 38567285i)
+sys161: 1263 irqs 129 exns 136r/0w disk 30r/1447w console 8r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.825510 seconds (25.4733 mhz)
+sys161: Elapsed virtual time: 1.860073360 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
+<<<<<<< HEAD
 panic: Bus error exception, PC=0x8000d7d4
 sys161: 44499811 cycles (5876256k, 47427u, 38576128i)
 sys161: 1196 irqs 142 exns 32r/0w disk 30r/1489w console 9r/0w/2m emufs 0r/0w net
 sys161: Elapsed real time: 1.762505 seconds (25.248 mhz)
 sys161: Elapsed virtual time: 1.779992440 seconds (25 mhz)
+=======
+panic: Bus error exception, PC=0x8000d534
+sys161: 44456761 cycles (5883269k, 47429u, 38526063i)
+sys161: 1197 irqs 146 exns 32r/0w disk 30r/1489w console 9r/0w/2m emufs 0r/0w net
+sys161: Elapsed real time: 1.761323 seconds (25.2405 mhz)
+sys161: Elapsed virtual time: 1.778270440 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 sys161: System/161 release 1.14, compiled Jan 13 2015 13:55:47
 
 OS/161 base system version 1.11
 Copyright (c) 2000, 2001, 2002, 2003
    President and Fellows of Harvard College.  All rights reserved.
 
+<<<<<<< HEAD
 Jason's system version 0 (ASST3 #462)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Jason's system version 0 (ASST3 #109)
+=======
+Jason's system version 0 (ASST3 #314)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+Jason's system version 0 (ASST3 #388)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db
 
 Cpu is MIPS r2000/r3000
 244k physical memory available
@@ -10478,10 +11369,33 @@ Job size approximately 58800 bytes
 Forking 18 jobs; total load 1033k
 Process 0 (pid 2) starting computation...
 sleep: Dropping thread <boot/menu>
+<<<<<<< HEAD
+sleep: Dropping thread /testbin/os161testerprog
+<<<<<<< HEAD
+scheduler: Dropping thread /testbin/os161testerprog.
+=======
+sleep: Dropping thread /testbin/os161testerprog
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
+<<<<<<< HEAD
+panic: I can't handle this... I think I'll just die now...
+<<<<<<< HEAD
+sys161: 46818709 cycles (7903959k, 16814u, 38897936i)
+sys161: 1264 irqs 118 exns 136r/0w disk 30r/1457w console 8r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.841494 seconds (25.4243 mhz)
+sys161: Elapsed virtual time: 1.872748360 seconds (25 mhz)
+=======
+sys161: 46820595 cycles (7916769k, 21015u, 38882811i)
+sys161: 1266 irqs 125 exns 136r/0w disk 30r/1452w console 8r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 1.843559 seconds (25.3969 mhz)
+sys161: Elapsed virtual time: 1.872823800 seconds (25 mhz)
+>>>>>>> e9ca59597294cb781a87d570c8e17de6b54c3540
+=======
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
 scheduler: Dropping thread /testbin/os161testerprog.
@@ -10489,5 +11403,11 @@ scheduler: Dropping thread /testbin/os161testerprog.
 panic: Bus error exception, PC=0x8000d7d4
 sys161: 44518587 cycles (5872327k, 47427u, 38598833i)
 sys161: 1194 irqs 142 exns 32r/0w disk 30r/1489w console 9r/0w/2m emufs 0r/0w net
+<<<<<<< HEAD
 sys161: Elapsed real time: 1.763601 seconds (25.243 mhz)
 sys161: Elapsed virtual time: 1.780743480 seconds (25 mhz)
+=======
+sys161: Elapsed real time: 1.771613 seconds (25.1234 mhz)
+sys161: Elapsed virtual time: 1.780358200 seconds (25 mhz)
+>>>>>>> fdff3665a708e1927f642dab53645c58d013a82d
+>>>>>>> d5a5c13f42f399bdca4daf75d4d31d81b069a7db

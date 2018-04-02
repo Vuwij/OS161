@@ -108,6 +108,7 @@ mips_syscall(struct trapframe *tf) {
         case SYS_sync:
             break;
         case SYS_sbrk:
+            err = sys_sbrk(tf->tf_a0, &retval);
             break;
         case SYS_getpid:
             retval = sys_getpid(tf);
@@ -480,7 +481,7 @@ sys_execv(struct trapframe *tf) {
 }
 
 /*
- * sys_execv() system call.
+ * sys___time() system call.
  *
  */
 int
@@ -505,4 +506,22 @@ sys___time(struct trapframe *tf, int32_t* retval) {
     *retval = kseconds;
     
     return 0;
+}
+
+/*
+ * sys___time() system call.
+ *
+ */
+int
+sys_sbrk(int increment, int32_t* retval) {
+    kprintf("Test\n");
+    
+    struct addrspace *as  = curthread->t_vmspace;
+//    increment += increment
+    if (as->as_heap_end + increment >= as->as_heap_start) {
+        *retval = as->as_heap_end;
+        as->as_heap_end += increment;        
+        return 0;
+    }
+    return EINVAL;        
 }

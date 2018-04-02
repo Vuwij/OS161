@@ -27,6 +27,7 @@ int sys_rename(const char *oldfile, const char *newfile);
 int sys_link(const char *oldfile, const char *newfile);
 int sys_chdir(const char *path);
 int sys___time(struct trapframe *tf, int32_t* retval);
+int sys_sbrk(int increment, int32_t* retval);
 
 void syscall_bootstrap(void);
 

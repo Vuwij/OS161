@@ -305,7 +305,6 @@ malloc(size_t size) {
     uintptr_t i;
     size_t rightprevblock;
     
-    printf("%d", __heapbase);
     if (__heapbase == 0) {
         
         __malloc_init();

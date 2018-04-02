@@ -50,6 +50,13 @@ free_upages(vaddr_t addr) {
 }
 
 void
+zero_upages(vaddr_t addr) {
+    int spl = splhigh();
+    ram_zeromem(curthread->pid, addr);
+    splx(spl);
+}
+
+void
 increment_frame(int frame) {
     int spl = splhigh();
     ram_incrementframe((frame >> 12) - firstpaddr);
@@ -127,14 +134,21 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     
     // Page on file, not loaded
     if (p->F && p->V == 0) {
+        // If in data segment
+        
         int segment = (p->PFN >> TEXT_SEGMENT_SHIFT);
         int part = p->PFN - (segment << TEXT_SEGMENT_SHIFT);
         p->V = 1;
         p->PFN = 0;
         p_allocate_page(p); // Allocate disk space for page
         sm_swapin(p, faultaddress); // Swap the page from the disk
+        
+        if(faultaddress >= as->as_data && faultaddress < as->as_heap_end)
+            zero_upages(faultaddress);
+        
         paddr = (p->PFN << 12);
         load_elf_segment(segment, part);
+        
         return 0;
     }
     
@@ -143,6 +157,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         p_allocate_page(p); // Allocate disk space for page
         sm_swapin(p, faultaddress); // Swap the page from the disk
         paddr = (p->PFN << 12);
+        
         return 0;
     }
     
@@ -175,7 +190,6 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             p_allocate_page(p); // Allocate disk space for page
             sm_swapin(p, faultaddress); // Swap the page from the disk
             paddr = (p->PFN << 12);
-            
             as->as_stacklocation = faultaddress; // Shrink the stack location, stack location is never freed
             
         } else {
@@ -198,7 +212,6 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         elo = paddr | TLBLO_DIRTY | TLBLO_VALID;
         DEBUG(DB_VM, "  smartvm:%d 0x%x -> 0x%x\n", faulttype, faultaddress, paddr); // Prints all the mapping in the TLB
         TLB_Write(ehi, elo, i);
-        TLB_Read(&ehi, &elo, i);
         splx(spl);
         return 0;
     }
@@ -213,11 +226,15 @@ as_create(void) {
     DEBUG(DB_VM, "as_create\n");
 
     struct addrspace *as = kmalloc(sizeof (struct addrspace));
-    pd_initialize(&as->page_directory);
+    
     if (as == NULL) {
         return NULL;
     }
-
+    
+    pd_initialize(&as->page_directory);
+    as->as_heap_start = 0;
+    as->as_heap_end = 0;
+    
     return as;
 }
 
@@ -294,15 +311,18 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
     // the code into the individual segments in the code using pindex and i
     assert(npages < (1 << TEXT_SEGMENT_SHIFT));
     unsigned i;
+    vaddr_t data = vaddr;
     for (i = 0; i < npages; i++) {
-        struct page* p = pd_request_page(&as->page_directory, vaddr);
+        struct page* p = pd_request_page(&as->page_directory, data);
         p->F = 1; // Indicates that the page is on file
-        vaddr = vaddr + PAGE_SIZE;
+        data = data + PAGE_SIZE;
         p->PFN = (pindex << TEXT_SEGMENT_SHIFT) + i; 
     }
     
+    as->as_data = vaddr;
+    as->as_heap_start = data;
+    as->as_heap_end = data;
     
-
     return 0;
 }
 

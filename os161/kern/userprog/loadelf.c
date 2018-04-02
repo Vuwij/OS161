@@ -45,6 +45,8 @@ load_segment(struct vnode *v, off_t offset, vaddr_t vaddr,
     int result;
     size_t fillamt;
 
+    /* Fill the memory space with zeros initially */
+
     if (filesize > memsize) {
         kprintf("ELF: warning: segment filesize > segment memsize\n");
         filesize = memsize;
@@ -65,9 +67,9 @@ load_segment(struct vnode *v, off_t offset, vaddr_t vaddr,
     if (result) {
         return result;
     }
-    
+
     // TODO: I added is_executable to prevent fault, but u.uio_resid is 146 when run bigprog.
-    if (u.uio_resid != 0 && is_executable) {
+    if (u.uio_resid != 0) {
         /* short read; problem with executable? */
         kprintf("ELF: short read on segment - file truncated?\n");
         return ENOEXEC;
@@ -242,10 +244,10 @@ load_elf_segment(int segment, int part) {
                     ph.p_type);
             return ENOEXEC;
     }
-    
+
     int offset2 = ph.p_offset + part * PAGE_SIZE;
-    unsigned filesz = ph.p_filesz > part * PAGE_SIZE ? PAGE_SIZE : (ph.p_filesz % PAGE_SIZE);
-    unsigned memsz = ph.p_memsz > part * PAGE_SIZE ? PAGE_SIZE : (ph.p_memsz % PAGE_SIZE);    
+    unsigned filesz = (ph.p_filesz - part * PAGE_SIZE) > PAGE_SIZE ? PAGE_SIZE : (ph.p_filesz % PAGE_SIZE);
+    unsigned memsz = (ph.p_memsz - part * PAGE_SIZE) > PAGE_SIZE ? PAGE_SIZE : (ph.p_memsz % PAGE_SIZE);
     unsigned vaddr = ph.p_vaddr + part * PAGE_SIZE;
     result = load_segment(curthread->t_vmspace->progfile, offset2, vaddr,
             memsz, filesz,
@@ -350,7 +352,7 @@ load_elf_segment(int segment, int part) {
 //        }
 //        
 //        result = as_define_region(curthread->t_vmspace,
-//                ph.p_vaddr, ph.p_memsz,
+//                ph.p_vaddr, i, ph.p_memsz,
 //                ph.p_flags & PF_R,
 //                ph.p_flags & PF_W,
 //                ph.p_flags & PF_X);

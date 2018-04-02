@@ -138,6 +138,26 @@ ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr) {
     return paddr;
 }
 
+// Zeros out a memory at a segment
+void
+ram_zeromem(int pid, vaddr_t addr) {
+    int i, startframe = -1, npages = -1;
+    
+    for(i = 0; i < cm_totalframes; ++i) {
+        if(coremap[i].vaddr == addr && coremap[i].pid == pid) {
+            startframe = i;
+            npages = coremap[i].length;
+            break;
+        }
+    }
+    
+    if (startframe == -1) {
+        kprintf("ERROR 0x%x is not allocated\n", addr);
+    }
+    
+    ram_zeroframe(startframe);
+}
+
 // User returns memory using PID and virtual address
 void
 ram_returnmemuser(int pid, vaddr_t addr) {
@@ -184,6 +204,18 @@ ram_removeframe(int frame) {
         coremap[i].usedby = CM_FREE;
         coremap[i].vaddr = 0;
         coremap[i].pid = 0;
+    }
+}
+
+// User zeros frame
+void
+ram_zeroframe(int frame) {
+    // TODO some error checking
+    int i;
+    int npages = coremap[frame].length;
+    
+    for (i = frame; i < frame + npages; ++i) {
+        bzero(PADDR_TO_KVADDR(coremap[i].addr), PAGE_SIZE);
     }
 }
 

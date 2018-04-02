@@ -34,6 +34,9 @@ struct addrspace {
         vaddr_t as_codestart;
         vaddr_t as_codeend;
         vaddr_t as_stacklocation;
+        vaddr_t as_heap_start;
+        vaddr_t as_heap_end;
+        vaddr_t as_data;
         struct pagedirectory page_directory;
 #endif
 };
@@ -75,6 +78,7 @@ struct addrspace {
 // Page Allocation and freeing for user and 
 paddr_t alloc_upages(int npages, vaddr_t vaddr);
 void free_upages(vaddr_t addr);
+void zero_upages(vaddr_t addr);
 void free_frame(int frame);
         
 vaddr_t alloc_kpages(int npages);

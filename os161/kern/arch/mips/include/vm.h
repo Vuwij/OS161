@@ -76,6 +76,7 @@ void ram_returnmem(vaddr_t addr);
 // User Borrows and returns
 paddr_t ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr);
 void ram_returnmemuser(int pid, vaddr_t addr); 
+void ram_zeromem(int pid, vaddr_t addr);
 
 // Both user and kernel return calls this function
 void ram_removeframe(int frame); 
