@@ -18,17 +18,12 @@ void pt_print(struct pagetable* pt, int table) {
     }
 }
 
-void pt_copy(struct pagetable* pt, int table) {
+void pt_copy(struct pagetable* to, struct pagetable* from, int table) {
     int i;
     for (i = 0; i < 1024; ++i) {
-        // Unread text segment
-        if(pt->pte[i].V == 0 && pt->pte[i].F == 1) {
-            continue;
-        }
-        
         // Must be in physical memory or disk
-        if(pt->pte[i].V != 0 || pt->pte[i].PFN != 0) {
-            p_copy(&pt->pte[i], table, i);
+        if(from->pte[i].V != 0 || from->pte[i].PFN != 0) {
+            p_copy(&to->pte[i], &from->pte[i], table, i);
         }
     }
 }

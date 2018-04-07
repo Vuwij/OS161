@@ -226,8 +226,12 @@ child_fork(void *ptr, unsigned long nargs) {
     tfchild->tf_v0 = 0; // Error Signal
     tfchild->tf_epc += 4; // Advance Program Counter
     
-    // Warp to user mode.
+    // Free kernel memory
     struct trapframe tfchild2 = *tfchild;
+    kfree(tfchild);
+    kfree(ptr);
+    
+    // Warp to user mode.
     mips_usermode(&tfchild2);
 
     /* md_usermode does not return */
@@ -341,6 +345,8 @@ int sys_waitpid(struct trapframe *tf, int call) {
     lock_release(pidtablelock);
     
     copyout( &childexitcode, (userptr_t) returncode, sizeof(int));
+    
+    kprintf("Finished waiting for PID %d\n", pid);
     return 0;
 }
 
@@ -350,7 +356,7 @@ int sys_waitpid(struct trapframe *tf, int call) {
  */
 int
 sys_exit(int exitcode) {
-    
+    kprintf("PID %d exited\n", curthread->pid);
     // Create an exit code
     lock_acquire(pidtablelock);
     exitcodes[curthread->pid] = exitcode;
@@ -432,6 +438,9 @@ sys_execv(struct trapframe *tf) {
     
     // Load file into address space
     vaddr_t entrypoint, stackptr;
+    
+    strcpy(curthread->t_vmspace->progname, prognamek);
+    curthread->t_vmspace->progfile = v;
     err = load_elf(v, &entrypoint);
     if(err) {
         kfree(prognamek);
@@ -474,7 +483,14 @@ sys_execv(struct trapframe *tf) {
     // copy array of pointers to args to the user space
     stackptr = stackptr - ((argc+1) * sizeof (char*));
     copyout(user_space_addr, (userptr_t) stackptr, sizeof (user_space_addr));
-
+    
+    // Free kernel memory
+    kfree(prognamek);
+    for (i = 0; i < MAX_ARG; ++i) {
+        kfree(argvk[i]);
+    }
+    kfree(argvk);
+    
     md_usermode(argc, (userptr_t) stackptr, stackptr, entrypoint);
     
     return 0;

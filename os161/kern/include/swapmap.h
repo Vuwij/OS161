@@ -38,7 +38,10 @@ int sm_swapout(struct page* p);
 // Finds the spot in the swap file to swap in a piece of memory
 int sm_swapin(struct page* p, vaddr_t vaddr);
 
-// Multiple users using fork and have swap are. Uses swapdouble to keep track of swap areas where are used twice
+// Actually increment the swap bit. But uses the external linked list to count doubles
+int sm_swapdecrement(struct page* p);
+
+// Actually decrement the swap bit. But uses the external linked list to count doubles
 int sm_swapincrement(struct page* p);
 
 #endif /* SWAPAREA_H */

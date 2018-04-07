@@ -17,8 +17,8 @@ void p_allocate_page(struct page*);
 
 void p_print(struct page*, int table, int page);
 
-// Free the page using the virtual address
-void p_copy(struct page* p, int table, int page);
+// Make a copy of the page
+void p_copy(struct page*, struct page*, int table, int page);
 
 // Free the page using the virtual address
 void p_free(struct page* p, int table, int page);

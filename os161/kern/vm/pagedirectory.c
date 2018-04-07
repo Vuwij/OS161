@@ -36,11 +36,15 @@ void pd_print(struct pagedirectory* pd) {
     }
 }
 
-void pd_copy(struct pagedirectory* pd) {
+void pd_copy(struct pagedirectory* to, struct pagedirectory* from) {
+
     int i;
     for (i = 0; i < 1024; ++i) {
-        if (pd->pde[i] != NULL) {
-            pt_copy(pd->pde[i], i);
+        if (from->pde[i] != NULL) {
+            to->pde[i] = kmalloc(sizeof (struct pagetable));
+            bzero(to->pde[i], sizeof (struct pagetable));
+
+            pt_copy(to->pde[i], from->pde[i], i);
         }
     }
 }
