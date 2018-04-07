@@ -192,7 +192,17 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             paddr = (p->PFN << 12);
             as->as_stacklocation = faultaddress; // Shrink the stack location, stack location is never freed
             
-        } else {
+        } 
+        else if (faultaddress >= as->as_heap_start && faultaddress <= as->as_heap_end) {
+            struct page* p = pd_request_page(&as->page_directory, faultaddress);
+            if (p->PFN != 0 || p->F != 0 || p->V != 0) return EFAULT;
+            p->V = 1;
+            p_allocate_page(p); // Allocate disk space for page
+            sm_swapin(p, faultaddress); // Swap the page from the disk
+            paddr = (p->PFN << 12);
+        }
+        
+        else {
             return EFAULT;
         }
     }
