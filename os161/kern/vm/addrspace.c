@@ -398,6 +398,9 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
     pd_copy(&newas->page_directory, &old->page_directory);
     lock_release(old->page_directory_lock);
     
+    // New AS needs page directory lock
+    newas->page_directory_lock = lock_create("Address Space Lock");
+    
     *ret = newas;
     return 0;
 }

@@ -241,7 +241,7 @@ child_fork(void *ptr, unsigned long nargs) {
 
 int sys_fork(struct trapframe *tf) {
     // Make a copy of the address space
-    struct addrspace* addrchild = kmalloc(sizeof(struct addrspace));
+    struct addrspace* addrchild;
     int err = as_copy(curthread->t_vmspace, &addrchild);
     if(err) return ENOMEM;
     
