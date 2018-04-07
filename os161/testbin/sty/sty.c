@@ -28,11 +28,11 @@ hog(void) {
             err(1, "fork");
         case 0:
             /* child */
-            exit(1);
             execv("/testbin/hog", hargv);
             err(1, "/testbin/hog");
         default:
             /* parent */
+            printf("npids: %d\n", npids);
             pids[npids++] = pid;
             break;
     }
@@ -43,6 +43,7 @@ int
 waitall(void) {
     int i, status, n = 0;
     for (i = 0; i < npids; i++) {
+        printf("Waiting for %d\n", pids[i]);
         if (waitpid(pids[i], &status, 0) < 0) {
             warn("waitpid for %d", pids[i]);
         } else if (status != 0) {

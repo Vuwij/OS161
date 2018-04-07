@@ -15,14 +15,18 @@
 #include <kern/unistd.h>
 
 #include "vnode.h"
+#include "synch.h"
 
 
 #define TEXT_SEGMENT_SHIFT 16
 #define MAX_STACK_GROWTH 0x10000000
 
+// For guarding the page directory temporarily
+struct lock *pdlock;
+
 void
 vm_bootstrap(void) {
-    /* Do nothing. */
+    pdlock = lock_create("VM Lock");
 }
 
 /* Allocate/free some user-space virtual pages */
@@ -36,8 +40,8 @@ alloc_upages(int npages, vaddr_t vaddr) {
     addr = ram_borrowmemuser(npages, curthread->pid, vaddr);
     splx(spl);
 
-    if (addr == 0) {
-        return 0;
+    if (addr == NULL) {
+        return NULL;
     }
     return addr;
 }
@@ -59,7 +63,7 @@ zero_upages(vaddr_t addr) {
 void
 increment_frame(int frame) {
     int spl = splhigh();
-    ram_incrementframe((frame >> 12) - firstpaddr);
+    ram_incrementframe(frame - (firstpaddr >> 12));
     splx(spl);
 }
 
@@ -68,7 +72,7 @@ increment_frame(int frame) {
 void
 free_frame(int frame) {
     int spl = splhigh();
-    ram_removeframe((frame >> 12) - firstpaddr);
+    ram_removeframe(frame - (firstpaddr >> 12));
     splx(spl);
 }
 
@@ -122,8 +126,10 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     }
 
     as = curthread->t_vmspace;
-    if (as == NULL) return EFAULT;
-
+    if (as == NULL) {
+        kprintf("Address Space is Null\n");
+        return EFAULT;
+    }
     struct page* p = pd_request_page(&as->page_directory, faultaddress);
 
 
@@ -142,9 +148,6 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         p->PFN = 0;
         p_allocate_page(p); // Allocate disk space for page
         sm_swapin(p, faultaddress); // Swap the page from the disk
-        
-        if(faultaddress >= as->as_data && faultaddress < as->as_heap_end)
-            zero_upages(faultaddress);
         
         paddr = (p->PFN << 12);
         load_elf_segment(segment, part);
@@ -241,6 +244,7 @@ as_create(void) {
         return NULL;
     }
     
+    as->page_directory_lock = lock_create("Page Directory");
     pd_initialize(&as->page_directory);
     as->as_heap_start = 0;
     as->as_heap_end = 0;
@@ -251,22 +255,30 @@ as_create(void) {
 void
 as_reset(struct addrspace *as) {
     DEBUG(DB_VM, "as_reset\n");
-    if (as == NULL) {
-        return;
+    
+    // Destroy and recreate the address space
+    if (curthread->t_vmspace) {
+        struct addrspace *as = curthread->t_vmspace;
+        curthread->t_vmspace = NULL;
+        as_destroy(as);
     }
+    
+    curthread->t_vmspace = as_create();
+
 }
 
 void
 as_destroy(struct addrspace *as) {
     DEBUG(DB_VM, "as_destroy\n");
 
-    //pd_print(&as->page_directory);
-    cm_print();
-    //sm_print();
     vfs_close(as->progfile);
     
+    lock_acquire(as->page_directory_lock);
     pd_free(&as->page_directory);
     kfree(as);
+    lock_release(as->page_directory_lock);
+    
+    lock_destroy(as->page_directory_lock);
     as = NULL;
 }
 
@@ -353,7 +365,6 @@ as_prepare_load(struct addrspace *as) {
 int
 as_complete_load(struct addrspace *as) {
     DEBUG(DB_VM, "as_complete_load\n");
-
     (void) as;
     return 0;
 }
@@ -379,14 +390,23 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
         return ENOMEM;
     }
     
-    // Temporarily use the exact same address space
-    // TODO: Implement Copy on Write
-    memmove(newas, old, sizeof (struct addrspace));
+    strcpy(newas->progname, old->progname);
     
     // New address space must increase VOP_OPEN
-    vfs_open(&old->progname, O_RDONLY, &newas->progfile);
+    vfs_open(newas->progname, O_RDONLY, &newas->progfile);
+    newas->eh = old->eh;
+
+    newas->as_codestart = old->as_codestart;
+    newas->as_codeend = old->as_codeend;
+    newas->as_stacklocation = old->as_stacklocation;
+    newas->as_heap_start = old->as_heap_start;
+    newas->as_heap_end = old->as_heap_end;
+    newas->as_data = old->as_data;
     
-    // Need to mark all physical memory with 2 so we don't have delete until all processes have ended
+    // Make a copy of the page directory
+    lock_acquire(old->page_directory_lock);
+    pd_copy(&newas->page_directory, &old->page_directory);
+    lock_release(old->page_directory_lock);
     
     *ret = newas;
     return 0;

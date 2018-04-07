@@ -22,8 +22,8 @@ struct page* pd_request_page(struct pagedirectory*, vaddr_t);
 // Print the page directory
 void pd_print(struct pagedirectory*);
 
-// Free all the pages in the page directory
-void pd_copy(struct pagedirectory*);
+// Make a copy of the page directory
+void pd_copy(struct pagedirectory* to, struct pagedirectory* from);
 
 // Free all the pages in the page directory
 void pd_free(struct pagedirectory*);

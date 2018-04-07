@@ -13,7 +13,7 @@ struct page* pt_request_page(struct pagetable*, vaddr_t);
 
 void pt_print(struct pagetable*, int table);
 
-void pt_copy(struct pagetable* pt, int table);
+void pt_copy(struct pagetable* to, struct pagetable* from, int table);
 
 void pt_free(struct pagetable* pt, int table);
 

@@ -14,18 +14,19 @@ void p_print(struct page* p, int table, int page) {
     kprintf("%03x %03x %03x\t%d %d %d %d %d\n", table, page, p->PFN, p->M, p->R, p->V, p->F, p->Prot);
 }
 
-void p_copy(struct page* p, int table, int page) {
+void p_copy(struct page* to, struct page* from, int table, int page) {    
     // If its in the memory, increment memory count
-    
-    if(p->V) {
-        if (p->PFN != 0 && p->V == 1) {
-            increment_frame(p->PFN);
+    if(from->V) {
+        if (from->PFN != 0 && from->V == 1) {
+            increment_frame(from->PFN);
         }
     }
-    // If its in the disk, increment bitmap count
-    else {
-        sm_swapalloc(p);
+    // Already loaded, in disk
+    else if(!from->F) {
+        sm_swapincrement(from);
     }
+    
+    memcpy(to, from, sizeof(struct page));
 }
 
 void p_free(struct page* p, int table, int page) {

@@ -61,13 +61,13 @@ int sm_swapalloc(struct page* p) {
         }
     }
     
-    // Updates the bitmap to indicate that swap area is now used
-    bitmap_mark(swapmap, pos);
-    
     // Updates the page to point to the address in the swap file
     // Sets valid to false so OS will know it is disk address
     // PFN cannot be 0 because zero is used for unallocated memory
     p->PFN = pos + 1;
+    
+    // Updates the bitmap to indicate that swap area is now used
+    sm_swapincrement(p);
     p->V = 0;
     
     return 0;
@@ -81,19 +81,8 @@ int sm_swapdealloc(struct page* p) {
     int pos = p->PFN - 1;
     assert(bitmap_isset(swapmap, pos))
     
-    // Checks if it is doubled in swap count
     // Updates the bitmap to indicate the swap area is now freed
-//    struct node* swapcountptr = &swapcount;
-//    struct node* n = swapexists(&swapcountptr, pos);
-//    if (n == NULL) {
-//        bitmap_unmark(swapmap, pos);
-//    }
-//    else if (SWAPCOUNT_COUNT(n->val) == 1) {
-//        remove_val(&swapcountptr, n->val);
-        bitmap_unmark(swapmap, pos);
-//    } else {
-//        n->val--;
-//    }
+    sm_swapdecrement(p);
     
     p->PFN = 0;
     
@@ -121,16 +110,16 @@ int sm_swapout(struct page* p) {
     int result = VOP_WRITE(swap_fp, &ku);
     if (result) return result;
     
-    // Updates the bitmap to indicate that swap area is now used
-    bitmap_mark(swapmap, pos);
-    
-    // Deallocates the page from memory. Page will automatically be invalidated upon free
-    p_free_frame(p);
-    
     // Updates the page to point to the address in the swap file
     // Sets valid to false so OS will know it is disk address
     // PFN cannot be 0 becuase zero is used for unallocated memory
     p->PFN = pos + 1;
+    
+    // Updates the bitmap to indicate that swap area is now used
+    sm_swapincrement(p);
+    
+    // Deallocates the page from memory. Page will automatically be invalidated upon free
+    p_free_frame(p);
     
     return 0;
 }
@@ -151,19 +140,8 @@ int sm_swapin(struct page* p, vaddr_t vaddr) {
     int result = VOP_READ(swap_fp, &ku);
     if (result) return result;
     
-    // Checks if it is doubled in swap count
     // Updates the bitmap to indicate the swap area is now freed
-//    struct node* swapcountptr = &swapcount;
-//    struct node* n = swapexists(&swapcountptr, pos);
-//    if (n == NULL) {
-//        bitmap_unmark(swapmap, pos);
-//    }
-//    else if (SWAPCOUNT_COUNT(n->val) == 1) {
-//        remove_val(&swapcountptr, n->val);
-        bitmap_unmark(swapmap, pos);
-//    } else {
-//        n->val--;
-//    }
+    sm_swapdecrement(p);
     
     // Updates the page to now point to the physical memory and revalidates the page
     p->PFN = (paddr >> 12);
@@ -172,21 +150,53 @@ int sm_swapin(struct page* p, vaddr_t vaddr) {
     return 0;
 }
 
+int sm_swapdecrement(struct page* p) {
+    assert(p->PFN != 0);
+    int pos = p->PFN - 1;
+    
+    struct node* swapcountptr = &swapcount;
+    struct node* n = swapexists(swapcountptr, pos);
+    
+    // If marked only once, decrement marker
+    if (n == NULL) {
+        bitmap_unmark(swapmap, pos);
+    }
+    // If marked once, remove the value and unmark
+    else if (SWAPCOUNT_COUNT(n->val) == 1) {
+        remove_val(&swapcountptr, n->val);
+        bitmap_unmark(swapmap, pos);
+    }
+    // If marked twice, decrement swapmap count
+    else {
+        n->val--;
+    }
+    
+    return 0;
+}
+
 int sm_swapincrement(struct page* p) {
     // Page must be invalid (located on disk)
-//    assert(p->V == 0);
-//    int pos = p->PFN - 1;
-//    int b = bitmap_isset(swapmap, pos);
-//    assert(b == 1);
-//    
-//    // NEED TO DEBUG
-//    struct node* n = swapexists(&swapcount, pos);
-//    if(n != NULL) {
-//        n->val++;
-//    }
-//    else {
-//        int entry = (pos << 16) + 1;
-//        struct node* s = &swapcount;
-//        push_begin(&s, entry);
-//    }
+    assert(p->PFN != 0);
+    int pos = p->PFN - 1;
+    int b = bitmap_isset(swapmap, pos);
+    
+    // If unmarked, simply mark it
+    if(b == 0) {
+        bitmap_mark(swapmap, pos);
+        return 0;
+    }
+    
+    // If already marked once, increment the marker in swapcount
+    struct node* n = swapexists(&swapcount, pos);
+    if(n == NULL) {
+        int entry = (pos << 16) + 1;
+        struct node* s = &swapcount;
+        push_begin(&s, entry);
+    }
+    // If already marked twice, increment the marker value even more
+    else {
+        n->val++;
+    }
+    
+    return 0;
 }

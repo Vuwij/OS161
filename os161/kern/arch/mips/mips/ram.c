@@ -121,6 +121,7 @@ ram_returnmem(vaddr_t addr) {
     if (startframe == -1) {
         kprintf("ERROR 0x%x is not allocated\n", addr);
     }
+    assert(startframe != -1);
     
     ram_removeframe(startframe);
 }
@@ -130,6 +131,13 @@ paddr_t
 ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr) {
     paddr_t paddr = ram_borrowmem(npages);
     struct coremap_entry* cmentry = cm_getcmentryfromaddress(paddr);
+    
+    // No more physical memory left
+    if(cmentry == NULL)
+        return NULL;
+    
+    assert(cmentry != NULL);
+    //kprintf("PID %d VADDR 0x%x CMENTRY 0x%x\n", pid, vaddr, &cmentry);
     cmentry->usedby = CM_USED;
     cmentry->pid = pid;
     cmentry->vaddr = vaddr;
@@ -144,7 +152,7 @@ ram_zeromem(int pid, vaddr_t addr) {
     int i, startframe = -1, npages = -1;
     
     for(i = 0; i < cm_totalframes; ++i) {
-        if(coremap[i].vaddr == addr && coremap[i].pid == pid) {
+        if(coremap[i].vaddr == addr) {
             startframe = i;
             npages = coremap[i].length;
             break;
@@ -154,6 +162,7 @@ ram_zeromem(int pid, vaddr_t addr) {
     if (startframe == -1) {
         kprintf("ERROR 0x%x is not allocated\n", addr);
     }
+    assert(startframe != -1);
     
     ram_zeroframe(startframe);
 }
@@ -164,7 +173,7 @@ ram_returnmemuser(int pid, vaddr_t addr) {
     int i, startframe = -1, npages = -1;
     
     for(i = 0; i < cm_totalframes; ++i) {
-        if(coremap[i].vaddr == addr && coremap[i].pid == pid) {
+        if(coremap[i].vaddr == addr) {
             startframe = i;
             npages = coremap[i].length;
             break;
@@ -180,6 +189,7 @@ ram_returnmemuser(int pid, vaddr_t addr) {
     if (startframe == -1) {
         kprintf("ERROR 0x%x is not allocated\n", addr);
     }
+    assert(startframe != -1);
     
     ram_removeframe(startframe);
 }
