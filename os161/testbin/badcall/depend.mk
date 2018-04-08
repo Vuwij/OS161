@@ -27,6 +27,7 @@ bad_waitpid.o: \
  $(OSTREE)/include/kern/errno.h \
  $(OSTREE)/include/err.h \
  $(OSTREE)/include/stdarg.h \
+ $(OSTREE)/include/stdio.h \
  config.h \
  test.h
 bad_open.o: \

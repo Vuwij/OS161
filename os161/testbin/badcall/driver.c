@@ -35,8 +35,9 @@ report_survival(int rv, int error, const char *desc)
 void
 report_test(int rv, int error, int right_error, const char *desc)
 {
+        printf("entering report_test\n");
         int goterror = finderror(rv, error);
-
+        
         if (goterror == right_error) {
                 warnx("passed: %s", desc);
         }
@@ -47,6 +48,7 @@ report_test(int rv, int error, int right_error, const char *desc)
                 errno = goterror;
                 warn("FAILURE: %s", desc);
         }
+        printf("exiting report_test\n");
 }
 
 void

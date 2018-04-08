@@ -28,5 +28,8 @@ void pd_copy(struct pagedirectory* to, struct pagedirectory* from);
 // Free all the pages in the page directory
 void pd_free(struct pagedirectory*);
 
+// Translates the address
+void pd_translate(vaddr_t);
+
 #endif /* PAGEDIRECTORY_H */
 

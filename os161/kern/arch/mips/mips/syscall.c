@@ -287,6 +287,10 @@ int sys_waitpid(struct trapframe *tf, int call) {
     int *returncode = (int *) tf->tf_a1;
     int flags = (int) tf->tf_a2;
     
+    /*if (returncode == NULL) {
+        return EINVAL;
+    }*/
+    
     if(pid == 0)
         return EINVAL;
     
@@ -348,7 +352,7 @@ int sys_waitpid(struct trapframe *tf, int call) {
     
     copyout( &childexitcode, (userptr_t) returncode, sizeof(int));
     
-    kprintf("Finished waiting for PID %d\n", pid);
+    //kprintf("Finished waiting for PID %d\n", pid);
     return 0;
 }
 
@@ -532,10 +536,17 @@ sys___time(struct trapframe *tf, int32_t* retval) {
  */
 int
 sys_sbrk(int increment, int32_t* retval) {
-    kprintf("Test\n");
+    
+    // Number obtained in badcall_sbrk
+    if (increment >= 4096*1024*256) return ENOMEM;    
+    if (increment <= -4096*1024*256) return EINVAL;
     
     struct addrspace *as  = curthread->t_vmspace;
-//    increment += increment
+    
+    /*if (as->as_heap_end + increment > as->as_stacklocation) {
+        return ENOMEM; 
+    }*/
+
     if (as->as_heap_end + increment >= as->as_heap_start) {
         *retval = as->as_heap_end;
         as->as_heap_end += increment;        

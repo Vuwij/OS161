@@ -139,6 +139,7 @@ ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr) {
     }
 
     assert(cmentry != NULL);
+
     cmentry->usedby = CM_USED;
     cmentry->pid = pid;
     cmentry->vaddr = vaddr;

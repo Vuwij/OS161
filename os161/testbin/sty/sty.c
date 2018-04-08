@@ -33,7 +33,6 @@ hog(void) {
             err(1, "/testbin/hog");
         default:
             /* parent */
-            printf("npids: %d\n", npids);
             pids[npids++] = pid;
             break;
     }

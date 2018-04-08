@@ -119,14 +119,13 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         case VM_FAULT_WRITE:
             break;
         default:
-            splx(spl);
-            return EINVAL;
+            goto tlbfault;
     }
     
     as = curthread->t_vmspace;
     if (as == NULL) {
-        kprintf("Address Space is Null\n");
-        return EFAULT;
+        kprintf("TLB: Address Space is Null\n");
+        goto tlbfault;
     }
     
     lock_acquire(as->pdlock);
@@ -180,27 +179,40 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             
             // Request pages for a jump
             while(addr > faultaddress) {
-                struct page* p = pd_request_page(&as->page_directory, addr);
-                if (p->PFN != 0 || p->F != 0 || p->V != 0) {
-                    return EFAULT; // Page has hit the bottom
+                struct page* pp = pd_request_page(&as->page_directory, addr);
+                if (pp->PFN != 0 || pp->F != 0 || pp->V != 0) {
+                    kprintf("Page has hit the bottom\n");
+                    goto tlbfault; // Page has hit the bottom
                 }
-                p->V = 1;
+                pp->V = 1;
                 addr = addr - PAGE_SIZE;
             }
             
             // The page that actually is requested
-            struct page* p = pd_request_page(&as->page_directory, faultaddress);
-            if (p->PFN != 0 || p->F != 0 || p->V != 0) {
-                return EFAULT; // Page has hit the bottom
+            struct page* pp = pd_request_page(&as->page_directory, faultaddress);
+            if (pp->PFN != 0 || pp->F != 0 || pp->V != 0) {
+                kprintf("Page has hit the bottom\n");
+                goto tlbfault; // Page has hit the bottom
             }
-            p->V = 1;
-            p_allocate_page(p); // Allocate disk space for page
-            sm_swapin(p, faultaddress); // Swap the page from the disk
-            paddr = (p->PFN << 12);
+            pp->V = 1;
+            p_allocate_page(pp); // Allocate disk space for page
+            sm_swapin(pp, faultaddress); // Swap the page from the disk
+            paddr = (pp->PFN << 12);
             as->as_stacklocation = faultaddress; // Shrink the stack location, stack location is never freed
             
-        } else {
-            return EFAULT;
+        } 
+        else if (faultaddress >= as->as_heap_start && faultaddress <= as->as_heap_end) {
+            struct page* pp = pd_request_page(&as->page_directory, faultaddress);
+            if (pp->PFN != 0 || pp->F != 0 || pp->V != 0) goto tlbfault;
+            pp->V = 1;
+            p_allocate_page(pp); // Allocate disk space for page
+            sm_swapin(pp, faultaddress); // Swap the page from the disk
+            paddr = (pp->PFN << 12);
+        }
+        
+        else {
+            kprintf("Invalid Page\n");
+            goto tlbfault;
         }
     }
 
@@ -222,8 +234,21 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         splx(spl);
         return 0;
     }
-
-    kprintf("dumbvm: Ran out of TLB entries - cannot handle page fault\n");
+    kprintf("Ran out of TLB entries - cannot handle page fault\n");
+    goto tlbfault;
+    
+tlbfault:
+    kprintf("-------------------- VM Fault Info --------------------\n");
+    kprintf("PID %d\n", curthread->pid);
+    kprintf("--- Page Info --- \n");
+    kprintf("Virtual Address: 0x%x\n", faultaddress);
+    pd_translate(faultaddress);
+    kprintf("M: %d R: %d V: %d F: %d Prot: %d PFN 0x%x\n", p->M, p->R, p->V, p->F, p->Prot, p->PFN);
+    kprintf("--- COREMAP --- \n");
+    cm_print();
+    kprintf("--- PAGE Directory --- \n");
+    pd_print(&as->page_directory);
+    kprintf("------------------------------------------------------\n");
     splx(spl);
     return EFAULT;
 }
@@ -272,7 +297,6 @@ as_destroy(struct addrspace *as) {
     
     lock_release(as->pdlock);
     lock_destroy(as->pdlock);
-    kprintf("Freed PID %d\n", curthread->pid);
     kfree(as);
     
     as = NULL;
