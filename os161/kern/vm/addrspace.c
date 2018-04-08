@@ -22,11 +22,9 @@
 #define MAX_STACK_GROWTH 0x10000000
 
 // For guarding the page directory temporarily
-struct lock *pdlock;
 
 void
 vm_bootstrap(void) {
-    pdlock = lock_create("VM Lock");
 }
 
 /* Allocate/free some user-space virtual pages */
@@ -334,6 +332,7 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
     assert(npages < (1 << TEXT_SEGMENT_SHIFT));
     unsigned i;
     vaddr_t data = vaddr;
+    lock_acquire(as->page_directory_lock);
     for (i = 0; i < npages; i++) {
         struct page* p = pd_request_page(&as->page_directory, data);
         p->F = 1; // Indicates that the page is on file
@@ -344,7 +343,7 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
     as->as_data = vaddr;
     as->as_heap_start = data;
     as->as_heap_end = data;
-    
+    lock_release(as->page_directory_lock);
     return 0;
 }
 

@@ -137,7 +137,9 @@ ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr) {
         return NULL;
     
     assert(cmentry != NULL);
-    //kprintf("PID %d VADDR 0x%x CMENTRY 0x%x\n", pid, vaddr, &cmentry);
+
+//    kprintf("PID %d VADDR 0x%x CMENTRY 0x%x\n", pid, vaddr, &cmentry);
+
     cmentry->usedby = CM_USED;
     cmentry->pid = pid;
     cmentry->vaddr = vaddr;

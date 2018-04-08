@@ -162,7 +162,10 @@ mips_syscall(struct trapframe *tf) {
     assert(curspl == 0);
 }
 
+struct lock* execvlock;
+
 void syscall_bootstrap(void) {
+    execvlock = lock_create("Execv");
 }
 
 /*
@@ -385,6 +388,8 @@ sys_exit(int exitcode) {
  */
 int
 sys_execv(struct trapframe *tf) {
+    lock_acquire(execvlock);
+    
     char *progname = (char *) tf->tf_a0;
     char **argv = (char **) tf->tf_a1;    
     char *prognamek = kmalloc(sizeof(char) * PATH_MAX);
@@ -495,6 +500,7 @@ sys_execv(struct trapframe *tf) {
     }
     kfree(argvk);
     
+    lock_acquire(execvlock);
     md_usermode(argc, (userptr_t) stackptr, stackptr, entrypoint);
     
     return 0;
