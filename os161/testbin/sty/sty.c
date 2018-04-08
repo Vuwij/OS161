@@ -84,7 +84,7 @@ main(int argc, const char *argv[]) {
         hog();
         nhogs--;
     }
-//    nhogs = waitall();
+    //nhogs = waitall();
 
     if (nhogs == 0) {
         printf("who left the hogs out?!\n");

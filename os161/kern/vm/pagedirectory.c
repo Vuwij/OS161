@@ -1,6 +1,8 @@
 #include <pagedirectory.h>
 
 #include "lib.h"
+#include "curthread.h"
+#include "thread.h"
 
 void pd_initialize(struct pagedirectory* pd) {
     int i;

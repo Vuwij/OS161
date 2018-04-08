@@ -116,7 +116,7 @@ common_prog(int nargs, char **args) {
     tf->tf_a0 = childthread->pid;
     tf->tf_a1 = (u_int32_t) &x;
     tf->tf_a2 = 0;
-    sys_waitpid(tf,1);      // wait for the program to exit
+    sys_waitpid(tf,0);      // wait for the program to exit
     kfree(tf);
     
     

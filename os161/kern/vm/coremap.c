@@ -51,6 +51,8 @@ void coremap_getkernelusage() {
 }
 
 struct coremap_entry* cm_getcmentryfromaddress(paddr_t paddr) {
+    assert(paddr <= lastpaddr);
+    assert(paddr > firstpaddr);
     int id = (paddr - firstpaddr) >> 12;
     return &coremap[id];
 }

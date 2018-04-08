@@ -18,8 +18,6 @@
 #include <hashtable.h>
 #include <clock.h>
 
-#define MENU_CALL 1
-
 /*
  * System call handler.
  *
@@ -266,6 +264,7 @@ int sys_fork(struct trapframe *tf) {
         return result;
     }
     
+    kprintf("PID %d Created\n", childthread->pid);
     tf->tf_a0 = childthread->pid; // Parent returns PID of child
     return 0;
 }
@@ -291,7 +290,7 @@ int sys_waitpid(struct trapframe *tf, int call) {
     if(pid == 0)
         return EINVAL;
     
-    if (call != MENU_CALL) {
+    if(pid != 1) {
         char test[4];
         if(copyin((const_userptr_t) returncode, &test, 1)) {
             return EFAULT;
@@ -359,7 +358,7 @@ int sys_waitpid(struct trapframe *tf, int call) {
  */
 int
 sys_exit(int exitcode) {
-    kprintf("PID %d exited\n", curthread->pid);
+    kprintf("PID %d Exited\n", curthread->pid);
     // Create an exit code
     lock_acquire(pidtablelock);
     exitcodes[curthread->pid] = exitcode;
@@ -384,8 +383,6 @@ sys_exit(int exitcode) {
  */
 int
 sys_execv(struct trapframe *tf) {
-    lock_acquire(execvlock);
-    
     char *progname = (char *) tf->tf_a0;
     char **argv = (char **) tf->tf_a1;    
     char *prognamek = kmalloc(sizeof(char) * PATH_MAX);
@@ -496,7 +493,6 @@ sys_execv(struct trapframe *tf) {
     }
     kfree(argvk);
     
-    lock_acquire(execvlock);
     md_usermode(argc, (userptr_t) stackptr, stackptr, entrypoint);
     
     return 0;

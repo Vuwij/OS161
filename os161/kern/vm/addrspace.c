@@ -33,11 +33,11 @@ alloc_upages(int npages, vaddr_t vaddr) {
     int spl;
 
     paddr_t addr;
-
+    
     spl = splhigh();
     addr = ram_borrowmemuser(npages, curthread->pid, vaddr);
     splx(spl);
-
+    
     if (addr == NULL) {
         return NULL;
     }
@@ -122,15 +122,17 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             splx(spl);
             return EINVAL;
     }
-
+    
     as = curthread->t_vmspace;
     if (as == NULL) {
         kprintf("Address Space is Null\n");
         return EFAULT;
     }
+    
+    lock_acquire(as->pdlock);
     struct page* p = pd_request_page(&as->page_directory, faultaddress);
-
-
+    lock_release(as->pdlock);
+    
     // Page in memory
     if (p->V && p->PFN) {
         paddr = (p->PFN << 12);
@@ -179,14 +181,18 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             // Request pages for a jump
             while(addr > faultaddress) {
                 struct page* p = pd_request_page(&as->page_directory, addr);
-                if (p->PFN != 0 || p->F != 0 || p->V != 0) return EFAULT; // Page has hit the bottom
+                if (p->PFN != 0 || p->F != 0 || p->V != 0) {
+                    return EFAULT; // Page has hit the bottom
+                }
                 p->V = 1;
                 addr = addr - PAGE_SIZE;
             }
             
             // The page that actually is requested
             struct page* p = pd_request_page(&as->page_directory, faultaddress);
-            if (p->PFN != 0 || p->F != 0 || p->V != 0) return EFAULT; // Page has hit the bottom
+            if (p->PFN != 0 || p->F != 0 || p->V != 0) {
+                return EFAULT; // Page has hit the bottom
+            }
             p->V = 1;
             p_allocate_page(p); // Allocate disk space for page
             sm_swapin(p, faultaddress); // Swap the page from the disk
@@ -232,7 +238,7 @@ as_create(void) {
         return NULL;
     }
     
-    as->page_directory_lock = lock_create("Page Directory");
+    as->pdlock = lock_create("Page Directory");
     pd_initialize(&as->page_directory);
     as->as_heap_start = 0;
     as->as_heap_end = 0;
@@ -261,12 +267,14 @@ as_destroy(struct addrspace *as) {
 
     vfs_close(as->progfile);
     
-    lock_acquire(as->page_directory_lock);
+    lock_acquire(as->pdlock);
     pd_free(&as->page_directory);
-    kfree(as);
-    lock_release(as->page_directory_lock);
     
-    lock_destroy(as->page_directory_lock);
+    lock_release(as->pdlock);
+    lock_destroy(as->pdlock);
+    kprintf("Freed PID %d\n", curthread->pid);
+    kfree(as);
+    
     as = NULL;
 }
 
@@ -322,7 +330,7 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
     assert(npages < (1 << TEXT_SEGMENT_SHIFT));
     unsigned i;
     vaddr_t data = vaddr;
-    lock_acquire(as->page_directory_lock);
+    lock_acquire(as->pdlock);
     for (i = 0; i < npages; i++) {
         struct page* p = pd_request_page(&as->page_directory, data);
         p->F = 1; // Indicates that the page is on file
@@ -333,7 +341,7 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
     as->as_data = vaddr;
     as->as_heap_start = data;
     as->as_heap_end = data;
-    lock_release(as->page_directory_lock);
+    lock_release(as->pdlock);
     return 0;
 }
 
@@ -345,8 +353,6 @@ as_prepare_load(struct addrspace *as) {
     // Setup the USER STACK pages
     struct page* p = pd_request_page(&as->page_directory, USERSTACK - PAGE_SIZE);
     as->as_stacklocation = USERSTACK - PAGE_SIZE;
-
-//    pd_print(&as->page_directory);
 
     return 0;
 }
@@ -393,12 +399,13 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
     newas->as_data = old->as_data;
     
     // Make a copy of the page directory
-    lock_acquire(old->page_directory_lock);
-    pd_copy(&newas->page_directory, &old->page_directory);
-    lock_release(old->page_directory_lock);
     
+    lock_acquire(old->pdlock);
+    pd_copy(&newas->page_directory, &old->page_directory);
+    lock_release(old->pdlock);
+        
     // New AS needs page directory lock
-    newas->page_directory_lock = lock_create("Address Space Lock");
+    newas->pdlock = lock_create("Address Space Lock");
     
     *ret = newas;
     return 0;

@@ -133,11 +133,12 @@ ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr) {
     struct coremap_entry* cmentry = cm_getcmentryfromaddress(paddr);
     
     // No more physical memory left
-    if(cmentry == NULL)
+    if(cmentry == NULL) {
+        kprintf("Out of User Memory\n");
         return NULL;
-    
+    }
+
     assert(cmentry != NULL);
-//    kprintf("PID %d VADDR 0x%x CMENTRY 0x%x\n", pid, vaddr, &cmentry);
     cmentry->usedby = CM_USED;
     cmentry->pid = pid;
     cmentry->vaddr = vaddr;
@@ -180,16 +181,17 @@ ram_returnmemuser(int pid, vaddr_t addr) {
         }
     }
     
+    if (startframe == -1) {
+        kprintf("ERROR PID %d 0x%x is not allocated\n", pid, addr);
+        cm_print();
+    }
+    assert(startframe != -1);
+    
     // Another process is using the memory
     if(coremap[startframe].usecount > 1) {
         coremap[startframe].usecount--;
         return;
     }
-    
-    if (startframe == -1) {
-        kprintf("ERROR 0x%x is not allocated\n", addr);
-    }
-    assert(startframe != -1);
     
     ram_removeframe(startframe);
 }

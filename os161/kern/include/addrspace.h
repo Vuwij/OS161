@@ -38,7 +38,7 @@ struct addrspace {
         vaddr_t as_heap_end;
         vaddr_t as_data;
         struct pagedirectory page_directory;
-        struct lock* page_directory_lock;
+        struct lock* pdlock;
 #endif
 };
 

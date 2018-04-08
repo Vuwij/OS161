@@ -502,6 +502,8 @@ thread_exit(void) {
         curthread->t_cwd = NULL;
     }
     
+    ht_remove(&pidlist, curthread->pid);
+    
     assert(numthreads > 0);
     numthreads--;
     mi_switch(S_ZOMB);
