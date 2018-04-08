@@ -52,6 +52,10 @@ void coremap_getkernelusage() {
 
 struct coremap_entry* cm_getcmentryfromaddress(paddr_t paddr) {
     assert(paddr <= lastpaddr);
+    if(paddr <= firstpaddr) {
+        kprintf("Address requested invalid\n");
+        kprintf("0x%x - 0x%x", paddr, firstpaddr);
+    }
     assert(paddr > firstpaddr);
     int id = (paddr - firstpaddr) >> 12;
     return &coremap[id];

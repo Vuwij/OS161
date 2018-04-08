@@ -265,25 +265,52 @@ as_create(void) {
     
     as->pdlock = lock_create("Page Directory");
     pd_initialize(&as->page_directory);
+    
+    as->as_codeend = 0;
+    as->as_codestart = 0;
+    as->as_data = 0;
     as->as_heap_start = 0;
     as->as_heap_end = 0;
+    as->as_stacklocation = 0;
     
     return as;
 }
 
 void
 as_reset(struct addrspace *as) {
-    DEBUG(DB_VM, "as_reset\n");
+    int spl = splhigh();
+//    kprintf("-------- AS Resetting for PID %d --------\n", curthread->pid);
+//    kprintf("Coremap 1\n");
+//    cm_print();
+//    kprintf("Page directory before\n");
+//    pd_print(&as->page_directory);
     
     // Destroy and recreate the address space
-    if (curthread->t_vmspace) {
-        struct addrspace *as = curthread->t_vmspace;
-        curthread->t_vmspace = NULL;
-        as_destroy(as);
+    vfs_close(as->progfile);
+
+    lock_acquire(as->pdlock);
+    pd_free(&as->page_directory);
+    lock_release(as->pdlock);
+
+    
+    if (as == NULL) {
+        return NULL;
     }
     
-    curthread->t_vmspace = as_create();
-
+    pd_initialize(&as->page_directory);
+    
+    
+    as->as_codeend = 0;
+    as->as_codestart = 0;
+    as->as_data = 0;
+    as->as_heap_start = 0;
+    as->as_heap_end = 0;
+    as->as_stacklocation = 0;
+    
+//    kprintf("Coremap After\n");
+//    cm_print();
+//    kprintf("--------  AS Reset for PID %d\n --------", curthread->pid);
+//    splx(spl);
 }
 
 void
@@ -292,6 +319,12 @@ as_destroy(struct addrspace *as) {
 
     vfs_close(as->progfile);
     
+//    int spl = splhigh();
+//    kprintf("\n------------------------- Destroy for PID %d -------------------------\n", curthread->pid);
+//    pd_print(&as->page_directory);
+//    kprintf("Core Map Before\n");
+//    cm_print();
+    
     lock_acquire(as->pdlock);
     pd_free(&as->page_directory);
     
@@ -299,6 +332,10 @@ as_destroy(struct addrspace *as) {
     lock_destroy(as->pdlock);
     kfree(as);
     
+//    kprintf("Core Map After\n");
+//    cm_print();
+//    kprintf("----------------------------------------------------------------------\n");
+//    splx(spl);
     as = NULL;
 }
 
@@ -425,7 +462,25 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
     // Make a copy of the page directory
     
     lock_acquire(old->pdlock);
+    
+//    int spl = splhigh();
+//    kprintf("------------ COPY from Thread %d --------------\n", curthread->pid);
+//    kprintf("Core Map Before\n");
+//    cm_print();
+//    splx(spl);
+    
     pd_copy(&newas->page_directory, &old->page_directory);
+    
+//    spl = splhigh();
+//    kprintf("Page Directory From: \n");
+//    pd_print(&old->page_directory);
+//    kprintf("Page Directory To: \n");
+//    pd_print(&newas->page_directory);
+//    kprintf("Core Map After\n");
+//    cm_print();
+//    kprintf("----------------------------------------------\n");
+//    splx(spl);
+    
     lock_release(old->pdlock);
         
     // New AS needs page directory lock

@@ -90,12 +90,18 @@ ram_borrowmem(unsigned long npages) {
             count++;
             if(count == npages) {
                 startframe = i - npages + 1;
+                break;
             }
+        }
+        else {
+            count = 0; // Reset count
         }
     }
     
-    if(startframe == -1) return 0;
-    
+    if(startframe == -1) {
+        kprintf("Out of memory (Swap bitch)\n");
+        return 0;
+    }
     for (i = startframe; i < startframe + npages; ++i) {
         coremap[i].usedby = CM_KTEMP;
     }
@@ -183,7 +189,7 @@ ram_returnmemuser(int pid, vaddr_t addr) {
     }
     
     if (startframe == -1) {
-        kprintf("ERROR PID %d 0x%x is not allocated\n", pid, addr);
+        kprintf("ERROR 0x%x is not allocated\n", addr);
         cm_print();
     }
     assert(startframe != -1);
@@ -209,12 +215,19 @@ ram_incrementframe(int frame) {
 // User returns memory using frame number
 void
 ram_removeframe(int frame) {
+    // Another process is using the memory
+    if(coremap[frame].usecount > 1) {
+        coremap[frame].usecount--;
+        return;
+    }
+    
     // TODO some error checking
     int i;
     int npages = coremap[frame].length;
-    
     for (i = frame; i < frame + npages; ++i) {
         coremap[i].usedby = CM_FREE;
+        coremap[i].usecount = 0;
+        coremap[i].length = 0;
         coremap[i].vaddr = 0;
         coremap[i].pid = 0;
     }

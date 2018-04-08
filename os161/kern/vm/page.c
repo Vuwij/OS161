@@ -35,7 +35,7 @@ void p_free(struct page* p, int table, int page) {
         vaddr_t vaddr = (vaddr_t) ((table << 22) + (page << 12));
 
         if (p->PFN != 0 && p->V == 1) {
-            free_upages(vaddr);
+            free_frame(p->PFN);
         }
     }
     // If its in the disk, remove bits from bitmap

@@ -440,13 +440,13 @@ sys_execv(struct trapframe *tf) {
     // Reset the address space
     as_reset(curthread->t_vmspace);
     as_activate(curthread->t_vmspace);
+    strcpy(curthread->t_vmspace->progname, prognamek);
     curthread->t_vmspace->progfile = v;
+    
     
     // Load file into address space
     vaddr_t entrypoint, stackptr;
     
-    strcpy(curthread->t_vmspace->progname, prognamek);
-    curthread->t_vmspace->progfile = v;
     err = load_elf(v, &entrypoint);
     if(err) {
         kfree(prognamek);

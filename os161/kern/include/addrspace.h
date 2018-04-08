@@ -17,29 +17,18 @@ struct vnode;
  */
 
 struct addrspace {
-#if OPT_DUMBVM
-	vaddr_t as_vbase1;
-	paddr_t as_pbase1;
-	size_t as_npages1;
-	vaddr_t as_vbase2;
-	paddr_t as_pbase2;
-	size_t as_npages2;
-	paddr_t as_stackpbase;
-#else
-        // Current program information and executable header
-        char progname[50];
-        struct vnode *progfile;
-        Elf_Ehdr eh;
-        
-        vaddr_t as_codestart;
-        vaddr_t as_codeend;
-        vaddr_t as_stacklocation;
-        vaddr_t as_heap_start;
-        vaddr_t as_heap_end;
-        vaddr_t as_data;
-        struct pagedirectory page_directory;
-        struct lock* pdlock;
-#endif
+    char progname[50];
+    struct vnode *progfile;
+    Elf_Ehdr eh;
+
+    vaddr_t as_codestart;
+    vaddr_t as_codeend;
+    vaddr_t as_stacklocation;
+    vaddr_t as_heap_start;
+    vaddr_t as_heap_end;
+    vaddr_t as_data;
+    struct pagedirectory page_directory;
+    struct lock* pdlock;
 };
 
 /*
