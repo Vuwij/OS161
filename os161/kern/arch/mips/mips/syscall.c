@@ -241,7 +241,7 @@ child_fork(void *ptr, unsigned long nargs) {
 
 int sys_fork(struct trapframe *tf) {
     // Make a copy of the address space
-    struct addrspace* addrchild = kmalloc(sizeof(struct addrspace));
+    struct addrspace* addrchild;
     int err = as_copy(curthread->t_vmspace, &addrchild);
     if(err) return ENOMEM;
     
@@ -284,6 +284,10 @@ int sys_waitpid(struct trapframe *tf, int call) {
     pid_t pid = (pid_t) tf->tf_a0;
     int *returncode = (int *) tf->tf_a1;
     int flags = (int) tf->tf_a2;
+    
+    /*if (returncode == NULL) {
+        return EINVAL;
+    }*/
     
     if(pid == 0)
         return EINVAL;
