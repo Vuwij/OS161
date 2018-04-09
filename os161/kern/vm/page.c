@@ -2,6 +2,9 @@
 #include <addrspace.h>
 #include <swapmap.h>
 
+#include "curthread.h"
+#include "thread.h"
+
 void p_allocate_page(struct page* p) {
     
     // Allocates a disk location for the page
@@ -16,13 +19,11 @@ void p_print(struct page* p, int table, int page) {
 
 void p_copy(struct page* to, struct page* from, int table, int page) {    
     // If its in the memory, increment memory count
-    if(from->V) {
-        if (from->PFN != 0 && from->V == 1) {
-            increment_frame(from->PFN);
-        }
+    if (from->PFN != 0 && from->V == 1) {
+        increment_frame(from->PFN);
     }
     // Already loaded, in disk
-    else if(!from->F) {
+    else if(from->V == 0 && from->PFN != 0 && !from->F) {
         sm_swapincrement(from);
     }
     
@@ -33,7 +34,7 @@ void p_free(struct page* p, int table, int page) {
     // If its in the memory, free memory
     if(p->V) {
         vaddr_t vaddr = (vaddr_t) ((table << 22) + (page << 12));
-
+                
         if (p->PFN != 0 && p->V == 1) {
             free_frame(p->PFN);
         }

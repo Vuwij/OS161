@@ -100,6 +100,9 @@ common_prog(int nargs, char **args) {
     kprintf("Warning: this probably won't work with a "
             "synchronization-problems kernel.\n");
 #endif
+    
+    P(pidlimit);
+    
     struct thread * childthread;
     result = thread_fork(args[0] /* thread name */,
             args /* thread arg */, nargs /* thread arg */,

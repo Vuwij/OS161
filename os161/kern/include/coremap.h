@@ -18,11 +18,12 @@ struct coremap_entry {
 
 extern struct coremap_entry *coremap;
 extern paddr_t firstpaddr;
-extern int cm_totalframes;
+extern unsigned cm_totalframes;
 
 void coremap_bootstrap();
 void coremap_getkernelusage();
-struct coremap_entry* coremap_getphyaddr(paddr_t paddr);
+unsigned cm_getframefromaddress(paddr_t paddr);
+struct coremap_entry* cm_getcmentryfromaddress(paddr_t paddr);
 void cm_print();
 
 #endif /* COREMAP_H */

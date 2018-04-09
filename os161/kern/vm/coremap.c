@@ -4,16 +4,16 @@
 #include <vm.h>
 
 struct coremap_entry *coremap = NULL;
-int cm_totalframes;
+unsigned cm_totalframes;
 paddr_t firstpaddr, lastpaddr; // First physical address, used as offset
 
 void coremap_bootstrap() {
-    ram_getsize((paddr_t) &firstpaddr, (paddr_t) &lastpaddr);
+    ram_getsize((u_int32_t *) &firstpaddr, (u_int32_t *) &lastpaddr);
     
     cm_totalframes = (lastpaddr - firstpaddr) / PAGE_SIZE;
     coremap = kmalloc(cm_totalframes * sizeof(struct coremap_entry));
     
-    int i;
+    unsigned i;
     u_int32_t addr = firstpaddr;
     for (i = 0; i < cm_totalframes; i++) {
         coremap[i].addr = addr;
@@ -40,14 +40,24 @@ void coremap_getkernelusage() {
     u_int32_t lo, hi;
     ram_getsize(&lo, &hi);
     
-    int spaceleft = (hi - lo) / PAGE_SIZE;
+    unsigned spaceleft = (hi - lo) / PAGE_SIZE;
     
-    int i;
+    unsigned i;
     for (i = 0; i < cm_totalframes; i++) {
         if(coremap[i].usedby == CM_KTEMP) // The used area is the kernel area
             coremap[i].usedby = CM_KERNEL;
     }
     cm_print();
+}
+
+unsigned cm_getframefromaddress(paddr_t paddr) {
+    assert(paddr <= lastpaddr);
+    if(paddr <= firstpaddr) {
+        kprintf("Address requested invalid\n");
+        kprintf("0x%x - 0x%x", paddr, firstpaddr);
+    }
+    assert(paddr > firstpaddr);
+    return (paddr - firstpaddr) >> 12;
 }
 
 struct coremap_entry* cm_getcmentryfromaddress(paddr_t paddr) {
@@ -62,7 +72,7 @@ struct coremap_entry* cm_getcmentryfromaddress(paddr_t paddr) {
 }
 
 void cm_print() {
-    int i;
+    unsigned i;
     kprintf("\nFrame #\tPHY ADDR\tLength\tCount\tUSER\n");
     for (i = 0; i < cm_totalframes; i++) {
         if (coremap[i].usedby == CM_FREE) continue;

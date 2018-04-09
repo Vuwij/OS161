@@ -29,6 +29,9 @@ struct addrspace {
     vaddr_t as_data;
     struct pagedirectory page_directory;
     struct lock* pdlock;
+    
+    struct node* lruclock; // Local replacement only
+    struct node* lruhandle;
 };
 
 /*
@@ -67,7 +70,6 @@ struct addrspace {
 
 // Page Allocation and freeing for user and 
 paddr_t alloc_upages(int npages, vaddr_t vaddr);
-void free_upages(vaddr_t addr);
 void zero_upages(vaddr_t addr);
 void free_frame(int frame);
 void increment_frame(int frame);

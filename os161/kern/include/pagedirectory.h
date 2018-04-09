@@ -5,6 +5,7 @@
 #include <lib.h>
 #include <pagetable.h>
 #include <page.h>
+#include <linkedlist.h>
 
 struct pagedirectory {
     struct pagetable* pde[1024]; // The page table is created on request
@@ -30,6 +31,7 @@ void pd_free(struct pagedirectory*);
 
 // Translates the address
 void pd_translate(vaddr_t);
+
 
 #endif /* PAGEDIRECTORY_H */
 

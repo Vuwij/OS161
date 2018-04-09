@@ -32,5 +32,6 @@ int sys_sbrk(int increment, int32_t* retval);
 void syscall_bootstrap(void);
 
 extern struct lock *execv_lock;
+extern struct semaphore* pidlimit;
 
 #endif /* _SYSCALL_H_ */

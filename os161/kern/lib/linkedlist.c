@@ -61,7 +61,6 @@ struct node * swapexists(struct node * head, int val) {
 
 int remove_val(struct node ** head, int val) {
     struct node * current = *head;
-    
     // If the first is in linked list
     if(current->val == val) {
         *head = current->next;
@@ -96,6 +95,10 @@ int pop(struct node ** head) {
     *head = next_node;
 
     return retval;
+}
+
+int ll_destroy(struct node** head) {
+    while(pop(head) != -1);
 }
 
 int remove_last(struct node * head) {
@@ -144,5 +147,16 @@ int remove_by_index(struct node ** head, int n) {
     kfree(temp_node);
 
     return retval;
+}
 
+int ll_count(struct node ** head) {
+    struct node * current = head;
+    int count = 0;
+    
+    while (current != NULL) {
+        count++;
+        current = current->next;
+    }
+    
+    return count;
 }

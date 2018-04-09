@@ -69,7 +69,7 @@ load_segment(struct vnode *v, off_t offset, vaddr_t vaddr,
     }
 
     // TODO: I added is_executable to prevent fault, but u.uio_resid is 146 when run bigprog.
-    if (u.uio_resid != 0) {
+    if (u.uio_resid != 0 && is_executable) {
         /* short read; problem with executable? */
         kprintf("ELF: short read on segment - file truncated?\n");
         return ENOEXEC;

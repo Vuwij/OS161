@@ -14,9 +14,12 @@
 #include <kern/../types.h>
 #include <vfs.h>
 #include "addrspace.h"
+#include "coremap.h"
 #include <synch.h>
 #include <hashtable.h>
 #include <clock.h>
+
+#define DEBUG_THREADS 0
 
 /*
  * System call handler.
@@ -161,9 +164,12 @@ mips_syscall(struct trapframe *tf) {
 }
 
 struct lock* execvlock;
+struct semaphore* pidlimit;
+#define MAX_PIDS 4 // Maximum amount of PIDs permitted to run at the same time
 
 void syscall_bootstrap(void) {
     execvlock = lock_create("Execv");
+    pidlimit = sem_create("PID Limit", MAX_PIDS);
 }
 
 /*
@@ -241,6 +247,9 @@ child_fork(void *ptr, unsigned long nargs) {
 
 
 int sys_fork(struct trapframe *tf) {
+    // Limit the number of forked processes
+    P(pidlimit);
+
     // Make a copy of the address space
     struct addrspace* addrchild;
     int err = as_copy(curthread->t_vmspace, &addrchild);
@@ -264,7 +273,7 @@ int sys_fork(struct trapframe *tf) {
         return result;
     }
     
-    kprintf("PID %d Created\n", childthread->pid);
+    if(DEBUG_THREADS) kprintf("PID %d Created\n", childthread->pid);
     tf->tf_a0 = childthread->pid; // Parent returns PID of child
     return 0;
 }
@@ -275,6 +284,7 @@ int sys_fork(struct trapframe *tf) {
  */
 int sys_getpid(struct trapframe *tf) {
     (void) tf;
+    if(DEBUG_THREADS) kprintf("Get PID %d\n", curthread->pid);
     return curthread->pid;
 }
 
@@ -286,10 +296,10 @@ int sys_waitpid(struct trapframe *tf, int call) {
     pid_t pid = (pid_t) tf->tf_a0;
     int *returncode = (int *) tf->tf_a1;
     int flags = (int) tf->tf_a2;
-    
-    /*if (returncode == NULL) {
+    if(DEBUG_THREADS) kprintf("PID %d Waiting for %d\n", curthread->pid, pid);
+    if (returncode == NULL) {
         return EINVAL;
-    }*/
+    }
     
     if(pid == 0)
         return EINVAL;
@@ -352,7 +362,7 @@ int sys_waitpid(struct trapframe *tf, int call) {
     
     copyout( &childexitcode, (userptr_t) returncode, sizeof(int));
     
-    //kprintf("Finished waiting for PID %d\n", pid);
+    if(DEBUG_THREADS) kprintf("Finished waiting for PID %d\n", pid);
     return 0;
 }
 
@@ -362,7 +372,7 @@ int sys_waitpid(struct trapframe *tf, int call) {
  */
 int
 sys_exit(int exitcode) {
-    kprintf("PID %d Exited\n", curthread->pid);
+//    kprintf("PID %d Exited\n", curthread->pid);
     // Create an exit code
     lock_acquire(pidtablelock);
     exitcodes[curthread->pid] = exitcode;
@@ -373,13 +383,15 @@ sys_exit(int exitcode) {
         cv_broadcast(waitpid[curthread->pid], pidtablelock);
     }
     lock_release(pidtablelock);
+    if(DEBUG_THREADS) kprintf("PID %d Exited\n", curthread->pid);
     
+    V(pidlimit);
     thread_exit();
     
     return EINVAL;
 }
 
-#define MAX_ARG 15
+#define MAX_ARG 5
 
 /*
  * sys_execv() system call.
@@ -387,8 +399,12 @@ sys_exit(int exitcode) {
  */
 int
 sys_execv(struct trapframe *tf) {
+    
     char *progname = (char *) tf->tf_a0;
     char **argv = (char **) tf->tf_a1;    
+    if(progname == NULL) return EFAULT;
+    
+    // Copy to local memory
     char *prognamek = kmalloc(sizeof(char) * PATH_MAX);
     char **argvk = (char **) kmalloc(sizeof(char*) * MAX_ARG);
     int i;
@@ -399,6 +415,11 @@ sys_execv(struct trapframe *tf) {
     // Copy in the program name and arguments
     size_t actual; 
     if(copyinstr((const_userptr_t) progname, prognamek, PATH_MAX, &actual)) {
+        kfree(prognamek);
+        for (i = 0; i < MAX_ARG; ++i) {
+            kfree(argvk[i]);
+        }
+        kfree(argvk);
         return EFAULT; // Bad program name
     }
     

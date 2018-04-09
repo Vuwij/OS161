@@ -18,7 +18,7 @@ extern Swapmap* swapmap;
 #define SWAPCOUNT_COUNT(paddr) ((paddr) & 0x0000FFFF) // The swap file count
 #define SWAPCOUNT_SWAP(paddr) ((paddr) >> 16)         // The swap file index
 
-extern struct node swapcount; // For situations where 2 processes using the same swap area
+extern struct node* swapcount; // For situations where 2 processes using the same swap area
 
 extern int sm_pagecount; // 1280 or 0x500
 
@@ -33,7 +33,7 @@ int sm_swapalloc(struct page* p);
 int sm_swapdealloc(struct page* p);
 
 // Finds a space in the swap file to swap out a piece of memory
-int sm_swapout(struct page* p);
+int sm_swapout(struct page* p, vaddr_t vaddr);
 
 // Finds the spot in the swap file to swap in a piece of memory
 int sm_swapin(struct page* p, vaddr_t vaddr);
@@ -43,6 +43,10 @@ int sm_swapdecrement(struct page* p);
 
 // Actually decrement the swap bit. But uses the external linked list to count doubles
 int sm_swapincrement(struct page* p);
+
+// Increment the LRU clock to the next one, returns vaddr
+vaddr_t incrementlruclock();
+vaddr_t findnextlruclockframe();
 
 #endif /* SWAPAREA_H */
 

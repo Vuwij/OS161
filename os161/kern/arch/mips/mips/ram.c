@@ -8,7 +8,6 @@ u_int32_t firstfree; /* first free virtual address; set by start.S */
 
 static u_int32_t firstpaddr; /* address of first free physical page */
 static u_int32_t lastpaddr; /* one past end of last free physical page */
-
 /*
  * Called very early in system boot to figure out how much physical
  * RAM is available.
@@ -84,7 +83,7 @@ ram_borrowmem(unsigned long npages) {
         return ram_stealmem(npages);
     
     
-    int count = 0, i, startframe = -1;
+    unsigned count = 0, i, startframe = -1;
     for(i = 0; i < cm_totalframes; ++i) {
         if(coremap[i].usedby == CM_FREE) {
             count++;
@@ -99,7 +98,8 @@ ram_borrowmem(unsigned long npages) {
     }
     
     if(startframe == -1) {
-        kprintf("Out of memory (Swap bitch)\n");
+//        kprintf("Out of memory (Swap bitch)\n");
+//        cm_print();
         return 0;
     }
     for (i = startframe; i < startframe + npages; ++i) {
@@ -136,6 +136,7 @@ ram_returnmem(vaddr_t addr) {
 paddr_t
 ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr) {
     paddr_t paddr = ram_borrowmem(npages);
+    if(paddr == 0) return 0;
     struct coremap_entry* cmentry = cm_getcmentryfromaddress(paddr);
     
     // No more physical memory left
@@ -173,34 +174,6 @@ ram_zeromem(int pid, vaddr_t addr) {
     assert(startframe != -1);
     
     ram_zeroframe(startframe);
-}
-
-// User returns memory using PID and virtual address
-void
-ram_returnmemuser(int pid, vaddr_t addr) {
-    int i, startframe = -1, npages = -1;
-    
-    for(i = 0; i < cm_totalframes; ++i) {
-        if(coremap[i].vaddr == addr) {
-            startframe = i;
-            npages = coremap[i].length;
-            break;
-        }
-    }
-    
-    if (startframe == -1) {
-        kprintf("ERROR 0x%x is not allocated\n", addr);
-        cm_print();
-    }
-    assert(startframe != -1);
-    
-    // Another process is using the memory
-    if(coremap[startframe].usecount > 1) {
-        coremap[startframe].usecount--;
-        return;
-    }
-    
-    ram_removeframe(startframe);
 }
 
 // User increment memory usecount using frame number

@@ -24,5 +24,9 @@ int exists(struct node * head, int val);
 
 struct node * swapexists(struct node * head, int val);
 
+int ll_count(struct node ** head);
+
+int ll_destroy(struct node** head);
+
 #endif /* LINKEDLIST_H */
 

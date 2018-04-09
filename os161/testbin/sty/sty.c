@@ -23,7 +23,6 @@ static
 void
 hog(void) {
     int pid = fork();
-    int i = 0;
     switch (pid) {
         case -1:
             err(1, "fork");
@@ -43,7 +42,6 @@ int
 waitall(void) {
     int i, status, n = 0;
     for (i = 0; i < npids; i++) {
-        printf("Waiting for %d\n", pids[i]);
         if (waitpid(pids[i], &status, 0) < 0) {
             warn("waitpid for %d", pids[i]);
         } else if (status != 0) {
@@ -74,8 +72,7 @@ main(int argc, const char *argv[]) {
             usage();
         }
         nhogs = tmp;
-    }
-    else if (argc > 2) {
+    } else if (argc > 2) {
         usage();
     }
 
