@@ -165,7 +165,7 @@ mips_syscall(struct trapframe *tf) {
 
 struct lock* execvlock;
 struct semaphore* pidlimit;
-#define MAX_PIDS 4 // Maximum amount of PIDs permitted to run at the same time
+#define MAX_PIDS 9 // Maximum amount of PIDs permitted to run at the same time
 
 void syscall_bootstrap(void) {
     execvlock = lock_create("Execv");

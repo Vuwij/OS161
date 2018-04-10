@@ -187,6 +187,9 @@ int sm_swapin(struct page* p, vaddr_t vaddr) {
 
     // Ran out of memory to swap in, swaps out something else from the local
     if (paddr == 0) {
+        cm_print();
+        while(1);
+        
         vaddr_t swapoutaddr = findnextlruclockframe();
         assert(swapoutaddr != vaddr);
         struct page* p = pd_page_exists(&curthread->t_vmspace->page_directory, swapoutaddr);

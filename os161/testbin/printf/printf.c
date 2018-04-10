@@ -3,7 +3,7 @@
 int
 main(void) {
     
-    putchar('w');
+    printf("hello\n");
 
     return 0;
 }

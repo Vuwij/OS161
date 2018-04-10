@@ -174,8 +174,7 @@ TEST_BEGIN(4, int pid_s)
         }              
         
         if (getpid() == pid_p)  {
-            putchar('a');
-                check();
+            check();
         }
         
         if (getpid() == pid_p) {

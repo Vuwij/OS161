@@ -17,7 +17,7 @@ struct vnode;
  */
 
 struct addrspace {
-    char progname[50];
+    char progname[20];
     struct vnode *progfile;
     Elf_Ehdr eh;
 

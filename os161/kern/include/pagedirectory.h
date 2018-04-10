@@ -8,6 +8,7 @@
 #include <linkedlist.h>
 
 struct pagedirectory {
+    unsigned pdedirty[1024];
     struct pagetable* pde[1024]; // The page table is created on request
 };
 
@@ -25,6 +26,9 @@ void pd_print(struct pagedirectory*);
 
 // Make a copy of the page directory
 void pd_copy(struct pagedirectory* to, struct pagedirectory* from);
+
+// Hacky way to do copy on write
+void pd_copy_on_write(struct pagedirectory* pd, vaddr_t vaddr);
 
 // Free all the pages in the page directory
 void pd_free(struct pagedirectory*);

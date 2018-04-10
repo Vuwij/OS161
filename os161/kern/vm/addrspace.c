@@ -140,12 +140,15 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     // Page in memory, all other cases have page not loaded
     if (p->V && p->PFN) {
                 // Check if coremap contains a duplicate
-        if (faulttype == VM_FAULT_WRITE || faultaddress == as->as_data) {
+        if (faulttype == VM_FAULT_WRITE /*|| faultaddress == as->as_data*/) {
             lock_acquire(copy_on_write_lock);
             struct coremap_entry* cmentry = cm_getcmentryfromaddress((p->PFN << 12));
 
             if (cmentry->usecount > 1) {
-
+                
+                // Hacky way to save memory
+                //pd_copy_on_write(&as->page_directory, faultaddress);
+                
                 p->V = 1;
                 p->R = 1;
                 unsigned copyfrom = p->PFN;
@@ -155,8 +158,9 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
                 unsigned copyto = p->PFN;
 
                 ram_copymem((copyto << 12), (copyfrom << 12));
-
-                //if(DEBUG_COPY_ON_WRITE) cm_print();
+                
+                
+                if(DEBUG_COPY_ON_WRITE) cm_print();
             }
             lock_release(copy_on_write_lock);
         }
@@ -514,7 +518,7 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
         cm_print();
         splx(spl);
     }
-
+    
     pd_copy(&newas->page_directory, &old->page_directory);
 
     if (DEBUG_COPY) {

@@ -5,6 +5,7 @@
 #include "thread.h"
 
 void pd_initialize(struct pagedirectory* pd) {
+    bzero(pd->pdedirty, sizeof(pd->pdedirty));
     int i;
     for (i = 0; i < 1024; ++i) {
         pd->pde[i] = NULL;
@@ -43,14 +44,30 @@ void pd_copy(struct pagedirectory* to, struct pagedirectory* from) {
     int i;
     for (i = 0; i < 1024; ++i) {
         if (from->pde[i] != NULL) {
+            to->pde[i] = from->pde[i];
+            
             to->pde[i] = kmalloc(sizeof (struct pagetable));
             bzero(to->pde[i], sizeof (struct pagetable));
 
             pt_copy(to->pde[i], from->pde[i], i);
         }
     }
+    
+//    bzero(to->pdedirty, sizeof(to->pdedirty));
+//    bzero(from->pdedirty, sizeof(from->pdedirty));
 }
 
+void pd_copy_on_write(struct pagedirectory* pd, vaddr_t vaddr) {
+    unsigned entry = vaddr >> 22;
+    
+    if(pd->pdedirty[entry] == 1) return;
+    
+    struct pagetable* old = pd->pde[entry];
+    pd->pde[entry] = kmalloc(sizeof (struct pagetable));
+    memcpy(pd->pde[entry], old, sizeof (struct pagetable));
+    
+    pd->pdedirty[entry] == 1;
+}
 
 void pd_free(struct pagedirectory* pd) {
     int i;
