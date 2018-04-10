@@ -181,7 +181,7 @@ sys_write(struct trapframe *tf) {
     int filehandle = tf->tf_a0;
     char *buf = (char *) tf->tf_a1;
     int size = tf->tf_a2;
-
+    
     // Validate errors
     if (filehandle != STDOUT_FILENO && filehandle != STDERR_FILENO) return EBADF;
  
@@ -284,7 +284,6 @@ int sys_fork(struct trapframe *tf) {
  */
 int sys_getpid(struct trapframe *tf) {
     (void) tf;
-    if(DEBUG_THREADS) kprintf("Get PID %d\n", curthread->pid);
     return curthread->pid;
 }
 

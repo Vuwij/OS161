@@ -23,6 +23,7 @@
 #define MAX_STACK_GROWTH 0x10000000
 #define PRINTVM 0
 #define DEBUG_COPY 0
+#define DEBUG_COPY_ON_WRITE 0
 
 // For guarding the page directory temporarily
 
@@ -131,16 +132,20 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     lock_acquire(as->pdlock);
     struct page* p = pd_request_page(&as->page_directory, faultaddress);
     lock_release(as->pdlock);
+    
+//    kprintf("PID %d [%d]\n", curthread->pid, faulttype);
+//    if(curthread->pid == 2)
+//        pd_translate(faultaddress);
 
     // Page in memory, all other cases have page not loaded
     if (p->V && p->PFN) {
-        
-        // Check if coremap contains a duplicate
-        if(faulttype == VM_FAULT_WRITE) {
+                // Check if coremap contains a duplicate
+        if (faulttype == VM_FAULT_WRITE || faultaddress == as->as_data) {
             lock_acquire(copy_on_write_lock);
             struct coremap_entry* cmentry = cm_getcmentryfromaddress((p->PFN << 12));
-            if(cmentry->usecount > 1) {
-                
+
+            if (cmentry->usecount > 1) {
+
                 p->V = 1;
                 p->R = 1;
                 unsigned copyfrom = p->PFN;
@@ -150,10 +155,12 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
                 unsigned copyto = p->PFN;
 
                 ram_copymem((copyto << 12), (copyfrom << 12));
+
+                //if(DEBUG_COPY_ON_WRITE) cm_print();
             }
             lock_release(copy_on_write_lock);
         }
-        
+
         paddr = (p->PFN << 12);
         p->R = 1;
     }
@@ -227,8 +234,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             paddr = (pp->PFN << 12);
             as->as_stacklocation = faultaddress; // Shrink the stack location, stack location is never freed
 
-        }
-        else if (faultaddress >= as->as_heap_start && faultaddress <= as->as_heap_end) {
+        } else if (faultaddress >= as->as_heap_start && faultaddress <= as->as_heap_end) {
             struct page* pp = pd_request_page(&as->page_directory, faultaddress);
             if (pp->PFN != 0 || pp->F != 0 || pp->V != 0) goto tlbfault;
             pp->V = 1;
@@ -236,8 +242,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             p_allocate_page(pp); // Allocate disk space for page
             sm_swapin(pp, faultaddress); // Swap the page from the disk
             paddr = (pp->PFN << 12);
-        }
-        else {
+        } else {
             kprintf("Invalid Page\n");
             goto tlbfault;
         }
@@ -406,7 +411,7 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
     /*
      * Write this.
      */
-//    kprintf("as_define_region 0x%x, Size %d, Flags RWX: %d%d%d\n", vaddr, sz, readable, writeable, executable);
+    //    kprintf("as_define_region 0x%x, Size %d, Flags RWX: %d%d%d\n", vaddr, sz, readable, writeable, executable);
 
     size_t npages;
 
@@ -498,8 +503,9 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
 
     // Make a copy of the page directory
 
+    lock_acquire(copy_on_write_lock);
     lock_acquire(old->pdlock);
-    
+
     int spl;
     if (DEBUG_COPY) {
         spl = splhigh();
@@ -524,6 +530,7 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
     }
 
     lock_release(old->pdlock);
+    lock_release(copy_on_write_lock);
 
     // New AS needs page directory lock
     newas->pdlock = lock_create("Address Space Lock");

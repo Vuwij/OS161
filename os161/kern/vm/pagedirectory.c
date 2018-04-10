@@ -67,6 +67,6 @@ void pd_free(struct pagedirectory* pd) {
 void pd_translate(vaddr_t vaddr) {
     unsigned table = vaddr >> 22;
     unsigned page = (((unsigned) vaddr) & PAGE_MASK) >> 12;
-    kprintf("Tab Pag PFN\n");
+//    kprintf("Tab Pag PFN\n");
     kprintf("%03x %03x\n", table, page);
 }

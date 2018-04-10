@@ -163,10 +163,9 @@ TEST_BEGIN(4, int pid_s)
         pid_p = getpid();          
         putchar('a');
         pid_s = dofork();          
-
         if (getpid() == pid_p)
-                check(); 
-
+            check(); 
+        
         if (getpid() == pid_p) {
                 pid_c = dofork();
         } else {
@@ -174,8 +173,10 @@ TEST_BEGIN(4, int pid_s)
                 exit(0);
         }              
         
-        if (getpid() == pid_p)  
+        if (getpid() == pid_p)  {
+            putchar('a');
                 check();
+        }
         
         if (getpid() == pid_p) {
                 dowait(pid_c); 
