@@ -194,8 +194,8 @@ int sm_swapin(struct page* p, vaddr_t vaddr) {
         assert(p->V);
         
         // Actually swap out that page
-//        kprintf("0x%x-> 0x%x\n", swapoutaddr, vaddr);
-//        cm_print();
+        kprintf("0x%x-> 0x%x\n", swapoutaddr, vaddr);
+        cm_print();
         if(DEBUG_SWAP) {
             kprintf("------- Thread %d: Swapping 0x%x-> 0x%x -------\n", curthread->pid, swapoutaddr, vaddr);
             kprintf("Before\n");

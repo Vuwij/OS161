@@ -80,6 +80,9 @@ void ram_zeromem(int pid, vaddr_t addr);
 // Both user and kernel return calls this function
 void ram_removeframe(int frame); 
 
+// Copy memory from one to another
+void ram_copymem(paddr_t to, paddr_t from);
+
 // Called by forked user to increase the number that uses the frame
 void ram_incrementframe(int frame); 
 

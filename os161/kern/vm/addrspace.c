@@ -26,8 +26,11 @@
 
 // For guarding the page directory temporarily
 
+struct lock* copy_on_write_lock;
+
 void
 vm_bootstrap(void) {
+    copy_on_write_lock = lock_create("Copy on Write");
 }
 
 /* Allocate/free some user-space virtual pages */
@@ -131,6 +134,26 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
 
     // Page in memory, all other cases have page not loaded
     if (p->V && p->PFN) {
+        
+        // Check if coremap contains a duplicate
+        if(faulttype == VM_FAULT_WRITE) {
+            lock_acquire(copy_on_write_lock);
+            struct coremap_entry* cmentry = cm_getcmentryfromaddress((p->PFN << 12));
+            if(cmentry->usecount > 1) {
+                
+                p->V = 1;
+                p->R = 1;
+                unsigned copyfrom = p->PFN;
+                p->PFN = 0;
+                p_allocate_page(p); // Allocate disk space for page
+                sm_swapin(p, faultaddress); // Swap the page from the disk
+                unsigned copyto = p->PFN;
+
+                ram_copymem((copyto << 12), (copyfrom << 12));
+            }
+            lock_release(copy_on_write_lock);
+        }
+        
         paddr = (p->PFN << 12);
         p->R = 1;
     }
@@ -187,6 +210,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
                     goto tlbfault; // Page has hit the bottom
                 }
                 pp->V = 1;
+                pp->Prot = 3;
                 addr = addr - PAGE_SIZE;
             }
 
@@ -197,6 +221,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
                 goto tlbfault; // Page has hit the bottom
             }
             pp->V = 1;
+            pp->Prot = 3;
             p_allocate_page(pp); // Allocate disk space for page
             sm_swapin(pp, faultaddress); // Swap the page from the disk
             paddr = (pp->PFN << 12);
@@ -207,6 +232,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             struct page* pp = pd_request_page(&as->page_directory, faultaddress);
             if (pp->PFN != 0 || pp->F != 0 || pp->V != 0) goto tlbfault;
             pp->V = 1;
+            pp->Prot = 3;
             p_allocate_page(pp); // Allocate disk space for page
             sm_swapin(pp, faultaddress); // Swap the page from the disk
             paddr = (pp->PFN << 12);
@@ -380,7 +406,7 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
     /*
      * Write this.
      */
-    DEBUG(DB_VM, "as_define_region 0x%x, Size %d, Flags RWX: %d%d%d\n", vaddr, sz, readable, writeable, executable);
+//    kprintf("as_define_region 0x%x, Size %d, Flags RWX: %d%d%d\n", vaddr, sz, readable, writeable, executable);
 
     size_t npages;
 
@@ -406,6 +432,7 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
         p->F = 1; // Indicates that the page is on file
         data = data + PAGE_SIZE;
         p->PFN = (pindex << TEXT_SEGMENT_SHIFT) + i;
+        p->Prot = (readable >> 1) + (writeable >> 1);
     }
 
     as->as_data = vaddr;

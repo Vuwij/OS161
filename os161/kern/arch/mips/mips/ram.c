@@ -176,6 +176,29 @@ ram_zeromem(int pid, vaddr_t addr) {
     ram_zeroframe(startframe);
 }
 
+// Zeros out a memory at a segment
+void
+ram_copymem(paddr_t to, paddr_t from) {
+    assert(to > firstpaddr);
+    assert(to < lastpaddr);
+    assert(from > firstpaddr);
+    assert(from < lastpaddr);
+    
+    unsigned frameto = ((to - firstpaddr) >> 12) + 1;
+    unsigned framefrom = ((from - firstpaddr) >> 12) + 1;
+    
+    assert(coremap[framefrom].usedby == CM_USED);
+    assert(coremap[frameto].usedby == CM_USED);
+    assert(coremap[framefrom].usecount > 1);
+    
+    paddr_t paddrto = coremap[frameto].addr;
+    paddr_t paddrfrom = coremap[framefrom].addr;
+    
+    memcpy(PADDR_TO_KVADDR(paddrto), PADDR_TO_KVADDR(paddrfrom), PAGE_SIZE);
+    coremap[framefrom].usecount--;
+    assert(coremap[framefrom].usecount >= 1);
+}
+
 // User increment memory usecount using frame number
 void
 ram_incrementframe(int frame) {
