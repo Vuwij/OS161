@@ -22,6 +22,7 @@
 #define TEXT_SEGMENT_SHIFT 16
 #define MAX_STACK_GROWTH 0x10000000
 #define PRINTVM 0
+#define DEBUG_COPY 0
 
 // For guarding the page directory temporarily
 
@@ -445,8 +446,6 @@ as_define_stack(struct addrspace *as, vaddr_t *stackptr) {
     (void) as;
     return 0;
 }
-
-#define DEBUG_COPY 0
 
 int
 as_copy(struct addrspace *old, struct addrspace **ret) {

@@ -29,6 +29,7 @@ main()
 {
     int i, j, k, r;
     
+    printf("Step 1\n");
     for (i = 0; i < Dim; i++)		/* first initialize the matrices */
 	for (j = 0; j < Dim; j++) {
 	     A[i][j] = i;
@@ -36,11 +37,13 @@ main()
 	     C[i][j] = 0;
 	}
     
+    printf("Step 2\n");
     for (i = 0; i < Dim; i++)		/* then multiply them together */
 	for (j = 0; j < Dim; j++)
             for (k = 0; k < Dim; k++)
 		T[i][j][k] = A[i][k] * B[k][j];
-        
+    
+    printf("Step 3\n");
     for (i = 0; i < Dim; i++)
 	for (j = 0; j < Dim; j++)
             for (k = 0; k < Dim; k++)

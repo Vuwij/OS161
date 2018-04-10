@@ -52,7 +52,7 @@ struct node * swapexists(struct node * head, int val) {
     struct node * current = head;
 
     while (current != NULL) {
-        if(current->val >> 16 == val >> 16) return current;
+        if(current->val >> 16 == val) return current;
         current = current->next;
     }
     
