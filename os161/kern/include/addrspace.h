@@ -33,6 +33,8 @@ struct addrspace {
     struct lock* pdlock;
     struct node* lruclock; // Local replacement only
     struct node* lruhandle;
+    
+    unsigned stackcount;
 };
 
 /*

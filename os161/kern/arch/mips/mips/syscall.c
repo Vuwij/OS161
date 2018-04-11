@@ -19,7 +19,7 @@
 #include <hashtable.h>
 #include <clock.h>
 
-#define DEBUG_THREADS 1
+#define DEBUG_THREADS 0
 #define DEBUG_EXEC 0
 
 /*

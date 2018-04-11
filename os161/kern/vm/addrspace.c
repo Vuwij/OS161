@@ -24,7 +24,7 @@
 #define DEBUG_VMFAULTERROR 0
 #define DEBUG_VMFAULT 0
 #define DEBUG_COPY 0
-#define DEBUG_COPY_ON_WRITE 1
+#define DEBUG_COPY_ON_WRITE 0
 #define DEBUG_RESET 0
 #define DEBUG_EXIT 0
 #define DEBUG_DEFINE_REGION 0
@@ -181,7 +181,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             }
             lock_release(copy_on_write_lock);
         }
-
+        
         paddr = (p->PFN << 12);
         p->R = 1;
     }
@@ -219,6 +219,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
 
     // Page located on disk
     if (!p->V && p->PFN) {
+        as->stackcount = 0;
         sm_swapin(p, faultaddress);
         paddr = (p->PFN << 12);
     }
@@ -231,7 +232,13 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         // Fault location is part of stack (Temporary solution to stack growth method)
         if (faultaddress <= as->as_stacklocation && faultaddress > (as->as_stacklocation - MAX_STACK_GROWTH)) {
             unsigned addr = as->as_stacklocation - PAGE_SIZE;
-
+            
+            // Infinite loop counter
+            if (as->stackcount++ == 100) {
+                kprintf("Infinite Loop Detected\n");
+                goto tlbfault;
+            }
+                
             // Request pages for a jump
             while (addr > faultaddress) {
                 struct page* pp = pd_request_page(&as->page_directory, addr);
@@ -332,6 +339,8 @@ as_create(void) {
     as->as_stacklocation = 0;
     as->lruclock = NULL;
     as->lruhandle = NULL;
+    
+    as->stackcount = 0;
     
     return as;
 }
