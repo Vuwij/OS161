@@ -19,6 +19,8 @@ struct coremap_entry {
 extern struct coremap_entry *coremap;
 extern paddr_t firstpaddr;
 extern unsigned cm_totalframes;
+extern unsigned cm_totalkernelframes;
+
 
 void coremap_bootstrap();
 void coremap_getkernelusage();

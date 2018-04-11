@@ -99,7 +99,6 @@ ram_borrowmem(unsigned long npages) {
     
     if(startframe == -1) {
 //        kprintf("Out of memory (Swap bitch)\n");
-//        cm_print();
         return 0;
     }
     for (i = startframe; i < startframe + npages; ++i) {
@@ -139,12 +138,6 @@ ram_borrowmemuser(unsigned long npages, int pid, vaddr_t vaddr) {
     if(paddr == 0) return 0;
     struct coremap_entry* cmentry = cm_getcmentryfromaddress(paddr);
     
-    // No more physical memory left
-    if(cmentry == NULL) {
-        kprintf("Out of User Memory\n");
-        return NULL;
-    }
-
     assert(cmentry != NULL);
 
     cmentry->usedby = CM_USED;
@@ -216,7 +209,6 @@ ram_removeframe(int frame) {
         coremap[frame].usecount--;
         return;
     }
-    
     // TODO some error checking
     int i;
     int npages = coremap[frame].length;

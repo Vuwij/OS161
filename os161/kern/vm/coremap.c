@@ -4,7 +4,7 @@
 #include <vm.h>
 
 struct coremap_entry *coremap = NULL;
-unsigned cm_totalframes;
+unsigned cm_totalframes, cm_totalkernelframes;
 paddr_t firstpaddr, lastpaddr; // First physical address, used as offset
 
 void coremap_bootstrap() {
@@ -37,16 +37,17 @@ void coremap_bootstrap() {
 
 void coremap_getkernelusage() {
     // Need to include the Coremap in the Core Map
-    u_int32_t lo, hi;
-    ram_getsize(&lo, &hi);
-    
-    unsigned spaceleft = (hi - lo) / PAGE_SIZE;
-    
     unsigned i;
+    unsigned kernelcount = 0;
     for (i = 0; i < cm_totalframes; i++) {
-        if(coremap[i].usedby == CM_KTEMP) // The used area is the kernel area
+        if(coremap[i].usedby == CM_KTEMP) {
             coremap[i].usedby = CM_KERNEL;
+            kernelcount++;
+        }   
     }
+    
+    cm_totalkernelframes = kernelcount;
+    
     cm_print();
 }
 

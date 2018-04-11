@@ -38,9 +38,7 @@ wait_badstatus(void *ptr, const char *desc)
 
 	rv = waitpid(pid, ptr, 0);
 	report_test(rv, errno, EFAULT, desc);
-        printf("after report_test\n");
 	waitpid(pid, &x, 0);
-        printf("exiting badstatus\n");
 }
 
 static
@@ -247,9 +245,8 @@ test_waitpid(void)
 	wait_badpid(-1, "wait for pid -1");
 	wait_badpid(0, "pid zero");
 	wait_badpid(NONEXIST_PID, "nonexistent pid");
-        printf("before NULL\n");
+
 	wait_badstatus(NULL, "wait with NULL status");
-        printf("here\n");
 	wait_badstatus(INVAL_PTR, "wait with invalid pointer status");
 	wait_badstatus(KERN_PTR, "wait with kernel pointer status");
 

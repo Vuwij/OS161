@@ -19,7 +19,8 @@
 #include <hashtable.h>
 #include <clock.h>
 
-#define DEBUG_THREADS 0
+#define DEBUG_THREADS 1
+#define DEBUG_EXEC 0
 
 /*
  * System call handler.
@@ -165,7 +166,7 @@ mips_syscall(struct trapframe *tf) {
 
 struct lock* execvlock;
 struct semaphore* pidlimit;
-#define MAX_PIDS 9 // Maximum amount of PIDs permitted to run at the same time
+#define MAX_PIDS 5 // Maximum amount of PIDs permitted to run at the same time
 
 void syscall_bootstrap(void) {
     execvlock = lock_create("Execv");
@@ -296,9 +297,6 @@ int sys_waitpid(struct trapframe *tf, int call) {
     int *returncode = (int *) tf->tf_a1;
     int flags = (int) tf->tf_a2;
     if(DEBUG_THREADS) kprintf("PID %d Waiting for %d\n", curthread->pid, pid);
-    if (returncode == NULL) {
-        return EINVAL;
-    }
     
     if(pid == 0)
         return EINVAL;
@@ -398,10 +396,21 @@ sys_exit(int exitcode) {
  */
 int
 sys_execv(struct trapframe *tf) {
-    
     char *progname = (char *) tf->tf_a0;
     char **argv = (char **) tf->tf_a1;    
     if(progname == NULL) return EFAULT;
+    
+    if(DEBUG_THREADS) kprintf("PID %d Exec\n", curthread->pid);
+    
+    if(DEBUG_EXEC){
+        int spl = splhigh();
+        kprintf("-------- EXEC for PID %d --------\n", curthread->pid);
+        kprintf("Coremap 1\n");
+        cm_print();
+        kprintf("Page directory before\n");
+        pd_print(&curthread->t_vmspace->page_directory);
+        splx(spl);
+    }
     
     // Copy to local memory
     char *prognamek = kmalloc(sizeof(char) * PATH_MAX);
@@ -411,7 +420,7 @@ sys_execv(struct trapframe *tf) {
         argvk[i] = (char *) kmalloc(sizeof(char) * PATH_MAX);
     }
     
-    // Copy in the program name and arguments
+    // Copy in the program name and arguments    
     size_t actual; 
     if(copyinstr((const_userptr_t) progname, prognamek, PATH_MAX, &actual)) {
         kfree(prognamek);
@@ -444,7 +453,6 @@ sys_execv(struct trapframe *tf) {
     }
     int argc = i;
     
-    
     // Open the program
     struct vnode *v;
     int err = vfs_open(prognamek, O_RDONLY, &v);
@@ -457,12 +465,12 @@ sys_execv(struct trapframe *tf) {
         return err;
     }
     
+    
     // Reset the address space
     as_reset(curthread->t_vmspace);
     as_activate(curthread->t_vmspace);
     strcpy(curthread->t_vmspace->progname, prognamek);
     curthread->t_vmspace->progfile = v;
-    
     
     // Load file into address space
     vaddr_t entrypoint, stackptr;
@@ -476,7 +484,7 @@ sys_execv(struct trapframe *tf) {
         kfree(argvk);
         return err;
     }
-        
+    
     /* Define the user stack in the address space */
     err = as_define_stack(curthread->t_vmspace, &stackptr);
     if (err) {
@@ -487,7 +495,7 @@ sys_execv(struct trapframe *tf) {
         kfree(argvk);
         return err;
     }
-
+    
     // array to hold user space addresses of the args
     char* user_space_addr[argc+1];
 
@@ -516,6 +524,16 @@ sys_execv(struct trapframe *tf) {
         kfree(argvk[i]);
     }
     kfree(argvk);
+    
+    if(DEBUG_EXEC){
+        int spl = splhigh();
+        kprintf("-------- EXEC End for PID %d --------\n", curthread->pid);
+        kprintf("Coremap 2\n");
+        cm_print();
+        kprintf("Page directory after\n");
+        pd_print(&curthread->t_vmspace->page_directory);
+        splx(spl);
+    }
     
     md_usermode(argc, (userptr_t) stackptr, stackptr, entrypoint);
     

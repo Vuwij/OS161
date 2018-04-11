@@ -21,27 +21,32 @@
 
 #define TEXT_SEGMENT_SHIFT 16
 #define MAX_STACK_GROWTH 0x10000000
-#define PRINTVM 0
+#define DEBUG_VMFAULTERROR 1
+#define DEBUG_VMFAULT 0
 #define DEBUG_COPY 0
-#define DEBUG_COPY_ON_WRITE 0
+#define DEBUG_COPY_ON_WRITE 1
+#define DEBUG_RESET 0
+#define DEBUG_EXIT 0
+#define DEBUG_DEFINE_REGION 0
 
 // For guarding the page directory temporarily
 
 struct lock* copy_on_write_lock;
+struct semaphore* memfullsemaphore;
 
 void
 vm_bootstrap(void) {
     copy_on_write_lock = lock_create("Copy on Write");
+    
+    memfullsemaphore = sem_create("MemFull", cm_totalframes - cm_totalkernelframes);
 }
 
 /* Allocate/free some user-space virtual pages */
 paddr_t
 alloc_upages(int npages, vaddr_t vaddr) {
-    int spl;
-
+    int spl = splhigh();
     paddr_t addr;
-
-    spl = splhigh();
+    
     addr = ram_borrowmemuser(npages, curthread->pid, vaddr);
     splx(spl);
 
@@ -71,6 +76,7 @@ increment_frame(int frame) {
 void
 free_frame(int frame) {
     int spl = splhigh();
+    
     ram_removeframe(frame - (firstpaddr >> 12));
     splx(spl);
 }
@@ -85,6 +91,8 @@ alloc_kpages(int npages) {
     splx(spl);
 
     if (addr == 0) {
+        kprintf("Kernel has run out of memory\n");
+        cm_print();
         return 0;
     }
     return PADDR_TO_KVADDR(addr);
@@ -100,7 +108,6 @@ free_kpages(vaddr_t addr) {
     splx(spl);
 }
 
-int
 vm_fault(int faulttype, vaddr_t faultaddress) {
     paddr_t paddr;
     int i;
@@ -122,45 +129,55 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         default:
             goto tlbfault;
     }
-
+    
+    if (DEBUG_VMFAULT) {
+       kprintf("\tPID %d - Type [%d] - Address 0x%x\n", curthread->pid, faulttype, faultaddress); 
+    }
+    
     as = curthread->t_vmspace;
     if (as == NULL) {
         kprintf("TLB: Address Space is Null\n");
         goto tlbfault;
     }
 
+    lock_acquire(copy_on_write_lock);
     lock_acquire(as->pdlock);
     struct page* p = pd_request_page(&as->page_directory, faultaddress);
     lock_release(as->pdlock);
+    lock_release(copy_on_write_lock);
     
-//    kprintf("PID %d [%d]\n", curthread->pid, faulttype);
-//    if(curthread->pid == 2)
-//        pd_translate(faultaddress);
-
-    // Page in memory, all other cases have page not loaded
     if (p->V && p->PFN) {
-                // Check if coremap contains a duplicate
+        // Check if coremap contains a duplicate
         if (faulttype == VM_FAULT_WRITE /*|| faultaddress == as->as_data*/) {
             lock_acquire(copy_on_write_lock);
             struct coremap_entry* cmentry = cm_getcmentryfromaddress((p->PFN << 12));
-
+            
             if (cmentry->usecount > 1) {
-                
+
                 // Hacky way to save memory
-                //pd_copy_on_write(&as->page_directory, faultaddress);
+                if (DEBUG_COPY_ON_WRITE) kprintf("------ COPY ON WRITE (PID %d) ------\n", curthread->pid);
+                if (DEBUG_COPY_ON_WRITE) pd_print(&curthread->t_vmspace->page_directory);
+
+                pd_copy_on_write(&as->page_directory, faultaddress);
+                p = pd_request_page(&as->page_directory, faultaddress);
                 
+                unsigned copyfrom = p->PFN;
+
                 p->V = 1;
                 p->R = 1;
-                unsigned copyfrom = p->PFN;
                 p->PFN = 0;
                 p_allocate_page(p); // Allocate disk space for page
                 sm_swapin(p, faultaddress); // Swap the page from the disk
                 unsigned copyto = p->PFN;
-
+                
+                if (DEBUG_COPY_ON_WRITE) kprintf("COPY ON WRITE %d -> %d\n", copyfrom, copyto);
                 ram_copymem((copyto << 12), (copyfrom << 12));
                 
                 
-                if(DEBUG_COPY_ON_WRITE) cm_print();
+                if (DEBUG_COPY_ON_WRITE) kprintf("----------------------------\n");
+                if (DEBUG_COPY_ON_WRITE) pd_print(&curthread->t_vmspace->page_directory);
+                if (DEBUG_COPY_ON_WRITE) kprintf("----------------------------\n");
+                if (DEBUG_COPY_ON_WRITE) cm_print();
             }
             lock_release(copy_on_write_lock);
         }
@@ -168,7 +185,8 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         paddr = (p->PFN << 12);
         p->R = 1;
     }
-
+    
+    
     // Page on file, not loaded
     if (p->F && p->V == 0) {
         // If in data segment
@@ -179,9 +197,10 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
         p->V = 1;
         p->PFN = 0;
         p->F = 0;
+        
         p_allocate_page(p); // Allocate disk space for page
         sm_swapin(p, faultaddress); // Swap the page from the disk
-
+        
         paddr = (p->PFN << 12);
         load_elf_segment(segment, part);
 
@@ -189,6 +208,7 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     }
 
     // Page valid, unallocated
+    
     if (p->F == 0 && p->V == 1 && p->PFN == 0) {
         p_allocate_page(p); // Allocate disk space for page
         sm_swapin(p, faultaddress); // Swap the page from the disk
@@ -199,7 +219,6 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
 
     // Page located on disk
     if (!p->V && p->PFN) {
-        //        pd_print(&as->page_directory);
         sm_swapin(p, faultaddress);
         paddr = (p->PFN << 12);
     }
@@ -247,11 +266,11 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
             sm_swapin(pp, faultaddress); // Swap the page from the disk
             paddr = (pp->PFN << 12);
         } else {
-            kprintf("Invalid Page\n");
+            //kprintf("Invalid Page\n");
             goto tlbfault;
         }
     }
-
+        
     // TLB Stuff
     assert((paddr & PAGE_FRAME) == paddr);
     for (i = 0; i < NUM_TLB; i++) {
@@ -274,8 +293,8 @@ vm_fault(int faulttype, vaddr_t faultaddress) {
     goto tlbfault;
 
 tlbfault:
-    if (PRINTVM) {
-        kprintf("-------------------- VM Fault Info --------------------\n");
+    if (DEBUG_VMFAULTERROR) {
+        kprintf("\n-------------------- VM Fault Info --------------------\n");
         kprintf("PID %d\n", curthread->pid);
         kprintf("--- Page Info --- \n");
         kprintf("Virtual Address: 0x%x\n", faultaddress);
@@ -288,6 +307,7 @@ tlbfault:
         kprintf("------------------------------------------------------\n");
     }
     splx(spl);
+    panic("TLB Fault cannot be handled\n");
     return EFAULT;
 }
 
@@ -312,33 +332,39 @@ as_create(void) {
     as->as_stacklocation = 0;
     as->lruclock = NULL;
     as->lruhandle = NULL;
-
+    
     return as;
 }
 
 void
 as_reset(struct addrspace *as) {
-    //    int spl = splhigh();
-    //    kprintf("-------- AS Resetting for PID %d --------\n", curthread->pid);
-    //    kprintf("Coremap 1\n");
-    //    cm_print();
-    //    kprintf("Page directory before\n");
-    //    pd_print(&as->page_directory);
-
+    
+    
+    if(DEBUG_RESET){
+        int spl = splhigh();
+        kprintf("-------- AS Resetting for PID %d --------\n", curthread->pid);
+        kprintf("Coremap 1\n");
+        cm_print();
+        kprintf("Page directory before\n");
+        pd_print(&as->page_directory);
+        splx(spl);
+    }
+        
     // Destroy and recreate the address space
     vfs_close(as->progfile);
-
+    
+    lock_acquire(copy_on_write_lock);
     lock_acquire(as->pdlock);
+    
     pd_free(&as->page_directory);
+    pd_initialize(&as->page_directory);
+    
     lock_release(as->pdlock);
-
+    lock_release(copy_on_write_lock);
 
     if (as == NULL) {
         return;
     }
-
-    pd_initialize(&as->page_directory);
-
 
     as->as_codeend = 0;
     as->as_codestart = 0;
@@ -348,11 +374,16 @@ as_reset(struct addrspace *as) {
     as->as_stacklocation = 0;
     as->lruclock = NULL;
     as->lruhandle = NULL;
-
-    //    kprintf("Coremap After\n");
-    //    cm_print();
-    //    kprintf("--------  AS Reset for PID %d\n --------", curthread->pid);
-    //    splx(spl);
+    
+    if(DEBUG_RESET) {
+        int spl = splhigh();
+        kprintf("Coremap After\n");
+        cm_print();
+        kprintf("Page directory after\n");
+        pd_print(&as->page_directory);
+        kprintf("--------  AS Reset for PID %d --------\n", curthread->pid);
+        splx(spl);
+    }
 }
 
 void
@@ -360,27 +391,35 @@ as_destroy(struct addrspace *as) {
     DEBUG(DB_VM, "as_destroy\n");
 
     vfs_close(as->progfile);
-
-    //    int spl = splhigh();
-    //    kprintf("\n------------------------- Destroy for PID %d -------------------------\n", curthread->pid);
-    //    pd_print(&as->page_directory);
-    //    kprintf("Core Map Before\n");
-    //    cm_print();
-
+    
+    if(DEBUG_EXIT) {
+        int spl = splhigh();
+        kprintf("\n------------------------- Destroy for PID %d -------------------------\n", curthread->pid);
+        pd_print(&as->page_directory);
+        kprintf("Core Map Before\n");
+        cm_print();
+        splx(spl);
+    }
+        
+    lock_acquire(copy_on_write_lock);
     lock_acquire(as->pdlock);
-
+    
     ll_destroy(&as->lruclock);
     pd_free(&as->page_directory);
 
     lock_release(as->pdlock);
+    lock_release(copy_on_write_lock);
+    
     lock_destroy(as->pdlock);
     kfree(as);
-
-    //    kprintf("Core Map After\n");
-    //    cm_print();
-    //    kprintf("----------------------------------------------------------------------\n");
-    //    splx(spl);
-    //    as = NULL;
+    
+    if(DEBUG_EXIT) {
+        int spl = splhigh();
+        kprintf("Core Map After\n");
+        cm_print();
+        kprintf("----------------------------------------------------------------------\n");
+        splx(spl);
+    }
 }
 
 void
@@ -448,7 +487,12 @@ as_define_region(struct addrspace *as, vaddr_t vaddr, int pindex, size_t sz,
     as->as_heap_start = data;
     as->as_heap_end = data;
     lock_release(as->pdlock);
-    //    pd_print(&as->page_directory);
+
+    
+    if (DEBUG_DEFINE_REGION) {
+        kprintf("-------------- AS Define Region (PID %d) -------------\n", curthread->pid);
+        pd_print(&as->page_directory);
+    }
     return 0;
 }
 
@@ -518,7 +562,7 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
         cm_print();
         splx(spl);
     }
-    
+
     pd_copy(&newas->page_directory, &old->page_directory);
 
     if (DEBUG_COPY) {
@@ -538,7 +582,7 @@ as_copy(struct addrspace *old, struct addrspace **ret) {
 
     // New AS needs page directory lock
     newas->pdlock = lock_create("Address Space Lock");
-
+    
     *ret = newas;
     return 0;
 }

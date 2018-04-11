@@ -8,7 +8,6 @@
 #include <linkedlist.h>
 
 struct pagedirectory {
-    unsigned pdedirty[1024];
     struct pagetable* pde[1024]; // The page table is created on request
 };
 

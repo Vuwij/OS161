@@ -8,6 +8,8 @@
 #include <kern/errno.h>
 #include <bitmap.h>
 
+#include "coremap.h"
+
 /*
  * It would be a lot more efficient on most platforms to use u_int32_t
  * or unsigned long as the base type for holding bits. But we don't,
@@ -124,7 +126,7 @@ bitmap_unmark(struct bitmap *b, u_int32_t index)
 	WORD_TYPE mask;
 	assert(index < b->nbits);
 	bitmap_translate(index, &ix, &mask);
-
+        
 	assert((b->v[ix] & mask)!=0);
 
 	b->v[ix] &= ~mask;

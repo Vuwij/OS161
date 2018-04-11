@@ -17,6 +17,8 @@ struct vnode;
  */
 
 struct addrspace {
+    struct pagedirectory page_directory;
+    
     char progname[20];
     struct vnode *progfile;
     Elf_Ehdr eh;
@@ -27,9 +29,8 @@ struct addrspace {
     vaddr_t as_heap_start;
     vaddr_t as_heap_end;
     vaddr_t as_data;
-    struct pagedirectory page_directory;
-    struct lock* pdlock;
     
+    struct lock* pdlock;
     struct node* lruclock; // Local replacement only
     struct node* lruhandle;
 };
@@ -105,5 +106,12 @@ int               as_define_stack(struct addrspace *as, vaddr_t *initstackptr);
 int load_elf(struct vnode *v, vaddr_t *entrypoint);
 
 int load_elf_segment(int segment, int part);
+
+extern struct lock* copy_on_write_lock;
+
+#define PRINT_RESET   "\033[0m"
+#define PRINT_BLACK   "\033[30m"      /* Black */
+#define PRINT_RED     "\033[31m"      /* Red */
+#define PRINT_GREEN   "\033[32m"      /* Green */
 
 #endif /* _ADDRSPACE_H_ */

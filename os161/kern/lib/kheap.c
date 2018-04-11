@@ -542,7 +542,7 @@ kmalloc(size_t sz) {
         /* Round up to a whole number of pages. */
         npages = (sz + PAGE_SIZE - 1) / PAGE_SIZE;
         
-        DEBUG(DB_VM, "kmalloc: %d, %d\n", sz, npages);
+//        kprintf("kmalloc: %d, %d\n", sz, npages);
         address = alloc_kpages(npages);
         if (address == 0) {
             return NULL;

@@ -88,6 +88,8 @@ void ram_incrementframe(int frame);
 
 void ram_getsize(paddr_t *lo, paddr_t *hi);
 
+extern struct semaphore* memfullsemaphore;
+
 /*
  * The ELF executable type for this platform.
  */
