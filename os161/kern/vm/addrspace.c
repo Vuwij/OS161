@@ -21,7 +21,7 @@
 
 #define TEXT_SEGMENT_SHIFT 16
 #define MAX_STACK_GROWTH 0x10000000
-#define DEBUG_VMFAULTERROR 1
+#define DEBUG_VMFAULTERROR 0
 #define DEBUG_VMFAULT 0
 #define DEBUG_COPY 0
 #define DEBUG_COPY_ON_WRITE 1
@@ -305,9 +305,9 @@ tlbfault:
         kprintf("--- PAGE Directory --- \n");
         pd_print(&as->page_directory);
         kprintf("------------------------------------------------------\n");
+        panic("TLB Fault cannot be handled\n");
     }
     splx(spl);
-    panic("TLB Fault cannot be handled\n");
     return EFAULT;
 }
 
